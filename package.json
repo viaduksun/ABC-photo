@@ -1,0 +1,63 @@
+{
+  "name": "online-store-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "npm-run-all": "^4.1.1",
+    "npm-watch": "^0.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "stylelint": "^13.13.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-order": "^4.1.0",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "npm-run-all -p watch-sass-js start-js",
+    "build": "npm run eslint && npm run stylelint-build && react-scripts build",
+    "eslint": "eslint 'src/**/*.js'",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "stylelint-dev": "stylelint 'src/**/*.scss' --cache --cache-location './.stylelintcache'; exit 0",
+    "stylelint-build": "stylelint 'src/**/*.scss'",
+    "watch-sass-js": "npm-watch",
+    "start-js": "react-scripts start",
+    "stylelint-fix-sass": "stylelint --fix 'src/**/*.scss'"
+  },
+  "watch": {
+    "stylelint-dev": {
+      "patterns": [
+        "/src/**/*.scss"
+      ],
+      "extensions": "scss"
+    },
+    "eslint": {
+      "patterns": [
+        "/src/**/*.js"
+      ],
+      "extensions": "js"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-react": "^7.24.0",
+    "standard": "^16.0.3"
+  }
+}
