@@ -7,8 +7,8 @@ const handleClick = () => {
 
 const Header = () => {
   return (
-    <div class={styles.test}>
-      <div onClick={handleClick}>testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</div>
+    <div className={styles.test}>
+      <div onClick={handleClick}>test</div>
     </div>
   );
 };
