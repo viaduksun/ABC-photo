@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = () => {
+const Header = (id) => {
   return (
     <div class="test">
       <div>test</div>
