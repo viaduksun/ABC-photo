@@ -1,12 +1,22 @@
 import './App.css';
 import Header from './components/Header';
+import AppBar from './components/AppBar';
+// import Button from '@material-ui/core/Button';
+import {
+  Container
+} from '@material-ui/core';
 
 const App = () => {
   return (
-    <div className="test">
-      <div>123123123123123123123</div>
-      <Header />
-    </div>
+    <>
+      <AppBar />
+      <Container maxWidth="sm">
+
+        <Header />
+
+      </Container>
+    </>
+
   );
 };
 
