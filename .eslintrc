@@ -14,7 +14,8 @@
     "object-curly-spacing": 0,
     "comma-dangle": 0,
     "no-plusplus": "off",
-    "indent": ["error", 2, { "MemberExpression": 1 }]
+    "indent": ["error", 2, { "MemberExpression": 1 }],
+    "max-len": ["error", { "code": 100 }]
   },
   "settings": {
     "react": {

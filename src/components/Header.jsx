@@ -4,7 +4,7 @@ import styles from './Header.module.scss';
 const Header = () => {
   return (
     <div class={styles.test}>
-      <div>test</div>
+      <div>testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</div>
     </div>
   );
 };
