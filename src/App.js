@@ -1,6 +1,6 @@
 import './App.css';
-import Header from './components/Header';
-import { Image, Transformation, CloudinaryContext } from 'cloudinary-react';
+import Header from './components/Header2';
+import { Image, CloudinaryContext } from 'cloudinary-react';
 import {
   Container
 } from '@material-ui/core';
