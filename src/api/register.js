@@ -3,9 +3,9 @@ import axios from 'axios';
 const newCustomer = {
   firstName: 'Customer',
   lastName: 'Newone',
-  login: 'VBuser',
-  email: 'VB@gmail.com',
-  password: '12345678',
+  login: 'admin',
+  email: 'admin@gmail.com',
+  password: 'admin1234',
   telephone: '+380639502525',
   gender: 'male',
   avatarUrl: 'img/customers/023648.png',

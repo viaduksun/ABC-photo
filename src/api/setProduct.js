@@ -26,12 +26,12 @@ const setProduct = () => {
     Authorization: token,
   };
   return axios
-    .post('http://localhost:5000/api/products', newProduct, {
+    .post('https://intense-hamlet-33316.herokuapp.com/api/products', newProduct, {
       headers: headers,
     })
     .then((newProduct) => {
       /* Do something with newProduct */
-      console.log('POST OK');
+      console.log('Product has been added');
     })
     .catch((err) => {
       /* Do something with error, e.g. show error to user */

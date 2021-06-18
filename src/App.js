@@ -1,7 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import AppBar from './components/AppBar';
-// import Button from '@material-ui/core/Button';
+import { Image, Transformation, CloudinaryContext } from 'cloudinary-react';
 import {
   Container
 } from '@material-ui/core';
@@ -9,11 +8,15 @@ import {
 const App = () => {
   return (
     <>
-      <AppBar />
+      <Header />
       <Container maxWidth="sm">
-
-        <Header />
-
+        <h1>React Online Store Fe 24</h1>
+        <CloudinaryContext cloudName="demo">
+          <div>
+            <Image publicId="sample" width="50" />
+          </div>
+          <Image publicId="sample" width="0.5" />
+        </CloudinaryContext>
       </Container>
     </>
 

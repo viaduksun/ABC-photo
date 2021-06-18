@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 const userData = {
-  loginOrEmail: 'customerwertygfd@gmail.com',
-  password: '111111111212222',
+  loginOrEmail: 'admin@gmail.com',
+  password: 'admin1234',
 };
 
-const login = () => {
+const Login = () => {
   console.log('LOGIN BTN');
   return axios
-    .post('http://localhost:5000/api/customers/login', userData)
+    .post('https://intense-hamlet-33316.herokuapp.com/api/customers/login', userData)
     .then((loginResult) => {
       console.log('loginResult', loginResult);
       localStorage.setItem('token', loginResult.data.token);
@@ -21,4 +21,4 @@ const login = () => {
     });
 };
 
-export default login;
+export default Login;
