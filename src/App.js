@@ -1,12 +1,25 @@
 import './App.css';
-import Header from './components/Header';
+import Header from './components/Header2';
+import { Image, CloudinaryContext } from 'cloudinary-react';
+import {
+  Container
+} from '@material-ui/core';
 
 const App = () => {
   return (
-    <div className="test">
-      <h1>Hello React!</h1>
+    <>
       <Header />
-    </div>
+      <Container maxWidth="sm">
+        <h1>React Online Store Fe 24</h1>
+        <CloudinaryContext cloudName="demo">
+          <div>
+            <Image publicId="sample" width="50" />
+          </div>
+          <Image publicId="sample" width="0.5" />
+        </CloudinaryContext>
+      </Container>
+    </>
+
   );
 };
 
