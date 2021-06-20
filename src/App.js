@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
   container: {
     marginTop: 100,
-  }
+  },
 });
 
 const App = () => {
@@ -26,12 +26,11 @@ const App = () => {
     <>
       <Header />
       <Container className={classes.container} maxWidth="sm" mt={16}>
-        <h1>React Online Store Fe 24</h1>
+        <h1>React Online Store Fe 24!</h1>
         <ImgUploading />
         <Button className={classes.root}>Exmple</Button>
       </Container>
     </>
-
   );
 };
 
