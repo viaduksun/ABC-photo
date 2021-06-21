@@ -1,5 +1,3 @@
 const initialState = [];
 
-export const productsReducer = (state = initialState, action) => {
-  return state;
-};
+export const productsReducer = (state = initialState, action) => state;
