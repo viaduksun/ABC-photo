@@ -1,5 +1,5 @@
 {
-  "name": "online-store-app",
+  "name": "online-store",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,36 +19,30 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
     "sass": "^1.35.1",
-    "stylelint": "^13.13.1",
-    "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-order": "^4.1.0",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "npm-run-all -p watch-sass-js start-js",
-    "build": "npm run eslint && npm run stylelint-build && react-scripts build",
-    "eslint": "eslint \"src/**/*.js\"",
+    "start": "react-scripts start",
+    "build": "npm run eslint && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "stylelint-dev": "stylelint \"src/**/*.scss\" --cache --cache-location \"./.stylelintcache\"; exit 0",
-    "stylelint-build": "stylelint \"src/**/*.scss\"",
-    "watch-sass-js": "npm-watch",
-    "start-js": "react-scripts start",
-    "stylelint-fix-sass": "stylelint --fix \"src/**/*.scss\""
+    "eslint": "eslint 'src/**/*.js'",
+    "lint:fix": "eslint --fix --ext .js,.jsx ."
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "watch": {
-    "stylelint-dev": {
-      "patterns": [
-        "/src/**/*.scss"
-      ],
-      "extensions": "scss"
-    },
     "eslint": {
       "patterns": [
         "/src/**/*.js"
@@ -69,13 +63,11 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "standard": "^16.0.3"
-  },
-  "proxy": "https://intense-hamlet-33316.herokuapp.com/"
+    "eslint": "7.2.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-react": "7.21.5",
+    "eslint-plugin-react-hooks": "1.7.0"
+  }
 }

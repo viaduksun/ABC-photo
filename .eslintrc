@@ -1,21 +1,24 @@
-{
+{  
   "parser": "babel-eslint",
   "env": {
     "browser": true,
     "mocha": true
   },
+<<<<<<< HEAD
   "extends": ["airbnb", "airbnb/hooks"],
+=======
+  "extends": ["airbnb", "airbnb/hooks" ],
+>>>>>>> b47ed928a023433f095275c7833c280a6d3ad943
   "rules": {
-    "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+    "no-trailing-spaces": ["error", { "skipBlankLines": true } ],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-return-assign": 0,
     "eol-last": 0,
     "semi": ["error", "always"],
     "camelcase": 0,
     "object-curly-spacing": 0,
-    "comma-dangle": 0,
-    "no-plusplus": "off",
-    "indent": ["error", 2, { "MemberExpression": 1 }],
-    "max-len": ["error", { "code": 240 }]
+    "comma-dangle": 0,    
+    "linebreak-style": 0,
   },
   "settings": {
     "react": {
@@ -24,6 +27,6 @@
       "version": "17.0.2",
       "flowVersion": "0.86"
     },
-    "propWrapperFunctions": ["forbidExtraProps"]
+    "propWrapperFunctions": [ "forbidExtraProps" ]
   }
 }

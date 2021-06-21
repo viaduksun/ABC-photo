@@ -1,13 +1,11 @@
 import React from 'react';
-import ImgUploading_example from '../components/ImgUploading_example';
+import ImgUploading from '../components/ImgUploading';
 
-const Products = () => {
-  return (
-    <div>
-      <h2>Products</h2>
-      <ImgUploading_example />
-    </div>
-  );
-};
+const Products = () => (
+  <div>
+    <h2>Products</h2>
+    <ImgUploading />
+  </div>
+);
 
 export default Products;

@@ -1,8 +1,8 @@
 import './App.css';
-import { makeStyles } from '@material-ui/core/styles';
-import { Container } from '@material-ui/core';
-// import Button from '@material-ui/core/Button';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Container } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import Header from './components/Header3';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -22,22 +22,29 @@ const useStyles = makeStyles({
   container: {
     flexGrow: 1,
   }
-    marginTop: 100,
-},
 });
 
-const App = () => {
+function App() {
   const classes = useStyles();
   return (
     <div className="wrapper">
       <Header />
-      <Container className={classes.container} maxWidth="sm" mt={16}>
-        <h1>React Online Store Fe 24!</h1>
-        <ImgUploading />
-        <Button className={classes.root}>Exmple</Button>
+      <Container className={classes.container} maxWidth="sm" mt={20}>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/products">
+            <Products />
+          </Route>
+          <Route exact path="/contacts">
+            <Contacts />
+          </Route>
+        </Switch>
       </Container>
-    </>
+      <Footer />
+    </div>
   );
-};
+}
 
 export default App;
