@@ -21,7 +21,11 @@ const userRegister = () => {
       'https://intense-hamlet-33316.herokuapp.com/api/customers',
       newCustomer,
       {
+<<<<<<< HEAD
         headers: headers,
+=======
+        headers,
+>>>>>>> develop
       }
     )
     .then((savedCustomer) => {

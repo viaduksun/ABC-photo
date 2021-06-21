@@ -1,8 +1,12 @@
 import thunk from 'redux-thunk';
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import {
+  createStore, applyMiddleware, compose, combineReducers
+} from 'redux';
 import { productsReducer } from './products/reducer';
 
+// eslint-disable-next-line no-underscore-dangle
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
+  // eslint-disable-next-line no-underscore-dangle
   ? window.__REDUX_DEVTOOLS_EXTENSION__()
   : (f) => f;
 
