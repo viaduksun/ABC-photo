@@ -4,7 +4,7 @@
     "browser": true,
     "mocha": true
   },
-  "extends": ["standard", "react-app"],
+  "extends": ["airbnb", "airbnb/hooks"],
   "rules": {
     "no-trailing-spaces": ["error", { "skipBlankLines": true }],
     "no-return-assign": 0,
