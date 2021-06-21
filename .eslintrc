@@ -4,11 +4,7 @@
     "browser": true,
     "mocha": true
   },
-<<<<<<< HEAD
-  "extends": ["airbnb", "airbnb/hooks"],
-=======
   "extends": ["airbnb", "airbnb/hooks" ],
->>>>>>> b47ed928a023433f095275c7833c280a6d3ad943
   "rules": {
     "no-trailing-spaces": ["error", { "skipBlankLines": true } ],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -18,7 +14,7 @@
     "camelcase": 0,
     "object-curly-spacing": 0,
     "comma-dangle": 0,    
-    "linebreak-style": 0,
+    "linebreak-style": 0
   },
   "settings": {
     "react": {
