@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Header from './components/Header3';
+import Header from './containers/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Contacts from './pages/Contacts';
