@@ -22,6 +22,8 @@ const useStyles = makeStyles({
   container: {
     flexGrow: 1,
   }
+    marginTop: 100,
+},
 });
 
 const App = () => {
@@ -29,21 +31,12 @@ const App = () => {
   return (
     <div className="wrapper">
       <Header />
-      <Container className={classes.container} maxWidth="sm" mt={20}>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/products">
-            <Products />
-          </Route>
-          <Route exact path="/contacts">
-            <Contacts />
-          </Route>
-        </Switch>
+      <Container className={classes.container} maxWidth="sm" mt={16}>
+        <h1>React Online Store Fe 24!</h1>
+        <ImgUploading />
+        <Button className={classes.root}>Exmple</Button>
       </Container>
-      <Footer />
-    </div>
+    </>
   );
 };
 
