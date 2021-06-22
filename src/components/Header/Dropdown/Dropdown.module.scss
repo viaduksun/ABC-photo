@@ -1,0 +1,28 @@
+.DropMenu {
+  // background: #368e1a;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  z-index: 2;
+  display: flex;
+  // width: 375px;
+  .clicked {
+    display: block;
+  }
+}
+.DropUl {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 220px;
+}
+.DropLink {
+  min-height: 30px;
+  min-width: 150px;
+  padding: 10px;
+  flex: 1 1 auto;
+  background: #368e1a;
+  &:hover {
+    background: #307e19;
+  }
+}

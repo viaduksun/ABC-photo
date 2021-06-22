@@ -1,0 +1,33 @@
+.Header {
+  width: 100%;
+  height: 165px;
+  display: flex;
+  flex-direction: column;
+}
+.container .mainHeaderContainer {
+  background: rgb(180, 180, 180);
+}
+.Logo {
+  cursor: pointer;
+}
+.mainHeader {
+  flex: 1 1 auto;
+}
+.HeaderWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+.SearchFormWrapper {
+  flex: 1 1 auto;
+}
+@media (max-width: 950px) {
+  .HeaderWrapper {
+    flex-direction: column;
+  }
+  .footer-content {
+    padding: 12px 10px 0px 10px;
+  }
+}

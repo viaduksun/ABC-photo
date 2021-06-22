@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import Button from './Button';
-import { render } from '@testing-library/react';
-=======
+import React from 'react';
 import { render } from '@testing-library/react';
 import Button from './Button';
->>>>>>> develop
 
 describe('Button component', () => {
   it('should render correctly', () => {

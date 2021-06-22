@@ -1,16 +1,14 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import { Container, Box } from '@material-ui/core';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles } from '@material-ui/core/styles';
 import lightGreen from '@material-ui/core/colors/lightGreen';
+import TopMenu from '../components/Header/TopMenu';
+import LoginIcon from '../components/Header/LoginIcon';
+import CartIcon from '../components/Header/CartIcon';
+import PhoneAccordion from '../components/Header/PhoneAccordion';
+import SearchForm from '../components/Header/SearchForm';
+import BottomMenu from '../components/Header/BottomMenu';
+import styles from './Header.module.scss';
 
 const greenColor = lightGreen[700];
 
@@ -22,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 0,
   },
   link: {
     textDecoration: null,
@@ -33,9 +31,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.grey[200],
     height: 35,
   },
-  midleMenu: {
+  header: {
     backgroundColor: theme.palette.background.paper,
-    height: 80,
+    height: 165,
   },
   bottomMenu: {
     backgroundColor: greenColor,
@@ -46,100 +44,36 @@ const useStyles = makeStyles((theme) => ({
   },
   menuContainer: {
     display: 'flex',
+    alignItems: 'center',
+    height: 80,
+  },
+  inputWrapper: {
+    flexGrow: 1,
   },
 }));
 
 const MenuAppBar = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
-    <div className={classes.root}>
-      <Box className={classes.topMenu}>
-        <Container>Top menu</Container>
-      </Box>
-      <AppBar position="static" className={classes.midleMenu}>
-        <Toolbar>
-          <Container className={classes.menuContainer}>
-            <Typography variant="h6" className={classes.title}>
+    <div className={styles.Header}>
+      <TopMenu />
+      <div className={styles.mainHeader}>
+        <div className="container mainHeaderContainer">
+          <div className={styles.HeaderWrapper}>
+            <NavLink exact to="/" className={styles.Logo}>
               <img src="./img/logo.png" alt="logo" className={classes.logo} />
-            </Typography>
+            </NavLink>
 
-            {isMobile ? (
-              <div>
-                <IconButton
-                  edge="start"
-                  className={classes.menuButton}
-                  color="inherit"
-                  aria-label="menu"
-                  onClick={handleMenu}
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
-                </Menu>
-              </div>
-            ) : (
-              <div>
-                <NavLink
-                  exact
-                  to="/"
-                  className={classes.link}
-                  activeClassName="selected"
-                >
-                  Home
-                </NavLink>
-                <NavLink
-                  exact
-                  to="/products"
-                  className={classes.link}
-                  activeClassName="selected"
-                >
-                  Products
-                </NavLink>
-                <NavLink
-                  exact
-                  to="/contacts"
-                  className={classes.link}
-                  activeClassName="selected"
-                >
-                  Contacts
-                </NavLink>
-              </div>
-            )}
-          </Container>
-        </Toolbar>
-      </AppBar>
-      <Box className={classes.bottomMenu}>
-        <Container>Bottom menu</Container>
-      </Box>
+            <SearchForm />
+
+            <PhoneAccordion />
+            <LoginIcon />
+            <CartIcon />
+          </div>
+        </div>
+      </div>
+      <BottomMenu />
     </div>
   );
 };
