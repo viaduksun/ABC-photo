@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from './containers/Header';
-import Footer from './components/Footer';
+import Footer from './containers/Footer';
 import Home from './pages/Home';
 import Contacts from './pages/Contacts';
 import Products from './pages/Products';
