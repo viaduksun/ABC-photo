@@ -1,0 +1,14 @@
+.ProductsField {
+  background: rgb(255, 209, 209);
+  flex: 1 1 auto;
+}
+.ProductsFieldGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  gap: 20px;
+}
+@media (max-width: 950px) {
+  .ProductsFieldGrid {
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
+}

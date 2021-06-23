@@ -4,52 +4,52 @@ const dropdownsContent = [
     dropContent: [
       {
         title: 'Фотоаппараты',
-        path: '/technics',
+        path: '/products',
         id: '01_MenuItems'
       },
       {
         title: 'Видеокамеры',
-        path: '/optic',
+        path: '/products',
         id: '02_MenuItems'
       },
       {
         title: 'Вспышки',
-        path: '/accessoryies',
+        path: '/products',
         id: '03_MenuItems'
       },
       {
         title: 'Экшн камеры',
-        path: '/cases',
+        path: '/products',
         id: '04_MenuItems'
       },
       {
         title: 'Карты памяти',
-        path: '/studio-acuipment',
+        path: '/products',
         id: '05_MenuItems'
       },
       {
         title: 'Кардридеры',
-        path: '/tripods',
+        path: '/products',
         id: '06_MenuItems'
       },
       {
         title: 'USB флэш накопители',
-        path: '/alboms',
+        path: '/products',
         id: '07_MenuItems'
       },
       {
         title: 'Внешние жесткие диски',
-        path: '/frames',
+        path: '/products',
         id: '08_MenuItems'
       },
       {
         title: 'Фотопринтеры',
-        path: '/frames',
+        path: '/products',
         id: '09_MenuItems'
       },
       {
         title: 'Фотобумага для фотопринтера',
-        path: '/frames',
+        path: '/products',
         id: '10_MenuItems'
       }
     ]
@@ -59,27 +59,27 @@ const dropdownsContent = [
     dropContent: [
       {
         title: 'Оптика для фото',
-        path: '/technics',
+        path: '/products',
         id: '01_MenuItems'
       },
       {
         title: 'Оптика для фото',
-        path: '/optic',
+        path: '/products',
         id: '02_MenuItems'
       },
       {
         title: 'Оптика для фото',
-        path: '/accessoryies',
+        path: '/products',
         id: '03_MenuItems'
       },
       {
         title: 'Оптика для фото',
-        path: '/cases',
+        path: '/products',
         id: '04_MenuItems'
       },
       {
         title: 'Оптика для фото',
-        path: '/studio-acuipment',
+        path: '/products',
         id: '05_MenuItems'
       }
     ]
@@ -89,27 +89,27 @@ const dropdownsContent = [
     dropContent: [
       {
         title: 'Аксессуары',
-        path: '/technics',
+        path: '/products',
         id: '01_MenuItems'
       },
       {
         title: 'Аксессуары',
-        path: '/optic',
+        path: '/products',
         id: '02_MenuItems'
       },
       {
         title: 'Аксессуары',
-        path: '/accessoryies',
+        path: '/products',
         id: '03_MenuItems'
       },
       {
         title: 'Аксессуары',
-        path: '/cases',
+        path: '/products',
         id: '04_MenuItems'
       },
       {
         title: 'Аксессуары',
-        path: '/studio-acuipment',
+        path: '/products',
         id: '05_MenuItems'
       }
     ]
@@ -119,27 +119,27 @@ const dropdownsContent = [
     dropContent: [
       {
         title: 'Чехлы',
-        path: '/technics',
+        path: '/products',
         id: '01_MenuItems'
       },
       {
         title: 'Чехлы',
-        path: '/optic',
+        path: '/products',
         id: '02_MenuItems'
       },
       {
         title: 'Чехлы',
-        path: '/accessoryies',
+        path: '/products',
         id: '03_MenuItems'
       },
       {
         title: 'Чехлы',
-        path: '/cases',
+        path: '/products',
         id: '04_MenuItems'
       },
       {
         title: 'Чехлы',
-        path: '/studio-acuipment',
+        path: '/products',
         id: '05_MenuItems'
       }
     ]
@@ -149,27 +149,27 @@ const dropdownsContent = [
     dropContent: [
       {
         title: 'Оборудование',
-        path: '/technics',
+        path: '/products',
         id: '01_MenuItems'
       },
       {
         title: 'Оборудование',
-        path: '/optic',
+        path: '/products',
         id: '02_MenuItems'
       },
       {
         title: 'Оборудование',
-        path: '/accessoryies',
+        path: '/products',
         id: '03_MenuItems'
       },
       {
         title: 'Оборудование',
-        path: '/cases',
+        path: '/products',
         id: '04_MenuItems'
       },
       {
         title: 'Оборудование',
-        path: '/studio-acuipment',
+        path: '/products',
         id: '05_MenuItems'
       }
     ]

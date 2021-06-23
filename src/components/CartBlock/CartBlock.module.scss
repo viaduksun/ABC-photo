@@ -1,0 +1,21 @@
+.CartBlock {
+  height: 600px;
+  background: rgb(241, 241, 241);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.btnBox {
+  margin-top: 100px;
+}
+.btn {
+  height: 40px;
+  min-width: 100px;
+  background: rgb(90, 195, 71);
+  padding: 5px 20px;
+  margin: 0 10px;
+  &:hover {
+    background: rgb(81, 173, 65);
+  }
+}
