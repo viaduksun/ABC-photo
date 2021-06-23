@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vh;
+}
+.container {
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  margin: 0px auto;
+  padding: 0 24px;
+  flex: 1 1 auto;
+}
+h1 {
+  text-align: center;
+  font-size: 30px;
+}
+.MuiSelect-iconOutlined {
+  right: 2px !important;
+}
+.PrivateNotchedOutline-legendLabelled-25 > span {
+  display: none !important;
+}
+.btn {
+  background: rgb(74, 192, 45);
+  height: 40px;
+  min-width: 100px;
+  padding: 5px 20px;
+  margin: 0 10px;
+  transition: all 0.2s ease 0s;
+  &:hover {
+    background: rgb(63, 161, 38);
+  }
+}

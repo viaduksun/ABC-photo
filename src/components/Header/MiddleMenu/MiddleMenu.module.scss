@@ -1,0 +1,32 @@
+.container .mainHeaderContainer {
+  background: rgb(180, 180, 180);
+}
+.Logo {
+  cursor: pointer;
+  height: 40px;
+  img {
+    height: 100%;
+  }
+}
+.mainHeader {
+  flex: 1 1 auto;
+}
+.HeaderWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+.SearchFormWrapper {
+  flex: 1 1 auto;
+}
+@media (max-width: 950px) {
+  .HeaderWrapper {
+    flex-direction: column;
+  }
+  .footer-content {
+    padding: 12px 10px 0px 10px;
+  }
+}

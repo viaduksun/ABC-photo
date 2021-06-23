@@ -1,11 +1,14 @@
 import React from 'react';
-import ImgUploading from '../components/ImgUploading';
+import Breadcrumbs from '../containers/Breadcrumbs/Breadcrumbs';
+import ProductsContainer from '../containers/ProductsContainer/ProductsContainer';
+import Stories from '../containers/Stories/Stories';
 
 const Products = () => (
-  <div>
-    <h2>Products</h2>
-    <ImgUploading />
-  </div>
+  <>
+    <Breadcrumbs />
+    <ProductsContainer />
+    <Stories />
+  </>
 );
 
 export default Products;
