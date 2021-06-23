@@ -8,7 +8,10 @@ const uploadImg = (imageSelected) => {
   console.log('UPLOAD click');
   return axios
 
-    .post('https://api.cloudinary.com/v1_1/finalprojectfe242021/image/upload', formData)
+    .post(
+      'https://api.cloudinary.com/v1_1/finalprojectfe242021/image/upload',
+      formData
+    )
     .then((res) => {
       console.log('upload: ', res);
     })

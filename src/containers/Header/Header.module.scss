@@ -4,3 +4,15 @@
   display: flex;
   flex-direction: column;
 }
+.container {
+  max-width: 1280px;
+  height: 100%;
+  margin: 0px auto;
+  padding: 0 24px;
+}
+.MuiSelect-iconOutlined {
+  right: 2px !important;
+}
+.PrivateNotchedOutline-legendLabelled-25 > span {
+  display: none !important;
+}

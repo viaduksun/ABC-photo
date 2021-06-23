@@ -27,7 +27,11 @@ const setProduct = () => {
   };
   return axios
     .post('https://intense-hamlet-33316.herokuapp.com/api/products', newProduct, {
+<<<<<<< HEAD
+      headers: headers,
+=======
       headers,
+>>>>>>> develop
     })
     .then((newProduct) => {
       /* Do something with newProduct */
