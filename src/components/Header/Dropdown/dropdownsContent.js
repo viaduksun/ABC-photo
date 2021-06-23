@@ -53,7 +53,9 @@ const dropdownsContent = [
                                 path: '/products',
                                 id: '10_MenuItems'
                         }
-                ],
+
+                ]
+
         },
         {
                 categoryId: 2,
