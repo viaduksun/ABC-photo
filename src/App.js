@@ -1,47 +1,43 @@
-import './App.css';
+import './App.scss';
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Container } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Header from './containers/Header';
-import Footer from './containers/Footer';
+import Header from './containers/Header/Header';
+import Footer from './containers/Footer/Footer';
 import Home from './pages/Home';
 import Contacts from './pages/Contacts';
 import Products from './pages/Products';
-
-const useStyles = makeStyles({
-  root: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    border: 0,
-    borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    color: 'white',
-    height: 48,
-    padding: '0 90px',
-  },
-  container: {
-    flexGrow: 1,
-  },
-});
+import SingleProduct from './pages/SingleProduct';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import Profile from './pages/Profile';
 
 function App() {
-  const classes = useStyles();
   return (
     <div className="wrapper">
       <Header />
-      <Container className={classes.container} maxWidth="sm" mt={20}>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/products">
-            <Products />
-          </Route>
-          <Route exact path="/contacts">
-            <Contacts />
-          </Route>
-        </Switch>
-      </Container>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/products">
+          <Products />
+        </Route>
+        <Route exact path="/single-product">
+          <SingleProduct />
+        </Route>
+        <Route exact path="/contacts">
+          <Contacts />
+        </Route>
+        <Route exact path="/cart">
+          <Cart />
+        </Route>
+        <Route exact path="/checkout">
+          <Checkout />
+        </Route>
+        <Route exact path="/profile">
+          <Profile />
+        </Route>
+      </Switch>
       <Footer />
     </div>
   );

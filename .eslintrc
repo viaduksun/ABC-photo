@@ -14,7 +14,8 @@
     "camelcase": 0,
     "object-curly-spacing": 0,
     "comma-dangle": 0,    
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "indent": "off"    
   },
   "settings": {
     "react": {
@@ -24,5 +25,6 @@
       "flowVersion": "0.86"
     },
     "propWrapperFunctions": [ "forbidExtraProps" ]
-  }
+  } 
+  
 }
