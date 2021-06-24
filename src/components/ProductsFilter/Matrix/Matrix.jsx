@@ -11,7 +11,7 @@ import styles from './Matrix.module.scss';
 const useStyles = makeStyles(() => ({
   root: {
     width: '100%',
-    padding: '0px'
+    padding: '0px',
   },
   acordion: {
     boxShadow: '0px 0px 0px 0px #fff',
@@ -19,12 +19,12 @@ const useStyles = makeStyles(() => ({
   accordionSummary: {
     padding: '0px 15px 0px 0px',
     marginBottom: '0px',
-    height: '50px'
+    height: '50px',
   },
   accordionDetails: {
     padding: '0px',
-    width: '70%'
-  }
+    width: '70%',
+  },
 }));
 
 const Equipment = () => {
