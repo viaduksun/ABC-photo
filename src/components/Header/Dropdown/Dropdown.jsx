@@ -11,8 +11,6 @@ const DropdownMenu = ({ handleClick, linkId }) => {
   const currentDropdown = dropdownsContent.find(
     (item) => item.categoryId === linkId
   );
-  console.log(dropdownsContent);
-  console.log(currentDropdown);
   return (
     <div className={styles.DropMenu}>
       <ul className={styles.DropUl}>
