@@ -10,7 +10,7 @@ import sliderImg from '../../../assets/img/discountSliderComponent/slider-img.pn
 
 import './SwiperCarousel.scss';
 
-  SwiperCore.use([Pagination, Navigation, Autoplay]);
+SwiperCore.use([Pagination, Navigation, Autoplay]);
 
 const SwiperCarousel = () => (
   <>
