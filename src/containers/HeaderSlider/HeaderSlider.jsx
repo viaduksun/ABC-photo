@@ -11,6 +11,7 @@ const HeaderSlider = () => {
   // const [currentSlide, setCurrentSlide] = useState(0);
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(false);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [position, setPosition] = useState(0);
   const items = [1, 2, 3, 4];
@@ -26,7 +27,6 @@ const HeaderSlider = () => {
       slider.current.childNodes.forEach((element) => {
         element.style = `transform: translateX(${currentPosition}%)`;
       });
-      setCurrentSlide(currentSlide + 1);
     } else {
       console.log('NEXT THE END');
     }
