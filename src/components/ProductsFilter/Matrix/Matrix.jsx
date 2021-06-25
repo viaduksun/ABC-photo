@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Equipment = () => {
+const Matrix = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -50,4 +50,4 @@ const Equipment = () => {
   );
 };
 
-export default Equipment;
+export default Matrix;
