@@ -5,6 +5,7 @@
 import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
 import styles from './HeaderSlider.module.scss';
+import { sliderData } from './sliderData';
 
 const HeaderSlider = () => {
   // eslint-disable-next-line no-unused-vars
