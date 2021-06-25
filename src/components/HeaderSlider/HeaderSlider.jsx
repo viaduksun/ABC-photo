@@ -2,69 +2,77 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-expressions */
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import styles from './HeaderSlider.module.scss';
 import sliderData from './sliderData';
 
 const HeaderSlider = () => {
   // eslint-disable-next-line no-unused-vars
-  // const [currentSlide, setCurrentSlide] = useState(0);
-  const [prevBtnDisabled, setPrevBtnDisabled] = useState(false);
-  const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
-
+  const { length } = sliderData;
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [position, setPosition] = useState(0);
-  const items = [1, 2, 3, 4];
-  const slider = useRef(null);
-  let currentPosition = 0;
+  const timeout = useRef(null);
+
+  useEffect(() => {
+    const autoNextSlide = () => {
+      setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
+    };
+    const autoStide = setTimeout(autoNextSlide, 3000);
+    return () => {
+      if (autoStide) {
+        clearTimeout(timeout.currentSlide);
+      }
+    };
+  }, [currentSlide, length]);
+
   const nextHandler = () => {
-    if (currentPosition > -100 * (items.length - 1)) {
-      console.log('NEXT');
-      console.log('CUR-next', currentPosition);
-
-      currentPosition -= 100;
-
-      slider.current.childNodes.forEach((element) => {
-        element.style = `transform: translateX(${currentPosition}%)`;
-      });
-    } else {
-      console.log('NEXT THE END');
-    }
+    setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
   };
   const prevHandler = () => {
-    if (currentPosition < 0) {
-      console.log('PREV');
-      currentPosition += 100;
-      slider.current.childNodes.forEach((element) => {
-        element.style = `transform: translateX(${currentPosition}%)`;
-      });
-    } else {
-      console.log('PREV the END');
-
-      console.log(currentPosition);
-    }
+    setCurrentSlide(currentSlide === 0 ? length - 1 : currentSlide - 1);
   };
 
   const btnPrevClass = classNames(
     styles.slider__button,
-    styles.slider__button_prev,
-    { [styles.slider__button_prev_disabled]: prevBtnDisabled }
+    styles.slider__button_prev
   );
   const btnNextClass = classNames(
     styles.slider__button,
-    styles.slider__button_next,
-    { [styles.slider__button_next_disabled]: nextBtnDisabled }
+    styles.slider__button_next
   );
-
+  if (!Array.isArray(sliderData) || sliderData.length <= 0) {
+    return null;
+  }
   return (
     <div className={styles.HeaderSlider}>
-      <div className={styles.slider} ref={slider}>
-        {items.map((item, index) => (
-          <div className={styles.slider__item} key={index}>
-            <img src="./img/1q.jpg" alt="img" />
+      <div className={styles.slider}>
+        {sliderData.map((slide, index) => (
+          <div
+            className={classNames({
+              [styles.slide]: true,
+              [styles.slide_active]: currentSlide === index,
+            })}
+            key={slide.id}
+          >
+            <img src={slide.image} alt={slide.alt} />
+            <div className={styles.slideContent}>
+              <h2>{slide.title}</h2>
+              <p>{slide.text}</p>
+              <img src={slide.logo} alt={slide.alt} />
+            </div>
           </div>
         ))}
+        <div className={styles.pagination}>
+          {sliderData.map((item, index) => (
+            <div
+              key={item.id}
+              className={classNames({
+                [styles.pagination_item]: true,
+                [styles.pagination_item_active]: currentSlide === index,
+              })}
+            />
+          ))}
+        </div>
       </div>
       <button type="button" className={btnPrevClass} onClick={prevHandler}>
         {'<'}
