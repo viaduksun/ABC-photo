@@ -9,7 +9,12 @@ const BottomMenu = () => (
       <div className={styles.BottomMenuWrapp}>
         <ul className={styles.BottomUl}>
           {MenuItems.map((item) => (
-            <BottomMenuLink id={item.id} path={item.path} title={item.title} />
+            <BottomMenuLink
+              id={item.id}
+              path={item.path}
+              title={item.title}
+              key={item.id}
+            />
           ))}
         </ul>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderSlider from '../containers/HeaderSlider/HeaderSlider';
+import HeaderSlider from '../components/HeaderSlider/HeaderSlider';
 import PopularModelsSlider from '../containers/PopularModelsSlider/PopularModelsSlider';
 import DiscountSlider from '../containers/DiscountSlider/DiscountSlider';
 
