@@ -1,0 +1,65 @@
+.SwiperCarousel {
+  display: flex;
+  align-items: center;
+}
+.SwiperCarouselImgBlock {
+  img {
+    max-width: 276px;
+    height: 352px;
+  }
+}
+.SwiperCarouselImgBlock {
+  padding: 10px 0px;
+}
+.SwiperCarouselImgBlock h3 {
+  color: #fff;
+  text-align: left;
+  font-size: 28px;
+  line-height: 30px;
+  font-weight: 700;
+  color: red;
+  font-style: italic;
+  margin-left: 10px;
+}
+.SwiperCarouselContentBlock {
+  color: #fff;
+  width: 300px;
+  padding-right: 20px;
+  h3 {
+    font-size: 25px;
+    line-height: 28px;
+    font-weight: 700;
+  }
+  span {
+    font-weight: 400;
+  }
+  .SwiperCarouselContentBlockDiscountPrice {
+    margin-top: 40px;
+    p {
+      font-size: 24px;
+      line-height: 26px;
+      color: #677283;
+      font-weight: 700;
+      text-align: right;
+      text-decoration: line-through;
+    }
+    span {
+      writing-mode: tb-rl;
+      transform: rotate(180deg);
+      font-size: 14px;
+    }
+  }
+  .SwiperCarouselContentBlockPrice {
+    margin-top: 10px;
+    p {
+      font-size: 62px;
+      line-height: 68px;
+      font-weight: 700;
+    }
+    span {
+      writing-mode: tb-rl;
+      transform: rotate(180deg);
+      font-size: 26px;
+    }
+  }
+}
