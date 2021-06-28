@@ -1,0 +1,25 @@
+.topContainer {
+  display: flex;
+  align-items: center;
+  background: rgb(236, 236, 236);
+}
+.topMenuWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.link {
+  margin-right: 30px;
+  color: rgb(122, 122, 122);
+  font-size: 12px;
+  text-decoration: none;
+}
+.topMenu {
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 950px) {
+  .topContainer {
+    display: none;
+  }
+}

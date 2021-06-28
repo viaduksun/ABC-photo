@@ -1,36 +1,78 @@
 .BottomMenu {
   background: #51ad33;
-  width: 100%;
 }
 .BottomMenuWrapp {
   height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }
 .BottomUl {
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex: 1 1 auto;
 }
 .BottomLink {
   position: relative;
   height: 100%;
-  min-width: 50px;
-  // padding: 0 10px;
+  // min-width: 80px;
+  padding: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1 1 auto;
   transition: all 0.1s ease 0s;
-  a {
-    color: #fff;
-    font-size: 14px;
-  }
   &:hover {
     background: #368e1a;
   }
 }
-@media (max-width: 950px) {
+.bottomLinks {
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.BurgerIcon {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 30px;
+  &:hover {
+    color: rgb(48, 107, 0);
+  }
+}
+.cartIcon {
+  color: rgb(255, 255, 255);
+  &:hover {
+    color: rgb(48, 107, 0);
+  }
+}
+.mobiileMenuWrapper {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 30px;
+  &:hover {
+    color: rgb(48, 107, 0);
+  }
+}
+@media screen and (max-width: 950px) {
+  .BottomMenuWrapp {
+    justify-content: center;
+    padding: 10px;
+  }
+  .mobiileMenuWrapper {
+    display: flex;
+  }
+  .BurgerIcon {
+    display: flex;
+  }
   .BottomUl {
+    display: none;
     flex-direction: column;
     height: auto;
   }

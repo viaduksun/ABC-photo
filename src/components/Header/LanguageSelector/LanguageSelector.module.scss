@@ -1,0 +1,23 @@
+.LanguageSelector {
+  display: flex;
+  align-items: center;
+}
+.LanguageSelectorItem {
+  font-size: 14px;
+  color: rgb(173, 173, 173);
+  border-right: 2px solid rgb(182, 182, 182);
+  padding: 0 5px;
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+
+  &:last-child {
+    border-right: none;
+  }
+  &:hover {
+    color: rgb(134, 134, 134);
+  }
+  &_active {
+    color: rgb(134, 134, 134);
+    font-weight: bold;
+  }
+}

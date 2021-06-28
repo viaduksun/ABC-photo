@@ -1,14 +1,7 @@
 .SearchFormWrapper {
   flex: 1 1 auto;
 }
-@media (max-width: 950px) {
-  .HeaderWrapper {
-    flex-direction: column;
-  }
-  .footer-content {
-    padding: 12px 10px 0px 10px;
-  }
-}
+
 .searchFormWrapper {
   border: 1px solid #e7e9eb;
   border-radius: 18px;
@@ -16,6 +9,7 @@
   display: flex;
   flex: 1 1 auto;
   margin: 0 20px;
+  background: #fff;
 }
 .searchForm {
   display: flex;
@@ -40,6 +34,7 @@
   height: 30px;
   background: #c2c8d0;
   transition: all 0.2s ease 0s;
+
   &:hover {
     background: #adadad;
   }
@@ -49,4 +44,6 @@
   font-size: 12px;
   height: 12px;
   width: 10px;
+}
+@media (max-width: 950px) {
 }
