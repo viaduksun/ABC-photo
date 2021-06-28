@@ -4,7 +4,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import Dropdown from '../Dropdown/Dropdown';
+import DropdownMenu from '../Dropdown/Dropdown';
 import styles from './BottomMenu.module.scss';
 
 const BottomMenuLink = ({ id, path, title }) => {
@@ -32,7 +32,7 @@ const BottomMenuLink = ({ id, path, title }) => {
         {title}
       </NavLink>
       {dropActive && (
-        <Dropdown
+        <DropdownMenu
           linkId={id}
           handleClick={handleDropdownClick}
           dropActive={dropActive}

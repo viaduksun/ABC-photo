@@ -4,7 +4,7 @@ import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import menuItems from '../../../Data/menuItems';
 import styles from './TopMenu.module.scss';
 
-const TopMenue = () => (
+const TopMenu = () => (
   <div className={styles.topContainer}>
     <div className="container">
       <div className={styles.topMenuWrapper}>
@@ -27,4 +27,4 @@ const TopMenue = () => (
   </div>
 );
 
-export default withRouter(TopMenue);
+export default withRouter(TopMenu);
