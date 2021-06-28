@@ -11,6 +11,7 @@ const DropdownMenu = ({ handleClick, linkId }) => {
   const currentDropdown = dropdownsContent.find(
     (item) => item.categoryId === linkId
   );
+
   const dropWrapperClass = classNames({
     [styles.DropMenuWrapper]: true,
     // [styles.DropMenuWrapper_active]: dropActive,
