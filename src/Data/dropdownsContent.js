@@ -34,6 +34,11 @@ const dropdownsContent = [
                                 id: '06_MenuItems'
                         },
                         {
+                                title: 'Кардридеры 2',
+                                path: '/products',
+                                id: '062_MenuItems'
+                        },
+                        {
                                 title: 'USB флэш накопители',
                                 path: '/products',
                                 id: '07_MenuItems'
@@ -61,27 +66,22 @@ const dropdownsContent = [
                 categoryId: 2,
                 dropContent: [
                         {
-                                title: 'Оптика для фото',
+                                title: 'Оптика для фото 1',
                                 path: '/products',
                                 id: '01_MenuItems'
                         },
                         {
-                                title: 'Оптика для фото',
+                                title: 'Оптика для фото 2',
                                 path: '/products',
                                 id: '02_MenuItems'
                         },
                         {
-                                title: 'Оптика для фото',
+                                title: 'Оптика для фото 3',
                                 path: '/products',
                                 id: '03_MenuItems'
                         },
                         {
-                                title: 'Оптика для фото',
-                                path: '/products',
-                                id: '04_MenuItems'
-                        },
-                        {
-                                title: 'Оптика для фото',
+                                title: 'Оптика для фото 4',
                                 path: '/products',
                                 id: '05_MenuItems'
                         }
@@ -91,27 +91,27 @@ const dropdownsContent = [
                 categoryId: 3,
                 dropContent: [
                         {
-                                title: 'Аксессуары',
+                                title: 'Аксессуары 1',
                                 path: '/products',
                                 id: '01_MenuItems'
                         },
                         {
-                                title: 'Аксессуары',
+                                title: 'Аксессуары 2',
                                 path: '/products',
                                 id: '02_MenuItems'
                         },
                         {
-                                title: 'Аксессуары',
+                                title: 'Аксессуары 3',
                                 path: '/products',
                                 id: '03_MenuItems'
                         },
                         {
-                                title: 'Аксессуары',
+                                title: 'Аксессуары 4',
                                 path: '/products',
                                 id: '04_MenuItems'
                         },
                         {
-                                title: 'Аксессуары',
+                                title: 'Аксессуары 5',
                                 path: '/products',
                                 id: '05_MenuItems'
                         }
@@ -121,29 +121,19 @@ const dropdownsContent = [
                 categoryId: 4,
                 dropContent: [
                         {
-                                title: 'Чехлы',
+                                title: 'Чехлы-1',
                                 path: '/products',
                                 id: '01_MenuItems'
                         },
                         {
-                                title: 'Чехлы',
+                                title: 'Чехлы-2',
                                 path: '/products',
                                 id: '02_MenuItems'
                         },
                         {
-                                title: 'Чехлы',
+                                title: 'Чехлы-3',
                                 path: '/products',
                                 id: '03_MenuItems'
-                        },
-                        {
-                                title: 'Чехлы',
-                                path: '/products',
-                                id: '04_MenuItems'
-                        },
-                        {
-                                title: 'Чехлы',
-                                path: '/products',
-                                id: '05_MenuItems'
                         }
                 ]
         },
@@ -151,27 +141,27 @@ const dropdownsContent = [
                 categoryId: 5,
                 dropContent: [
                         {
-                                title: 'Оборудование',
+                                title: 'Оборудование 1',
                                 path: '/products',
                                 id: '01_MenuItems'
                         },
                         {
-                                title: 'Оборудование',
+                                title: 'Оборудование 2',
                                 path: '/products',
                                 id: '02_MenuItems'
                         },
                         {
-                                title: 'Оборудование',
+                                title: 'Оборудование 3',
                                 path: '/products',
                                 id: '03_MenuItems'
                         },
                         {
-                                title: 'Оборудование',
+                                title: 'Оборудование 4',
                                 path: '/products',
                                 id: '04_MenuItems'
                         },
                         {
-                                title: 'Оборудование',
+                                title: 'Оборудование 5',
                                 path: '/products',
                                 id: '05_MenuItems'
                         }

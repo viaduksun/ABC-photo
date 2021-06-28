@@ -1,0 +1,106 @@
+@import '../../../assets/styles/variables.scss';
+
+.MenuCover {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  transition: all 0.3s ease 0s;
+  opacity: 0;
+  visibility: hidden;
+  &_active {
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.MobileMenu {
+  position: absolute;
+  z-index: 100;
+  width: 90%;
+  height: 100%;
+  background: #fff;
+  top: 0;
+  left: -100%;
+  transition: all 0.3s ease 0s;
+  &_active {
+    left: 0;
+  }
+}
+
+.CloseBtn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  transition: all 0.3s ease 0s;
+  &:hover {
+    transform: rotate(90deg);
+    color: $primaryGreen;
+  }
+}
+.logo {
+  position: relative;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  & img {
+    height: 100%;
+  }
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  background: $primaryGreen;
+  padding: 5px 20px 5px 10px;
+}
+.loginWrapper {
+  display: flex;
+  align-items: center;
+}
+.loginIcon {
+  color: #fff;
+  margin-right: 20px;
+  // &:hover {
+  //   color: rgb(219, 219, 219);
+  // }
+}
+.loginText {
+  margin-right: 10px;
+  border-left: 2px solid rgb(73, 73, 73);
+  padding-left: 10px;
+  color: rgb(73, 73, 73);
+  cursor: pointer;
+  &:hover {
+    color: rgb(0, 0, 0);
+  }
+}
+.menuWrapper {
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 10px;
+}
+.link {
+  font-size: 18px;
+  color: rgb(77, 77, 77);
+  padding: 20px 10px 20px 0px;
+  border-bottom: 1px solid rgb(110, 110, 110);
+  cursor: pointer;
+  transition: all 0.1s ease 0s;
+  &:hover {
+    background: rgb(221, 221, 221);
+  }
+}
+.linkIcon {
+  font-size: 20px;
+  margin-left: -30px;
+  margin-right: 20px;
+}

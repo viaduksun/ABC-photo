@@ -1,11 +1,10 @@
 import React from 'react';
-import { Container, Box } from '@material-ui/core';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { NavLink, withRouter } from 'react-router-dom';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import LangSelect from '../../UI/Select/LangSelect';
-import menuItems from './menuItems';
+import LanguageSelector from '../LanguageSelector/LanguageSelector';
+import menuItems from '../../../Data/menuItems';
+import styles from './TopMenu.module.scss';
 
+<<<<<<< HEAD
 const useStyles = makeStyles((theme) => ({
   link: {
     marginRight: theme.spacing(4),
@@ -54,5 +53,29 @@ const TopMenue = () => {
     </Box>
   );
 };
+=======
+const TopMenue = () => (
+  <div className={styles.topContainer}>
+    <div className="container">
+      <div className={styles.topMenuWrapper}>
+        <div className={styles.topMenu}>
+          {menuItems.map((menuItem) => (
+            <NavLink
+              exact
+              to={menuItem.pageURL}
+              className={styles.link}
+              activeClassName="selected"
+              key={menuItem.id}
+            >
+              {menuItem.menuTitle}
+            </NavLink>
+          ))}
+        </div>
+        <LanguageSelector />
+      </div>
+    </div>
+  </div>
+);
+>>>>>>> 6c19801200032bc66af4012872bdcd5ba9afbf1a
 
 export default withRouter(TopMenue);

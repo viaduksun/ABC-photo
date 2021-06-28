@@ -1,28 +1,59 @@
-.DropMenu {
-  // background: #368e1a;
+.DropMenuWrapper {
   position: absolute;
   left: 0;
   top: 50px;
   z-index: 2;
+  overflow: hidden;
+  background: #368e1a;
+  &_active {
+    display: block;
+  }
+}
+.DropMenu {
+  // background: #368e1a;
+  position: relative;
+  // left: 0;
+  // top: 0px;
+  z-index: 2;
   display: flex;
+  // transform: translateY(-100%);
+  // transform: scale(0);
+  transition: all 0.2s ease 0s;
+  transform-origin: top center;
+  opacity: 1;
   // width: 375px;
   .clicked {
     display: block;
   }
+
+  &_active {
+    // transform: translateY(0);
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 .DropUl {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-height: 220px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 50px 50px 50px auto;
+  grid-auto-rows: 50px;
+  grid-auto-flow: column;
 }
 .DropLink {
+  align-items: center;
   min-height: 30px;
-  min-width: 150px;
-  padding: 10px;
-  flex: 1 1 auto;
+  min-width: 160px;
+  padding: 10px 20px;
   background: #368e1a;
+  color: rgb(255, 0, 0);
+  font-size: 14px;
   &:hover {
-    background: #307e19;
+    background: #368e1a;
+  }
+  & .DropLinkText {
+    color: #fff;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

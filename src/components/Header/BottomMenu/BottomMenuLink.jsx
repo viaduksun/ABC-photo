@@ -13,18 +13,31 @@ const BottomMenuLink = ({ id, path, title }) => {
   const handleDropdown = () => {
     setdropActive(!dropActive);
   };
+  const handleDropdownClick = () => {
+    setdropActive(false);
+  };
   return (
     <li
       key={id}
       className={styles.BottomLink}
       onMouseEnter={handleDropdown}
       onMouseLeave={handleDropdown}
-      onClick={handleDropdown}
+      onClick={handleDropdownClick}
     >
-      <NavLink to={path} activeClassName="selected" onClick={handleDropdown}>
+      <NavLink
+        to={path}
+        activeClassName="selected"
+        className={styles.bottomLinks}
+      >
         {title}
       </NavLink>
-      {dropActive && <Dropdown linkId={id} handleClick={handleDropdown} />}
+      {dropActive && (
+        <Dropdown
+          linkId={id}
+          handleClick={handleDropdownClick}
+          dropActive={dropActive}
+        />
+      )}
     </li>
   );
 };
