@@ -1,4 +1,21 @@
 .Pagination {
-  height: 50px;
-  background: rgb(117, 117, 117);
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.PaginationItem {
+  padding: 0 10px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  color: #677283;
+}
+.ButtonPrev,
+.ButtonNext {
+  cursor: pointer;
+  font-size: 25px;
 }
