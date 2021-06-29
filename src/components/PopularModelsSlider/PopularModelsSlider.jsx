@@ -15,16 +15,14 @@ const PopularModelsSlider = () => (
     <h1 className={styles.SliderHeader}>Популярные модели</h1>
     <div className={styles.PopularModelsSlider}>
       <Swiper
+        className="swiper-container-3"
         slidesPerView={4}
         spaceBetween={10}
         slidesPerGroup={1}
         loop
         loopFillGroupWithBlank
-        pagination={{
-          clickable: true,
-        }}
+        pagination={false}
         navigation
-        className="mySwiper"
       >
         <SwiperSlide>
           <ProductCard />
