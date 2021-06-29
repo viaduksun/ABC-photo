@@ -1,6 +1,4 @@
-.container .mainHeaderContainer {
-  background: rgb(180, 180, 180);
-}
+@import '../../../assets/styles/variables';
 .Logo {
   cursor: pointer;
   height: 40px;
@@ -9,6 +7,7 @@
   }
 }
 .mainHeader {
+  display: flex;
   flex: 1 1 auto;
 }
 .HeaderWrapper {
@@ -19,14 +18,40 @@
   align-items: center;
   height: 100%;
 }
-.SearchFormWrapper {
-  flex: 1 1 auto;
+.HeaderlinksBlockWrapper {
+  display: flex;
+}
+.HeaderLink {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.HeaderIconWrapper {
+  background: rgb(219, 219, 219);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 5px;
+  transition: all 0.2s ease 0s;
+  &:hover {
+    background: rgb(1, 177, 24);
+  }
+}
+.HeaderIcon {
+  color: #fff;
+  &_cart {
+    font-size: 20px;
+  }
+}
+.HeaderIconText {
+  color: $middleGray;
 }
 @media (max-width: 950px) {
   .HeaderWrapper {
-    flex-direction: column;
-  }
-  .footer-content {
-    padding: 12px 10px 0px 10px;
+    display: none;
   }
 }

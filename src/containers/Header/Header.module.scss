@@ -16,3 +16,8 @@
 .PrivateNotchedOutline-legendLabelled-25 > span {
   display: none !important;
 }
+@media (max-width: 950px) {
+  .Header {
+    min-height: auto;
+  }
+}

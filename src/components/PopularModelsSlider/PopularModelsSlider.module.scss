@@ -1,17 +1,16 @@
+.PopularContainer {
+  margin: 0 auto;
+}
 .PopularModelsSlider {
   height: 636px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  max-width: 1280px;
-  min-width: 320px;
-  flex-wrap: nowrap;
 }
 
 .SliderHeader {
   font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
   position: absolute;
   font-weight: bold;
   font-size: 26px;
@@ -20,4 +19,5 @@
   color: #677283;
   margin-top: 86px;
   margin-bottom: 35px;
+  margin-left: 35px;
 }

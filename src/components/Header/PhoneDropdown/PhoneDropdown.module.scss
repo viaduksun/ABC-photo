@@ -1,3 +1,112 @@
-.phDropWrapper {
+@import '../../../assets/styles/variables.scss';
+
+.phoneWrapper {
+  margin-top: 5px;
+  position: relative;
+  display: flex;
+  padding: 5px 5px 5px 5px;
   height: 30px;
+  cursor: pointer;
+}
+.phoneMainText {
+  font-size: 14px;
+  color: $middleGray;
+}
+.arrowIcon {
+  display: flex;
+  align-items: center;
+  margin-top: 3px;
+  margin-left: 10px;
+  font-size: 12px;
+  transition: all 0.3s ease 0s;
+  &_active {
+    transform: rotate(180deg);
+  }
+}
+.phonePopap {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: rgb(255, 255, 255);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.411);
+  padding: 10px;
+  z-index: 20;
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: all 0.3s ease 0s;
+  &_active {
+    // display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.phonePopapItem {
+  padding: 5px 10px;
+  &:first-child {
+    border-bottom: 1px solid rgb(70, 70, 70);
+  }
+}
+.popapMainText {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(102, 102, 102);
+  text-align: center;
+}
+.phoneTitle {
+  font-size: 11px;
+  color: rgb(192, 192, 192);
+  font-style: italic;
+  margin-bottom: 4px;
+  text-align: center;
+}
+.phonePopapWrapper {
+  display: flex;
+}
+.phonePopapIcon {
+  font-size: 18px;
+  color: rgb(151, 151, 151);
+  margin-right: 5px;
+}
+.phonePopapForm {
+  top: 10px;
+  position: relative;
+  border-top: 1px solid #000;
+  padding-top: 10px;
+}
+.formSeparator {
+  position: absolute;
+  font-size: 12px;
+  color: rgb(184, 184, 184);
+  top: -6px;
+  left: 50%;
+  background: #fff;
+  margin: 0px auto;
+  display: inline-block;
+  text-align: center;
+  padding: 0 6px;
+  transform: translateX(-50%);
+}
+.phoneLabel {
+  font-size: 11px;
+  color: rgb(192, 192, 192);
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.phoneInput {
+  padding: 5px;
+  border: 1px solid rgb(165, 165, 165);
+  border-radius: 3px;
+}
+
+.btnPhonePopap {
+  background: rgb(255, 155, 61);
+  min-width: 100%;
+  margin: 10px 0;
+  border-radius: 3px;
+  &:hover {
+    background: rgb(230, 129, 34);
+  }
 }
