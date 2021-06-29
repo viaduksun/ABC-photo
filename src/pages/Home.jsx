@@ -6,7 +6,7 @@ import DiscountSlider from '../containers/DiscountSlider/DiscountSlider';
 
 const Home = () => (
   <>
-    {/* <HeaderSlider /> */}
+    <HeaderSlider />
     <PopularModelsSlider />
     <DiscountSlider />
   </>

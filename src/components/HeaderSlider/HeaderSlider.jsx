@@ -36,26 +36,32 @@ const HeaderSlider = () => {
     return null;
   }
   return (
-    <Swiper className=".swiper-container-2" navigation>
-      <div className={styles.slider}>
-        {sliderData.map((slide, index) => (
-          <SwiperSlide key={slide.id} className="swiper-slide-2">
-            <img src={slide.image} alt={slide.alt} />
-            <div className={styles.slideContent}>
-              <h2>{slide.title}</h2>
-              <p>{slide.text}</p>
-              <img src={slide.logo} alt={slide.alt} />
-            </div>
-          </SwiperSlide>
-        ))}
-      </div>
-      {/* <button type="button" className={btnPrevClass} onClick={prevHandler}>
-          {'<'}
-        </button>
-        <button type="button" className={btnNextClass} onClick={nextHandler}>
-          {'>'}
-        </button> */}
-    </Swiper>
+    <div className="header-slider-wrapper">
+      <Swiper
+        className="swiper-container-2"
+        navigation
+        pagination
+        id="headerSlider"
+        spaceBetween={0}
+        loop
+        autoplay
+      >
+        <div className={styles.slider}>
+          {sliderData.map((slide, index) => (
+            <SwiperSlide key={slide.id}>
+              <img src={slide.image} alt={slide.alt} />
+              <div className={styles.slideContent}>
+                <h2>{slide.title}</h2>
+                <p>{slide.text}</p>
+                <div className={styles.contentImg}>
+                  <img src={slide.logo} alt={slide.alt} id="content_img" />
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </div>
+      </Swiper>
+    </div>
   );
 };
 
