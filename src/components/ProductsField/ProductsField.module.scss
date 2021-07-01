@@ -1,14 +1,28 @@
 .ProductsField {
   background: rgb(255, 209, 209);
   flex: 1 1 auto;
+  margin-left: 30px;
 }
 .ProductsFieldGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(150px, 1fr));
   gap: 20px;
 }
-@media (max-width: 950px) {
+@media (max-width: 1024px) {
   .ProductsFieldGrid {
     grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .ProductsFieldGrid {
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
+  .ProductsField {
+    margin: 0px auto;
+  }
+}
+@media (max-width: 480px) {
+  .ProductsFieldGrid {
+    grid-template-columns: repeat(1, minmax(150px, 1fr));
   }
 }
