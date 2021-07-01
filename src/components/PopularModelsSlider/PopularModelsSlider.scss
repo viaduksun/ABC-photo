@@ -2,20 +2,17 @@
   :root {
     --swiper-navigation-size: none;
   }
-  .swiper-container {
-    width: 1300px;
-  }
+
   .swiper-button-next,
   .swiper-button-prev {
     width: 9px;
     height: 9px;
     color: white;
-    padding: 20px;
+    padding: 21px;
     background-color: #c2cddd;
+    top: 210px;
   }
-  .swiper-slide {
-    margin: 3px;
-  }
+
   .swiper-button-prev {
     left: 0px;
   }
