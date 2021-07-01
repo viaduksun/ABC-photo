@@ -7,11 +7,69 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  h2 {
-    font-size: 25px;
-    text-align: center;
-  }
+  max-width: 290px;
+  border: 1px;
+  padding: 10px;
+
   &:hover {
-    box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.295);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(81, 173, 51, 0.5);
+    height: 550px;
   }
+}
+.ProductImg {
+  width: 277px;
+  height: 277px;
+  background-color: #51ad33;
+}
+.ProductName {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  padding: 8px 0;
+}
+.ProductPrice {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 27px;
+  color: #000000;
+  padding: 9px 0 4px;
+}
+.ProductStatus {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  color: #51ad33;
+  text-transform: lowercase;
+}
+.ProductBlock {
+  display: flex;
+  justify-content: space-between;
+}
+.ProductData {
+  display: flex;
+  flex-direction: column;
+}
+.ProductIcon {
+  width: 27px;
+  height: 27px;
+  color: #51ad33;
+  margin: 10px 19px;
+  &:hover {
+    background-color: #51ad33;
+    color: white;
+  }
+}
+
+.ProductInfo {
+  display: none;
+  color: #333131;
+  font-size: 12px;
+  line-height: 18px;
+}
+.ProductCard:hover > .ProductInfo {
+  display: block;
 }

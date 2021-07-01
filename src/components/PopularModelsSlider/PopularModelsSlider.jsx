@@ -17,12 +17,13 @@ const PopularModelsSlider = () => (
       <Swiper
         className="swiper-container-3"
         slidesPerView={4}
-        spaceBetween={10}
+        // spaceBetween={10}
         slidesPerGroup={1}
         loop
         loopFillGroupWithBlank
         pagination={false}
         navigation
+        autoplay
       >
         <SwiperSlide>
           <ProductCard />

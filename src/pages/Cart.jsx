@@ -6,10 +6,7 @@ import CartBlock from '../components/CartBlock/CartBlock';
 const Cart = () => (
   <>
     <Breadcrumbs />
-    <div className="container">
-      <h1>Cart page</h1>
-      <CartBlock />
-    </div>
+    <CartBlock />
     <SimilarProductsSlider />
   </>
 );
