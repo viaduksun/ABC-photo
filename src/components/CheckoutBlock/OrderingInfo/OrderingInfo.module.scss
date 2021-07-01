@@ -1,0 +1,59 @@
+.OrderingInfo {
+  h2 {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+.ContactsData {
+  width: 500px;
+}
+.ContactsDataTitleBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    font-size: 12px;
+    line-height: 12px;
+    color: #838080;
+    font-family: 'Open Sans', sans-serif;
+  }
+}
+.ContactsDataFormBlock {
+  margin-top: 33px;
+}
+.ContactsDataField {
+  margin-top: 17px;
+  label {
+    display: block;
+    font-size: 14px;
+    line-height: 14px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  input {
+    margin-top: 5px;
+    border: 1px solid #d3d7da;
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    &:focus {
+      box-shadow: 0px 0px 5px 1px #d3d7da;
+    }
+  }
+}
+
+.Delivery {
+  margin-top: 45px;
+}
+.DeliveryForm {
+  margin-top: 35px;
+  label {
+    cursor: pointer;
+  }
+}
+
+.Error {
+  color: red;
+  margin-top: 2px;
+}

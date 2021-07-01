@@ -1,11 +1,18 @@
 .CheckoutBlock {
-  height: 600px;
-  background: rgb(241, 241, 241);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
-.btnBox {
-  margin-top: 100px;
+.CheckoutBlockTitle {
+  text-align: left;
+  font-size: 26px;
+  line-height: 27px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+}
+.CheckoutBlockMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 34px;
 }
