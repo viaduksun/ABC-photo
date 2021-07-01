@@ -25,14 +25,17 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
     [styles.MenuCover_active]: isOpen,
   });
   return (
-    <div className={MenuCover} onClick={toggleMenu}>
+    <>
+      <div className={MenuCover} onClick={toggleMenu} />
       <div className={menuStyles}>
-        <Link to="/" className={styles.logo}>
-          <div className={styles.CloseBtn} onClick={toggleMenu}>
-            <VscChromeClose />
-          </div>
-          <img src="./img/logo.png" alt="logo" />
-        </Link>
+        <div className={styles.CloseBtn} onClick={toggleMenu}>
+          <VscChromeClose />
+        </div>
+        <div className={styles.menuHeader}>
+          <Link to="/" className={styles.logo}>
+            <img src="./img/logo.png" alt="logo" />
+          </Link>
+        </div>
         <div className={styles.header}>
           <div className={styles.loginWrapper}>
             <FaUserAlt className={styles.loginIcon} />
@@ -68,7 +71,7 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

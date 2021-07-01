@@ -11,7 +11,9 @@ import styles from './Header.module.scss';
 const MenuAppBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
+    console.log('HEADER click');
     setIsOpen(!isOpen);
+    document.body.classList.toggle('no-scroll');
   };
   return (
     <div className={styles.Header}>
