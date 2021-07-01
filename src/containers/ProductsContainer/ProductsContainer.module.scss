@@ -1,4 +1,9 @@
+.ProductsBlock {
+  background: rgb(255, 255, 255);
+}
 .ProductsContainer {
   display: flex;
+  justify-content: flex-start;
+  align-items: left;
   width: 100%;
 }
