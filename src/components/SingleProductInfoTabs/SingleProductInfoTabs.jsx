@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import styles from './SingleProductInfoTabs.module.scss';
-
-const SingleProductInfoTabs = () => (
-  <div className="container">
-    <div className={styles.SingleProductInfoTabs}>
-      <h1>Single Product Tabs</h1>
-    </div>
-  </div>
-);
-
-export default SingleProductInfoTabs;
-=======
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -74,4 +60,3 @@ const SingleProductInfoTabs = () => {
 };
 
 export default SingleProductInfoTabs;
->>>>>>> 13a0f2082cf78291554fe38ce2f5800dc1188d22
