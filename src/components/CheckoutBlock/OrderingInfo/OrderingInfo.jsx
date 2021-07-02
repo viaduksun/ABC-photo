@@ -37,7 +37,7 @@ const OrderingInfo = () => {
     <div className={styles.OrderingInfo}>
       <div className={styles.ContactsData}>
         <div className={styles.ContactsDataTitleBlock}>
-          <h2 className={styles.ContactsDataTitleBlock}>Контактные данные</h2>
+          <h2>Контактные данные</h2>
           <p>*Поля, обязательные для заполнения</p>
         </div>
         <Formik

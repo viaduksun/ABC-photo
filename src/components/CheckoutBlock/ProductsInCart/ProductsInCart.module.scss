@@ -1,0 +1,89 @@
+.Header {
+  background-color: #98a1af;
+  padding: 5px 0px 5px 60px;
+  @media (max-width: 768px) {
+    padding: 5px 0px 5px 10px;
+  }
+  h2 {
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+  }
+}
+.Main {
+  background-color: #f9f9fb;
+  padding: 61px 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 1024px) {
+    padding: 30px 10px;
+  }
+}
+.MainName {
+  max-width: 100px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  span {
+    font-size: 10px;
+    line-height: 18px;
+    color: #d3d4d7;
+  }
+}
+.MainPrice {
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+}
+.Footer {
+  background-color: #f9f9fb;
+  padding: 61px 52px;
+  @media (max-width: 1024px) {
+    padding: 30px 15px;
+  }
+}
+.FooterDeliveryPrice {
+  font-size: 21px;
+  line-height: 40px;
+  font-family: 'Roboto', sans-serif;
+  color: #677283;
+  @media (max-width: 1024px) {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+.FooterTotalSum {
+  font-size: 26px;
+  line-height: 52px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  span {
+    font-weight: 400;
+  }
+  @media (max-width: 1024px) {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}
+.FooterConfirm {
+  margin-top: 23px;
+  background-color: #51ad33;
+  color: #fff;
+  padding: 10px 55px;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  border-radius: 3px;
+  transition: 0.1s ease-in;
+  &:hover {
+    transition: 0.1s ease;
+    background-color: #368e1a;
+  }
+}
