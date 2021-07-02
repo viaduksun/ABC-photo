@@ -40,11 +40,16 @@ const HeaderSlider = () => {
       <Swiper
         className="swiper-container-2"
         navigation
-        pagination
+        pagination={{
+          clickable: true,
+        }}
         id="headerSlider"
         spaceBetween={0}
         loop
-        autoplay
+        // autoplay={{
+        //   delay: 3500,
+        //   disableOnInteraction: false,
+        // }}
       >
         <div className={styles.slider}>
           {sliderData.map((slide, index) => (

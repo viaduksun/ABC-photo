@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .SingleProductInfoTabs {
   display: flex;
   justify-content: center;
@@ -5,3 +6,226 @@
   height: 500px;
   background: rgb(182, 182, 182);
 }
+=======
+.SingleProductInfoTabs {
+  background: rgb(245, 245, 245);
+  transition: all 0.3s ease 0s;
+}
+.header {
+  height: 60px;
+  background: rgb(221, 221, 221);
+  display: flex;
+}
+
+.headerAccordion {
+  display: none;
+}
+
+.tabBtn {
+  text-align: center;
+  line-height: 60px;
+  flex: 1 1 auto;
+  transition: all 0.2s ease 0s;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(93, 93, 93);
+  background: rgb(221, 221, 221);
+  &:hover {
+    background: rgb(195, 195, 195);
+  }
+  &_active {
+    background: rgb(195, 195, 195);
+  }
+}
+.tabContentBox {
+  padding-bottom: 10px;
+}
+.descriptionWrapper {
+  margin-top: 70px;
+  display: flex;
+}
+.textBlock {
+  margin-right: 100px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 50%;
+}
+.descriptionImg {
+  margin-right: 70px;
+  width: 50%;
+  & img {
+    width: 100%;
+  }
+}
+.descriptionWrapper2 {
+  margin-top: 70px;
+  display: flex;
+  background: rgb(216, 216, 216);
+  flex-direction: row-reverse;
+  .descriptionImg {
+    margin-right: 70px;
+    & img {
+      width: 100%;
+    }
+  }
+  .descriptionTitle {
+    margin-top: 40px;
+  }
+}
+
+.descriptionTitle {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 26px;
+  margin-bottom: 20px;
+  line-height: 40px;
+}
+.descriptionBody {
+  font-size: 16px;
+  line-height: 30px;
+  flex: 1 1 auto;
+}
+.readMore {
+  display: flex;
+  p {
+    font-size: 20px;
+    cursor: pointer;
+    color: rgb(19, 149, 209);
+    margin-right: 10px;
+    &:hover {
+      color: rgb(0, 113, 165);
+    }
+  }
+}
+.readMoreIcon {
+  margin-top: 4px;
+  font-size: 18px;
+  color: rgb(19, 149, 209);
+  transition: all 0.2s ease 0s;
+  &_active {
+    transform: rotate(180deg);
+  }
+}
+.CharacteristicsWrapper {
+  margin: 50px;
+}
+.charactItem {
+  display: flex;
+  background: rgb(255, 255, 255);
+  margin-bottom: 5px;
+  padding: 5px 20px;
+}
+.charactItemTitle {
+  min-width: 30%;
+}
+.AccessoriesSliderWrapp {
+  max-width: 100%;
+}
+// =================================================================
+@media screen and (max-width: 1024px) {
+  .descriptionWrapper {
+    margin-top: 0;
+  }
+  .textBlock {
+    margin-right: 50px;
+  }
+  .descriptionTitle {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 15px;
+    line-height: 30px;
+  }
+  .descriptionBody {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .readMore {
+    display: flex;
+    p {
+      font-size: 18px;
+    }
+  }
+  .readMoreIcon {
+    margin-top: 4px;
+    font-size: 18px;
+    color: rgb(19, 149, 209);
+    transition: all 0.2s ease 0s;
+    &_active {
+      transform: rotate(180deg);
+    }
+  }
+  // =================================
+  .CharacteristicsWrapper {
+    margin: 30px;
+  }
+  .charactItemTitle {
+    width: 25%;
+  }
+  .AccessoriesSliderWrapp {
+    max-width: 1000px;
+    margin: 0px auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header {
+    display: none;
+  }
+  .tabContentBox {
+    display: none;
+  }
+  .headerAccordion {
+    display: block;
+  }
+
+  .descriptionWrapper {
+    flex-direction: column;
+  }
+  .descriptionImg {
+    width: 100%;
+    & img {
+      width: 100%;
+    }
+  }
+  .textBlock {
+    margin-right: 0px;
+  }
+  // =================================
+  .CharacteristicsWrapper {
+    margin: 10px;
+  }
+  .charactItemTitle {
+    width: 20%;
+  }
+  .charactItem {
+    font-size: 12px;
+    display: flex;
+    background: rgb(255, 255, 255);
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border-bottom: 1px solid rgb(124, 124, 124);
+  }
+  .AccessoriesSliderWrapp {
+    max-width: 700px;
+    margin: 0px auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .charactItem {
+    font-size: 12px;
+
+    margin-bottom: 5px;
+    padding: 5px 5px;
+    border-bottom: 1px solid rgb(124, 124, 124);
+  }
+  .CharacteristicsWrapper {
+    margin: 5px;
+  }
+  .AccessoriesSliderWrapp {
+    max-width: 350px;
+    margin: 0px auto;
+  }
+}
+>>>>>>> 13a0f2082cf78291554fe38ce2f5800dc1188d22

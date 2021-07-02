@@ -1,11 +1,34 @@
 .CheckoutBlock {
-  height: 600px;
-  background: rgb(241, 241, 241);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  @media (max-width: 1024px) {
+    padding: 0 15px;
+  }
+  h1 {
+    @media (max-width: 768px) {
+      font-size: 22px;
+      line-height: 40px;
+    }
+  }
 }
-.btnBox {
-  margin-top: 100px;
+.CheckoutBlockTitle {
+  text-align: left;
+  font-size: 26px;
+  line-height: 27px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+}
+.CheckoutBlockMain {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 120px;
+  margin-top: 34px;
+  @media (max-width: 1024px) {
+    grid-column-gap: 50px;
+    grid-template-columns: 400px 1fr;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }

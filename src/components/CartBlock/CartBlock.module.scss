@@ -1,6 +1,7 @@
 .CartBlock {
-  max-width: 1280px;
-  margin-bottom: 20px;
+  max-width: 100%;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 .Title {
   font-size: 26px;
@@ -8,11 +9,11 @@
   font-weight: 700;
   font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
-  @media (max-width: 742px) {
+  @media (max-width: 768px) {
     font-size: 20px;
     line-height: 24px;
   }
-  @media (max-width: 742px) {
+  @media (max-width: 768px) {
     font-size: 16px;
     line-height: 20px;
   }
@@ -24,19 +25,24 @@
   display: grid;
   grid-template-columns: 350px 1fr 1fr 1fr 1fr;
   background-color: #f7f5f6;
-  padding: 15px 10px 15px 72px;
-  @media (max-width: 992px) {
+  padding: 15px 10px 15px 0px;
+  li {
+    text-align: center;
+  }
+  @media (max-width: 1024px) {
+    grid-template-columns: 270px 1fr 1fr 1fr 80px;
+  }
+  @media (max-width: 768px) {
     grid-template-columns: 200px 1fr 1fr 1fr 80px;
   }
-  @media (max-width: 742px) {
-    grid-template-columns: 150px 1fr 1fr 1fr 50px;
-    padding: 15px 10px 15px 20px;
+  @media (max-width: 620px) {
+    grid-template-columns: 150px 1fr 1fr 1fr 25px;
   }
-  @media (max-width: 598px) {
-    grid-template-columns: 180px 1fr 1fr 1fr 30px;
+  @media (max-width: 480px) {
+    grid-template-columns: 120px 1fr 1fr 1fr 30px;
   }
-  @media (max-width: 540px) {
-    grid-template-columns: 100px 1fr 80px 1fr 30px;
+  @media (max-width: 400px) {
+    grid-template-columns: 90px 1fr 1fr 1fr 20px;
   }
   li {
     font-size: 14px;
@@ -48,33 +54,34 @@
       line-height: 14px;
     }
   }
-  li:first-child {
-    margin-right: 50px;
-  }
 }
 .CartMainItem {
   margin-top: 31px;
   display: grid;
-  grid-template-columns: 420px 1fr 1fr 1fr 1fr;
-  @media (max-width: 992px) {
+  grid-template-columns: 350px 1fr 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  @media (max-width: 1024px) {
+    padding-left: 10px;
     grid-template-columns: 270px 1fr 1fr 1fr 80px;
   }
-  @media (max-width: 742px) {
-    grid-template-columns: 170px 1fr 1fr 1fr 50px;
+  @media (max-width: 768px) {
+    grid-template-columns: 200px 1fr 1fr 1fr 80px;
   }
-  @media (max-width: 598px) {
-    grid-template-columns: 200px 1fr 1fr 1fr 30px;
+  @media (max-width: 620px) {
+    grid-template-columns: 150px 1fr 1fr 1fr 50px;
   }
-  @media (max-width: 540px) {
-    grid-template-columns: 120px 1fr 80px 1fr 30px;
+  @media (max-width: 480px) {
+    grid-template-columns: 120px 1fr 1fr 1fr 30px;
   }
-  justify-content: center;
-  align-items: center;
+  @media (max-width: 400px) {
+    grid-template-columns: 90px 1fr 1fr 1fr 30px;
+  }
 }
 .CartMainItemProduct {
   display: flex;
   align-items: center;
-  @media (max-width: 992px) {
+  @media (max-width: 1024px) {
     display: block;
   }
 }
@@ -83,15 +90,20 @@
   padding: 5px;
   background-color: #f7f5f6;
   margin-right: 20px;
-  @media (max-width: 742px) {
-    display: none;
+  img {
+    @media (max-width: 480px) {
+      max-width: 80px;
+    }
   }
 }
 .CartMainItemProductContent {
   max-width: 127px;
   margin-left: 19px;
-  @media (max-width: 540px) {
-    max-width: 80px;
+  @media (max-width: 1024px) {
+    margin-left: 0;
+  }
+  @media (max-width: 480px) {
+    max-width: 100px;
   }
 }
 .CartMainItemProductTitle {
@@ -99,7 +111,7 @@
   line-height: 23px;
   font-weight: 500;
   font-family: 'Roboto', sans-serif;
-  @media (max-width: 540px) {
+  @media (max-width: 480px) {
     font-size: 12px;
     line-height: 14px;
   }
@@ -108,7 +120,7 @@
   font-size: 14px;
   line-height: 22px;
   color: #d3d4d7;
-  @media (max-width: 540px) {
+  @media (max-width: 480px) {
     font-size: 12px;
     line-height: 14px;
   }
@@ -119,13 +131,14 @@
   line-height: 27px;
   font-weight: 500;
   font-family: 'Roboto', sans-serif;
-  @media (max-width: 540px) {
+  @media (max-width: 480px) {
     font-size: 12px;
     line-height: 14px;
   }
 }
 .CartMainItemAmount {
   display: flex;
+  justify-content: center;
 }
 .CartMainItemAmountMinus,
 .CartMainItemAmountNumbers,
@@ -137,7 +150,7 @@
   line-height: 27px;
   font-weight: 700;
   font-family: 'Roboto', sans-serif;
-  @media (max-width: 540px) {
+  @media (max-width: 480px) {
     padding: 3px 7px;
     font-size: 12px;
     line-height: 24px;
@@ -148,25 +161,15 @@
   font-weight: 700;
   color: #a0a0a0;
   cursor: pointer;
-  margin-left: 85px;
-  @media (max-width: 992px) {
-    margin-left: 0px;
-  }
-  :hover {
-    transform: rotate(90deg);
-    transition: 0.3s;
-  }
 }
 .CartFooter {
   margin-top: 63px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 992px) {
+  @media (max-width: 1024px) {
     align-items: flex-end;
-  }
-  @media (max-width: 540px) {
-    margin-top: 25px;
+    margin-top: 0px;
   }
 }
 .CartFooterLeft {
@@ -180,12 +183,17 @@
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     border-radius: 3px;
-    @media (max-width: 742px) {
+    transition: 0.1s ease-in;
+    &:hover {
+      transition: 0.1s ease-in;
+      background-color: #677283;
+    }
+    @media (max-width: 768px) {
       padding: 10px;
       font-size: 14px;
       line-height: 20px;
     }
-    @media (max-width: 540px) {
+    @media (max-width: 480px) {
       padding: 5px;
       font-size: 12px;
       line-height: 14px;
@@ -198,7 +206,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media (max-width: 992px) {
+  @media (max-width: 1024px) {
     display: block;
   }
   button {
@@ -211,12 +219,17 @@
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     border-radius: 3px;
-    @media (max-width: 742px) {
+    transition: 0.1s ease-in;
+    &:hover {
+      transition: 0.1s ease;
+      background-color: #368e1a;
+    }
+    @media (max-width: 768px) {
       padding: 10px 85px;
       font-size: 14px;
       line-height: 20px;
     }
-    @media (max-width: 540px) {
+    @media (max-width: 480px) {
       padding: 5px 20px;
       font-size: 12px;
       line-height: 14px;
@@ -232,7 +245,7 @@
   span {
     font-weight: 700;
   }
-  @media (max-width: 540px) {
+  @media (max-width: 480px) {
     font-size: 12px;
     line-height: 14px;
   }
@@ -243,7 +256,7 @@
   font-weight: 700;
   font-family: 'Roboto', sans-serif;
   margin-right: 16px;
-  @media (max-width: 540px) {
+  @media (max-width: 480px) {
     font-size: 14px;
     line-height: 22px;
   }

@@ -1,13 +1,37 @@
 .PopularContainer {
-  max-width: 1300px;
+  max-width: 1200px;
+  height: 650px;
   margin: 0 auto;
+  position: relative;
+  @media (max-width: 1200px) {
+    max-width: 1200px;
+    min-width: 1020px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  @media (max-width: 1024px) {
+    max-width: 1020px;
+    min-width: 760px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  @media (max-width: 768px) {
+    max-width: 760px;
+    min-width: 470px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 480px;
+    min-width: 300px;
+  }
 }
 .PopularModelsSlider {
-  height: 636px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: 150px auto;
 }
 
 .SliderHeader {
@@ -19,6 +43,6 @@
   text-transform: uppercase;
   color: #677283;
   margin-top: 86px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   margin-left: 35px;
 }

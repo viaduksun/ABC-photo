@@ -24,7 +24,7 @@
   max-width: 400px;
   position: absolute;
   top: 50%;
-  right: 24%;
+  right: 16%;
   transform: translateY(-50%);
   & h2 {
     color: #fff;
@@ -105,5 +105,66 @@
     &_active {
       background: rgb(6, 189, 6);
     }
+  }
+}
+// =================================================================
+@media screen and (max-width: 1200px) {
+  .header-slider-wrapper {
+    height: 300px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .slideContent {
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    right: 14%;
+    transform: translateY(-50%);
+    & h2 {
+      font-size: 40px;
+    }
+    & p {
+      font-size: 28px;
+    }
+    & img {
+      margin-top: 10px;
+      height: 30px;
+    }
+    & .contentImg {
+      display: flex;
+      justify-content: flex-end;
+      height: 50%;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .slideContent {
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    right: 14%;
+    transform: translateY(-50%);
+    & h2 {
+      font-size: 30px;
+    }
+    & p {
+      font-size: 18px;
+    }
+    & img {
+      margin-top: 10px;
+    }
+    & .contentImg {
+      display: flex;
+      justify-content: flex-end;
+      height: 50%;
+      &img {
+        width: 38%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .header-slider-wrapper {
+    display: none;
   }
 }
