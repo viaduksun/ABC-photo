@@ -10,6 +10,9 @@
     font-weight: 700;
     font-family: 'Roboto', sans-serif;
     color: #fff;
+    @media (max-width: 768px) {
+      text-align: center;
+    }
   }
 }
 .Main {
@@ -20,6 +23,17 @@
   align-items: center;
   @media (max-width: 1024px) {
     padding: 30px 10px;
+  }
+  @media (max-width: 768px) {
+    justify-content: space-around;
+  }
+}
+.MainImgAndName {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 480px) {
+    flex-direction: column;
   }
 }
 .MainName {
@@ -62,6 +76,7 @@
   line-height: 52px;
   font-weight: 700;
   font-family: 'Roboto', sans-serif;
+  margin-bottom: 23px;
   span {
     font-weight: 400;
   }
@@ -70,20 +85,4 @@
     line-height: 32px;
   }
 }
-.FooterConfirm {
-  margin-top: 23px;
-  background-color: #51ad33;
-  color: #fff;
-  padding: 10px 55px;
-  font-size: 16px;
-  line-height: 27px;
-  font-weight: 500;
-  font-family: 'Roboto', sans-serif;
-  text-transform: uppercase;
-  border-radius: 3px;
-  transition: 0.1s ease-in;
-  &:hover {
-    transition: 0.1s ease;
-    background-color: #368e1a;
-  }
-}
+

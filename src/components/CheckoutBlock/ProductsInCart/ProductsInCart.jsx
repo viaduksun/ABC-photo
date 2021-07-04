@@ -1,6 +1,7 @@
 import React from 'react';
 import MainImg from '../../../assets/img/cartBlock/cartImg.png';
 import styles from './ProductsInCart.module.scss';
+import Button from '../../UI/Button/Button';
 
 const ProductsInCart = () => (
   <div className={styles.ProductsInCart}>
@@ -8,15 +9,18 @@ const ProductsInCart = () => (
       <h2>Товары в корзине</h2>
     </div>
     <div className={styles.Main}>
-      <div className={styles.MainImg}>
-        <img src={MainImg} alt={MainImg} />
+      <div className={styles.MainImgAndName}>
+        <div className={styles.MainImg}>
+          <img src={MainImg} alt={MainImg} />
+        </div>
+        <p className={styles.MainName}>
+          Canon EOS 6D
+          (Wi-Fi) Body
+          <br />
+          <span>Код товара: 012212</span>
+        </p>
       </div>
-      <p className={styles.MainName}>
-        Canon EOS 6D
-        (Wi-Fi) Body
-        <br />
-        <span>Код товара: 012212</span>
-      </p>
+   
       <p className={styles.MainPrice}>
         9137
         грн
@@ -28,7 +32,7 @@ const ProductsInCart = () => (
         Сумма заказа:   16 619
         <span> грн</span>
       </p>
-      <button type="button" className={styles.FooterConfirm}>Подтвердить</button>
+      <Button type="ordering_confirm">Подтвердить</Button>
     </div>
   </div>
     );

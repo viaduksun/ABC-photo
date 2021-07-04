@@ -2,7 +2,8 @@
   "parser": "babel-eslint",
   "env": {
     "browser": true,
-    "mocha": true
+    "mocha": true,
+    "jest": true
   },
   "extends": ["airbnb", "airbnb/hooks" ],
   "rules": {

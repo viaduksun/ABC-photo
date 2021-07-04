@@ -25,8 +25,8 @@
   grid-column-gap: 120px;
   margin-top: 34px;
   @media (max-width: 1024px) {
-    grid-column-gap: 50px;
-    grid-template-columns: 400px 1fr;
+    grid-column-gap: 40px;
+    grid-template-columns: 380px 1fr;
   }
   @media (max-width: 768px) {
     grid-template-columns: 1fr;

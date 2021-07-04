@@ -173,33 +173,8 @@
   }
 }
 .CartFooterLeft {
-  button {
-    background-color: #98a1af;
-    color: #fff;
-    padding: 9px 26px;
-    font-size: 16px;
-    line-height: 27px;
-    font-weight: 500;
-    font-family: 'Roboto', sans-serif;
-    text-transform: uppercase;
-    border-radius: 3px;
-    transition: 0.1s ease-in;
-    &:hover {
-      transition: 0.1s ease-in;
-      background-color: #677283;
-    }
-    @media (max-width: 768px) {
-      padding: 10px;
-      font-size: 14px;
-      line-height: 20px;
-    }
-    @media (max-width: 480px) {
-      padding: 5px;
-      font-size: 12px;
-      line-height: 14px;
-      font-weight: 400;
-      margin-right: 35px;
-    }
+  @media (max-width: 480px) {
+    order: 1;
   }
 }
 .CartFooterRight {
@@ -209,32 +184,8 @@
   @media (max-width: 1024px) {
     display: block;
   }
-  button {
-    background-color: #51ad33;
-    color: #fff;
-    padding: 10px 55px;
-    font-size: 16px;
-    line-height: 27px;
-    font-weight: 500;
-    font-family: 'Roboto', sans-serif;
-    text-transform: uppercase;
-    border-radius: 3px;
-    transition: 0.1s ease-in;
-    &:hover {
-      transition: 0.1s ease;
-      background-color: #368e1a;
-    }
-    @media (max-width: 768px) {
-      padding: 10px 85px;
-      font-size: 14px;
-      line-height: 20px;
-    }
-    @media (max-width: 480px) {
-      padding: 5px 20px;
-      font-size: 12px;
-      line-height: 14px;
-      font-weight: 400;
-    }
+  @media (max-width: 768px) {
+   text-align: right;
   }
 }
 .CartFooterRightText {

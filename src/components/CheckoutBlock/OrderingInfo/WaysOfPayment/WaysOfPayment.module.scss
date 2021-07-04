@@ -1,0 +1,14 @@
+.WaysOfPayment {
+    margin-top: 35px;
+  }
+  .WaysOfPaymentForm {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    label {
+      cursor: pointer;
+    }
+    @media(max-width: 1100px) {
+      flex-direction: column;
+    }
+  }
