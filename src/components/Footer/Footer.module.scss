@@ -1,0 +1,269 @@
+.Footer {
+  height: 320px;
+  color: #fff;
+  background-color: #000;
+  padding-top: 65px;
+  font-size: 12px;
+}
+.FooterCopyrightBefore {
+  position: relative;
+}
+.FooterCopyrightBefore::before {
+  content: '';
+  position: absolute;
+  width: 70%;
+  height: 1px;
+  background-color: #5E5C5C;
+  margin-left: 15%;
+  // margin-top: 1%;
+}
+.FooterCopyrightText {
+  text-align: center;
+  padding-top: 53px;
+}
+.FooterGrid {
+  // display: flex;
+  // flex-direction: row;
+  justify-content: space-between;
+  margin-left: 133px;
+  margin-right: 147px;
+}
+.footerSubscribe {
+  color: #fff;
+}
+.contactsLink { 
+  text-decoration: none;
+  color: #fff; 
+}
+.FooterInformationText {
+  margin-bottom: 5px;
+}
+label {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: bold;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 14px 0;  
+  display: block;
+  cursor: pointer;
+  position: relative;
+  transition: 0.1s;
+&:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+&::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 40px;
+  width: 12px;
+  height: 6px;
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="50" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 100,0 50,50" style="fill:%23FFFFFF99;" /></svg>');
+  background-size: contain;
+  transition: transform 0.4s;
+  }
+@media(min-width: 768px){
+  font-size: 16px;
+  cursor: text;
+  &::after{
+    display: none;
+  }
+  }
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+.form {
+  display: flex;
+  flex-direction: row;
+  width: 280px;
+  height: 32px;
+  background: #FFF;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.input {
+  border: none;
+  margin-left: 18px;
+}
+.button {
+  margin-left: 75px;
+  margin-top: 2px;
+  background-color: #51AD33;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  border: none;
+  transition: all 0.2s ease 0s;
+}
+.selectIcon {
+  padding-top: 4px;
+  padding-left: 2,75px;
+  color: #fff;
+
+}
+.footerText {
+  margin-top: 75px;
+}
+.footerSubscribeIcon {
+  width: 120px;
+  justify-content: space-between;
+  // padding-top: 2px;
+  padding-left: 15px;
+  // margin-top: 7px;
+}
+.footerSubscribeTitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  padding-left: 20px;
+  margin-bottom: 25px;
+  padding-top: 15px;
+}
+.contacts {
+  padding-top: -5px ;
+}
+.contactsText {
+  margin-top: 20px;
+}
+.contactsTel {
+  margin-top: 3px;
+}
+.contactsMail {
+  margin-top: 17px;
+}
+@media screen and (max-width: 1200px) {
+  .Footer {
+    height: 320px;
+  }
+  // .FooterGrid {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+  // .FooterInformation {
+  //   display: block;
+  // }
+  // .FooterCopyrightBefore {
+  //   width: 60%;
+  // }
+}
+@media screen and (max-width: 1100px) {
+  .Footer {
+    height: 680px;
+    padding-top: 5px;
+  }
+ .FooterGrid {
+      display: flex;
+      flex-direction: column;
+    }
+    .FooterCopyrightText {
+      margin-top: 450px;
+      padding-top: 15px;
+    }
+  .FooterCopyrightBefore {
+    align-items: center;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .FooterGrid {
+    display: flex;
+    flex-direction: column;
+  }
+  .Footer {
+    min-height: 200px;
+  }
+  .FooterCopyrightBefore {
+    width: 35%;
+    margin-left: 15%;
+  }
+}
+@media screen and (max-width: 768px) {
+ 
+  // .FooterGrid {
+  //   flex-direction: column;
+  // }
+    // .FooterInformation {
+    //   display: none;
+    // }
+}
+@media screen and (max-width: 480px) {
+  label::after {
+    right: 60px;
+  }
+  .form {
+    margin-left: -30px;
+  //   width: 180px;
+  }
+  .label {
+    // width: 250px;
+    margin-left: -20px;
+  }
+}
+.FooterInformation {
+color: #fff;
+}
+.FooterInformationText {
+  margin-bottom: 10px;
+}
+.FooterInformationInput {
+  display: none;
+  &:checked ~ div {
+    display: block;
+  }
+  &:checked ~ label::after {
+    transform: translateY(-50%) rotate(0.5turn);
+  }
+}
+.FooterInformationLinkWrapper {
+  padding: 10px 0 10px 10px;
+  background: #000000;
+  display: none;
+  a {
+    outline: none;
+  }
+@media(min-width: 768px){
+  display: block;
+  padding: 10px 0 0 0;
+}
+}
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
