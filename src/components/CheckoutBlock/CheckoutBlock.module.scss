@@ -1,6 +1,15 @@
 .CheckoutBlock {
   margin-top: 30px;
   margin-bottom: 50px;
+  @media (max-width: 1024px) {
+    padding: 0 15px;
+  }
+  h1 {
+    @media (max-width: 768px) {
+      font-size: 22px;
+      line-height: 40px;
+    }
+  }
 }
 .CheckoutBlockTitle {
   text-align: left;
@@ -11,8 +20,15 @@
   text-transform: uppercase;
 }
 .CheckoutBlockMain {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 120px;
   margin-top: 34px;
+  @media (max-width: 1024px) {
+    grid-column-gap: 40px;
+    grid-template-columns: 380px 1fr;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }

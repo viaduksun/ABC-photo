@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MdClose } from 'react-icons/md';
 import styles from './CartBlock.module.scss';
 import cartImg from '../../assets/img/cartBlock/cartImg.png';
+import Button from '../UI/Button/Button';
 
 const CartBlock = () => (
   <div className={styles.CartBlock}>
@@ -42,11 +43,10 @@ const CartBlock = () => (
           </li>
         </ul>
         <div className={styles.CartFooter}>
-          <div className={styles.CartFooterLeft}>
+          <div>
             <Link to="/products">
-              <button type="button">Продолжить покупки</button>
+              <Button type="cart_grey">Продолжить покупки</Button>
             </Link>
-           
           </div>
           <div className={styles.CartFooterRight}>
             <div className={styles.CartFooterRightText}>
@@ -59,7 +59,7 @@ const CartBlock = () => (
               <span> грн</span>
             </div>
             <Link to="/checkout">
-              <button type="button">Оформить</button>
+              <Button type="cart_green">Оформить</Button>
             </Link>
           </div>
         </div>
