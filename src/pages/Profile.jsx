@@ -5,10 +5,11 @@ import ProfileBlock from '../components/ProfileBlock/ProfileBlock';
 const Profile = () => (
   <>
     <Breadcrumbs />
-    <div className="container">
-      <h1>My profile</h1>
-      <ProfileBlock />
-    </div>
+    <section className="profile">
+      <div className="container">
+        <ProfileBlock />
+      </div>
+    </section>
   </>
 );
 

@@ -1,11 +1,57 @@
 .ProfileBlock {
   height: 600px;
-  background: rgb(241, 241, 241);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // background: rgb(241, 241, 241);
 }
-.btnBox {
-  margin-top: 100px;
+.header {
+  height: 80px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 26px;
+  padding-top: 20px;
+}
+.content {
+  display: flex;
+}
+.edit_Prpfile_Wrapper {
+  margin-left: 160px;
+  h2 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 27px;
+  }
+}
+.btnBlock {
+  flex: 1 1 15%;
+}
+.btnProfile {
+  width: 100%;
+  min-height: 65px;
+  background: #f5f5f5;
+  border-bottom: 1px solid rgb(207, 207, 207);
+  font-size: 16px;
+  transition: all 0.1s ease 0s;
+  cursor: pointer;
+  &:hover {
+    background: #dee5f0;
+  }
+  &_active {
+    background: #c1c9d4;
+  }
+}
+.optionContent {
+  flex: 1 1 70%;
+  background: rgb(255, 255, 255);
+}
+.formWrapper {
+}
+.inputsWrapper {
+  height: 220px;
+  // border: 3px solid rgb(0, 160, 35);
+  // background: rgb(0, 135, 189);
+  display: grid;
+  grid-template-rows: repeat(3, minmax(30px, 1fr));
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  grid-column-gap: 80px;
+  grid-auto-flow: column;
+  margin-bottom: 50px;
 }
