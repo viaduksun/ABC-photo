@@ -9,15 +9,19 @@ import footerConfig from '../../components/Footer/footerConfig';
 
 const Footer = () => (
   <div className={styles.Footer}>
-    <div className={styles.FooterGrid}>
-      <FooterContacts />
-      {footerConfig.map((links) => (
-        <FooterInformation key={links.id} title={links.title} links={links.links} id={links.id} />
+    <div className="container">
+      <div className={styles.FooterGrid}>
+      
+        <FooterContacts />
+        {footerConfig.map((links) => (
+          <FooterInformation key={links.id} title={links.title} links={links.links} id={links.id} />
       ))}
-      <FooterSubscribe />
-    </div>
-    <div className={styles.FooterCopyrightBefore}>
-      <FooterCopyright />
+        <FooterSubscribe />
+      </div>
+      <div className={styles.FooterCopyrightBefore}>
+        <FooterCopyright />
+      
+      </div>
     </div>
     
   </div>
