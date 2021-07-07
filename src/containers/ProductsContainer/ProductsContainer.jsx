@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -10,7 +11,8 @@ import styles from './ProductsContainer.module.scss';
 import ProductsFilter from '../../components/ProductsFilter/ProductsFilter';
 import ProductsField from '../../components/ProductsField/ProductsField';
 
-const ProductsContainer = () => {
+const ProductsContainer = ({products}) => {
+  console.log(products);
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
     console.log('Close');
@@ -39,7 +41,7 @@ const ProductsContainer = () => {
           <div className={styles.filterContainer}>
             <ProductsFilter />
           </div>
-          <ProductsField />
+          <ProductsField products={products} />
         </div>
       </div>
 

@@ -30,8 +30,8 @@ const menuItems = [
     id: 6
   },
   {
-    menuTitle: 'Карта сайта',
-    pageURL: '/site-map',
+    menuTitle: 'api-test',
+    pageURL: '/api-test',
     id: 7
   },
 ];
