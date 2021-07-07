@@ -7,6 +7,8 @@
   },
   "extends": ["airbnb", "airbnb/hooks" ],
   "rules": {
+    "import/prefer-default-export": "off",
+    "no-console": "off",
     "no-trailing-spaces": ["error", { "skipBlankLines": true } ],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-return-assign": 0,
@@ -26,7 +28,8 @@
       "required": {
         "some": ["nesting", "id"]
       }
-    }]
+    }],
+    
   },
   "settings": {
     "react": {

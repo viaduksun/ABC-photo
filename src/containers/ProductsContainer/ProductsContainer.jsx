@@ -11,8 +11,7 @@ import styles from './ProductsContainer.module.scss';
 import ProductsFilter from '../../components/ProductsFilter/ProductsFilter';
 import ProductsField from '../../components/ProductsField/ProductsField';
 
-const ProductsContainer = ({products}) => {
-  console.log(products);
+const ProductsContainer = () => {
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
     console.log('Close');
@@ -41,7 +40,7 @@ const ProductsContainer = ({products}) => {
           <div className={styles.filterContainer}>
             <ProductsFilter />
           </div>
-          <ProductsField products={products} />
+          <ProductsField />
         </div>
       </div>
 
@@ -53,6 +52,7 @@ const ProductsContainer = ({products}) => {
         <ProductsFilter />
       </div>
     </div>
+
   );
 };
 

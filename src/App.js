@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import './App.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Header from './containers/Header/Header';
 import Footer from './containers/Footer/Footer';
 import Home from './pages/Home';
@@ -12,8 +13,14 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Profile from './pages/Profile';
 import ApiTest from './pages/ApiTest';
+import { axiosProducts } from './store/products/actions';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(axiosProducts());
+  }, [dispatch]);
+
   return (
     <div className="wrapper">
       <Header />
