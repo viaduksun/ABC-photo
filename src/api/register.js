@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 
 const newCustomer = {
@@ -12,20 +13,20 @@ const newCustomer = {
   isAdmin: true,
 };
 
-const userRegister = () => {
+const userRegister = (userData) => {
   const headers = {
     'Content-Type': 'application/json',
   };
   return axios
     .post(
       'https://intense-hamlet-33316.herokuapp.com/api/customers',
-      newCustomer,
+      userData,
       {
         headers,
       }
     )
-    .then((savedCustomer) => {
-      console.log('savedCustomer', savedCustomer);
+    .then((res) => {
+      console.log('newUser', res);
       /* Do something with customer */
     })
     .catch((err) => {

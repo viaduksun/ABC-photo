@@ -1,8 +1,13 @@
-.apiBlock {
+.formBlock {
   background: rgb(230, 230, 230);
   width: 600px;
   padding: 30px;
   margin: 20px;
+}
+.form-name {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
 }
 .inputWrapper {
   margin-bottom: 10px;
