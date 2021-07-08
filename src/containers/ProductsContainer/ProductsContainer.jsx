@@ -3,16 +3,26 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMdOptions } from 'react-icons/io';
 import { VscChromeClose } from 'react-icons/vsc';
 import classNames from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './ProductsContainer.module.scss';
 import ProductsFilter from '../../components/ProductsFilter/ProductsFilter';
 import ProductsField from '../../components/ProductsField/ProductsField';
+import { axiosProducts } from '../../store/products/actions';
+import Loader from '../../components/UI/Loader/Loader';
 
-const ProductsContainer = ({products}) => {
+const ProductsContainer = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(axiosProducts());
+  }, [dispatch]);
+  const products = useSelector((state) => state.productsPage.products);
+  const isLoadingProducts = useSelector((state) => state.productsPage.isLoadingProducts);
   console.log(products);
+
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
     console.log('Close');
@@ -41,7 +51,9 @@ const ProductsContainer = ({products}) => {
           <div className={styles.filterContainer}>
             <ProductsFilter />
           </div>
-          <ProductsField products={products} />
+          {(products.length === 0
+            ? <div className={styles.PrductsFieldLoader}><Loader /></div>
+            : (!isLoadingProducts && <ProductsField products={products} />))}
         </div>
       </div>
 
@@ -53,6 +65,7 @@ const ProductsContainer = ({products}) => {
         <ProductsFilter />
       </div>
     </div>
+
   );
 };
 

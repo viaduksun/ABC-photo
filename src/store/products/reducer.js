@@ -1,3 +1,20 @@
-const initialState = [];
+import { SET_PRODUCTS } from './types';
 
-export const productsReducer = (state = initialState, action) => state;
+const initialState = {
+  products: [],
+  isLoadingProducts: true,
+};
+
+export const productsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload.data,
+        isLoadingProducts: false
+      };
+
+    default:
+      return state;
+  }
+};

@@ -3,6 +3,7 @@ import React from 'react';
 // import Swiper core and required modules
 import SwiperCore, { Pagination, Navigation } from 'swiper/core';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useSelector } from 'react-redux';
 import ProductCard from '../ProductCard/ProductCard';
 import useWindowDimensions from './useWindowDimensions';
 
@@ -19,6 +20,8 @@ SwiperCore.use([Pagination, Navigation]);
 const Accessories = () => {
   const slidersArr = [1, 2, 3, 4, 5, 6, 7, 8];
   const { width } = useWindowDimensions();
+
+  const products = useSelector((state) => state.productsPage.products);
 
   return (
     <div className={styles.AccessoriesSliderWrapp}>
@@ -45,9 +48,10 @@ const Accessories = () => {
         className="accessories-Slider"
         id="accessories"
       >
-        {slidersArr.map((item) => (
-          <SwiperSlide key={item} id="accessoriesSlide">
-            <ProductCard />
+        {products.map((product) => (
+          // eslint-disable-next-line no-underscore-dangle
+          <SwiperSlide key={product._id} id="accessoriesSlide">
+            <ProductCard product={product} />
           </SwiperSlide>
         ))}
       </Swiper>

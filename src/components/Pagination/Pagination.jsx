@@ -17,7 +17,7 @@ const Pagination = () => {
     <div className={styles.Pagination}>
       <FaChevronLeft className={styles.ButtonPrev} />
       {state.map((item) => (
-        <div className={styles.PaginationItem}>{item}</div>
+        <div className={styles.PaginationItem} key={item}>{item}</div>
       ))}
       <FaChevronRight className={styles.ButtonNext} />
     </div>

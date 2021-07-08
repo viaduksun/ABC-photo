@@ -12,6 +12,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Profile from './pages/Profile';
 import ApiTest from './pages/ApiTest';
+import { axiosProducts } from './store/products/actions';
 
 function App() {
   return (
