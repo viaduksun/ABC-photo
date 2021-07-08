@@ -1,12 +1,19 @@
 import { SET_PRODUCTS } from './types';
 
-const initialState = [];
+const initialState = {
+  products: [],
+  isLoadingProducts: true,
+};
 
 export const productsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_PRODUCTS: {
-      return action.payload.data;
-    }
+    case SET_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload.data,
+        isLoadingProducts: false
+      };
+
     default:
       return state;
   }

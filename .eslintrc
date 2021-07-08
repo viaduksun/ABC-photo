@@ -28,8 +28,7 @@
       "required": {
         "some": ["nesting", "id"]
       }
-    }],
-    
+    }]
   },
   "settings": {
     "react": {
