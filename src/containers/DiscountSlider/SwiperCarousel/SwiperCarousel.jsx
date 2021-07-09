@@ -17,7 +17,7 @@ const SwiperCarousel = () => (
       className="swiper-container-1"
       slidesPerView={1}
       spaceBetween={0}
-      autoplay={{ delay: 3000 }}
+      autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
       slidesPerGroup={1}
       loop
       loopFillGroupWithBlank
