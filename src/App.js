@@ -12,6 +12,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Profile from './pages/Profile';
 import Admin from './pages/Admin';
+import ButtonTop from './components/UI/ButtonTop/ButtonTop';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         </Route>
       </Switch>
       <Footer />
+      <ButtonTop />
     </div>
   );
 }

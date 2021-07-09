@@ -7,7 +7,6 @@ import HeaderSlider from '../components/HeaderSlider/HeaderSlider';
 import PopularModelsSlider from '../components/PopularModelsSlider/PopularModelsSlider';
 import DiscountSlider from '../containers/DiscountSlider/DiscountSlider';
 import { axiosPopularModels } from '../store/popularModels/actions';
-import Loader from '../components/UI/Loader/Loader';
 
 const Home = () => {
   console.log('test');
@@ -21,8 +20,6 @@ const Home = () => {
   return (
     <>
       <HeaderSlider />
-      {/* {!isLoadingPopularModels
-      && <PopularModelsSlider popularModels={popularModels} />} */}
       <PopularModelsSlider popularModels={popularModels} />
       <DiscountSlider />
     </>
