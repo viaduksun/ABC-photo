@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-// import Breadcrumbs from '../containers/Breadcrumbs/Breadcrumbs';
-import AdminContainer from '../containers/AdminContainer/AdminContainer';
-
-const Admin = () => (
-  <>
-    <section className="admin">
-      <div className="container">
-        <AdminContainer />
-      </div>
-    </section>
-  </>
-);
-
-export default Admin;
-=======
 /* eslint-disable react/button-has-type */
 /* eslint-disable operator-linebreak */
 /* eslint-disable object-curly-newline */
@@ -388,4 +371,3 @@ const ApiTest = () => {
 };
 
 export default ApiTest;
->>>>>>> develop
