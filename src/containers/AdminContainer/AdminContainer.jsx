@@ -10,7 +10,6 @@ import styles from './AdminContainer.module.scss';
 const AdminContainer = () => {
   const [isActive, setIsActive] = useState('register');
   const handleActive = (activeBtn) => {
-    console.log('TEST', activeBtn);
     setIsActive(activeBtn);
   };
   return (
