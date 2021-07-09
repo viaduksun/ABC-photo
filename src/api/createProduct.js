@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import { product03 } from '../Data/products';
 
 const createProduct = (product) => {
   const token = localStorage.getItem('token');
@@ -12,7 +13,7 @@ const createProduct = (product) => {
     })
     .then((newProduct) => {
       /* Do something with newProduct */
-      console.log('Product has been added', newProduct);
+      console.log('Product has been added', newProduct.data.name);
     })
     .catch((err) => {
       /* Do something with error, e.g. show error to user */

@@ -11,8 +11,8 @@ import SingleProduct from './pages/SingleProduct';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Profile from './pages/Profile';
-import ApiTest from './pages/ApiTest';
-import { axiosProducts } from './store/products/actions';
+import Admin from './pages/Admin';
+import ButtonTop from './components/UI/ButtonTop/ButtonTop';
 
 function App() {
   return (
@@ -40,11 +40,12 @@ function App() {
         <Route exact path="/profile">
           <Profile />
         </Route>
-        <Route exact path="/api-test">
-          <ApiTest />
+        <Route exact path="/admin">
+          <Admin />
         </Route>
       </Switch>
       <Footer />
+      <ButtonTop />
     </div>
   );
 }

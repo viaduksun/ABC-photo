@@ -1,6 +1,8 @@
-/* eslint-disable max-len */
 /* eslint-disable no-debugger */
-/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
+// /* eslint-disable max-len */
+// /* eslint-disable no-debugger */
+// /* eslint-disable no-unused-vars */
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HeaderSlider from '../components/HeaderSlider/HeaderSlider';
@@ -15,15 +17,13 @@ const Home = () => {
   useEffect(() => {
     dispatch(axiosPopularModels());
   }, [dispatch]);
-
-  const popularModels = useSelector((state) => state.popularModelsPage.popularModels);
+  const popularModels = useSelector((state) => state.popularModelsPage.popularModels.products);
   const isLoadingPopularModels = useSelector((state) => state.popularModelsPage.isLoadingPopularModels);
   return (
     <>
       <HeaderSlider />
-      {/* {!isLoadingPopularModels
-      && <PopularModelsSlider popularModels={popularModels} />} */}
-      <PopularModelsSlider popularModels={popularModels} />
+      { (!isLoadingPopularModels
+      && (popularModels.length === 0 ? <Loader /> : <PopularModelsSlider popularModels={popularModels} />))}
       <DiscountSlider />
     </>
   );

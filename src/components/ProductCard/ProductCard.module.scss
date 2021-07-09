@@ -1,13 +1,126 @@
+// .ProductCard {
+//   max-width: 280px;
+//   padding: 10px;
+//   background-color: #fff;
+//   position: relative;
+//   &:hover {
+//     box-shadow: 0px 0px 5px 0.5px #51ad33;
+//   }
+// }
+// .ProductCardImg {
+//   padding: 30px 10px;
+//   background-color: #fff;
+//   text-align: center;
+//   position: relative;
+//   img {
+//     max-width: 200px;
+//   }
+// }
+// .ProductCardImgHitSale {
+//   position: absolute;
+//   top: -5px;
+//   left: 0;
+//   background-color: #51ad33;
+//   padding: 4px 20px;
+//   font-size: 12px;
+//   line-height: 20px;
+//   font-weight: 500;
+//   color: #fff;
+//   text-transform: uppercase;
+//   font-family: 'Roboto', sans-serif;
+// }
+
+// .ProductCardName {
+//   font-family: 'Roboto', sans-serif;
+//   font-weight: bolder;
+//   font-size: 16px;
+//   line-height: 20px;
+//   color: #000000;
+//   padding: 8px 0;
+//   height: 55px;
+// }
+// .ProductCardPriceAndIconCart {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
+// .ProductCardOldPrice {
+//   font-size: 14px;
+//   line-height: 16px;
+//   font-family: 'Roboto', sans-serif;
+//   color: #677283;
+//   text-decoration: line-through;
+// }
+// .ProductCardNewPrice {
+//   font-size: 21px;
+//   line-height: 35px;
+//   font-weight: 700;
+//   color: #e91e49;
+// }
+// .ProductCardPrice {
+//   font-size: 21px;
+//   line-height: 27px;
+//   font-weight: 700;
+//   color: #000;
+// }
+// .ProductCardIconCart {
+//   padding: 5px;
+//   color: #51ad33;
+//   font-size: 24px;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   position: relative;
+//   transition: 0.5s ease;
+//   &:hover {
+//     background-color: red;
+//   }
+// }
+// .ProductCard:hover .ProductCardIconCart {
+//   transition: 0.5s ease;
+//   background-color: #51ad33;
+//   color: #fff;
+//   &:hover {
+//     background-color: #368E1A;
+//   }
+// }
+// .ProductCardInStock,
+// .ProductCardIsExpected {
+//   font-size: 14px;
+//   line-height: 16px;
+//   font-family: 'Roboto', sans-serif;
+// }
+// .ProductCardIsExpected {
+//   color: #e91e49;
+// }
+// .ProductCardInStock {
+//   color: #51ad33;
+// }
+// .ProductCardInfo {
+//   margin-top: 22px;
+//   font-size: 12px;
+//   line-height: 18px;
+//   font-family: 'Roboto', sans-serif;
+//   padding: 10px;
+//   display: none;
+//   transition: 0.5s ease;
+// }
+// .ProductCard:hover .ProductCardInfo {
+//   position: absolute;
+//   display: block;
+//   max-width: 280px;
+//   z-index: 100;
+//   box-shadow: 0px 5px 5px 0.5px #51ad33;
+//   top: 380px;
+//   left: 0px;
+//   background-color: #fff;
+// }
 .ProductCard {
   max-width: 280px;
-  height: 420px;
   padding: 10px;
   background-color: #fff;
-  transition: all 0.5s ease;
+  position: relative;
   &:hover {
-    transition: all 0.5s ease;
     box-shadow: 0px 0px 5px 0.5px #51ad33;
-    height: 700px;
   }
 }
 .ProductCardImg {
@@ -40,6 +153,7 @@
   line-height: 20px;
   color: #000000;
   padding: 8px 0;
+  height: 55px;
 }
 .ProductCardPriceAndIconCart {
   display: flex;
@@ -102,11 +216,17 @@
   font-size: 12px;
   line-height: 18px;
   font-family: 'Roboto', sans-serif;
-  visibility: hidden;
-  opacity: 0;
+  padding: 10px;
+  display: none;
   transition: 0.5s ease;
 }
 .ProductCard:hover .ProductCardInfo {
-  visibility: visible;
-  opacity: 1;
+  position: absolute;
+  display: block;
+  max-width: 280px;
+  z-index: 100;
+  box-shadow: 0px 5px 5px 0.5px #51ad33;
+  top: 380px;
+  left: 0px;
+  background-color: #fff;
 }

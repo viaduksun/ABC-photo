@@ -30,8 +30,8 @@ const menuItems = [
     id: 6
   },
   {
-    menuTitle: 'api-test',
-    pageURL: '/api-test',
+    menuTitle: 'Admin panel',
+    pageURL: '/admin',
     id: 7
   },
 ];

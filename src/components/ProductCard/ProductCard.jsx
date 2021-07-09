@@ -8,7 +8,7 @@ import styles from './ProductCard.module.scss';
 // import cardProduct from '../../assets/img/CardProduct/cardProduct.png';
 
 const ProductCard = ({product}) => {
-  console.log(product);
+  if (!product) return null;
   return (
     <div className={styles.ProductCard}>
       <Link to="/single-product">
@@ -47,7 +47,7 @@ const ProductCard = ({product}) => {
       </div>
       <div className={styles.ProductCardInfo}>
         <p>
-          {product.description}
+          {product.description ? `${product.description.split(' ').slice(0, 40).join(' ')}...` : null}
         </p>
       </div>
     </div>
