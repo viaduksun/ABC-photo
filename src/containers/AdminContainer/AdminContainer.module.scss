@@ -1,0 +1,21 @@
+.AdminContainer {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.AdminWrapper {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  flex: 1 1 auto;
+}
+.Title {
+  margin-bottom: 20px;
+}
+.Content {
+  flex: 1 1 75%;
+  background: rgb(149, 149, 149);
+  display: flex;
+  justify-content: center;
+}
