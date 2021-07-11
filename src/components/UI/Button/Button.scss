@@ -1,58 +1,90 @@
 .Button {
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 3px;
-    transition: 0.1s ease-in;
-    &_cart_green {
-      font-size: 16px;
-      line-height: 27px;
-      padding: 10px 54px;
-      text-transform: uppercase;
-      background-color: #51ad33;
-      &:hover {
-        background-color: #368E1A;
-      }
-      @media (max-width: 768px) {
-        padding: 10px 40px;
-      }
-      @media (max-width: 540px) {
-        font-size: 14px;
-        line-height: 22px;
-        padding: 5px 20px;
-      }
-      @media (max-width: 540px) {
-        font-size: 14px;
-        line-height: 22px;
-        padding: 5px 20px;
-        margin-right: 15px;
-      }
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 3px;
+  transition: 0.1s ease-in;
+  &_cart_green {
+    font-size: 16px;
+    line-height: 27px;
+    padding: 10px 54px;
+    text-transform: uppercase;
+    background-color: #51ad33;
+    &:hover {
+      background-color: #368e1a;
     }
-    &_cart_grey {
-      font-size: 16px;
-      line-height: 27px;
-      padding: 10px 26px;
-      text-transform: uppercase;
-      background-color: #98A1AF;
-      &:hover {
-        background-color: #677283;
-      }
-      @media (max-width: 540px) {
-        font-size: 12px;
-        line-height: 22px;
-        padding: 5px 10px;
-      }
+    @media (max-width: 768px) {
+      padding: 10px 40px;
     }
-    &_ordering_confirm {
-      font-size: 16px;
-      line-height: 27px;
-      padding: 10px 96px;
-      text-transform: uppercase;
-      background-color: #51AD33;
-      &:hover {
-        background-color: #368E1A;
-      }
-      @media (max-width: 480px) {
-        padding: 10px 50px;
-      }
+    @media (max-width: 540px) {
+      font-size: 14px;
+      line-height: 22px;
+      padding: 5px 20px;
     }
+    @media (max-width: 540px) {
+      font-size: 14px;
+      line-height: 22px;
+      padding: 5px 20px;
+      margin-right: 15px;
+    }
+  }
+  &_cart_grey {
+    font-size: 16px;
+    line-height: 27px;
+    padding: 10px 26px;
+    text-transform: uppercase;
+    background-color: #98a1af;
+    &:hover {
+      background-color: #677283;
+    }
+    @media (max-width: 540px) {
+      font-size: 12px;
+      line-height: 22px;
+      padding: 5px 10px;
+    }
+  }
+  &_ordering_confirm {
+    font-size: 16px;
+    line-height: 27px;
+    padding: 10px 96px;
+    text-transform: uppercase;
+    background-color: #51ad33;
+    &:hover {
+      background-color: #368e1a;
+    }
+    @media (max-width: 480px) {
+      padding: 10px 50px;
+    }
+  }
+  &_admin-edit {
+    font-size: 14px;
+    line-height: 14px;
+    padding: 7px 15px;
+    text-transform: uppercase;
+    background-color: #525252;
+    &:hover {
+      background-color: #333333;
+    }
+  }
+  &_admin-delete {
+    font-size: 14px;
+    line-height: 14px;
+    padding: 7px 15px;
+    text-transform: uppercase;
+    background-color: #ff0000;
+    margin-left: 10px;
+    &:hover {
+      background-color: #c00000;
+    }
+  }
+  &_admin-cancel {
+    font-size: 14px;
+    line-height: 14px;
+    padding: 7px 15px;
+    text-transform: uppercase;
+    background-color: #ff0000;
+    margin-left: 10px;
+    &:hover {
+      background-color: #c00000;
+    }
+  }
 }

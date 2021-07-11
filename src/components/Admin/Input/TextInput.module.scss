@@ -23,20 +23,21 @@
   border: 1px solid rgb(175, 175, 175);
   height: 40px;
   padding: 10px;
-
   border-radius: 3px;
+  transition: all 0.2s ease 0s;
 }
 .isInvalid {
-  background: rgb(255, 181, 181);
+  background: rgb(255, 223, 223);
+  border: 1px solid rgb(255, 82, 82);
 }
 .Valid {
   border: 1px solid rgb(0, 167, 28);
-  background: rgb(178, 255, 182);
+  background: rgb(196, 255, 199);
 }
 .textInputError {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 8px;
+  bottom: 15px;
   color: rgb(255, 0, 0);
   font-size: 12px;
 }

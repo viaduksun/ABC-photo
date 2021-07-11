@@ -12,13 +12,12 @@
   font-size: 18px;
   font-weight: bold;
 }
-.form-name {
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-}
 .inputWrapper {
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
+}
+.form-btn-group {
+  display: flex;
+  justify-content: center;
 }
