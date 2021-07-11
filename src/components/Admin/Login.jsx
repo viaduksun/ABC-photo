@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/button-has-type */
 /* eslint-disable operator-linebreak */
 /* eslint-disable object-curly-newline */
@@ -49,7 +50,7 @@ const Login = () => {
           password: '',
         }}
         onSubmit={handleLogin}
-        validationSchema={loginSchema}
+        // validationSchema={loginSchema}
       >
         {(formik) => (
           <Form className="cart-form">

@@ -5,7 +5,7 @@ const initialState = {
   clickedProduct: '',
 };
 
-export const modalsReducer = (state = initialState, action) => {
+export const modals = (state = initialState, action) => {
   switch (action.type) {
     case EDIT_PRODUCT_MODAL_OPEN:
       console.log(action.payload);

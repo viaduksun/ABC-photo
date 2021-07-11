@@ -61,8 +61,8 @@ export const product02 = {
 };
 export const product03 = {
 
-  brand: 'canon',
-  name: 'Фотоаппарат CANON EOS M100 15-45 RUK (CSC) Black',
+  brand: 'canon_TEST',
+  name: 'TEST_Фотоаппарат CANON EOS M100 15-45 RUK (CSC) Black',
   quantity: 12,
   artical: 1231245,
   hitSale: 'да',
