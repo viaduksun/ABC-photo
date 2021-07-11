@@ -1,0 +1,33 @@
+.ProductsWrapper {
+  width: 100%;
+}
+.ProductWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  // border: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.preview {
+  height: 40px;
+  margin-right: 20px;
+  img {
+    height: 100%;
+  }
+}
+.number {
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.title {
+  flex: 1 1 auto;
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}

@@ -5,6 +5,7 @@
   flex-direction: column;
 }
 .AdminWrapper {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   height: 100%;
@@ -15,7 +16,8 @@
 }
 .Content {
   flex: 1 1 75%;
-  background: rgb(149, 149, 149);
+  // background: rgb(149, 149, 149);
   display: flex;
   justify-content: center;
+  margin-left: 10px;
 }

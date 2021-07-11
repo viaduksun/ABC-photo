@@ -6,7 +6,6 @@ import styles from './SideNavBar.module.scss';
 const SideNavBar = ({ handleActive }) => {
   const [isActive, setIsActive] = useState('register');
   const handleClick = (activeBtn) => {
-    console.log(activeBtn);
     setIsActive(activeBtn);
     handleActive(activeBtn);
   };
@@ -21,6 +20,10 @@ const SideNavBar = ({ handleActive }) => {
   const catalogBtn = classNames({
     [styles.AdminBtn]: true,
     [styles.AdminBtn_active]: isActive === 'catalog',
+  });
+  const createProductBtn = classNames({
+    [styles.AdminBtn]: true,
+    [styles.AdminBtn_active]: isActive === 'create',
   });
   const productsBtn = classNames({
     [styles.AdminBtn]: true,
@@ -48,6 +51,13 @@ const SideNavBar = ({ handleActive }) => {
         onClick={() => handleClick('catalog')}
       >
         Cateories/ catalog
+      </button>
+      <button
+        type="button"
+        className={createProductBtn}
+        onClick={() => handleClick('create')}
+      >
+        Create product
       </button>
       <button
         type="button"

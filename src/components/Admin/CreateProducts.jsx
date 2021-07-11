@@ -8,16 +8,14 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import createProduct from '../../api/createProduct';
 import TextInput from './Input/TextInput';
-import Textarea from './Textarea/Textarea';
-// import { validateRegister } from '../validations/registerValidation';
 import { sony02 } from '../../Data/products';
 import FormikControl from './FormikControl';
 
-const Products = () => {
-  const handleCreateProduct2 = () => {
-    console.log('CREATE');
-    createProduct(sony02);
-  };
+const CreateProducts = () => {
+  // const handleCreateProduct2 = () => {
+  //   console.log('CREATE');
+  //   createProduct(sony02);
+  // };
   const handleCreateProduct = (values, { setSubmitting }) => {
     console.log(values);
     const {
@@ -209,6 +207,7 @@ const Products = () => {
                 control="textarea"
                 label="Описание"
                 name="description"
+                type="text"
               />
 
               <TextInput
@@ -247,4 +246,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default CreateProducts;
