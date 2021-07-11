@@ -1,0 +1,114 @@
+.CartBlock {
+    max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  .Title {
+    font-size: 26px;
+    line-height: 27px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    @media (max-width: 768px) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+    @media (max-width: 768px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+  .Cart {
+    margin-top: 31px;
+  }
+  .CartHeader {
+    display: grid;
+    grid-template-columns: 350px 1fr 1fr 1fr 1fr;
+    background-color: #f7f5f6;
+    padding: 15px 10px 15px 0px;
+    li {
+      text-align: center;
+    }
+    @media (max-width: 1024px) {
+      grid-template-columns: 270px 1fr 1fr 1fr 80px;
+    }
+    @media (max-width: 768px) {
+      grid-template-columns: 200px 1fr 1fr 1fr 80px;
+    }
+    @media (max-width: 620px) {
+      grid-template-columns: 150px 1fr 1fr 1fr 25px;
+    }
+    @media (max-width: 480px) {
+      grid-template-columns: 120px 1fr 1fr 1fr 30px;
+    }
+    @media (max-width: 400px) {
+      grid-template-columns: 90px 1fr 1fr 1fr 20px;
+    }
+    li {
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: 500;
+      font-family: 'Roboto', sans-serif;
+      @media (max-width: 540px) {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+  }
+  
+  .CartFooter {
+    margin-top: 63px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 1024px) {
+      align-items: flex-end;
+      margin-top: 0px;
+    }
+  }
+  .CartFooterLeft {
+    @media (max-width: 480px) {
+      order: 1;
+    }
+  }
+  .CartFooterRight {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 1024px) {
+      display: block;
+    }
+    @media (max-width: 768px) {
+     text-align: right;
+    }
+  }
+  .CartFooterRightText {
+    font-size: 16px;
+    line-height: 28px;
+    font-family: 'Roboto', sans-serif;
+    margin-right: 16px;
+    span {
+      font-weight: 700;
+    }
+    @media (max-width: 480px) {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+  .CartFooterRightPrice {
+    font-size: 21px;
+    line-height: 41px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    margin-right: 16px;
+    @media (max-width: 480px) {
+      font-size: 14px;
+      line-height: 22px;
+    }
+    span {
+      font-size: 16px;
+      line-height: 18px;
+      font-weight: 400;
+    }
+  }
+  

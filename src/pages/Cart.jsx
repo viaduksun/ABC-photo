@@ -1,12 +1,12 @@
 import React from 'react';
 import Breadcrumbs from '../containers/Breadcrumbs/Breadcrumbs';
+import CartContainer from '../containers/DiscountSlider/CartContainer/CartContainer';
 import SimilarProductsSlider from '../containers/SimilarProductsSlider/SimilarProductsSlider';
-import CartBlock from '../components/CartBlock/CartBlock';
 
 const Cart = () => (
   <>
     <Breadcrumbs />
-    <CartBlock />
+    <CartContainer />
     <SimilarProductsSlider />
   </>
 );

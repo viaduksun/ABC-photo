@@ -1,0 +1,110 @@
+.CartMainItem {
+  margin-top: 31px;
+  display: grid;
+  grid-template-columns: 350px 1fr 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  @media (max-width: 1024px) {
+    padding-left: 10px;
+    grid-template-columns: 270px 1fr 1fr 1fr 80px;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 200px 1fr 1fr 1fr 80px;
+  }
+  @media (max-width: 620px) {
+    grid-template-columns: 150px 1fr 1fr 1fr 50px;
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: 120px 1fr 1fr 1fr 30px;
+  }
+  @media (max-width: 400px) {
+    grid-template-columns: 90px 1fr 1fr 1fr 30px;
+  }
+}
+.CartMainItemProduct {
+  display: flex;
+  align-items: center;
+  @media (max-width: 1024px) {
+    display: block;
+  }
+}
+.CartMainItemProductImg {
+  max-width: 120px;
+  padding: 5px;
+  background-color: #f7f5f6;
+  margin-right: 20px;
+  img {
+    max-width: 100px;
+    @media (max-width: 480px) {
+      max-width: 80px;
+    }
+  }
+}
+.CartMainItemProductContent {
+  max-width: 127px;
+  margin-left: 19px;
+  @media (max-width: 1024px) {
+    margin-left: 0;
+  }
+  @media (max-width: 480px) {
+    max-width: 100px;
+  }
+}
+.CartMainItemProductTitle {
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  @media (max-width: 480px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+.CartMainItemProductCode {
+  font-size: 14px;
+  line-height: 22px;
+  color: #d3d4d7;
+  @media (max-width: 480px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+.CartMainItemPrice,
+.CartMainItemTotal {
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  @media (max-width: 480px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+.CartMainItemAmount {
+  display: flex;
+  justify-content: center;
+}
+.CartMainItemAmountMinus,
+.CartMainItemAmountNumbers,
+.CartMainItemAmountPlus {
+  background-color: #f7f5f6;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  @media (max-width: 480px) {
+    padding: 3px 7px;
+    font-size: 12px;
+    line-height: 24px;
+  }
+}
+.CartMainItemBtnClose {
+  font-size: 30px;
+  font-weight: 700;
+  color: #a0a0a0;
+  cursor: pointer;
+}
+
+
