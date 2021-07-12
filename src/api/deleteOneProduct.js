@@ -30,10 +30,7 @@ const deleteOneProduct = (itemNo) => {
       headers,
     }).then((res) => {
       /* Do something with product */
-      console.log('DELETE', res);
-      alert('Product deleted');
     })
-
     .catch((err) => {
       /* Do something with error, e.g. show error to user */
       console.log(err.message);

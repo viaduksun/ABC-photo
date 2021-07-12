@@ -1,8 +1,9 @@
 import React from 'react';
+import CreateCategoryForm from './CreateCategoryForm';
 
 const Categories = () => (
   <div>
-    <h1>Categories</h1>
+    <CreateCategoryForm />
   </div>
 );
 
