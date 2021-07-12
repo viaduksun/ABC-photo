@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -17,7 +18,7 @@ const ProductCard = ({product}) => {
   const dispatch = useDispatch();
   if (!product) return null;
 
-  const addProductTocart = () => {
+  const addProductToCartHandler = () => {
     console.log('Click');
     dispatch(addProductToCartAction(product));
   };
@@ -63,7 +64,7 @@ const ProductCard = ({product}) => {
             ? <span className={styles.ProductCardInStock}>в наличии</span>
           : <span className={styles.ProductCardIsExpected}>ожидается</span>}
         </p>
-        <div className={styles.ProductCardIconCart} onClick={addProductTocart}><BiCart /></div>
+        <div className={styles.ProductCardIconCart} onClick={addProductToCartHandler}><BiCart /></div>
       </div>
       <div className={styles.ProductCardInfo}>
         <p>
