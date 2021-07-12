@@ -6,40 +6,52 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import getProducts from '../../../api/getProducts';
 import getOneProduct from '../../../api/getOneProduct';
+import deleteOneProduct from '../../../api/deleteOneProduct';
 import styles from './Products.module.scss';
 import Button from '../../UI/Button/Button';
 import Loader from '../../UI/Loader/Loader';
 import Modal from '../../Modal/Modal';
+import { editProductModalOpen } from '../../../store/madals/actions';
 import {
-  editProductModalOpen,
-  getOneProductAxios,
-} from '../../../store/madals/actions';
+  adminProducts,
+  removeProduct,
+  modalDeleteOpen,
+} from '../../../store/admin/actions';
 import EditProduct from '../EditProduct';
 
 const Products = () => {
-  const [isLoadig, setIsLoadig] = useState(true);
-  const [productsArr, setProductsArr] = useState([]);
-  const [editModal, setEditModal] = useState(false);
-  const [currentProduct, setcurrentProduct] = useState('');
-
   const dispatch = useDispatch();
-  const isEditProductOpen = useSelector(
-    (state) => state.modalsReducer.isEditProductModalOpen
-  );
-
   useEffect(() => {
-    getProducts().then((products) => {
-      setProductsArr(products.data);
-      setIsLoadig(false);
-    });
-  }, [productsArr]);
+    dispatch(adminProducts());
+  }, [dispatch]);
+
+  const isEditProductOpen = useSelector(
+    (state) => state.modals.isEditProductModalOpen
+  );
+  const productsArr = useSelector((state) => state.admin.products);
+  const isModalRemoveProductOpen = useSelector(
+    (state) => state.admin.isModalRemoveProductOpen
+  );
+  const isLoadingProducts = useSelector(
+    (state) => state.admin.isLoadingProducts
+  );
   const handleEdit = (product) => {
     console.log('Edit', product);
-    setcurrentProduct(product);
+
     // const clickedProduct = e.target.parentElement.getAttribute('data-id');
     // setEditModal(true);
     dispatch(editProductModalOpen(product));
     // dispatch(getOneProductAxios(clickedProduct));
+  };
+  const handleDelete = (product) => {
+    console.log('DEL-FUNCTION');
+    console.log(product.itemNo);
+    deleteOneProduct(product.itemNo);
+    dispatch(removeProduct(product));
+  };
+  const handleModalDelete = () => {
+    console.log('modal delete');
+    dispatch(modalDeleteOpen());
   };
   const handleModal = () => {
     console.log('Modal');
@@ -54,14 +66,24 @@ const Products = () => {
       </Button>
     </>
   );
+  const btnRemoveProductModal = (
+    <>
+      <Button onClick={handleDelete} type="admin-edit">
+        Delete
+      </Button>
+      <Button onClick={handleModal} type="admin-cancel">
+        Cancel
+      </Button>
+    </>
+  );
   return (
     <div className={styles.ProductsWrapper}>
-      {isLoadig && (
+      {isLoadingProducts && (
         <div className={styles.loader}>
           <Loader />
         </div>
       )}
-      {!isLoadig &&
+      {!isLoadingProducts &&
         productsArr.map((product, index) => (
           <div key={product._id} className={styles.ProductWrapper}>
             <span className={styles.number}>{index + 1}</span>
@@ -78,12 +100,7 @@ const Products = () => {
               >
                 Edit
               </Button>
-              <Button
-                onClick={(e) => {
-                  handleEdit(e);
-                }}
-                type="admin-delete"
-              >
+              <Button onClick={handleModalDelete} type="admin-delete">
                 Delete
               </Button>
             </div>
@@ -91,6 +108,13 @@ const Products = () => {
         ))}
       {isEditProductOpen && (
         <Modal title="Edit" body={<EditProduct />} btnBlock={btnBlock} />
+      )}
+      {isModalRemoveProductOpen && (
+        <Modal
+          title="Delete"
+          body="A you sure?"
+          btnBlock={btnRemoveProductModal}
+        />
       )}
     </div>
   );

@@ -7,15 +7,16 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import createProduct from '../../api/createProduct';
+import createProductLocalHost5000 from '../../api/createProductLocalHost5000';
 import TextInput from './Input/TextInput';
 import { sony02 } from '../../Data/products';
 import FormikControl from './FormikControl';
 
 const CreateProducts = () => {
-  // const handleCreateProduct2 = () => {
-  //   console.log('CREATE');
-  //   createProduct(sony02);
-  // };
+  const handleCreateProduct2 = () => {
+    console.log('CREATE2');
+    createProductLocalHost5000();
+  };
   const handleCreateProduct = (values, { setSubmitting }) => {
     console.log(values);
     const {
@@ -132,8 +133,8 @@ const CreateProducts = () => {
           imageUrl03: '',
           imageUrl04: '',
         }}
-        onSubmit={handleCreateProduct}
-        validationSchema={productSchema}
+        onSubmit={handleCreateProduct2}
+        // validationSchema={productSchema}
       >
         {(formik) => (
           <Form className="product-form">
