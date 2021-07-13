@@ -13,4 +13,5 @@ export const editProductModalOpen = (product) => ({
 });
 export const editProductModalClose = () => ({
   type: EDIT_PRODUCT_MODAL_CLOSE,
+
 });

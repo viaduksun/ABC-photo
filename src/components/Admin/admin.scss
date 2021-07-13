@@ -2,9 +2,9 @@
   background: rgb(230, 230, 230);
   width: 600px;
   padding: 30px;
-  margin: 20px;
+  // margin: 20px; мешает в модалке!!!
   &.create {
-    width: 100%;
+    min-width: 100%;
   }
 }
 .form-name {

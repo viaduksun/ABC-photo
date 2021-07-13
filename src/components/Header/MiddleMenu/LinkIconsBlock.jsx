@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdShoppingCart } from 'react-icons/md';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
 import styles from './MiddleMenu.module.scss';
 
 export default function LoginIcon() {
+  const cartCounter = useSelector((state) => state.cart.cart.length);
   return (
     <div className={styles.HeaderlinksBlockWrapper}>
       <div>
@@ -24,6 +26,7 @@ export default function LoginIcon() {
             />
           </div>
           <p className={styles.HeaderIconText}>Корзина</p>
+          {cartCounter !== 0 && <p className={styles.HeaderCartCounter}>{cartCounter}</p>}
         </Link>
       </div>
     </div>

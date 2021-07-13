@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 const dropdownsContent = [
         {
-                categoryId: 1,
+                categoryId: 'cameras',
                 dropContent: [
                         {
                                 title: 'Фотоаппараты',
@@ -63,7 +63,7 @@ const dropdownsContent = [
 
         },
         {
-                categoryId: 2,
+                categoryId: 'lenses',
                 dropContent: [
                         {
                                 title: 'Оптика для фото 1',
@@ -88,7 +88,7 @@ const dropdownsContent = [
                 ]
         },
         {
-                categoryId: 3,
+                categoryId: 'accessories',
                 dropContent: [
                         {
                                 title: 'Аксессуары 1',
@@ -118,7 +118,7 @@ const dropdownsContent = [
                 ]
         },
         {
-                categoryId: 4,
+                categoryId: 'covers',
                 dropContent: [
                         {
                                 title: 'Чехлы-1',
@@ -138,7 +138,7 @@ const dropdownsContent = [
                 ]
         },
         {
-                categoryId: 5,
+                categoryId: 'equipment',
                 dropContent: [
                         {
                                 title: 'Оборудование 1',

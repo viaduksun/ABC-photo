@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-debugger */
@@ -7,29 +8,24 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, useFormikContext } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import editProductApi from '../../api/editProduct';
 import TextInput from './Input/TextInput';
 import FormikControl from './FormikControl';
 import { editProductModalClose } from '../../store/madals/actions';
+import Button from '../UI/Button/Button';
+import { editProduct } from '../../store/admin/actions';
 
-const EditProduct = () => {
-  const currentProduct = useSelector(
-    (state) => state.modalsReducer.clickedProduct
-  );
+const EditProduct = ({ product }) => {
+  const formik = useFormikContext();
   const dispatch = useDispatch();
-  const productId = currentProduct._id;
+  const productId = product._id;
 
-  // useEffect(() => {
-  //   getOneProduct(currentProduct);
-  // }, [currentProduct]);
-  const handleModalClose = () => {
-    dispatch(editProductModalClose());
-  };
   const handleEditProduct = (values, { setSubmitting }) => {
     const {
+      _id,
       brand,
       name,
       currentPrice,
@@ -58,6 +54,7 @@ const EditProduct = () => {
     } = values;
     setSubmitting(true);
     const newProduct = {
+      _id,
       brand,
       name,
       currentPrice,
@@ -85,6 +82,7 @@ const EditProduct = () => {
     console.log(newProduct);
     setSubmitting(false);
     dispatch(editProductModalClose());
+    dispatch(editProduct(newProduct));
   };
   const productSchema = Yup.object().shape({
     brand: Yup.string().required('Is required'),
@@ -117,31 +115,32 @@ const EditProduct = () => {
     <div className="formBlock create">
       <Formik
         initialValues={{
-          brand: currentProduct.brand,
-          name: currentProduct.name,
-          set: currentProduct.set,
-          currentPrice: currentProduct.currentPrice,
-          previousPrice: currentProduct.previousPrice,
-          quantity: currentProduct.quantity,
-          artical: currentProduct.artical,
-          hitSale: currentProduct.hitSale,
-          categories: currentProduct.categories,
-          waranty: currentProduct.waranty,
-          type: currentProduct.type,
-          megapixels: currentProduct.megapixels,
-          matrixType: currentProduct.matrixType,
-          matrixSize: currentProduct.matrixSize,
-          screenDiagonal: currentProduct.screenDiagonal,
-          sensorScreen: currentProduct.sensorScreen,
-          digitalMagnification: currentProduct.digitalMagnification,
-          stabilization: currentProduct.stabilization,
-          opticalMagnification: currentProduct.opticalMagnification,
-          focusDistance: currentProduct.focusDistance,
-          description: currentProduct.description,
-          imageUrl01: currentProduct.imageUrls[0],
-          imageUrl02: currentProduct.imageUrls[1],
-          imageUrl03: currentProduct.imageUrls[2],
-          imageUrl04: currentProduct.imageUrls[3],
+          _id: product._id,
+          brand: product.brand,
+          name: product.name,
+          set: product.set,
+          currentPrice: product.currentPrice,
+          previousPrice: product.previousPrice,
+          quantity: product.quantity,
+          artical: product.artical,
+          hitSale: product.hitSale,
+          categories: product.categories,
+          waranty: product.waranty,
+          type: product.type,
+          megapixels: product.megapixels,
+          matrixType: product.matrixType,
+          matrixSize: product.matrixSize,
+          screenDiagonal: product.screenDiagonal,
+          sensorScreen: product.sensorScreen,
+          digitalMagnification: product.digitalMagnification,
+          stabilization: product.stabilization,
+          opticalMagnification: product.opticalMagnification,
+          focusDistance: product.focusDistance,
+          description: product.description,
+          imageUrl01: product.imageUrls[0],
+          imageUrl02: product.imageUrls[1],
+          imageUrl03: product.imageUrls[2],
+          imageUrl04: product.imageUrls[3],
         }}
         onSubmit={handleEditProduct}
         validationSchema={productSchema}
@@ -149,6 +148,7 @@ const EditProduct = () => {
         {(formik) => (
           <Form className="product-form">
             <div className="product-inputs-area">
+              <TextInput label="" name="_id" type="hidden" />
               <TextInput label="Производитель" name="brand" type="text" />
               <TextInput label="Модель" name="name" type="text" />
               <TextInput
@@ -243,9 +243,12 @@ const EditProduct = () => {
               />
             </div>
             <div className="form-btn-group">
-              <button type="submit" className="btn cart-body-order">
+              <Button type="submit" addClass="admin-edit">
                 Apply changes
-              </button>
+              </Button>
+              {/* <button type="submit" className="btn admin-edit">
+                Apply changes
+              </button> */}
             </div>
           </Form>
         )}
