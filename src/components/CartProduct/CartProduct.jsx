@@ -3,30 +3,23 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { MdClose } from 'react-icons/md';
 // eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteProductFromCartAction } from '../../store/cart/actions';
+import { cartDecrementAction, cartIncrementAction, deleteProductFromCartAction } from '../../store/cart/actions';
 import styles from './CartProduct.module.scss';
 
 const CartProduct = ({cartProduct}) => {
   const dispatch = useDispatch();
   const deleteProductFromCartHandler = () => {
-    console.log(cartProduct._id);
     dispatch(deleteProductFromCartAction(cartProduct._id));
   };
-
-  const [counter, setCounter] = useState(1);
-
   const incrementHandler = () => {
-      setCounter(counter + 1);
+      dispatch(cartIncrementAction(cartProduct._id));
   };
   const decrementtHandler = () => {
-    setCounter(counter - 1);
-    if (counter <= 1) {
-      deleteProductFromCartHandler();
-    }
+    dispatch(cartDecrementAction(cartProduct._id));
   };
 
   return (
@@ -53,11 +46,11 @@ const CartProduct = ({cartProduct}) => {
       </div>
       <div className={styles.CartMainItemAmount}>
         <div className={styles.CartMainItemAmountMinus} onClick={decrementtHandler}>-</div>
-        <div className={styles.CartMainItemAmountNumbers}>{counter}</div>
+        <div className={styles.CartMainItemAmountNumbers}>{cartProduct.count}</div>
         <div className={styles.CartMainItemAmountPlus} onClick={incrementHandler}>+</div>
       </div>
       <div className={styles.CartMainItemTotal}>
-        {cartProduct.currentPrice * counter}
+        {cartProduct.currentPrice * cartProduct.count}
         {' '}
         грн
       </div>

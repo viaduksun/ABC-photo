@@ -12,18 +12,22 @@ import { BiCart } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 import styles from './ProductCard.module.scss';
 import { addProductToCartAction } from '../../store/cart/actions';
-// import cardProduct from '../../assets/img/CardProduct/cardProduct.png';
+import { setFlagInCartAction } from '../../store/products/actions';
 
 const ProductCard = ({product}) => {
   const dispatch = useDispatch();
   if (!product) return null;
 
   const addProductToCartHandler = () => {
-    console.log('Click');
     dispatch(addProductToCartAction(product));
+    dispatch(setFlagInCartAction(product));
+  };
+
+  const addSingleProductHandler = () => {
+    console.log('Click');
   };
   return (
-    <div className={styles.ProductCard}>
+    <div className={styles.ProductCard} onClick={addSingleProductHandler}>
       <Link to="/single-product">
         <div className={styles.ProductCardImg}>
           <img src={product.imageUrls[0]} alt={product.imageUrls[0]} />
@@ -65,6 +69,7 @@ const ProductCard = ({product}) => {
           : <span className={styles.ProductCardIsExpected}>ожидается</span>}
         </p>
         <div className={styles.ProductCardIconCart} onClick={addProductToCartHandler}><BiCart /></div>
+        <div>{product.inCart && <p>In cart</p>}</div>
       </div>
       <div className={styles.ProductCardInfo}>
         <p>

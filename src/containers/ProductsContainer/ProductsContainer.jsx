@@ -20,8 +20,8 @@ const ProductsContainer = () => {
     dispatch(axiosProducts());
   }, [dispatch]);
   const products = useSelector((state) => state.productsPage.products);
-  const isLoadingProducts = useSelector((state) => state.productsPage.isLoadingProducts);
   console.log(products);
+  const isLoadingProducts = useSelector((state) => state.productsPage.isLoadingProducts);
 
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
