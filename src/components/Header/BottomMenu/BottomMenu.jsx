@@ -5,33 +5,43 @@
 import React, { useEffect, useState } from 'react';
 import { MdViewHeadline, MdShoppingCart } from 'react-icons/md';
 
+import { useDispatch, useSelector } from 'react-redux';
 import MenuItems from '../../../Data/buttomMenuItems';
 import getCatalog from '../../../api/getCatalog';
 import SearchForm from '../SearchForm/SearchForm';
 import BottomMenuLink from './BottomMenuLink';
 import styles from './BottomMenu.module.scss';
+import { setCatalog } from '../../../store/admin/actions';
 
 const BottomMenu = ({ toggleMenu }) => {
-  const [catalog, setCatalog] = useState([]);
+  // const [catalog, setCatalog] = useState([]);
+  const dispatch = useDispatch();
   useEffect(() => {
-    getCatalog().then((res) => {
-      console.log(res);
-      setCatalog(res.data);
-    });
-  }, []);
+    dispatch(setCatalog());
+    // getCatalog().then((res) => {
+    //   console.log(res);
+    //   setCatalog(res.data);
+    // });
+  }, [dispatch]);
+  const catalog = useSelector((state) => state.admin.catalog);
   return (
     <div className={styles.BottomMenu}>
       <div className="container">
         <div className={styles.BottomMenuWrapp}>
           <ul className={styles.BottomUl}>
-            {catalog.map((item) => (
-              <BottomMenuLink
-                id={item.id}
-                path="/products"
-                title={item.name}
-                key={item.id}
-              />
-            ))}
+            {catalog.map((item) => {
+              if (item.parentId === 'null') {
+                return (
+                  <BottomMenuLink
+                    parentId={item.name}
+                    path="/products"
+                    title={item.name}
+                    key={item.id}
+                  />
+                );
+              }
+              return null;
+            })}
           </ul>
           <div className={styles.mobiileMenuWrapper}>
             <div className={styles.cartIcon}>

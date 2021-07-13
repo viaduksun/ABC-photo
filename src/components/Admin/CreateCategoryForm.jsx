@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/button-has-type */
 /* eslint-disable operator-linebreak */
 /* eslint-disable object-curly-newline */
@@ -6,6 +7,7 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { useSelector } from 'react-redux';
 import createCategory from '../../api/createCategory';
 import createProductLocalHost5000 from '../../api/createProductLocalHost5000';
 import TextInput from './Input/TextInput';
@@ -17,17 +19,30 @@ const CreateCategoryForm = () => {
   //   console.log('CREATE2');
   //   createProductLocalHost5000();
   // };
+  const catalog = useSelector((state) => state.admin.catalog);
+  const optionCategoryNull = <option value="null">---</option>;
+  const optionsMainCategory = catalog.map((category) => {
+    if (category.parentId === 'null') {
+      return (
+        <option value={category.name} key={category.value}>
+          {category.name}
+        </option>
+      );
+    }
+    return null;
+  });
+  optionsMainCategory.push(optionCategoryNull);
   const handleCreateCategory = (values, { setSubmitting }) => {
     console.log(values);
-    const { id, name, parentId, imgUrl, description, level } = values;
+    const { id, name, path, parentId, imgUrl, description } = values;
     setSubmitting(true);
     const newCategory = {
       id,
       name,
+      path,
       parentId,
       imgUrl,
       description,
-      level,
     };
     createCategory(newCategory);
     console.log(newCategory);
@@ -39,7 +54,6 @@ const CreateCategoryForm = () => {
     parentId: Yup.string().required('Is required'),
     imgUrl: Yup.string().required('Is required'),
     description: Yup.string().required('Is required'),
-    level: Yup.string().required('Is required'),
   });
 
   return (
@@ -52,7 +66,6 @@ const CreateCategoryForm = () => {
           parentId: '',
           imgUrl: '',
           description: '',
-          level: '',
         }}
         onSubmit={handleCreateCategory}
         // validationSchema={productSchema}
@@ -63,9 +76,22 @@ const CreateCategoryForm = () => {
               <TextInput label="Идентификатор" name="id" type="text" />
               <TextInput label="Название" name="name" type="text" />
               <TextInput
+                label="Путь"
+                name="path"
+                type="text"
+                placeholder="/products"
+              />
+              {/* <TextInput
                 label="Родительская категория"
                 name="parentId"
                 type="text"
+              /> */}
+              <FormikControl
+                control="select"
+                label="Родительская категория"
+                name="parentId"
+                type="select"
+                options={optionsMainCategory}
               />
               <TextInput label="Изображение" name="imgUrl" type="text" />
               <FormikControl
@@ -74,11 +100,11 @@ const CreateCategoryForm = () => {
                 name="description"
                 type="text"
               />
-              <TextInput
+              {/* <TextInput
                 label="Уровень вложенности"
                 name="level"
                 type="number"
-              />
+              /> */}
             </div>
             <div className="form-btn-group">
               <button type="submit" className="btn cart-body-order">

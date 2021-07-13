@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -7,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 import DropdownMenu from '../Dropdown/Dropdown';
 import styles from './BottomMenu.module.scss';
 
-const BottomMenuLink = ({ id, path, title }) => {
+const BottomMenuLink = ({ parentId, path, title, key }) => {
   const [dropActive, setdropActive] = useState(false);
 
   const handleDropdown = () => {
@@ -18,7 +19,7 @@ const BottomMenuLink = ({ id, path, title }) => {
   };
   return (
     <li
-      key={id}
+      key={key}
       className={styles.BottomLink}
       onMouseEnter={handleDropdown}
       onMouseLeave={handleDropdown}
@@ -33,7 +34,7 @@ const BottomMenuLink = ({ id, path, title }) => {
       </NavLink>
       {dropActive && (
         <DropdownMenu
-          linkId={id}
+          parentId={parentId}
           handleClick={handleDropdownClick}
           dropActive={dropActive}
         />

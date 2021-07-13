@@ -59,14 +59,14 @@
   // transform: scaleY(0.5);
   // transform: translateY(-150px);
   transition: all 0.3s ease 0s;
-  height: 0px;
+  max-height: 0px;
   opacity: 0;
   visibility: hidden;
   &_active {
     // display: block;
     // transform: scaleY(1);
     // transform: translateY(0px);
-    height: 310px;
+    max-height: 610px;
     opacity: 1;
     visibility: visible;
   }

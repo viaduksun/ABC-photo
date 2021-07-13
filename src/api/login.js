@@ -10,8 +10,8 @@ const Login = () =>
   // console.log('LOGIN', userData);
 
   axios
-    // .post('https://intense-hamlet-33316.herokuapp.com/api/customers/login', userData)
-    .post('http://localhost:5000/api/customers/login', userData)
+    .post('https://intense-hamlet-33316.herokuapp.com/api/customers/login', userData)
+    // .post('http://localhost:5000/api/customers/login', userData)
     // .then((loginResult) => {
     //   console.log('loginResult', loginResult);
     //   console.log('token: ', loginResult.data.token);
