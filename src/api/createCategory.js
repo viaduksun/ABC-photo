@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import axios from 'axios';
 // import { product03 } from '../Data/products';
 
@@ -13,7 +14,8 @@ const createCategory = (category) => {
     })
     .then((newCategory) => {
       /* Do something with newProduct */
-      console.log('Product has been added', newCategory);
+      console.log('Category was created successfully!', newCategory);
+      alert('Category was created successfully!');
     })
     .catch((err) => {
       /* Do something with error, e.g. show error to user */

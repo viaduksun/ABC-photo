@@ -23,7 +23,7 @@ const Login = () => {
   });
 
   const handleLogin = (values, { setSubmitting }) => {
-    console.log('handleLogin2');
+    console.log('handleLogin');
     const { loginOrEmail, password } = values;
     setSubmitting(true);
     const loginData = {

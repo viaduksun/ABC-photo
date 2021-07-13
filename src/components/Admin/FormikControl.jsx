@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import Select from './Select/Select';
 import Textarea from './Textarea/Textarea';
 
 const FormikControl = (props) => {
@@ -12,6 +13,8 @@ const FormikControl = (props) => {
       return <input />;
     case 'textarea':
       return <Textarea {...rest} />;
+    case 'select':
+      return <Select {...rest} />;
     default:
       return null;
   }

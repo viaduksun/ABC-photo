@@ -9,7 +9,13 @@ import { popularModelsReducer } from './popularModels/reducer';
 import { modals } from './madals/reducer';
 import { admin } from './admin/reducer';
 import { cart } from './cart/reducer';
-import { ADD_PRODUCT_TO_CART, DELETE_PRODUCT_FROM_CART } from './cart/types';
+import {
+  ADD_PRODUCT_TO_CART,
+  CART_DECREMENT,
+  CART_INCREMENT,
+  DELETE_PRODUCT_FROM_CART,
+} from './cart/types';
+import { SET_FLAG_IN_CART } from './products/types';
 
 // eslint-disable-next-line no-underscore-dangle
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
@@ -26,20 +32,26 @@ const localStorageMiddleware =
     const result = next(action);
     if (
       action.type === ADD_PRODUCT_TO_CART ||
-      action.type === DELETE_PRODUCT_FROM_CART
+      action.type === DELETE_PRODUCT_FROM_CART ||
+      action.type === CART_INCREMENT ||
+      action.type === CART_DECREMENT
     ) {
       const { cart } = getState();
       localStorage.setItem('cart', JSON.stringify(cart.cart));
     }
+    if (action.type === SET_FLAG_IN_CART) {
+      const { productsPage } = getState();
+      localStorage.setItem('products', JSON.stringify(productsPage.products));
+    }
     return result;
   };
-    
+
 const rootReducer = combineReducers({
   productsPage: productsReducer,
   popularModelsPage: popularModelsReducer,
   modals,
   admin,
-  cart
+  cart,
 });
 
 const store = createStore(

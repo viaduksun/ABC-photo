@@ -1,40 +1,40 @@
+/* eslint-disable max-len */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-expressions */
 import React, { useState } from 'react';
-import MainImg from '../../../assets/img/cartBlock/cartImg.png';
+import { useSelector } from 'react-redux';
 import styles from './ProductsInCart.module.scss';
 import Button from '../../UI/Button/Button';
 import FinalModal from '../../FinalModal/FinalModal';
+import ProductInCart from './ProductInCart/ProductInCart';
 
 const ProductsInCart = () => {
   const [modalActive, setModalActive] = useState(false);
   const openModal = () => {
     setModalActive(true);
   };
+
+  const cartProducts = useSelector((state) => state.cart.cart);
+  const totalSumCart = useSelector((state) => state.cart.totalSumCart);
+
   return (
     <div className={styles.ProductsInCart}>
       <div className={styles.Header}>
         <h2>Товары в корзине</h2>
       </div>
-      <div className={styles.Main}>
-        <div className={styles.MainImgAndName}>
-          <div className={styles.MainImg}>
-            <img src={MainImg} alt={MainImg} />
-          </div>
-          <p className={styles.MainName}>
-            Canon EOS 6D (Wi-Fi) Body
-            <br />
-            <span>Код товара: 012212</span>
-          </p>
-        </div>
-
-        <p className={styles.MainPrice}>9137 грн</p>
-      </div>
+      <ul>
+        {cartProducts.map((cartProduct) => <ProductInCart cartProduct={cartProduct} key={cartProduct._id} totalSumCart={totalSumCart} />)}
+      </ul>
       <div className={styles.Footer}>
         <p className={styles.FooterDeliveryPrice}>Доставка - 150 грн</p>
         <p className={styles.FooterTotalSum}>
-          Сумма заказа: 16 619
+          Сумма заказа:
+          {' '}
+          {totalSumCart}
           <span> грн</span>
         </p>
-        <Button type="ordering_confirm" onClick={openModal}>
+        <Button addClass="ordering_confirm" onClick={openModal}>
           Подтвердить
         </Button>
       </div>

@@ -4,11 +4,12 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable array-callback-return */
 import {
-  SET_PRODUCTS, REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT_CLOSE, EDIT_PRODUCT
+  SET_PRODUCTS, REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT_CLOSE, EDIT_PRODUCT, SET_CATALOG
 } from './types';
 
 const initialState = {
   products: [],
+  catalog: [],
   isLoadingProducts: true,
   isModalRemoveProductOpen: false,
 };
@@ -19,6 +20,12 @@ export const admin = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload.data,
+        isLoadingProducts: false
+      };
+    case SET_CATALOG:
+      return {
+        ...state,
+        catalog: action.payload.data,
         isLoadingProducts: false
       };
     case MODAL_REMOVE_PRODUCT:
@@ -39,17 +46,22 @@ export const admin = (state = initialState, action) => {
         isModalRemoveProductOpen: false
       };
     case EDIT_PRODUCT:
-      console.log('STATE', state);
-      console.log('PAYLOAD', action.payload);
-      console.log('PAYLOAD_', action.payload);
+      // console.log('STATE', state);
+      // console.log('PAYLOAD_', action.payload);
       const productFromEditForm = action.payload;
-      const targetProduct = state.products.find((product) => product._id === productFromEditForm._id);
-      const productsEditedArr = state.products.filter((product) => product._id !== productFromEditForm._id);
+      // const targetProduct = state.products.find((product) => product._id === productFromEditForm._id);
+      // const productsEditedArr = state.products.filter((product) => product._id !== productFromEditForm._id);
+      const productsEditedArr = state.products.map((product) => {
+        if (product._id === productFromEditForm._id) {
+          return Object.assign(product, productFromEditForm);
+        }
+        return product;
+      });
       console.log('NEW', productsEditedArr);
-      console.log('TARGET', targetProduct);
-      const updatedProduct = Object.assign(targetProduct, productFromEditForm);
-      productsEditedArr.push(updatedProduct);
-      console.log('UP-PRO', updatedProduct);
+      // console.log('TARGET', targetProduct);
+      // const updatedProduct = Object.assign(targetProduct, productFromEditForm);
+      // productsEditedArr.push(updatedProduct);
+      // console.log('UP-PRO', updatedProduct);
       return {
         ...state,
         products: productsEditedArr,

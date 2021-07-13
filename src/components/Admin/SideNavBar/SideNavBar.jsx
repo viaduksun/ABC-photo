@@ -21,6 +21,10 @@ const SideNavBar = ({ handleActive }) => {
     [styles.AdminBtn]: true,
     [styles.AdminBtn_active]: isActive === 'catalog',
   });
+  const createCatalogBtn = classNames({
+    [styles.AdminBtn]: true,
+    [styles.AdminBtn_active]: isActive === 'createCatalog',
+  });
   const createProductBtn = classNames({
     [styles.AdminBtn]: true,
     [styles.AdminBtn_active]: isActive === 'create',
@@ -51,6 +55,13 @@ const SideNavBar = ({ handleActive }) => {
         onClick={() => handleClick('catalog')}
       >
         Cateories/ catalog
+      </button>
+      <button
+        type="button"
+        className={createCatalogBtn}
+        onClick={() => handleClick('createCatalog')}
+      >
+        Create cateory
       </button>
       <button
         type="button"
