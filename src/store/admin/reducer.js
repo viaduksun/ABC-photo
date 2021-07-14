@@ -4,18 +4,41 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable array-callback-return */
 import {
-  SET_PRODUCTS, REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT_CLOSE, EDIT_PRODUCT, SET_CATALOG
+  SET_PRODUCTS, REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT_CLOSE, EDIT_PRODUCT, SET_CATALOG, MODAL_EDIT_CATEGORY_OPEN, MODAL_EDIT_CATEGORY_CLOSE, EDIT_CATEGORY, MODAL_DELETE_CATEGORY_OPEN, MODAL_DELETE_CATEGORY_CLOSE
 } from './types';
 
 const initialState = {
   products: [],
   catalog: [],
   isLoadingProducts: true,
+  isLoadingCategories: true,
   isModalRemoveProductOpen: false,
+  isModalEditCategoryOpen: false,
+  isModalRemoveCategoryOpen: false,
 };
 
 export const admin = (state = initialState, action) => {
   switch (action.type) {
+    case MODAL_EDIT_CATEGORY_CLOSE:
+      return {
+        ...state,
+        isModalEditCategoryOpen: false
+      };
+    case MODAL_EDIT_CATEGORY_OPEN:
+      return {
+        ...state,
+        isModalEditCategoryOpen: true
+      };
+    case MODAL_DELETE_CATEGORY_OPEN:
+      return {
+        ...state,
+        isModalRemoveCategoryOpen: true
+      };
+    case MODAL_DELETE_CATEGORY_CLOSE:
+      return {
+        ...state,
+        isModalRemoveCategoryOpen: false
+      };
     case SET_PRODUCTS:
       return {
         ...state,
@@ -65,6 +88,21 @@ export const admin = (state = initialState, action) => {
       return {
         ...state,
         products: productsEditedArr,
+      };
+    case EDIT_CATEGORY:
+      const categoryFromEditForm = action.payload;
+      // const targetProduct = state.products.find((product) => product._id === productFromEditForm._id);
+      // const productsEditedArr = state.products.filter((product) => product._id !== productFromEditForm._id);
+      const categoryEditedArr = state.catalog.map((category) => {
+        if (category._id === categoryFromEditForm._id) {
+          return Object.assign(category, categoryFromEditForm);
+        }
+        return category;
+      });
+      return {
+        ...state,
+        catalog: categoryEditedArr,
+        isModalEditCategoryOpen: false,
       };
 
     default:

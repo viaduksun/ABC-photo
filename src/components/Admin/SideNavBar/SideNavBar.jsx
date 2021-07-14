@@ -54,7 +54,7 @@ const SideNavBar = ({ handleActive }) => {
         className={catalogBtn}
         onClick={() => handleClick('catalog')}
       >
-        Cateories/ catalog
+        Cateories
       </button>
       <button
         type="button"

@@ -146,7 +146,7 @@ const EditProduct = ({ product }) => {
         validationSchema={productSchema}
       >
         {(formik) => (
-          <Form className="product-form">
+          <Form className="product-form" id="edit-product">
             <div className="product-inputs-area">
               <TextInput label="" name="_id" type="hidden" />
               <TextInput label="Производитель" name="brand" type="text" />
@@ -243,12 +243,9 @@ const EditProduct = ({ product }) => {
               />
             </div>
             <div className="form-btn-group">
-              <Button type="submit" addClass="admin-edit">
+              {/* <Button type="submit" addClass="admin-edit">
                 Apply changes
-              </Button>
-              {/* <button type="submit" className="btn admin-edit">
-                Apply changes
-              </button> */}
+              </Button> */}
             </div>
           </Form>
         )}
