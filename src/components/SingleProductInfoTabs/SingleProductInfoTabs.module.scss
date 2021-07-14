@@ -99,7 +99,18 @@
   }
 }
 .CharacteristicsWrapper {
-  margin: 50px;
+  margin-top: 50px;
+}
+.CharacteristicsWrapper li:nth-of-type(odd) {
+  background-color: rgb(216, 216, 216);
+}
+.CharacteristicsWrapperItem {
+ display: flex;
+ justify-content: space-between;
+ padding: 10px;
+ font-size: 16px;
+ line-height: 18px;
+ font-family: 'Roboto', sans-serif;
 }
 .charactItem {
   display: flex;

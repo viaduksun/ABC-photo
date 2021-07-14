@@ -64,24 +64,34 @@
   color: #000;
 }
 .ProductCardIconCart {
-  padding: 5px;
+  padding: 2px 4px;
   color: #51ad33;
   font-size: 24px;
   border-radius: 5px;
   cursor: pointer;
   position: relative;
   transition: 0.5s ease;
+  position: relative;
   &:hover {
     background-color: red;
   }
+  span {
+    position: absolute;
+    left: 10px;
+    top: -24px;
+    z-index: 10px;
+  }
 }
 .ProductCard:hover .ProductCardIconCart {
-  transition: 0.5s ease;
   background-color: #51ad33;
+  span {
+    color: #51ad33;
+  }
   color: #fff;
   &:hover {
     background-color: #368E1A;
   }
+  
 }
 .ProductCardInStock,
 .ProductCardIsExpected {

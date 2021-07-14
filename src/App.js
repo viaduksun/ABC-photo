@@ -2,7 +2,7 @@
 import './App.scss';
 import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from './containers/Header/Header';
 import Footer from './containers/Footer/Footer';
 import Home from './pages/Home';
@@ -14,10 +14,30 @@ import Checkout from './pages/Checkout';
 import Profile from './pages/Profile';
 import Admin from './pages/Admin';
 import ButtonTop from './components/UI/ButtonTop/ButtonTop';
-import { cartFromLocalStorageAction } from './store/cart/actions';
+import {
+  cartFromLocalStorageAction,
+  setTotalCountCartAction,
+  setTotalPriceCartAction,
+} from './store/cart/actions';
 
 function App() {
+  const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
+
+  let totalSum = 0;
+  cart.forEach((item) => {
+    totalSum += item.currentPrice * item.count;
+  });
+  useEffect(() => {
+    dispatch(setTotalPriceCartAction(totalSum));
+  }, [dispatch, totalSum]);
+  let totalCount = 0;
+  cart.forEach((item) => {
+    totalCount += item.count;
+  });
+  useEffect(() => {
+    dispatch(setTotalCountCartAction(totalCount));
+  }, [dispatch, totalCount]);
 
   useEffect(() => {
     const cartFromLocalStorage = localStorage.getItem('cart');

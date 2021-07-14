@@ -31,10 +31,10 @@ export default function SimpleAccordion() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={classes.heading}>Описание</Typography>
+          <Typography component="span" className={classes.heading}>Описание</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography component="span">
             <Desctiption />
           </Typography>
         </AccordionDetails>
@@ -45,10 +45,10 @@ export default function SimpleAccordion() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography className={classes.heading}>Характеристики</Typography>
+          <Typography component="span" className={classes.heading}>Характеристики</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography component="span">
             <Characteristics />
           </Typography>
         </AccordionDetails>
@@ -62,7 +62,7 @@ export default function SimpleAccordion() {
           <Typography className={classes.heading}>Аксессуары</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography component="span">
             <Accessories />
           </Typography>
         </AccordionDetails>
