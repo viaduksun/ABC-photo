@@ -2,11 +2,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import classNames from 'classnames';
 import React, { useState } from 'react';
-
+import PropTypes from 'prop-types';
 import { BsChevronDown } from 'react-icons/bs';
 import styles from './SingleProductInfoTabs.module.scss';
 
-const Desctiption = () => {
+const Desctiption = ({singleProduct}) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const expandToggle = () => {
     setIsExpanded(!isExpanded);
@@ -23,13 +23,7 @@ const Desctiption = () => {
             Качество, которого заслуживают ваши фотографии
           </div>
           <div className={styles.descriptionBody}>
-            24,2-мегапиксельный датчик изображения формата APS-C нового
-            поколения обеспечивает потрясающую детализацию даже в сложных
-            условиях съемки. Камера EOS 800D мгновенно срабатывает, оснащена
-            ярким оптическим видоискателем и позволяет вести непрерывную съемку
-            со скоростью 6 кадров в секунду. При построении кадра на экране с
-            переменным углом наклона, самая быстрая в мире система АФ в режиме
-            Live View выполняет точную фокусировку всего лишь за 0,03 с.
+            {singleProduct.description ? `${singleProduct.description.split(' ').slice(0, 50).join(' ')}...` : null}
           </div>
           <div className={styles.readMore} onClick={expandToggle}>
             {isExpanded ? (
@@ -51,11 +45,7 @@ const Desctiption = () => {
               НАСТРОЙКА КОМПОНЕНТОВ УПРАВЛЕНИЯ
             </div>
             <div className={styles.descriptionBody}>
-              Жидкокристаллический дисплей камеры позволяет просматривать
-              настройки и менять их в зависимости от условий съемки в любой
-              момент. Важные параметры могут устанавливаться непосредственно во
-              время фотосессии. Ничто не мешает фотографу самостоятельно
-              приспосабливать орудие съемки к собственным потребностям.
+              {singleProduct.description ? singleProduct.description.split(' ').slice(50, 150).join(' ') : null}
             </div>
           </div>
           <div className={styles.descriptionImg}>
@@ -65,6 +55,13 @@ const Desctiption = () => {
       )}
     </>
   );
+};
+
+Desctiption.propTypes = {
+  singleProduct: PropTypes.objectOf
+};
+Desctiption.defaultProps = {
+  singleProduct: 'description'
 };
 
 export default Desctiption;

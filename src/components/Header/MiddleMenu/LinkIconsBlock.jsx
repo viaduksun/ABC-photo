@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import styles from './MiddleMenu.module.scss';
 
 export default function LoginIcon() {
-  const cartCounter = useSelector((state) => state.cart.cart.length);
+  const cartCounter = useSelector((state) => state.cart.totalCountCart);
   return (
     <div className={styles.HeaderlinksBlockWrapper}>
       <div>

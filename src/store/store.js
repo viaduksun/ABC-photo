@@ -9,6 +9,7 @@ import { popularModelsReducer } from './popularModels/reducer';
 import { modals } from './madals/reducer';
 import { admin } from './admin/reducer';
 import { cart } from './cart/reducer';
+import { singleProduct } from './singleProduct/reducer';
 import {
   ADD_PRODUCT_TO_CART,
   CART_DECREMENT,
@@ -52,6 +53,7 @@ const rootReducer = combineReducers({
   modals,
   admin,
   cart,
+  singleProduct
 });
 
 const store = createStore(

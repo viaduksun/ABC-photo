@@ -1,33 +1,17 @@
 /* eslint-disable no-debugger */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-unresolved */
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styles from './CartContainer.module.scss';
 import Button from '../../components/UI/Button/Button';
 import CartProduct from '../../components/CartProduct/CartProduct';
-import { setTotalCountCartAction, setTotalPriceCartAction } from '../../store/cart/actions';
 
 const CartContainer = () => {
   const cart = useSelector((state) => state.cart.cart);
   const totalSumCart = useSelector((state) => state.cart.totalSumCart);
   const totalCountCart = useSelector((state) => state.cart.totalCountCart);
-  const dispatch = useDispatch();
-  let totalSum = 0;
-  cart.forEach((item) => {
-    totalSum += item.currentPrice * item.count;
-  });
-  useEffect(() => {
-    dispatch(setTotalPriceCartAction(totalSum));
-  }, [dispatch, totalSum]);
-  let totalCount = 0;
-  cart.forEach((item) => {
-    totalCount += item.count;
-  });
-  useEffect(() => {
-    dispatch(setTotalCountCartAction(totalCount));
-  }, [dispatch, totalCount]);
   return (
     <div className={styles.CartBlock}>
       <div className="container">
