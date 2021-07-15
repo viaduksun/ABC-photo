@@ -124,9 +124,13 @@ const Products = () => {
   // };
   const editBtnBlock = (
     <>
-      {/* <Button onClick={handleSubmitMyForm} addClass="admin-edit">
-        Edit
-      </Button> */}
+      <button
+        type="submit"
+        form="edit-product"
+        className="Button Button_admin-edit"
+      >
+        Apply changes
+      </button>
 
       <Button onClick={handleModalEditClose} addClass="admin-cancel">
         Cancel

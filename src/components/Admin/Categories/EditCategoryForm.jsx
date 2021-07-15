@@ -1,4 +1,5 @@
 /* eslint-disable no-underscore-dangle */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/button-has-type */
 /* eslint-disable operator-linebreak */
@@ -8,24 +9,28 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { useSelector } from 'react-redux';
-import createCategory from '../../api/createCategory';
-import createProductLocalHost5000 from '../../api/createProductLocalHost5000';
-import TextInput from './Input/TextInput';
-import { sony02 } from '../../Data/products';
-import FormikControl from './FormikControl';
+import { useDispatch, useSelector } from 'react-redux';
+import editCategory from '../../../api/editCategory';
+import TextInput from '../Input/TextInput';
+import FormikControl from '../FormikControl';
+import { editCategoryAction } from '../../../store/admin/actions';
 
-const CreateCategoryForm = () => {
-  // const handleCreateCategory2 = () => {
-  //   console.log('CREATE2');
-  //   createProductLocalHost5000();
-  // };
+const EditCategoryForm = ({ currentCategory }) => {
+  console.log('CURRENT', currentCategory);
+  const dispatch = useDispatch();
   const catalog = useSelector((state) => state.admin.catalog);
+  // ===== getting parent category name
+  // const parentCategory = catalog.find(
+  //   (item) => item._id === currentCategory.parentId
+  // ).name;
+  // temp-->
+  const parentCategory = currentCategory.parentId;
+  // ==== Gettig main categories for select menu ===
   const optionCategoryNull = <option value="null">---</option>;
   const optionsMainCategory = catalog.map((category) => {
     if (category.parentId === 'null') {
       return (
-        <option value={category._id} key={category.value}>
+        <option value={category.name} key={category.value}>
           {category.name}
         </option>
       );
@@ -33,11 +38,13 @@ const CreateCategoryForm = () => {
     return null;
   });
   optionsMainCategory.push(optionCategoryNull);
-  const handleCreateCategory = (values, { setSubmitting }) => {
+  // =============================================
+  const handleEditCategory = (values, { setSubmitting }) => {
     console.log(values);
-    const { id, name, path, parentId, imgUrl, description } = values;
+    const { _id, id, name, path, parentId, imgUrl, description } = values;
     setSubmitting(true);
-    const newCategory = {
+    const editedCategory = {
+      _id,
       id,
       name,
       path,
@@ -45,13 +52,18 @@ const CreateCategoryForm = () => {
       imgUrl,
       description,
     };
-    createCategory(newCategory);
-    console.log(newCategory);
+    console.log(editedCategory);
+    // === 1 sending changes on DB ===
+    editCategory(currentCategory.id, editedCategory);
+    // === 2 changeing category in REDUX ===
+    dispatch(editCategoryAction(editedCategory));
     setSubmitting(false);
   };
   const productSchema = Yup.object().shape({
+    _id: Yup.string().required('Is required'),
     id: Yup.string().required('Is required'),
     name: Yup.string().required('Is required'),
+    path: Yup.string().required('Is required'),
     parentId: Yup.string().required('Is required'),
     imgUrl: Yup.string().required('Is required'),
     description: Yup.string().required('Is required'),
@@ -59,21 +71,23 @@ const CreateCategoryForm = () => {
 
   return (
     <div className="formBlock create">
-      <h2 className="form-name">Create new category</h2>
       <Formik
         initialValues={{
-          id: '',
-          name: '',
-          parentId: '',
-          imgUrl: '',
-          description: '',
+          _id: currentCategory._id,
+          id: currentCategory.id,
+          name: currentCategory.name,
+          path: currentCategory.path,
+          parentId: parentCategory,
+          imgUrl: currentCategory.imgUrl,
+          description: currentCategory.description,
         }}
-        onSubmit={handleCreateCategory}
+        onSubmit={handleEditCategory}
         // validationSchema={productSchema}
       >
         {(formik) => (
-          <Form className="product-form">
+          <Form className="product-form" id="edit-category">
             <div className="product-inputs-area">
+              <TextInput name="_id" type="hidden" />
               <TextInput label="Идентификатор" name="id" type="text" />
               <TextInput label="Название" name="name" type="text" />
               <TextInput
@@ -107,14 +121,6 @@ const CreateCategoryForm = () => {
                 type="number"
               /> */}
             </div>
-            <div className="form-btn-group">
-              <button type="submit" className="btn cart-body-order">
-                Create
-              </button>
-              <button type="reset" className="btn cart-body-order reset">
-                Reset data
-              </button>
-            </div>
           </Form>
         )}
       </Formik>
@@ -122,4 +128,4 @@ const CreateCategoryForm = () => {
   );
 };
 
-export default CreateCategoryForm;
+export default EditCategoryForm;

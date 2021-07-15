@@ -7,7 +7,12 @@ import {
   MODAL_REMOVE_PRODUCT,
   MODAL_REMOVE_PRODUCT_CLOSE,
   EDIT_PRODUCT,
-  SET_CATALOG
+  SET_CATALOG,
+  MODAL_EDIT_CATEGORY_OPEN,
+  MODAL_EDIT_CATEGORY_CLOSE,
+  EDIT_CATEGORY,
+  MODAL_DELETE_CATEGORY_OPEN,
+  MODAL_DELETE_CATEGORY_CLOSE
 } from './types';
 
 export const adminProducts = () => (dispatch) => {
@@ -34,4 +39,20 @@ export const modalDeleteOpen = () => ({
 });
 export const modalDeleteClose = () => ({
   type: MODAL_REMOVE_PRODUCT_CLOSE,
+});
+export const modalEditCategoryOpenAction = () => ({
+  type: MODAL_EDIT_CATEGORY_OPEN,
+});
+export const modalEditCategoryCloseAction = () => ({
+  type: MODAL_EDIT_CATEGORY_CLOSE,
+});
+export const modalDeleteCategoryOpenAction = () => ({
+  type: MODAL_DELETE_CATEGORY_OPEN,
+});
+export const modalDeleteCategoryCloseAction = () => ({
+  type: MODAL_DELETE_CATEGORY_CLOSE,
+});
+export const editCategoryAction = (category) => ({
+  type: EDIT_CATEGORY,
+  payload: category,
 });
