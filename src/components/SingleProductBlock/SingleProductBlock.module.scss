@@ -1,149 +1,29 @@
-// .SingleProductBlock {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   height: 500px;
-//   background: rgb(230, 230, 230);
-// }
-// .btnBlock {
-//   margin-top: 100px;
-// }
-.container {
-  width: 1680px;
-}
-.mySlides{
-  text-align: center;
-  width: 96px;
-  height: 96px;
-}
-// .container {
-//     min-height: 100vh;
-// }
-.codeProduct {
-  background-color: #F7F5F6;
-  height: 40px;
-  width: 191px;
-  // text-align: center;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  margin-bottom: 25px;
-  margin-left: 58px;
-}
-.SliderSelectProductTitle {
-  display: flex;
-  flex-direction: row;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  margin-top: 15px;
-}
-.sectionSlider {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 33px;
-}
-.SliderSelectProductWrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  // flex: start;
-}
-.mySlidesBig {
-  background-color: #F2F3F3;
-  width: 500px;
-  height: 358px;
-  margin-left: 40px;
-}
-.SliderSelectProductText {
-  padding-left: 12px;
-  margin-top: 10px;
-}
-.sectionButton {
-  display: flex;
-  flex-direction: row;
-  // justify-content: space-around;
-  margin-top: 30px; 
-}
-.sectionButtonUl {
-  display: flex;
-  flex: start;
-}
-.sectionButtonTitle {
-  color: #51AD33;
-  font-weight: normal;
-  font-size: 16px;
-  // height: 65px;    
-}
-.sectionButtonCreditText {
-  width: 197px;
-  height: 40px;
-  margin-top: -5px;
-  // align-items: flex-start;
-}
-.sectionButtonSpan {
-  font-weight: bold;
-  font-size: 36px;
-  color: #000;
-  width: 180px;
-  height: 50px;
-  // margin-top: -50px;
-}
-.sectionButtonBuy {
-  background-color: #51AD33;
-  width: 180px;
-  height: 49.72px;
-  border: none;
-  border-radius: 5px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  color: #fff;
-}
-.sectionButtonCredit {
-  width: 180px;
-  height: 50px;
-  background: #677283;
-  border-radius: 5px;
-  border: none;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  color: #fff;
-}
-.sectionButtonCreditLink {
+.Wrapper {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 50px;
+    align-items: center;
 
-  color: #00B0FF;
-  text-decoration: none;
 }
-.next {
-  width: 50px;
-  height: 40px;
-  background-color: #51AD33;
-  border: none;
-  color: white;
-}
-.prev {
-  width: 50px;
-  height: 40px;
-  background-color: #2B5A1C;
-  border: none;
-  color: white
-}
-.sectionSliderButton {
-  display: flex;
-  flex-direction: row;
-  padding-left: 5px;
-  margin-top: 31px;
-}
-.prevChevron {
-  font-size: 24px;
-}
-.nextChevron {
-  font-size: 24px;
-}
-ul {
-  margin-top: -10px;
+.SliderBlockText {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h2 {
+        font-size: 26px;
+        line-height: 26px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-family: 'Roboto', sans-serif;
+    }
+    p {
+        font-size: 14px;
+        line-height: 26px;
+        background-color: #F7F5F6;
+        padding: 7px 13px;
+        margin-left: 50px;
+        font-family: 'Roboto', sans-serif;
+    }
 }

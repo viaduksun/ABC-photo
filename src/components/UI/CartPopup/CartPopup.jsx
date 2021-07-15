@@ -1,28 +1,22 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React from 'react';
+import { FaCartArrowDown } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 import './CartPopup.scss';
 
 const CartPopup = () => {
-    const [state, setState] = useState(false);
-
-    const classHandler = () => {
-        console.log('Click');
-        setState(true);
-        setTimeout(() => {
-            setState(false);
-        }, 1000);
-      };
-
     console.log('test');
+    const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
     return (
       <>
         <div
-          className={`Popup  ${state ? 'Popup_popupIsOpen' : ''}`}
+          className={`Popup  ${popupIsOpen ? 'Popup_popupIsOpen' : ''}`}
         >
-          123
+          Товар добавлен в корзину
+          {' '}
+          <FaCartArrowDown />
         </div>
-        <button type="button" style={{backgroundColor: 'red'}} onClick={classHandler}>1</button>
       </>
     );
 };

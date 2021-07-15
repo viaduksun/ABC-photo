@@ -8,6 +8,7 @@ import {
   CART_FROM_LOCAL_STORAGE,
   CART_INCREMENT,
   DELETE_PRODUCT_FROM_CART,
+  SET_POPUP_FALSE,
   SET_TOTAL_COUNT_CART,
   SET_TOTAL_SUM_CART,
 } from './types';
@@ -16,6 +17,7 @@ const initialState = {
   cart: [],
   totalSumCart: 0,
   totalCountCart: 0,
+  popupIsOpen: false
 };
 
 export const cart = (state = initialState, action) => {
@@ -41,6 +43,7 @@ export const cart = (state = initialState, action) => {
       return {
         ...state,
         cart: newCartArr,
+        popupIsOpen: true
       };
     case DELETE_PRODUCT_FROM_CART:
       const newCart = state.cart.filter(
@@ -81,6 +84,11 @@ export const cart = (state = initialState, action) => {
       return {
         ...state,
         totalCountCart: action.payload.totalCount,
+      };
+    case SET_POPUP_FALSE:
+      return {
+        ...state,
+        popupIsOpen: false
       };
     default:
       return state;
