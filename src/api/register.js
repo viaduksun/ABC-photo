@@ -25,10 +25,10 @@ const userRegister = (userData) => {
         headers,
       }
     )
-    .then((res) => {
-      console.log('newUser', res);
-      /* Do something with customer */
-    })
+    // .then((res) => {
+    //   console.log('newUser', res);
+    //   /* Do something with customer */
+    // })
     .catch((err) => {
       console.log(err);
     });

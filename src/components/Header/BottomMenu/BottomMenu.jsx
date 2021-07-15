@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -33,7 +34,7 @@ const BottomMenu = ({ toggleMenu }) => {
               if (item.parentId === 'null') {
                 return (
                   <BottomMenuLink
-                    parentId={item.name}
+                    parentId={item._id}
                     path="/products"
                     title={item.name}
                     key={item.id}

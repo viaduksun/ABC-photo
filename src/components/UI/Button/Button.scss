@@ -55,6 +55,16 @@
       padding: 10px 50px;
     }
   }
+  &_admin-primary {
+    font-size: 14px;
+    line-height: 14px;
+    padding: 7px 25px;
+    text-transform: uppercase;
+    background-color: #51ad33;
+    &:hover {
+      background-color: #368e1a;
+    }
+  }
   &_admin-edit {
     font-size: 14px;
     line-height: 14px;
