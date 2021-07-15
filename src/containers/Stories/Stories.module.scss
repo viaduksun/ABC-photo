@@ -1,7 +1,45 @@
-.Stories {
+// .Stories {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background: rgb(218, 218, 218);
+//   height: 300px;
+// }
+.DescribeSectionTitle {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgb(218, 218, 218);
-  height: 300px;
-}
+  flex-direction: start;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 27px;
+  }
+  .DescribeSectionText {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  padding-left: 0;
+  margin-top: 22px;
+  }
+  .DescribeSectionInput {
+    color: #00A1E9;
+    border: none;
+    background-color: white;
+    font-size: 14px;
+  }
+  .DescribeSectionReadMore {
+    display: flex;
+    flex-direction: row;
+  }
+  .DescribeSectionIcon {
+    color: #00A1E9;
+    padding-top: 5px;
+  }
+  .DescribeSection {
+    width: 100%;
+    display: flex;
+    flex-direction: start;
+    margin-left: 13px;
+  }
