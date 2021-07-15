@@ -1,4 +1,11 @@
 .Breadcrumbs {
-  height: 50px;
-  background: rgb(202, 202, 202);
+  padding: 20px 0px;
+  display: flex;
+  max-width: 1200px;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.li {
+  font-size: 14px;
+  line-height: 26px;
 }
