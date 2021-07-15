@@ -1,0 +1,79 @@
+.swiper-container-4 {
+    max-width: 450px;
+    max-height: 430px;
+    background-color: #fff;
+    position: initial;
+
+    img {
+        transform: rotate(-90deg);
+        max-width: 350px;
+    }
+    .swiper-wrapper {
+        margin-top: 30px;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-button-prev {
+        left: 470px;
+        top: 440px;
+        bottom: -21px;
+        background: #368e1a;;
+        width: 46px;
+        height: 50px;
+            &:hover {
+                background-color: #2B5A1C;
+            }
+            &::after {
+                font-size: 22px;
+                transform: rotate(180deg);
+            }
+        }
+      .swiper-button-next {
+        left: 470px;
+        top: 490px;
+        bottom: -21px;
+        background: #368e1a;
+        width: 45px;
+        height: 50px;
+        &:hover {
+            background-color: #2B5A1C;
+        }
+        &::after {
+            font-size: 22px;
+            transform: rotate(180deg);
+        }
+    }
+}
+.swiper-container-5 {
+    max-width: 470px;
+    max-height: 330px;
+    background-color: #fff;
+    position: initial;
+    img {
+        transform: rotate(-90deg);
+        max-width: 100px;
+        max-height: 100px;
+        cursor: pointer;
+        opacity: 0.4;
+    }
+    .swiper-wrapper {
+        margin-top: 30px;
+    }
+}
+

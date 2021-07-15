@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import './App.scss';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from './containers/Header/Header';
@@ -16,13 +16,18 @@ import Admin from './pages/Admin';
 import ButtonTop from './components/UI/ButtonTop/ButtonTop';
 import {
   cartFromLocalStorageAction,
+  hidePopupAction,
   setTotalCountCartAction,
   setTotalPriceCartAction,
 } from './store/cart/actions';
+import CartPopup from './components/UI/CartPopup/CartPopup';
 
 function App() {
   const cart = useSelector((state) => state.cart.cart);
+  const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
   const dispatch = useDispatch();
+
+  const [state, setState] = useState(false);
 
   let totalSum = 0;
   cart.forEach((item) => {
@@ -46,8 +51,15 @@ function App() {
     }
   }, [dispatch]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(hidePopupAction());
+    }, 1500);
+  }, [dispatch, popupIsOpen]);
+  
   return (
     <div className="wrapper">
+      <CartPopup />
       <Header />
       <Switch>
         <Route exact path="/">

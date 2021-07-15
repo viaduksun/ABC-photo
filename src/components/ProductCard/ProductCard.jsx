@@ -5,7 +5,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-debugger */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { BiCart } from 'react-icons/bi';
 import { FaShoppingCart } from 'react-icons/fa';
@@ -21,12 +21,10 @@ const ProductCard = ({product}) => {
   const cart = useSelector((state) => state.cart.cart);
   const isInCart = cart.some((item) => item._id === product._id);
   const dispatch = useDispatch();
-  const [counter, setCounter] = useState(null);
   if (!product) return null;
   const addProductToCartHandler = () => {
     dispatch(addProductToCartAction(product));
     dispatch(setFlagInCartAction(product));
-    setCounter(counter + 1);
   };
 
   const dispatchSingleProductHandler = () => {

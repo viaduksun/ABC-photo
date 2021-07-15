@@ -4,6 +4,7 @@ import {
   CART_FROM_LOCAL_STORAGE,
   CART_INCREMENT,
   DELETE_PRODUCT_FROM_CART,
+  SET_POPUP_FALSE,
   SET_TOTAL_COUNT_CART,
   SET_TOTAL_SUM_CART,
 } from './types';
@@ -41,4 +42,7 @@ export const setTotalPriceCartAction = (totalSum) => ({
 export const setTotalCountCartAction = (totalCount) => ({
   type: SET_TOTAL_COUNT_CART,
   payload: { totalCount },
+});
+export const hidePopupAction = () => ({
+  type: SET_POPUP_FALSE
 });
