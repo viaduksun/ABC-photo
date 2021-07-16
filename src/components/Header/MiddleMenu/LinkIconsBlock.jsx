@@ -1,13 +1,20 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdShoppingCart } from 'react-icons/md';
+import { RiLoginCircleLine, RiAdminFill } from 'react-icons/ri';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './MiddleMenu.module.scss';
 import { loginModalOpenAction } from '../../../store/madals/actions';
 
 export default function LoginIcon() {
+  const isCurrentUser = useSelector((state) => state.admin.isLoggedIn);
+  const isAdmin = useSelector((state) => state.admin.isAdmin);
+  // const currentUserData = useSelector((state) => state.admin.currentUser);
+
   const dispatch = useDispatch();
   const cartCounter = useSelector((state) => state.cart.totalCountCart);
   const handleLogin = () => {
@@ -16,20 +23,31 @@ export default function LoginIcon() {
   return (
     <div className={styles.HeaderlinksBlockWrapper}>
       <div>
-        <div className={styles.LoginBlock}>
-          <div className={styles.HeaderIconWrapper}>
-            <FaUserAlt className={styles.HeaderIcon} onClick={handleLogin} />
+        {!isCurrentUser && (
+          <div className={styles.LoginBlock}>
+            <div className={styles.HeaderIconWrapper} onClick={handleLogin}>
+              <RiLoginCircleLine className={styles.HeaderIconLogin} />
+            </div>
+            <p className={styles.HeaderIconText}>Вход</p>
           </div>
-          <p className={styles.HeaderIconText}>Вход/Регистрация</p>
-        </div>
-
+        )}
         {/* Если залогинился то показываем это: */}
-        {/* <Link to="/profile" className={styles.HeaderLink}>
-          <div className={styles.HeaderIconWrapper}>
-            <FaUserAlt className={styles.HeaderIcon} />
-          </div>
-          <p className={styles.HeaderIconText}>Личный кабинет</p>
-        </Link> */}
+        {isCurrentUser && !isAdmin && (
+          <Link to="/profile" className={styles.HeaderLink}>
+            <div className={styles.HeaderIconWrapper}>
+              <FaUserAlt className={styles.HeaderIcon} />
+            </div>
+            <p className={styles.HeaderIconText}>Личный кабинет</p>
+          </Link>
+        )}
+        {isCurrentUser && isAdmin && (
+          <Link to="/profile" className={styles.HeaderLink}>
+            <div className={styles.HeaderIconWrapper}>
+              <RiAdminFill className={styles.HeaderIconAdmin} />
+            </div>
+            <p className={styles.HeaderIconText}>Личный кабинет</p>
+          </Link>
+        )}
       </div>
       <div>
         <Link to="/cart" className={styles.HeaderLink}>

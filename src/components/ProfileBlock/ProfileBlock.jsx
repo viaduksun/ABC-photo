@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
 import EditProfile from './EditProfile';
 import Orders from './Orders';
 import ChangePassword from './ChangePassword';
 import styles from './ProfileBlock.module.scss';
+import { exitAction } from '../../store/admin/actions';
 
 const ProfileBlock = () => {
+  const dispatch = useDispatch();
+  const isAdmin = useSelector((state) => state.admin.isAdmin);
   const [current, setCurrent] = useState('edit');
+  const handleAdmin = () => {
+    setCurrent('admin');
+  };
   const handleEdit = () => {
     setCurrent('edit');
   };
@@ -17,6 +24,15 @@ const ProfileBlock = () => {
   const handleOrders = () => {
     setCurrent('orders');
   };
+  const handleExit = () => {
+    dispatch(exitAction());
+    localStorage.removeItem('token');
+    localStorage.removeItem('currentUser');
+  };
+  const btnAdmin = classNames({
+    [styles.btnProfile]: true,
+    [styles.btnProfile_active]: current === 'admin',
+  });
   const btnEdit = classNames({
     [styles.btnProfile]: true,
     [styles.btnProfile_active]: current === 'edit',
@@ -43,10 +59,21 @@ const ProfileBlock = () => {
           <button className={btnOrders} type="button" onClick={handleOrders}>
             Мои заказы
           </button>
+          {isAdmin && (
+            <Link to="/admin">
+              <button className={btnAdmin} type="button" onClick={handleAdmin}>
+                Панель администратора
+              </button>
+            </Link>
+          )}
 
           <Link to="/">
-            <button className={styles.btnProfile} type="button">
-              Выйти из кабинета
+            <button
+              className={styles.btnProfile}
+              type="button"
+              onClick={handleExit}
+            >
+              Выйти
             </button>
           </Link>
         </div>

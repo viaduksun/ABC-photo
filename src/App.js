@@ -21,10 +21,12 @@ import {
   setTotalPriceCartAction,
 } from './store/cart/actions';
 import CartPopup from './components/UI/CartPopup/CartPopup';
+import { userFromLocalStorageAction } from './store/admin/actions';
 
 function App() {
   const cart = useSelector((state) => state.cart.cart);
   const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
+  const currentUserFromRedux = useSelector((state) => state.admin.currentUser);
   const dispatch = useDispatch();
 
   const [state, setState] = useState(false);
@@ -56,7 +58,17 @@ function App() {
       dispatch(hidePopupAction());
     }, 1500);
   }, [dispatch, popupIsOpen]);
-  
+  // === USER ===
+  useEffect(() => {
+    const userFromLocalStorage = localStorage.getItem('currentUser');
+    if (userFromLocalStorage) {
+      dispatch(userFromLocalStorageAction(JSON.parse(userFromLocalStorage)));
+    }
+  }, [dispatch]);
+  useEffect(() => {
+    localStorage.setItem('currentUser', JSON.stringify(currentUserFromRedux));
+  }, [currentUserFromRedux, dispatch]);
+
   return (
     <div className="wrapper">
       <CartPopup />

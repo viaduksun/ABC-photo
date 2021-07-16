@@ -11,11 +11,14 @@ const initialState = {
 export const modals = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_MODAL_CLOSE:
+      document.body.classList.remove('no-scroll');
       return {
         ...state,
         isLoginModalOpen: false,
       };
     case LOGIN_MODAL_OPEN:
+      document.body.classList.add('no-scroll');
+
       return {
         ...state,
         isLoginModalOpen: true,

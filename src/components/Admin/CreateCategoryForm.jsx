@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/button-has-type */

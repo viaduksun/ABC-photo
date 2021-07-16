@@ -4,19 +4,19 @@ import React, { useState } from 'react';
 import styles from './SideNavBar.module.scss';
 
 const SideNavBar = ({ handleActive }) => {
-  const [isActive, setIsActive] = useState('register');
+  const [isActive, setIsActive] = useState('catalog');
   const handleClick = (activeBtn) => {
     setIsActive(activeBtn);
     handleActive(activeBtn);
   };
-  const registerBtn = classNames({
-    [styles.AdminBtn]: true,
-    [styles.AdminBtn_active]: isActive === 'register',
-  });
-  const loginBtn = classNames({
-    [styles.AdminBtn]: true,
-    [styles.AdminBtn_active]: isActive === 'login',
-  });
+  // const registerBtn = classNames({
+  //   [styles.AdminBtn]: true,
+  //   [styles.AdminBtn_active]: isActive === 'register',
+  // });
+  // const loginBtn = classNames({
+  //   [styles.AdminBtn]: true,
+  //   [styles.AdminBtn_active]: isActive === 'login',
+  // });
   const catalogBtn = classNames({
     [styles.AdminBtn]: true,
     [styles.AdminBtn_active]: isActive === 'catalog',
@@ -35,7 +35,7 @@ const SideNavBar = ({ handleActive }) => {
   });
   return (
     <div className={styles.SideNavBar}>
-      <button
+      {/* <button
         type="button"
         className={registerBtn}
         onClick={() => handleClick('register')}
@@ -48,34 +48,34 @@ const SideNavBar = ({ handleActive }) => {
         onClick={() => handleClick('login')}
       >
         Login
-      </button>
+      </button> */}
       <button
         type="button"
         className={catalogBtn}
         onClick={() => handleClick('catalog')}
       >
-        Cateories
-      </button>
-      <button
-        type="button"
-        className={createCatalogBtn}
-        onClick={() => handleClick('createCatalog')}
-      >
-        Create cateory
-      </button>
-      <button
-        type="button"
-        className={createProductBtn}
-        onClick={() => handleClick('create')}
-      >
-        Create product
+        Категории
       </button>
       <button
         type="button"
         className={productsBtn}
         onClick={() => handleClick('products')}
       >
-        Products
+        Продукты
+      </button>
+      <button
+        type="button"
+        className={createCatalogBtn}
+        onClick={() => handleClick('createCatalog')}
+      >
+        Создать категорию
+      </button>
+      <button
+        type="button"
+        className={createProductBtn}
+        onClick={() => handleClick('create')}
+      >
+        Создать продукт
       </button>
     </div>
   );

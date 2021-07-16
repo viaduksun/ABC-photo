@@ -11,20 +11,26 @@
 .LoginModal {
   width: 470px;
   min-height: 500px;
-  background: #f9f9fb;
+  background: #dddddd;
   padding: 40px;
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: all 0.3s ease 0s;
 }
-.closeIcon {
-  color: rgb(255, 255, 255);
+.closeIconWrapper {
   position: absolute;
   right: -35px;
   top: -25px;
+  padding: 3px;
+  // border: 1px solid rgb(209, 209, 209);
+  cursor: pointer;
+}
+.closeIcon {
+  color: rgb(255, 255, 255);
   font-size: 30px;
   transition: all 0.3s ease 0s;
-  cursor: pointer;
+
   &:hover {
     transform: rotate(90deg);
   }
@@ -36,17 +42,125 @@
   justify-content: space-between;
 }
 .headerMenuItem {
-  border: 1px solid #000;
-  display: inline-block;
+  // border: 1px solid #000;
+  display: block;
   font-size: 22px;
   font-weight: bold;
-  // flex: 1 1 auto;
+  flex: 1 1 50%;
+  padding-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  &_enter {
+    flex: 1 1 30%;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #51ad33;
+  }
+  &_active {
+    color: #51ad33;
+    &::after {
+      bottom: 0px;
+    }
+  }
 }
 .Body {
-  background: rgb(165, 165, 165);
+  // background: rgb(165, 165, 165);
   flex: 1 1 auto;
 }
 .Footer {
-  height: 130px;
-  background: rgb(255, 228, 228);
+  border-top: 1px solid rgb(149, 149, 149);
+  height: 80px;
+  // background: rgb(255, 123, 123);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+.socials {
+  display: flex;
+  justify-content: space-between;
+  // border: 1px solid #000;
+  width: 200px;
+  min-height: 50px;
+}
+
+.iconItem {
+  width: 50px;
+  height: 50px;
+  background: rgb(0, 135, 212);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &_tw {
+    background: #00b0ff;
+  }
+  &_fb {
+    background: #3b5998;
+  }
+  &_go {
+    background: #d50000;
+  }
+}
+.iconCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fb {
+  color: #3b5998;
+}
+.twitter {
+  color: #00b0ff;
+}
+.google {
+  color: #d50000;
+  font-size: 25px;
+}
+// ====== FORMS =================================
+.formWrapper {
+  // background: rgb(255, 198, 198);
+}
+.InputsWrapper {
+  margin-top: 20px;
+  // border: 1px solid #000;
+}
+.BtnsWrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.addFunctionsWrapper {
+  display: flex;
+  justify-content: space-between;
+  // border: 1px solid #000;
+}
+.CheckBoxWrapper {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.checkBox {
+  margin-right: 5px;
+  width: 17px;
+  height: 17px;
+  border: 1px solid rgb(128, 128, 128);
+}
+.forgotPass {
+  color: rgb(41, 129, 163);
+}
+.BtnsWrapper {
+  margin-bottom: 40px;
+  margin-top: 30px;
+  // border: 1px solid #000;
 }

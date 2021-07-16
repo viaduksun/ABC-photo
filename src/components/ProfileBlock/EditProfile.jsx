@@ -75,7 +75,7 @@ const EditProfile = () => {
               <TextInput label="Дата рождения" name="birth" type="select" />
             </div>
             <div className="form-btn-group">
-              <Button type="cart_green">Готово</Button>
+              <Button addClass="cart_green">Готово</Button>
             </div>
           </Form>
         )}
