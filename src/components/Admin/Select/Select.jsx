@@ -16,17 +16,6 @@ const Select = (props) => {
     [styles.isInvalid]: meta.touched && meta.error,
     [styles.Valid]: meta.touched && !meta.error,
   });
-  // const options = [
-  //   { value: 'developer', label: 'Software Developer' },
-  //   { value: 'chef', label: 'Chef' },
-  //   { value: 'enginner', label: 'Enginner' },
-  //   { value: 'painter', label: 'Painter' },
-  // ];
-  // const SelectOptions = options.map((option) => (
-  //   <option value={option.value} key={option.value}>
-  //     {option.label}
-  //   </option>
-  // ));
 
   return (
     <div className={styles.selectAreaWrapper}>
@@ -40,9 +29,6 @@ const Select = (props) => {
         className={selectStyles}
       >
         {options}
-        {/* <option value="red">Red</option>
-        <option value="green">Green</option>
-        <option value="blue">Blue</option> */}
       </Field>
       <ErrorMessage
         component="div"
