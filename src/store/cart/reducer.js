@@ -4,6 +4,7 @@
 // eslint-disable no-case-declarations
 import {
   ADD_PRODUCT_TO_CART,
+  ADD_SINGLE_PRODUCT_TO_CART,
   CART_DECREMENT,
   CART_FROM_LOCAL_STORAGE,
   CART_INCREMENT,
@@ -17,7 +18,7 @@ const initialState = {
   cart: [],
   totalSumCart: 0,
   totalCountCart: 0,
-  popupIsOpen: false
+  popupIsOpen: false,
 };
 
 export const cart = (state = initialState, action) => {
@@ -43,7 +44,29 @@ export const cart = (state = initialState, action) => {
       return {
         ...state,
         cart: newCartArr,
-        popupIsOpen: true
+        popupIsOpen: true,
+      };
+    case ADD_SINGLE_PRODUCT_TO_CART:
+      const cartSingleProduct = action.payload.singleProduct;
+      cartSingleProduct.count = 1;
+      let newCartArr2 = [];
+      const cartMatches2 = state.cart.find(
+        (item) => item._id === cartSingleProduct._id
+      );
+      if (cartMatches2) {
+        newCartArr2 = state.cart.map((item) => {
+          if (item._id === cartSingleProduct._id) {
+            return { ...item, count: item.count + 1 };
+          }
+          return item;
+        });
+      } else {
+        newCartArr2 = [cartSingleProduct, ...state.cart];
+      }
+      return {
+        ...state,
+        cart: newCartArr2,
+        popupIsOpen: true,
       };
     case DELETE_PRODUCT_FROM_CART:
       const newCart = state.cart.filter(
@@ -54,6 +77,7 @@ export const cart = (state = initialState, action) => {
         cart: newCart,
       };
     case CART_FROM_LOCAL_STORAGE:
+      console.log(action.payload);
       return {
         ...state,
         cart: action.payload,
@@ -88,7 +112,7 @@ export const cart = (state = initialState, action) => {
     case SET_POPUP_FALSE:
       return {
         ...state,
-        popupIsOpen: false
+        popupIsOpen: false,
       };
     default:
       return state;

@@ -45,13 +45,13 @@ const ProductCard = ({product}) => {
       <div className={styles.ProductCardPriceAndIconCart}>
         <p className={styles.ProductCardPriceBlock}>
           {(product.previousPrice !== 0
-          && (
-          <span className={styles.ProductCardOldPrice}>
-            {product.previousPrice}
-            {' '}
-            грн
-          </span>
-))}
+          ? (
+            <span className={styles.ProductCardOldPrice}>
+              {product.previousPrice}
+              {' '}
+              грн
+            </span>
+) : <p className={styles.ProductCardOldPriceSpace}>&nbsp;</p>)}
           <br />
           {product.previousPrice
           ? (

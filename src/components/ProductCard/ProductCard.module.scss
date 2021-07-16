@@ -1,8 +1,9 @@
 .ProductCard {
   max-width: 280px;
-  padding: 10px;
+  padding: 10px 10px 15px 10px;
   background-color: #fff;
   position: relative;
+  box-shadow: 0px 0px 10px 0.1px #b5bac0;
   &:hover {
     box-shadow: 0px 0px 5px 0.5px #51ad33;
   }
@@ -59,7 +60,7 @@
 }
 .ProductCardPrice {
   font-size: 21px;
-  line-height: 27px;
+  line-height: 35px;
   font-weight: 700;
   color: #000;
 }
@@ -118,8 +119,12 @@
   display: block;
   max-width: 280px;
   z-index: 100;
-  box-shadow: 0px 5px 5px 0.5px #51ad33;
-  top: 380px;
+  box-shadow: 0px 10px 10px 0.1px #51ad33;
+  top: 375px;
   left: 0px;
   background-color: #fff;
+}
+.ProductCardOldPriceSpace {
+  font-size: 14px;
+  line-height: 5px;
 }

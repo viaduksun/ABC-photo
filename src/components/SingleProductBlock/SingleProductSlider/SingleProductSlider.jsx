@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/alt-text */
@@ -10,6 +11,7 @@ import './SingleProductSlider.scss';
 import SwiperCore, {
   Navigation, Thumbs
 } from 'swiper/core';
+import { useSelector } from 'react-redux';
 import styles from './SingleProductSlider.module.scss';
 
 // install Swiper modules
@@ -17,8 +19,6 @@ SwiperCore.use([Navigation, Thumbs]);
 
 const SingleProductSlider = ({singleProduct}) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  console.log(singleProduct);
-  
   return (
     <div className="container">
       <div className={styles.SingleProductSlider}>

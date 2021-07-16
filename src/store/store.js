@@ -12,11 +12,12 @@ import { cart } from './cart/reducer';
 import { singleProduct } from './singleProduct/reducer';
 import {
   ADD_PRODUCT_TO_CART,
+  ADD_SINGLE_PRODUCT_TO_CART,
   CART_DECREMENT,
   CART_INCREMENT,
   DELETE_PRODUCT_FROM_CART,
 } from './cart/types';
-import { SET_FLAG_IN_CART } from './products/types';
+import { SET_SINGLE_PRODUCT } from './singleProduct/types';
 
 // eslint-disable-next-line no-underscore-dangle
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
@@ -35,14 +36,18 @@ const localStorageMiddleware =
       action.type === ADD_PRODUCT_TO_CART ||
       action.type === DELETE_PRODUCT_FROM_CART ||
       action.type === CART_INCREMENT ||
-      action.type === CART_DECREMENT
+      action.type === CART_DECREMENT ||
+      action.type === ADD_SINGLE_PRODUCT_TO_CART
     ) {
       const { cart } = getState();
       localStorage.setItem('cart', JSON.stringify(cart.cart));
     }
-    if (action.type === SET_FLAG_IN_CART) {
-      const { productsPage } = getState();
-      localStorage.setItem('products', JSON.stringify(productsPage.products));
+    if (action.type === SET_SINGLE_PRODUCT) {
+      const { singleProduct } = getState();
+      localStorage.setItem(
+        'singleProduct',
+        JSON.stringify(singleProduct.singleProduct)
+      );
     }
     return result;
   };
@@ -53,7 +58,7 @@ const rootReducer = combineReducers({
   modals,
   admin,
   cart,
-  singleProduct
+  singleProduct,
 });
 
 const store = createStore(

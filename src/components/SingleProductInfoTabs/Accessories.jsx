@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 // import Swiper core and required modules
@@ -18,7 +19,6 @@ import styles from './SingleProductInfoTabs.module.scss';
 SwiperCore.use([Pagination, Navigation]);
 
 const Accessories = () => {
-  const slidersArr = [1, 2, 3, 4, 5, 6, 7, 8];
   const { width } = useWindowDimensions();
 
   const products = useSelector((state) => state.productsPage.products);
@@ -41,15 +41,10 @@ const Accessories = () => {
           },
         }}
         spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
-        navigation
         className="accessories-Slider"
         id="accessories"
       >
         {products.map((product) => (
-          // eslint-disable-next-line no-underscore-dangle
           <SwiperSlide key={product._id} id="accessoriesSlide">
             <ProductCard product={product} />
           </SwiperSlide>
