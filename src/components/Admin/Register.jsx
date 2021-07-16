@@ -38,7 +38,7 @@ const Register = () => {
       .required('Phone is required'),
   });
 
-  const handleRegister = (values, { setSubmitting }) => {
+  const handleRegister = (values, { setSubmitting, resetForm }) => {
     console.log('Register');
     const { firstName, lastName, email, login, phone, password, isAdmin } =
       values;
@@ -47,20 +47,23 @@ const Register = () => {
     if (isFormValid) {
       setSubmitting(true);
 
-      setTimeout(() => {
+      const form = {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        login: values.login,
+        phone: values.phone,
+        password: values.password,
+        isAdmin: values.isAdmin,
+      };
+      console.log(form);
+      userRegister(form).then((res) => {
+        resetForm();
         setSubmitting(false);
-        const form = {
-          firstName: values.firstName,
-          lastName: values.lastName,
-          email: values.email,
-          login: values.login,
-          phone: values.phone,
-          password: values.password,
-          isAdmin: values.isAdmin,
-        };
-        console.log(form);
-        userRegister(form);
-      }, 1000);
+        console.log(res);
+        const userName = res.data.firstName;
+        alert(`Hello, ${userName}! You have been registered successfully!`);
+      });
     }
   };
 
@@ -75,7 +78,7 @@ const Register = () => {
           login: '',
           phone: '',
           password: '',
-          isAdmin: 'true',
+          isAdmin: 'false',
         }}
         onSubmit={handleRegister}
         validationSchema={registrationSchema}

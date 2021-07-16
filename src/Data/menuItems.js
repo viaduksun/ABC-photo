@@ -29,10 +29,10 @@ const menuItems = [
     pageURL: '/contacts',
     id: 6
   },
-  {
-    menuTitle: 'Admin panel',
-    pageURL: '/admin',
-    id: 7
-  },
+  // {
+  //   menuTitle: 'Admin panel',
+  //   pageURL: '/admin',
+  //   id: 7
+  // },
 ];
 export default menuItems;

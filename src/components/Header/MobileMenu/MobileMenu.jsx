@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
@@ -10,6 +11,7 @@ import { VscChromeClose } from 'react-icons/vsc';
 import { FaUserAlt } from 'react-icons/fa';
 // eslint-disable-next-line import/no-unresolved
 import { BsBoxArrowInRight } from 'react-icons/bs';
+
 import styles from './MobileMenu.module.scss';
 import menuItems from '../../../Data/menuItems';
 import categoryItems from '../../../Data/buttomMenuItems';
@@ -24,6 +26,7 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
     [styles.MenuCover]: true,
     [styles.MenuCover_active]: isOpen,
   });
+
   return (
     <>
       <div className={MenuCover} onClick={toggleMenu} />

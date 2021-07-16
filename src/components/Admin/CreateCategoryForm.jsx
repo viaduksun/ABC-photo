@@ -8,20 +8,30 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import createCategory from '../../api/createCategory';
 import createProductLocalHost5000 from '../../api/createProductLocalHost5000';
 import TextInput from './Input/TextInput';
 import { sony02 } from '../../Data/products';
 import FormikControl from './FormikControl';
+import Button from '../UI/Button/Button';
+import { setCatalog } from '../../store/admin/actions';
 
 const CreateCategoryForm = () => {
   // const handleCreateCategory2 = () => {
   //   console.log('CREATE2');
   //   createProductLocalHost5000();
   // };
+  const dispatch = useDispatch();
   const catalog = useSelector((state) => state.admin.catalog);
-  const optionCategoryNull = <option value="null">---</option>;
+  const optionPlaceholder = (
+    <option value="" selected disabled hidden>
+      Выберите родительскую категорию
+    </option>
+  );
+  const optionCategoryNull = (
+    <option value="null">Ссылка верхнего уровня</option>
+  );
   const optionsMainCategory = catalog.map((category) => {
     if (category.parentId === 'null') {
       return (
@@ -32,9 +42,10 @@ const CreateCategoryForm = () => {
     }
     return null;
   });
-  optionsMainCategory.push(optionCategoryNull);
-  const handleCreateCategory = (values, { setSubmitting }) => {
-    console.log(values);
+  optionsMainCategory.push(optionCategoryNull, optionPlaceholder);
+  // ========= CREATE FUNC =================
+  const handleCreateCategory = (values, { setSubmitting, resetForm }) => {
+    console.log('FORM', values);
     const { id, name, path, parentId, imgUrl, description } = values;
     setSubmitting(true);
     const newCategory = {
@@ -45,13 +56,25 @@ const CreateCategoryForm = () => {
       imgUrl,
       description,
     };
-    createCategory(newCategory);
-    console.log(newCategory);
+    createCategory(newCategory)
+      .then((newCategory) => {
+        dispatch(setCatalog());
+        /* Do something with newProduct */
+        console.log('Category was created successfully!', newCategory);
+        alert('Category was created successfully!');
+      })
+      .catch((err) => {
+        /* Do something with error, e.g. show error to user */
+        console.log(err);
+      });
+    // console.log(newCategory);
     setSubmitting(false);
+    // resetForm();
   };
   const productSchema = Yup.object().shape({
     id: Yup.string().required('Is required'),
     name: Yup.string().required('Is required'),
+    path: Yup.string().required('Is required'),
     parentId: Yup.string().required('Is required'),
     imgUrl: Yup.string().required('Is required'),
     description: Yup.string().required('Is required'),
@@ -64,6 +87,7 @@ const CreateCategoryForm = () => {
         initialValues={{
           id: '',
           name: '',
+          path: '',
           parentId: '',
           imgUrl: '',
           description: '',
@@ -108,12 +132,9 @@ const CreateCategoryForm = () => {
               /> */}
             </div>
             <div className="form-btn-group">
-              <button type="submit" className="btn cart-body-order">
+              <Button type="submit" addClass="admin-primary">
                 Create
-              </button>
-              <button type="reset" className="btn cart-body-order reset">
-                Reset data
-              </button>
+              </Button>
             </div>
           </Form>
         )}

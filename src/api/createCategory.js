@@ -11,15 +11,6 @@ const createCategory = (category) => {
   return axios
     .post('https://intense-hamlet-33316.herokuapp.com/api/catalog', category, {
       headers,
-    })
-    .then((newCategory) => {
-      /* Do something with newProduct */
-      console.log('Category was created successfully!', newCategory);
-      alert('Category was created successfully!');
-    })
-    .catch((err) => {
-      /* Do something with error, e.g. show error to user */
-      console.log(err);
     });
 };
 

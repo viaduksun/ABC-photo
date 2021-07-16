@@ -63,7 +63,12 @@ const Category = ({
         })}
       >
         {childrenCategoryArray.map((item, i) => (
-          <ChildrenCategory category={item} index={i} />
+          <ChildrenCategory
+            category={item}
+            index={i}
+            setActiveEditCategory={setActiveEditCategory}
+            setActiveDeleteCategory={setActiveDeleteCategory}
+          />
         ))}
       </div>
     </div>

@@ -80,3 +80,31 @@
     visibility: visible;
   }
 }
+.modalContentBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modalContentText {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.modalProductBlock {
+  display: flex;
+  align-items: center;
+  padding: 20px 50px;
+  max-width: 90%;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.452);
+}
+.modalProductPrev {
+  height: 100px;
+  margin-right: 30px;
+  & img {
+    height: 100%;
+  }
+}
+.modalProductPrevTitle {
+  font-size: 20px;
+}

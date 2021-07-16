@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable array-callback-return */
 import {
-  SET_PRODUCTS, REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT_CLOSE, EDIT_PRODUCT, SET_CATALOG, MODAL_EDIT_CATEGORY_OPEN, MODAL_EDIT_CATEGORY_CLOSE, EDIT_CATEGORY, MODAL_DELETE_CATEGORY_OPEN, MODAL_DELETE_CATEGORY_CLOSE
+  SET_PRODUCTS, REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT_CLOSE, EDIT_PRODUCT, SET_CATALOG, MODAL_EDIT_CATEGORY_OPEN, MODAL_EDIT_CATEGORY_CLOSE, EDIT_CATEGORY, MODAL_DELETE_CATEGORY_OPEN, MODAL_DELETE_CATEGORY_CLOSE, IS_ADMIN, DELETE_CATEGORY
 } from './types';
 
 const initialState = {
@@ -15,10 +15,16 @@ const initialState = {
   isModalRemoveProductOpen: false,
   isModalEditCategoryOpen: false,
   isModalRemoveCategoryOpen: false,
+  isAdmin: false,
 };
 
 export const admin = (state = initialState, action) => {
   switch (action.type) {
+    case IS_ADMIN:
+      return {
+        ...state,
+        isAdmin: true
+      };
     case MODAL_EDIT_CATEGORY_CLOSE:
       return {
         ...state,
@@ -68,6 +74,22 @@ export const admin = (state = initialState, action) => {
         products: newProducts,
         isModalRemoveProductOpen: false
       };
+    case DELETE_CATEGORY:
+      console.log('DELETE_CATEGORY', action.payload);
+      const newCatalog = state.catalog.filter((category) => category.id !== action.payload.categoryId);
+      return {
+        ...state,
+        catalog: newCatalog,
+        isModalRemoveCategoryOpen: false,
+      };
+    // case CREATE_CATEGORY:
+    //   console.log('CREATE_CATEGORY', action.payload);
+    //   const newCatalog = state.catalog.push(action.payload.categoryId);
+    //   return {
+    //     ...state,
+    //     catalog: newCatalog,
+    //     isModalRemoveCategoryOpen: false,
+    //   };
     case EDIT_PRODUCT:
       // console.log('STATE', state);
       // console.log('PAYLOAD_', action.payload);

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 import React, { useState } from 'react';
@@ -6,6 +7,7 @@ import styles from './Categories.module.scss';
 import Category from './Category';
 import EditCategoryForm from './EditCategoryForm';
 import {
+  deleteCategoryAction,
   modalDeleteCategoryCloseAction,
   modalDeleteCategoryOpenAction,
   modalEditCategoryCloseAction,
@@ -13,6 +15,7 @@ import {
 } from '../../../store/admin/actions';
 import Modal from '../../Modal/Modal';
 import Button from '../../UI/Button/Button';
+import deleteCategory from '../../../api/deleteCategory';
 
 const Categories = () => {
   const categories = useSelector((state) => state.admin.catalog);
@@ -29,15 +32,15 @@ const Categories = () => {
   const deleteCategoryModalClose = () => {
     dispatch(modalDeleteCategoryCloseAction());
   };
-  const handleModalDeleteCategoryOpen = () => {
-    console.log('Delete category');
-  };
   const handleModalEditClose = () => {
     console.log('Close');
     dispatch(modalEditCategoryCloseAction());
   };
   const handleDeleteCategory = () => {
     console.log('Delete category');
+    // === DELETE from DB ===
+    deleteCategory(currentCategory.id);
+    dispatch(deleteCategoryAction(currentCategory.id));
   };
   const toggleActive = (id) => {
     console.log(id, '===', active);
@@ -93,10 +96,10 @@ const Categories = () => {
           <div className={styles.modalProductBlock}>
             <div className={styles.modalProductPrev}>
               <img src={currentCategory.imgUrl} alt={currentCategory.name} />
-              <p className={styles.modalProductPrevTitle}>
-                {currentCategory.name}
-              </p>
             </div>
+            <p className={styles.modalProductPrevTitle}>
+              {currentCategory.name}
+            </p>
           </div>
         </div>
       );
@@ -108,7 +111,7 @@ const Categories = () => {
       <div className={styles.CategoriesWrapper}>
         {categories.map((category, index) => {
           const childrenCategoryArray = categories.filter(
-            (item) => item.parentId === category.name
+            (item) => item.parentId === category._id
           );
           if (category.parentId === 'null') {
             return (

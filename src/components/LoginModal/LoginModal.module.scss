@@ -1,0 +1,52 @@
+.Cover {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.LoginModal {
+  width: 470px;
+  min-height: 500px;
+  background: #f9f9fb;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.closeIcon {
+  color: rgb(255, 255, 255);
+  position: absolute;
+  right: -35px;
+  top: -25px;
+  font-size: 30px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  &:hover {
+    transform: rotate(90deg);
+  }
+}
+.Header {
+  // background: rgb(200, 200, 200);
+  display: flex;
+  border-bottom: 1px solid #51ad33;
+  justify-content: space-between;
+}
+.headerMenuItem {
+  border: 1px solid #000;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  // flex: 1 1 auto;
+}
+.Body {
+  background: rgb(165, 165, 165);
+  flex: 1 1 auto;
+}
+.Footer {
+  height: 130px;
+  background: rgb(255, 228, 228);
+}

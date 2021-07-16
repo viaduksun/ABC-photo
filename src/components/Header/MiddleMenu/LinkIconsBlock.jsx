@@ -3,20 +3,33 @@ import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdShoppingCart } from 'react-icons/md';
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './MiddleMenu.module.scss';
+import { loginModalOpenAction } from '../../../store/madals/actions';
 
 export default function LoginIcon() {
+  const dispatch = useDispatch();
   const cartCounter = useSelector((state) => state.cart.totalCountCart);
+  const handleLogin = () => {
+    dispatch(loginModalOpenAction());
+  };
   return (
     <div className={styles.HeaderlinksBlockWrapper}>
       <div>
-        <Link to="/profile" className={styles.HeaderLink}>
+        <div className={styles.LoginBlock}>
+          <div className={styles.HeaderIconWrapper}>
+            <FaUserAlt className={styles.HeaderIcon} onClick={handleLogin} />
+          </div>
+          <p className={styles.HeaderIconText}>Вход/Регистрация</p>
+        </div>
+
+        {/* Если залогинился то показываем это: */}
+        {/* <Link to="/profile" className={styles.HeaderLink}>
           <div className={styles.HeaderIconWrapper}>
             <FaUserAlt className={styles.HeaderIcon} />
           </div>
-          <p className={styles.HeaderIconText}>Вход</p>
-        </Link>
+          <p className={styles.HeaderIconText}>Личный кабинет</p>
+        </Link> */}
       </div>
       <div>
         <Link to="/cart" className={styles.HeaderLink}>
@@ -26,7 +39,9 @@ export default function LoginIcon() {
             />
           </div>
           <p className={styles.HeaderIconText}>Корзина</p>
-          {cartCounter !== 0 && <p className={styles.HeaderCartCounter}>{cartCounter}</p>}
+          {cartCounter !== 0 && (
+            <p className={styles.HeaderCartCounter}>{cartCounter}</p>
+          )}
         </Link>
       </div>
     </div>

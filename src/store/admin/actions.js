@@ -12,7 +12,9 @@ import {
   MODAL_EDIT_CATEGORY_CLOSE,
   EDIT_CATEGORY,
   MODAL_DELETE_CATEGORY_OPEN,
-  MODAL_DELETE_CATEGORY_CLOSE
+  MODAL_DELETE_CATEGORY_CLOSE,
+  IS_ADMIN,
+  DELETE_CATEGORY
 } from './types';
 
 export const adminProducts = () => (dispatch) => {
@@ -26,9 +28,19 @@ export const setCatalog = () => (dispatch) => {
     dispatch({ type: SET_CATALOG, payload: data });
   });
 };
+// export const setNewCatalog = () => (dispatch) => {
+//   getCatalog().then((data) => {
+//     console.log(data);
+//     dispatch({ type: CREATE_CATEGORY, payload: data });
+//   });
+// };
 export const removeProduct = (product) => ({
   type: REMOVE_PRODUCT,
   payload: { productID: product._id },
+});
+export const deleteCategoryAction = (categoryId) => ({
+  type: DELETE_CATEGORY,
+  payload: { categoryId },
 });
 export const editProduct = (product) => ({
   type: EDIT_PRODUCT,
@@ -55,4 +67,7 @@ export const modalDeleteCategoryCloseAction = () => ({
 export const editCategoryAction = (category) => ({
   type: EDIT_CATEGORY,
   payload: category,
+});
+export const isAdminAction = () => ({
+  type: IS_ADMIN
 });
