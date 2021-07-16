@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/button-has-type */
 /* eslint-disable operator-linebreak */
 /* eslint-disable object-curly-newline */
@@ -7,10 +8,12 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import styles from './LoginModal.module.scss';
 import userRegister from '../../api/register';
 import TextInput from '../UI/Input/TextInput';
+import Button from '../UI/Button/Button';
 
-const Register = () => {
+const RegisterForm = () => {
   const takenEmailsFromDB = [
     'test01@gmail.com',
     'test02@gmail.com',
@@ -68,8 +71,7 @@ const Register = () => {
   };
 
   return (
-    <div className="formBlock register">
-      <h2 className="form-name">Register form</h2>
+    <div className={styles.formWrapper}>
       <Formik
         initialValues={{
           firstName: '',
@@ -84,8 +86,8 @@ const Register = () => {
         validationSchema={registrationSchema}
       >
         {(formik) => (
-          <Form className="cart-form">
-            <div className="cart-inputs-area">
+          <Form className={styles.FormWrapper}>
+            <div className={styles.InputsWrapper}>
               <TextInput label="First name" name="firstName" type="text" />
               <TextInput label="Last name" name="lastName" type="text" />
               <TextInput label="Email" name="email" type="email" />
@@ -94,10 +96,10 @@ const Register = () => {
               <TextInput label="Password" name="password" type="text" />
               <TextInput label="" name="isAdmin" type="hidden" />
             </div>
-            <div className="form-btn-group">
-              <button type="submit" className="btn cart-body-order">
-                Regiser
-              </button>
+            <div className={styles.BtnsWrapper}>
+              <Button type="submit" addClass="registerForm">
+                Зарегистрироваться
+              </Button>
             </div>
           </Form>
         )}
@@ -106,4 +108,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterForm;

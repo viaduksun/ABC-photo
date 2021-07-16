@@ -14,7 +14,10 @@ import {
   MODAL_DELETE_CATEGORY_OPEN,
   MODAL_DELETE_CATEGORY_CLOSE,
   IS_ADMIN,
-  DELETE_CATEGORY
+  DELETE_CATEGORY,
+  IS_LOGGED_IN,
+  CURRENT_USER_SET_UP,
+  EXIT
 } from './types';
 
 export const adminProducts = () => (dispatch) => {
@@ -70,4 +73,15 @@ export const editCategoryAction = (category) => ({
 });
 export const isAdminAction = () => ({
   type: IS_ADMIN
+});
+export const isLoggedInAction = (userData) => ({
+  type: IS_LOGGED_IN,
+  payload: userData,
+});
+export const userFromLocalStorageAction = (userFromLocalData) => ({
+  type: CURRENT_USER_SET_UP,
+  payload: userFromLocalData,
+});
+export const exitAction = () => ({
+  type: EXIT,
 });

@@ -1,9 +1,9 @@
 .CategoriesWrapper {
   width: 100%;
-  border: 1px solid rgb(128, 128, 128);
   margin-bottom: 20px;
 }
 .CategoryWrapper {
+  display: block;
 }
 .ChildCategoryCard {
   display: flex;
@@ -11,6 +11,10 @@
   padding: 10px;
   padding-left: 50px;
   border-bottom: 1px solid rgb(128, 128, 128);
+  background: rgb(161, 161, 161);
+  &:nth-child(odd) {
+    background: rgb(212, 212, 212);
+  }
 }
 .ChildCategoryTitle {
   flex: 1 1 auto;
@@ -23,6 +27,10 @@
   // border: 1px solid #000;
   border-bottom: 1px solid rgb(128, 128, 128);
   transition: all 0.3s ease 0s;
+  // background: rgb(255, 89, 89);
+  &:nth-child(odd) {
+    // background: rgb(124, 124, 124);
+  }
   &_active {
     box-shadow: 0px 5px 9px -5px rgba(0, 0, 0, 0.6) inset;
   }

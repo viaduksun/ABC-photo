@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import menuItems from '../../../Data/menuItems';
 import styles from './TopMenu.module.scss';
