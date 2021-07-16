@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import './App.scss';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from './containers/Header/Header';
@@ -22,14 +22,13 @@ import {
 } from './store/cart/actions';
 import CartPopup from './components/UI/CartPopup/CartPopup';
 import { userFromLocalStorageAction } from './store/admin/actions';
+import { singleProductFromLocalStorageAction } from './store/singleProduct/actions';
 
 function App() {
   const cart = useSelector((state) => state.cart.cart);
   const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
   const currentUserFromRedux = useSelector((state) => state.admin.currentUser);
   const dispatch = useDispatch();
-
-  const [state, setState] = useState(false);
 
   let totalSum = 0;
   cart.forEach((item) => {
@@ -48,8 +47,15 @@ function App() {
 
   useEffect(() => {
     const cartFromLocalStorage = localStorage.getItem('cart');
+    const singleProductFromLocalStorage = localStorage.getItem('singleProduct');
+    console.log(singleProductFromLocalStorage);
     if (cartFromLocalStorage) {
       dispatch(cartFromLocalStorageAction(cartFromLocalStorage));
+    }
+    if (singleProductFromLocalStorage) {
+      dispatch(
+        singleProductFromLocalStorageAction(singleProductFromLocalStorage)
+      );
     }
   }, [dispatch]);
 

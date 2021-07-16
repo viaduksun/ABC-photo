@@ -76,8 +76,8 @@ const PopularModelsSlider = ({popularModels}) => {
       <div className={styles.PopularContainer}>
         <Swiper
           className="swiper-container-3"
-          slidesPerView={4}
-          spaceBetween={55}
+          slidesPerView={1}
+          spaceBetween={5}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
@@ -87,9 +87,22 @@ const PopularModelsSlider = ({popularModels}) => {
           loop
           loopFillGroupWithBlank
           navigation
-          allowTouchMove={false}
+          allowTouchMove
           mousewheel={{
             releaseOnEdges: true
+          }}
+          breakpoints={{
+            1280: {
+              slidesPerView: 4,
+              spaceBetween: 10
+            },
+            1100: {
+              slidesPerView: 3,
+              touchRatio: 1
+            },
+            600: {
+              slidesPerView: 2,
+            },
           }}
         >
           {popularModels.map((popularCard) => (

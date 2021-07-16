@@ -9,6 +9,9 @@
     padding: 10px 54px;
     text-transform: uppercase;
     background-color: #51ad33;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     &:hover {
       background-color: #368e1a;
     }

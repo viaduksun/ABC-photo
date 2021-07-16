@@ -1,6 +1,7 @@
 .swiper-container-3 {
   height: 650px;
-  position: relative;
+  margin: 0 auto;
+  position: initial;
   .swiper-button-next,
   .swiper-button-prev {
     width: 9px;
@@ -12,9 +13,44 @@
   }
 
   .swiper-button-prev {
-    left: 0px;
+    top: 50%;
+    left: 14%;
+    margin-right: 20px;
+    &::after {
+      font-size: 20px;
+      transform: translateX(-10%);
+    }
+    @media(max-width: 1800px) {
+      left: 8%;
+    }
+    @media(max-width: 1550px) {
+      left: 4%;
+    }
+    @media(max-width: 1425px) {
+      left: 1%;
+    }
+    @media(max-width: 800px) {
+      display: none;
+    }
   }
   .swiper-button-next {
-    right: 0px;
+    top: 50%;
+    right: 14%;
+    &::after {
+      font-size: 20px;
+      transform: translateX(10%);
+    }
+    @media(max-width: 1800px) {
+      right: 8%;
+    }
+    @media(max-width: 1550px) {
+      right: 4%;
+    }
+    @media(max-width: 1425px) {
+      right: 1%;
+    }
+    @media(max-width: 800px) {
+      display: none;
+    }
   }
 }

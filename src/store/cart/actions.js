@@ -1,5 +1,7 @@
+/* eslint-disable import/named */
 import {
   ADD_PRODUCT_TO_CART,
+  ADD_SINGLE_PRODUCT_TO_CART,
   CART_DECREMENT,
   CART_FROM_LOCAL_STORAGE,
   CART_INCREMENT,
@@ -12,6 +14,10 @@ import {
 export const addProductToCartAction = (product) => ({
   type: ADD_PRODUCT_TO_CART,
   payload: { product },
+});
+export const addSingleProductToCartAction = (singleProduct) => ({
+  type: ADD_SINGLE_PRODUCT_TO_CART,
+  payload: { singleProduct },
 });
 
 export const deleteProductFromCartAction = (cartProductId) => ({
@@ -44,5 +50,5 @@ export const setTotalCountCartAction = (totalCount) => ({
   payload: { totalCount },
 });
 export const hidePopupAction = () => ({
-  type: SET_POPUP_FALSE
+  type: SET_POPUP_FALSE,
 });
