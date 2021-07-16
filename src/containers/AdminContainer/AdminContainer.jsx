@@ -5,12 +5,12 @@ import Categories from '../../components/Admin/Categories/Categories';
 // import Register from '../../components/Admin/Register';
 import SideNavBar from '../../components/Admin/SideNavBar/SideNavBar';
 import styles from './AdminContainer.module.scss';
-import CreateProducts from '../../components/Admin/CreateProducts';
 import Products from '../../components/Admin/Products/Products';
 import CreateCategory from '../../components/Admin/CreateCategory';
+import CreateProductsFormContainer from '../../components/Admin/CreateProductsForms/CreateProductsFormContainer';
 
 const AdminContainer = () => {
-  const [isActive, setIsActive] = useState('register');
+  const [isActive, setIsActive] = useState('catalog');
   const handleActive = (activeBtn) => {
     setIsActive(activeBtn);
   };
@@ -23,7 +23,7 @@ const AdminContainer = () => {
           {isActive === 'login' && <Login />} */}
           {isActive === 'catalog' && <Categories />}
           {isActive === 'createCatalog' && <CreateCategory />}
-          {isActive === 'create' && <CreateProducts />}
+          {isActive === 'create' && <CreateProductsFormContainer />}
           {isActive === 'products' && <Products />}
         </div>
       </div>

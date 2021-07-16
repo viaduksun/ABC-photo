@@ -6,13 +6,13 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import createProduct from '../../api/createProduct';
-import createProductLocalHost5000 from '../../api/createProductLocalHost5000';
-import TextInput from './Input/TextInput';
-import { sony02 } from '../../Data/products';
-import FormikControl from './FormikControl';
+import createProduct from '../../../api/createProduct';
+import createProductLocalHost5000 from '../../../api/createProductLocalHost5000';
+import TextInput from '../Input/TextInput';
+import { sony02 } from '../../../Data/products';
+import FormikControl from '../FormikControl';
 
-const CreateProducts = () => {
+const CreatePhotoCameraProductForm = () => {
   const handleCreateProduct2 = () => {
     console.log('CREATE2');
     createProductLocalHost5000();
@@ -104,7 +104,6 @@ const CreateProducts = () => {
 
   return (
     <div className="formBlock create">
-      <h2 className="form-name">Create product</h2>
       <Formik
         initialValues={{
           brand: '',
@@ -247,4 +246,4 @@ const CreateProducts = () => {
   );
 };
 
-export default CreateProducts;
+export default CreatePhotoCameraProductForm;
