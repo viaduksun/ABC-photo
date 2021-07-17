@@ -49,9 +49,18 @@
   // border: 3px solid rgb(0, 160, 35);
   // background: rgb(0, 135, 189);
   display: grid;
-  grid-template-rows: repeat(3, minmax(30px, 1fr));
+  grid-template-rows: repeat(3, minmax(50px, 1fr));
   grid-template-columns: repeat(2, minmax(200px, 1fr));
   grid-column-gap: 80px;
   grid-auto-flow: column;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+.Password {
+  position: relative;
+  margin-bottom: 30px;
+}
+.PasswordIcon {
+  position: absolute;
+  top: 30px;
+  right: 10px;
 }
