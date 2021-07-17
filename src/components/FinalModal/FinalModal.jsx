@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { BsX } from 'react-icons/bs';
 import styles from './FinalModal.module.scss';
 
 // eslint-disable-next-line react/prop-types
@@ -21,32 +22,7 @@ const FinalModal = ({ active, setActive }) => {
           className={styles.ModalClose}
           onClick={handleClose}
         >
-          <svg
-            width="25"
-            height="24"
-            viewBox="0 0 25 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x="20.8691"
-              y="0.000343323"
-              width="4.42704"
-              height="29.5136"
-              rx="2.21352"
-              transform="rotate(45 20.8691 0.000343323)"
-              fill="white"
-            />
-            <rect
-              x="0.00244141"
-              y="3.13039"
-              width="4.42704"
-              height="29.5136"
-              rx="2.21352"
-              transform="rotate(-45 0.00244141 3.13039)"
-              fill="white"
-            />
-          </svg>
+          <BsX />
         </button>
         <div className={styles.ModalSvg}>
           <svg
