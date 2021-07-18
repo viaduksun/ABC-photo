@@ -22,6 +22,7 @@ import {
 
 export const adminProducts = () => (dispatch) => {
   getProducts().then((data) => {
+    console.log('DATA', data);
     dispatch({ type: SET_PRODUCTS, payload: data });
   });
 };

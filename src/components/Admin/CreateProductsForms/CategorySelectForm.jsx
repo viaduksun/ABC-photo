@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 /* eslint-disable operator-linebreak */
 /* eslint-disable object-curly-newline */
@@ -9,14 +10,16 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useSelector } from 'react-redux';
 import FormikControl from '../FormikControl';
+import Button from '../../UI/Button/Button';
+import styles from './CreateProductsForms.module.scss';
 
-const SelectCategoryForm = () => {
+const SelectCategoryForm = ({ handleSelect }) => {
   console.log('CreateProductsFormContainer');
   const catalog = useSelector((state) => state.admin.catalog);
-
+  console.log(catalog);
   const optionPlaceholder = (
-    <option value="" selected disabled hidden>
-      Выберите категорию продукта
+    <option value="" disabled hidden>
+      Выберите категорию для получения шаблона формы создания продукта
     </option>
   );
   const optionsMainCategory = catalog.map((category) => {
@@ -30,28 +33,26 @@ const SelectCategoryForm = () => {
     return null;
   });
   optionsMainCategory.push(optionPlaceholder);
-  const handleSelect = (values, { setSubmitting }) => {
-    console.log(values);
-    const { parentId } = values;
-    setSubmitting(true);
-    const newProduct = {
-      parentId,
-    };
 
-    console.log(newProduct);
-    setSubmitting(false);
-  };
+  // const handleSelect = (values) => {
+  //   console.log(values);
+  // };
+  // const handleOnChange = (values) => {
+  //   console.log('CHANGE', values);
+  // };
+  // =================================================================
   const productSchema = Yup.object().shape({
     parentId: Yup.string().required('Is required'),
   });
 
   return (
-    <div className="formBlock create">
+    <div className={styles.FormBody}>
       <Formik
         initialValues={{
-          parentId: '',
+          categoryId: '',
         }}
         onSubmit={handleSelect}
+
         // validationSchema={productSchema}
       >
         {(formik) => (
@@ -59,16 +60,16 @@ const SelectCategoryForm = () => {
             <div className="product-inputs-area">
               <FormikControl
                 control="select"
-                label="Родительская категория"
-                name="parentId"
+                name="categoryId"
                 type="select"
                 options={optionsMainCategory}
+                // handleOnChange={handleOnChange}
               />
             </div>
             <div className="form-btn-group">
-              <button type="submit" className="btn cart-body-order">
-                Select
-              </button>
+              <Button type="submit" addClass="admin-primary">
+                Выбрать
+              </Button>
             </div>
           </Form>
         )}

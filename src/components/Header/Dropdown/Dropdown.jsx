@@ -16,7 +16,6 @@ const DropdownMenu = ({ handleClick, parentId }) => {
     (item) => item.parentId === parentId
   );
   // console.log(currentDropdownArr);
-
   const dropWrapperClass = classNames({
     [styles.DropMenuWrapper]: true,
     // [styles.DropMenuWrapper_active]: dropActive,
@@ -30,7 +29,13 @@ const DropdownMenu = ({ handleClick, parentId }) => {
       <div className={dropClass}>
         <ul className={styles.DropUl}>
           {currentDropdownArr.map((item) => (
-            <li key={item.id} className={styles.DropLink} onClick={handleClick}>
+            <li
+              key={item.id}
+              className={styles.DropLink}
+              onClick={() => {
+                handleClick(item.id);
+              }}
+            >
               <Link to={item.path} className={styles.DropLinkText}>
                 {item.name}
               </Link>

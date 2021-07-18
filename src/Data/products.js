@@ -209,6 +209,9 @@ export const nikon02 = {
     'https://res.cloudinary.com/finalprojectfe242021/image/upload/v1625756676/OnlineStore/Cameras/NIKOND3500%2BAF-P18-55nonVR/04_okzwkt.jpg'
   ]
 };
+
+// ====== то что выше я уже загрузил ========
+
 export const nikon03 = {
 
   brand: 'nikon',

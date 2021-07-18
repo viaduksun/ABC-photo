@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-case-declarations */
@@ -41,9 +42,11 @@ export const admin = (state = initialState, action) => {
         currentUser: action.payload
       };
     case CURRENT_USER_SET_UP:
+      console.log('CURRENT_USER_SET_UP', action.payload);
       return {
         ...state,
         isLoggedIn: true,
+        isAdmin: action.payload.isAdmin,
         currentUser: action.payload
       };
     case MODAL_EDIT_CATEGORY_CLOSE:
@@ -67,6 +70,7 @@ export const admin = (state = initialState, action) => {
         isModalRemoveCategoryOpen: false
       };
     case SET_PRODUCTS:
+      console.log('SET_PRODUCTS', action.payload.data);
       return {
         ...state,
         products: action.payload.data,

@@ -9,18 +9,12 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import createProduct from '../../../api/createProduct';
-// import createProductLocalHost5000 from '../../../api/createProductLocalHost5000';
 import TextInput from '../Input/TextInput';
 import FormikControl from '../FormikControl';
 import styles from './CreateProductsForms.module.scss';
 import Button from '../../UI/Button/Button';
 
-const CreatePhotoCameraProductForm = ({ currentCategory }) => {
-  // const handleCreateProduct2 = () => {
-  //   console.log('CREATE2');
-  //   createProductLocalHost5000();
-  // };
-  console.log(currentCategory);
+const CreateLensesProductForm = ({ currentCategory }) => {
   const handleCreateProduct = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     const {
@@ -44,44 +38,31 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
       quantityName,
       quantityValue,
 
-      setName,
-      setValue,
-
       hitName,
       hitValue,
 
       warantyName,
       warantyValue,
-
-      typeName,
-      typeValue,
-
-      matrixTypeName,
-      matrixTypeValue,
-
-      matrixSizeName,
-      matrixSizeValue,
-
-      megapixelsName,
-      megapixelsValue,
-
-      sensorScreenName,
-      sensorScreenValue,
-
-      screenBraicingName,
-      screenBraicingValue,
-
-      hotShoeName,
-      hotShoeValue,
-
-      maxSizeName,
-      maxSizeValue,
-
       description,
       imageUrl01,
       imageUrl02,
       imageUrl03,
       imageUrl04,
+      // === CUSTOM FIELDS ===
+      lenseTypeName,
+      lenseTypeValue,
+
+      bionetName,
+      bionetValue,
+
+      focusName,
+      focusValue,
+
+      apertureName,
+      apertureValue,
+
+      focusTypeName,
+      focusTypeValue,
     } = values;
     setSubmitting(true);
     const newProduct = {
@@ -92,19 +73,20 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
       currentPrice: [currentPriceName, currentPriceValue],
       previousPrice: [previousPriceName, previousPriceValue],
       quantity: [quantityName, quantityValue],
-      set: [setName, setValue],
       hit: [hitName, hitValue],
       waranty: [warantyName, warantyValue],
-      type: [typeName, typeValue],
-      matrixType: [matrixTypeName, matrixTypeValue],
-      matrixSize: [matrixSizeName, matrixSizeValue],
-      megapixels: [megapixelsName, megapixelsValue],
-      sensorScreen: [sensorScreenName, sensorScreenValue],
-      screenBraicing: [screenBraicingName, screenBraicingValue],
-      hotShoe: [hotShoeName, hotShoeValue],
-      maxSize: [maxSizeName, maxSizeValue],
       description,
       imageUrls: [imageUrl01, imageUrl02, imageUrl03, imageUrl04],
+      // === CUSTOM FIELDS ===
+      lenseType: [lenseTypeName, lenseTypeValue],
+
+      bionet: [bionetName, bionetValue],
+
+      focus: [focusName, focusValue],
+
+      aperture: [apertureName, apertureValue],
+
+      focusType: [focusTypeName, focusTypeValue],
     };
     createProduct(newProduct);
     console.log(newProduct);
@@ -121,15 +103,11 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
     hitValue: Yup.string().required('Is required'),
     warantyValue: Yup.string().required('Is required'),
     // === CUSTOM FIELDS ==========
-    setValue: Yup.string().required('Is required'),
-    typeValue: Yup.string().required('Is required'),
-    matrixTypeValue: Yup.string().required('Is required'),
-    matrixSizeValue: Yup.string().required('Is required'),
-    megapixelsValue: Yup.string().required('Is required'),
-    sensorScreenValue: Yup.string().required('Is required'),
-    screenBraicingValue: Yup.string().required('Is required'),
-    hotShoeValue: Yup.string().required('Is required'),
-    maxSizeValue: Yup.string().required('Is required'),
+    lenseTypeValue: Yup.string().required('Is required'),
+    bionetValue: Yup.string().required('Is required'),
+    focusValue: Yup.string().required('Is required'),
+    apertureValue: Yup.string().required('Is required'),
+    focusTypeValue: Yup.string().required('Is required'),
     // =================================
     description: Yup.string().required('Is required'),
     imageUrl01: Yup.string().required('Is required'),
@@ -137,113 +115,6 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
     imageUrl03: Yup.string().required('Is required'),
     imageUrl04: Yup.string().required('Is required'),
   });
-  const optionsSet = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="С объективом" selected>
-        С объективом
-      </option>
-      <option value="Без объектива">Без объектива</option>
-    </>
-  );
-  const optionsHit = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="yes">Да</option>
-      <option value="no">Нет</option>
-    </>
-  );
-  const optionsType = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="Зеркальный">Зеркальный</option>
-      <option value="Компактный">Компактный</option>
-      <option value="Мгновенной печати">Мгновенной печати</option>
-      <option value="Системный">Системный</option>
-      <option value="Суперзум">Суперзум</option>
-    </>
-  );
-  const optionsMatrixType = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="CCD (ПЗС)">CCD (ПЗС)</option>
-      <option value="CMOS (КМОП)">CMOS (КМОП)</option>
-      <option value="Live-MOS (NMOS)">Live-MOS (NMOS)</option>
-    </>
-  );
-  const optionsMatrixSize = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="1` (13.2 х 8.8 мм)">1" (13.2 х 8.8 мм)</option>
-      <option value="1/2.3` (6.2 х 4.6 мм)">1/2.3" (6.2 х 4.6 мм)</option>
-      <option value="1/3` (4.52 х 3.39 мм)">1/3" (4.52 х 3.39 мм)</option>
-      <option value="APS-C (22.3 х 14.8 мм)">APS-C (22.3 х 14.8 мм)</option>
-      <option value="APS-C (23.5 х 15.7 мм)">APS-C (23.5 х 15.7 мм)</option>
-      <option value="Full Frame (36 х 24 мм)">Full Frame (36 х 24 мм)</option>
-    </>
-  );
-  const optionsMegapixels = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="3">3</option>
-      <option value="8">8</option>
-      <option value="12">12</option>
-      <option value="16">16</option>
-      <option value="18">18</option>
-      <option value="21">21</option>
-      <option value="34">34</option>
-    </>
-  );
-  const optionsSensorScreen = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="yes">Да</option>
-      <option value="no">Нет</option>
-    </>
-  );
-  const screenBraicingOptions = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="Наклонный">Наклонный</option>
-      <option value="Поворотный">Поворотный</option>
-      <option value="Фиксированный">Фиксированный</option>
-    </>
-  );
-  const hotShoeOptions = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="yes">Да</option>
-      <option value="no">Нет</option>
-    </>
-  );
-  const maxSizeOptions = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="1280 x 720 пикс.">1280 x 720 пикс.</option>
-      <option value="3264 x 2448 пикс.">3264 x 2448 пикс.</option>
-      <option value="4608 x 3456 пикс.">4608 x 3456 пикс.</option>
-    </>
-  );
   const brandOptions = (
     <>
       <option value="-" hidden>
@@ -251,9 +122,8 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
       </option>
       <option value="Canon">Canon</option>
       <option value="Nikon">Nikon</option>
+      <option value="Panasonic">Panasonic</option>
       <option value="Sony">Sony</option>
-      <option value="Olympus">Olympus</option>
-      <option value="Fuji">Fuji</option>
     </>
   );
   const warantyOptions = (
@@ -266,13 +136,76 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
       <option value="36">36</option>
     </>
   );
+  const optionsHit = (
+    <>
+      <option value="-" hidden>
+        -
+      </option>
+      <option value="yes">Да</option>
+      <option value="no">Нет</option>
+    </>
+  );
+  // === CUSTOM FIELDS ==========
+  const lenseTypeOptions = (
+    <>
+      <option value="-" hidden>
+        -
+      </option>
+      <option value="макрообъектив">макрообъектив</option>
+      <option value="портретный">портретный</option>
+      <option value="рыбий глаз">рыбий глаз</option>
+      <option value="сверхширокоугольный">сверхширокоугольный</option>
+    </>
+  );
+  const bionetOptions = (
+    <>
+      <option value="-" hidden>
+        -
+      </option>
+      <option value="Canon">Canon</option>
+      <option value="Fujifilm">Fujifilm</option>
+      <option value="Nikon">Nikon</option>
+      <option value="Panasonic">Panasonic</option>
+    </>
+  );
+  const focusOptions = (
+    <>
+      <option value="-" hidden>
+        -
+      </option>
+      <option value="переменное">переменное</option>
+      <option value="постоянное">постоянное</option>
+    </>
+  );
+  const apertureOptions = (
+    <>
+      <option value="-" hidden>
+        -
+      </option>
+      <option value="2.8 (светосильные)">2.8 (светосильные)</option>
+      <option value="более 3.2 (стандартные)">более 3.2 (стандартные)</option>
+      <option value="до 2.8 (сверхсветосильные)">
+        до 2.8 (сверхсветосильные)
+      </option>
+    </>
+  );
+  const focusTypeOptions = (
+    <>
+      <option value="-" hidden>
+        -
+      </option>
+      <option value="авто">авто</option>
+      <option value="ручная">ручная</option>
+    </>
+  );
+
   return (
     <div className={styles.FormBody}>
       <h1 className={styles.FormBodyTitle}>{currentCategory.name}</h1>
       <Formik
         initialValues={{
           categoryName: 'Идентификатор',
-          category: 'photocameras',
+          category: currentCategory.id,
 
           brandName: 'Производитель',
           brandValue: '',
@@ -292,44 +225,32 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
           quantityName: 'Количество на складе',
           quantityValue: '',
 
-          setName: 'Комплектация',
-          setValue: '',
-
           hitName: 'Хит продаж',
           hitValue: '',
 
           warantyName: 'Гарантия',
           warantyValue: '',
 
-          typeName: 'Тип фотоаппарата',
-          typeValue: '',
-
-          matrixTypeName: 'Тип матрицы',
-          matrixTypeValue: '',
-
-          matrixSizeName: 'Размер матрицы',
-          matrixSizeValue: '',
-
-          megapixelsName: 'Количество мегапикселей',
-          megapixelsValue: '',
-
-          sensorScreenName: 'Сенсорный ЖК-экран',
-          sensorScreenValue: '',
-
-          screenBraicingName: 'Крепление ЖК-дисплея',
-          screenBraicingValue: '',
-
-          hotShoeName: '«Горячий башмак» для внешней вспышки',
-          hotShoeValue: '',
-
-          maxSizeName: 'Максимальный размер изображения',
-          maxSizeValue: '',
-
           description: '',
           imageUrl01: '',
           imageUrl02: '',
           imageUrl03: '',
           imageUrl04: '',
+          // === CUSTOM FIELDS ===
+          lenseTypeName: 'Тип объектива',
+          lenseTypeValue: '',
+
+          bionetName: 'Тип байонета',
+          bionetValue: '',
+
+          focusName: 'Фокусное расстояние',
+          focusValue: '',
+
+          apertureName: 'Светосила',
+          apertureValue: '',
+
+          focusTypeName: 'Способ фокусировки',
+          focusTypeValue: '',
         }}
         onSubmit={handleCreateProduct}
         validationSchema={productSchema}
@@ -390,77 +311,46 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
                   options={warantyOptions}
                 />
               </div>
+              {/* ======= CUSTOM FIELDS ==== */}
               <div className={styles.productInputsGroup}>
-                <TextInput name="setName" type="text" disabled />
+                <TextInput name="lenseTypeName" type="text" disabled />
                 <FormikControl
                   control="selectSmall"
-                  name="setValue"
-                  options={optionsSet}
+                  name="lenseTypeValue"
+                  options={lenseTypeOptions}
                 />
               </div>
               <div className={styles.productInputsGroup}>
-                <TextInput name="typeName" type="text" disabled />
+                <TextInput name="bionetName" type="text" disabled />
                 <FormikControl
                   control="selectSmall"
-                  name="typeValue"
-                  options={optionsType}
+                  name="bionetValue"
+                  options={bionetOptions}
                 />
               </div>
 
               <div className={styles.productInputsGroup}>
-                <TextInput name="matrixTypeName" type="text" disabled />
+                <TextInput name="focusName" type="text" disabled />
                 <FormikControl
                   control="selectSmall"
-                  name="matrixTypeValue"
-                  options={optionsMatrixType}
+                  name="focusValue"
+                  options={focusOptions}
                 />
               </div>
               <div className={styles.productInputsGroup}>
-                <TextInput name="matrixSizeName" type="text" disabled />
+                <TextInput name="apertureName" type="text" disabled />
                 <FormikControl
                   control="selectSmall"
-                  name="matrixSizeValue"
-                  options={optionsMatrixSize}
+                  name="apertureValue"
+                  options={apertureOptions}
                 />
               </div>
               <div className={styles.productInputsGroup}>
-                <TextInput name="megapixelsName" type="text" disabled />
+                <TextInput name="focusTypeName" type="text" disabled />
                 <FormikControl
                   control="selectSmall"
-                  name="megapixelsValue"
-                  options={optionsMegapixels}
-                />
-              </div>
-              <div className={styles.productInputsGroup}>
-                <TextInput name="sensorScreenName" type="text" disabled />
-                <FormikControl
-                  control="selectSmall"
-                  name="sensorScreenValue"
-                  options={optionsSensorScreen}
-                />
-              </div>
-              <div className={styles.productInputsGroup}>
-                <TextInput name="screenBraicingName" type="text" disabled />
-                <FormikControl
-                  control="selectSmall"
-                  name="screenBraicingValue"
-                  options={screenBraicingOptions}
-                />
-              </div>
-              <div className={styles.productInputsGroup}>
-                <TextInput name="hotShoeName" type="text" disabled />
-                <FormikControl
-                  control="selectSmall"
-                  name="hotShoeValue"
-                  options={hotShoeOptions}
-                />
-              </div>
-              <div className={styles.productInputsGroup}>
-                <TextInput name="maxSizeName" type="text" disabled />
-                <FormikControl
-                  control="selectSmall"
-                  name="maxSizeValue"
-                  options={maxSizeOptions}
+                  name="focusTypeValue"
+                  options={focusTypeOptions}
                 />
               </div>
               <div className={styles.productInputsGroup}>
@@ -507,4 +397,4 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
   );
 };
 
-export default CreatePhotoCameraProductForm;
+export default CreateLensesProductForm;

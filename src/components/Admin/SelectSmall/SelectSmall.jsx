@@ -6,9 +6,9 @@
 import classNames from 'classnames';
 import { ErrorMessage, Field, useField } from 'formik';
 import React from 'react';
-import styles from './Select.module.scss';
+import styles from './SelectSmall.module.scss';
 
-const Select = (props) => {
+const SelectSmall = (props) => {
   const { name, label, options, ...rest } = props;
   const [field, meta] = useField(props);
   const selectStyles = classNames({
@@ -16,24 +16,14 @@ const Select = (props) => {
     [styles.isInvalid]: meta.touched && meta.error,
     [styles.Valid]: meta.touched && !meta.error,
   });
-  // const handleOnChange = () => {
-  //   console.log('Change');
-  // };
+
   return (
     <div className={styles.selectAreaWrapper}>
-      {label && (
-        <label className={styles.textAreaLabel} htmlFor={name}>
-          {label}
-        </label>
-      )}
       <Field
         name={name}
         placeholder="Select..."
         as="select"
         className={selectStyles}
-        // onChange={(e) => {
-        //   handleOnChange(e);
-        // }}
       >
         {options}
       </Field>
@@ -46,4 +36,4 @@ const Select = (props) => {
   );
 };
 
-export default Select;
+export default SelectSmall;

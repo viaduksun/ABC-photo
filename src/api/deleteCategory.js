@@ -12,7 +12,7 @@ const deleteCategory = (id) => {
     .delete(`https://intense-hamlet-33316.herokuapp.com/api/catalog/${id}`, {
       headers,
     }).then((res) => {
-      alert('Category deleted');
+      // alert('Category deleted');
       /* Do something with product */
     })
     .catch((err) => {
