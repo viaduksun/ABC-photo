@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-curly-newline */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-alert */
 /* eslint-disable react/button-has-type */
 /* eslint-disable operator-linebreak */
@@ -5,9 +7,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import LoginApi from '../../api/login';
 import TextInput from '../UI/Input/TextInput';
@@ -17,6 +20,7 @@ import Button from '../UI/Button/Button';
 import { loginModalCloseAction } from '../../store/madals/actions';
 
 const LoginForm = () => {
+  const [visiblePassword, setVisiblePassword] = useState(false);
   const dispatch = useDispatch();
   const loginSchema = Yup.object().shape({
     loginOrEmail: Yup.string()
@@ -73,7 +77,27 @@ const LoginForm = () => {
           <Form className={styles.FormWrapper}>
             <div className={styles.InputsWrapper}>
               <TextInput label="Email" name="loginOrEmail" type="email" />
-              <TextInput label="Пароль" name="password" type="password" />
+              <div className={styles.PasswordBlock}>
+                <TextInput
+                  label="Пароль"
+                  name="password"
+                  type={visiblePassword ? 'text' : 'password'}
+                />
+                <BsEye
+                  display={visiblePassword ? 'block' : 'none'}
+                  onClick={() =>
+                    setVisiblePassword((visibility) => !visibility)
+                  }
+                  className={styles.PasswordIcon}
+                />
+                <BsEyeSlash
+                  display={visiblePassword ? 'none' : 'block'}
+                  onClick={() =>
+                    setVisiblePassword((visibility) => !visibility)
+                  }
+                  className={styles.PasswordIcon}
+                />
+              </div>
             </div>
             <div className={styles.addFunctionsWrapper}>
               <div className={styles.CheckBoxWrapper}>
