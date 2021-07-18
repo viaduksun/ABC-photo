@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-curly-newline */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-alert */
 /* eslint-disable react/button-has-type */
 /* eslint-disable operator-linebreak */
@@ -5,9 +7,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import styles from './LoginModal.module.scss';
 import userRegister from '../../api/register';
 import TextInput from '../UI/Input/TextInput';
@@ -19,6 +22,7 @@ const RegisterForm = () => {
     'test02@gmail.com',
     'test03@gmail.com',
   ];
+  const [visiblePassword, setVisiblePassword] = useState(false);
   const registrationSchema = Yup.object().shape({
     firstName: Yup.string()
       .max(7, 'Must be 7 characters or less')
@@ -93,7 +97,28 @@ const RegisterForm = () => {
               <TextInput label="Email" name="email" type="email" />
               <TextInput label="Login" name="login" type="text" />
               <TextInput label="Phone" name="phone" type="text" />
-              <TextInput label="Password" name="password" type="text" />
+              <div className={styles.PasswordBlock}>
+                <TextInput
+                  label="Password"
+                  name="password"
+                  type={visiblePassword ? 'text' : 'password'}
+                />
+                <BsEye
+                  display={visiblePassword ? 'block' : 'none'}
+                  onClick={() =>
+                    setVisiblePassword((visibility) => !visibility)
+                  }
+                  className={styles.PasswordIcon}
+                />
+                <BsEyeSlash
+                  display={visiblePassword ? 'none' : 'block'}
+                  onClick={() =>
+                    setVisiblePassword((visibility) => !visibility)
+                  }
+                  className={styles.PasswordIcon}
+                />
+              </div>
+
               <TextInput label="" name="isAdmin" type="hidden" />
             </div>
             <div className={styles.BtnsWrapper}>
