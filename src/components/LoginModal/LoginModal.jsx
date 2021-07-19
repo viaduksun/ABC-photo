@@ -11,19 +11,13 @@ import { loginModalCloseAction } from '../../store/madals/actions';
 import styles from './LoginModal.module.scss';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-
+// === THIS COMPONENT RENDERED IN : components\Header\MiddleMenu\MiddleMenu.jsx
 const LoginModal = () => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState('enter');
   console.log('Login modal');
-  const handleModalClose = (e) => {
-    if (
-      e.target.classList.contains('LoginModal_Cover__2BF39') ||
-      e.target.classList.contains('LoginModal_closeIcon__mj_VN')
-    ) {
-      console.log(e.target);
-      dispatch(loginModalCloseAction());
-    }
+  const handleModalClose = () => {
+    dispatch(loginModalCloseAction());
   };
   const handleMenuClick = (activeItem) => {
     setIsActive(activeItem);
@@ -40,11 +34,11 @@ const LoginModal = () => {
   return (
     <div
       className={styles.Cover}
-      onClick={(e) => {
-        handleModalClose(e);
+      onClick={() => {
+        handleModalClose();
       }}
     >
-      <div className={styles.LoginModal}>
+      <div className={styles.LoginModal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.closeIconWrapper} onClick={handleModalClose}>
           <VscChromeClose className={styles.closeIcon} />
         </div>

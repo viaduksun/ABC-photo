@@ -11,17 +11,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './ProductsContainer.module.scss';
 import ProductsFilter from '../../components/ProductsFilter/ProductsFilter';
 import ProductsField from '../../components/ProductsField/ProductsField';
-import { axiosProducts } from '../../store/products/actions';
+import {
+  allProductsCurrentCategory,
+  axiosProducts,
+} from '../../store/products/actions';
 import Loader from '../../components/UI/Loader/Loader';
 
 const ProductsContainer = () => {
   const dispatch = useDispatch();
+  const currentCategory = useSelector(
+    (state) => state.productsPage.currentCategory
+  );
+  const page = useSelector((state) => state.productsPage.currentPage);
+
   useEffect(() => {
-    dispatch(axiosProducts());
-  }, [dispatch]);
+    console.log(currentCategory, page);
+    dispatch(axiosProducts(currentCategory, page));
+    dispatch(allProductsCurrentCategory(currentCategory));
+  }, [currentCategory, dispatch, page]);
   const products = useSelector((state) => state.productsPage.products);
   console.log(products);
-  const isLoadingProducts = useSelector((state) => state.productsPage.isLoadingProducts);
+  const isLoadingProducts = useSelector(
+    (state) => state.productsPage.isLoadingProducts
+  );
 
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
@@ -51,9 +63,13 @@ const ProductsContainer = () => {
           <div className={styles.filterContainer}>
             <ProductsFilter />
           </div>
-          {(products.length === 0
-            ? <div className={styles.PrductsFieldLoader}><Loader /></div>
-            : (!isLoadingProducts && <ProductsField products={products} />))}
+          {products.length === 0 ? (
+            <div className={styles.PrductsFieldLoader}>
+              <Loader />
+            </div>
+          ) : (
+            !isLoadingProducts && <ProductsField products={products} />
+          )}
         </div>
       </div>
 
@@ -65,7 +81,6 @@ const ProductsContainer = () => {
         <ProductsFilter />
       </div>
     </div>
-
   );
 };
 

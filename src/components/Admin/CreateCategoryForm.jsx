@@ -11,9 +11,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import createCategory from '../../api/createCategory';
-import createProductLocalHost5000 from '../../api/createProductLocalHost5000';
 import TextInput from './Input/TextInput';
-import { sony02 } from '../../Data/products';
 import FormikControl from './FormikControl';
 import Button from '../UI/Button/Button';
 import { setCatalog } from '../../store/admin/actions';
@@ -70,7 +68,7 @@ const CreateCategoryForm = () => {
       });
     // console.log(newCategory);
     setSubmitting(false);
-    // resetForm();
+    resetForm();
   };
   const productSchema = Yup.object().shape({
     id: Yup.string().required('Is required'),
@@ -94,7 +92,7 @@ const CreateCategoryForm = () => {
           description: '',
         }}
         onSubmit={handleCreateCategory}
-        // validationSchema={productSchema}
+        validationSchema={productSchema}
       >
         {(formik) => (
           <Form className="product-form">

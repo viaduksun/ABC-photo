@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 // import { product03 } from '../Data/products';
 
@@ -13,7 +15,8 @@ const createProduct = (product) => {
     })
     .then((newProduct) => {
       /* Do something with newProduct */
-      console.log('Product has been added', newProduct.data.name);
+      console.log('Product has been added');
+      alert('Product has been added!');
     })
     .catch((err) => {
       /* Do something with error, e.g. show error to user */

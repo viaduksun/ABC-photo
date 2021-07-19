@@ -7,7 +7,7 @@
   // max-width: 400px;
   width: 100%;
   align-items: flex-end;
-  margin-bottom: 10px;
+  margin: 0 5px;
 }
 .textInputLabel {
   flex: 1 1 20%;
@@ -15,7 +15,7 @@
   margin-bottom: 4px;
   color: rgb(42, 42, 42);
   // border: 1px solid #000;
-  margin-right: 10px;
+  // margin-right: 10px;
   display: inline-block;
 }
 .textInput {
@@ -25,6 +25,9 @@
   padding: 10px;
   border-radius: 3px;
   transition: all 0.2s ease 0s;
+  &:disabled {
+    background: rgb(207, 207, 207);
+  }
 }
 .isInvalid {
   background: rgb(255, 223, 223);

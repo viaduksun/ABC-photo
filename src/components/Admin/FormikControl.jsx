@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Select from './Select/Select';
+import SelectSmall from './SelectSmall/SelectSmall';
 import Textarea from './Textarea/Textarea';
 
 const FormikControl = (props) => {
@@ -15,6 +16,8 @@ const FormikControl = (props) => {
       return <Textarea {...rest} />;
     case 'select':
       return <Select {...rest} />;
+    case 'selectSmall':
+      return <SelectSmall {...rest} />;
     default:
       return null;
   }

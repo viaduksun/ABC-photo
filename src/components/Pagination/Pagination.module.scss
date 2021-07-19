@@ -3,19 +3,42 @@
   margin: 50px auto 20px;
   padding: 10px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 .PaginationItem {
-  padding: 0 10px;
+  position: relative;
+  margin: 0 10px;
+  padding: 0 5px;
   cursor: pointer;
   font-size: 20px;
   line-height: 28px;
   font-weight: 700;
   color: #677283;
+  // border: 1px solid #000;
+  // border-bottom: 1px solid #000;
+  &_active {
+    // border-bottom: 4px solid rgb(31, 182, 11);
+    &::after {
+      content: '';
+      width: 20px;
+      height: 4px;
+      background: rgb(71, 192, 1);
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+    }
+  }
+  &:hover {
+    color: rgb(68, 68, 68);
+  }
 }
 .ButtonPrev,
 .ButtonNext {
   cursor: pointer;
-  font-size: 25px;
+  font-size: 22px;
+  color: #677283;
+  &:hover {
+    color: rgb(68, 68, 68);
+  }
 }

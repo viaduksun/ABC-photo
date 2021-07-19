@@ -172,7 +172,7 @@ const Products = () => {
                 <div className={styles.preview}>
                   <img src={product.imageUrls[0]} alt={product.name} />
                 </div>
-                <div className={styles.title}>{product.name}</div>
+                {/* <div className={styles.title}>{product.name}</div> */}
                 <div className={styles.btnbArrowWrapper}>
                   <BsChevronDown
                     className={classNames({
