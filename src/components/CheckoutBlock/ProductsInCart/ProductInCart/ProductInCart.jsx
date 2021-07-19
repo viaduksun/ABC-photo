@@ -12,12 +12,12 @@ const ProductInCart = ({cartProduct}) => {
             <img src={cartProduct.imageUrls[0]} alt={cartProduct.name} />
           </div>
           <p className={styles.MainName}>
-            {cartProduct.name}
+            {cartProduct.characteristics.model[1]}
             <br />
             <span>
               Код товара:
               {' '}
-              {cartProduct.artical}
+              {cartProduct.characteristics.artical[1]}
             </span>
           </p>
         </div>
