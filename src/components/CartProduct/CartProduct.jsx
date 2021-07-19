@@ -30,12 +30,12 @@ const CartProduct = ({cartProduct}) => {
         </div>
         <div className={styles.CartMainItemProductContent}>
           <div className={styles.CartMainItemProductTitle}>
-            {cartProduct.name}
+            {cartProduct.characteristics.model[1]}
           </div>
           <div className={styles.CartMainItemProductCode}>
             Код товара:
             {' '}
-            {cartProduct.artical}
+            {cartProduct.characteristics.artical[1]}
           </div>
         </div>
       </div>
