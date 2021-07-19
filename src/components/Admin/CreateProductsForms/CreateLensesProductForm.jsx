@@ -67,26 +67,24 @@ const CreateLensesProductForm = ({ currentCategory }) => {
     setSubmitting(true);
     const newProduct = {
       category,
-      brand: [brandName, brandValue],
-      model: [modelName, modelValue],
-      artical: [articalName, articalValue],
-      currentPrice: [currentPriceName, currentPriceValue],
-      previousPrice: [previousPriceName, previousPriceValue],
-      quantity: [quantityName, quantityValue],
-      hit: [hitName, hitValue],
-      waranty: [warantyName, warantyValue],
+      currentPrice: currentPriceValue,
+      previousPrice: previousPriceValue,
+      quantity: quantityValue,
+      hit: hitValue,
       description,
       imageUrls: [imageUrl01, imageUrl02, imageUrl03, imageUrl04],
       // === CUSTOM FIELDS ===
-      lenseType: [lenseTypeName, lenseTypeValue],
-
-      bionet: [bionetName, bionetValue],
-
-      focus: [focusName, focusValue],
-
-      aperture: [apertureName, apertureValue],
-
-      focusType: [focusTypeName, focusTypeValue],
+      characteristics: {
+        brand: [brandName, brandValue],
+        model: [modelName, modelValue],
+        artical: [articalName, articalValue],
+        waranty: [warantyName, warantyValue],
+        lenseType: [lenseTypeName, lenseTypeValue],
+        bionet: [bionetName, bionetValue],
+        focus: [focusName, focusValue],
+        aperture: [apertureName, apertureValue],
+        focusType: [focusTypeName, focusTypeValue],
+      },
     };
     createProduct(newProduct);
     console.log(newProduct);

@@ -4,7 +4,7 @@ const getProductsHitSale = () =>
   // eslint-disable-next-line implicit-arrow-linebreak
   axios
     .get(
-      'https://intense-hamlet-33316.herokuapp.com/api/products/filter?hitSale=да'
+      'https://intense-hamlet-33316.herokuapp.com/api/products/filter?hit=yes'
     )
 
     // console.log('products', products);

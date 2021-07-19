@@ -67,26 +67,24 @@ const CreateActionCameraProductForm = ({ currentCategory }) => {
     setSubmitting(true);
     const newProduct = {
       category,
-      brand: [brandName, brandValue],
-      model: [modelName, modelValue],
-      artical: [articalName, articalValue],
-      currentPrice: [currentPriceName, currentPriceValue],
-      previousPrice: [previousPriceName, previousPriceValue],
-      quantity: [quantityName, quantityValue],
-      hit: [hitName, hitValue],
-      waranty: [warantyName, warantyValue],
+      currentPrice: currentPriceValue,
+      previousPrice: previousPriceValue,
+      quantity: quantityValue,
+      hit: hitValue,
       description,
       imageUrls: [imageUrl01, imageUrl02, imageUrl03, imageUrl04],
       // === CUSTOM FIELDS ===
-      matrix: [matrixName, matrixValue],
-
-      features: [featuresName, featuresValue],
-
-      wireless: [wirelessName, wirelessValue],
-
-      cameraColor: [colorName, colorValue],
-
-      resolution: [resolutionName, resolutionValue],
+      characteristics: {
+        brand: [brandName, brandValue],
+        model: [modelName, modelValue],
+        artical: [articalName, articalValue],
+        waranty: [warantyName, warantyValue],
+        matrix: [matrixName, matrixValue],
+        features: [featuresName, featuresValue],
+        wireless: [wirelessName, wirelessValue],
+        cameraColor: [colorName, colorValue],
+        resolution: [resolutionName, resolutionValue],
+      },
     };
     createProduct(newProduct);
     console.log(newProduct);

@@ -8,5 +8,5 @@ export const singleProductFromLocalStorageAction = (
   singleProductFromLocalStorage
 ) => ({
   type: SINGLE_PRODUCT_FROM_LOCAL_STORAGE,
-  payload: JSON.parse(singleProductFromLocalStorage),
+  payload: singleProductFromLocalStorage,
 });

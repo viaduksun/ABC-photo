@@ -73,26 +73,24 @@ const CreateVideoCameraProductForm = ({ currentCategory }) => {
     setSubmitting(true);
     const newProduct = {
       category,
-      brand: [brandName, brandValue],
-      model: [modelName, modelValue],
-      artical: [articalName, articalValue],
-      currentPrice: [currentPriceName, currentPriceValue],
-      previousPrice: [previousPriceName, previousPriceValue],
-      quantity: [quantityName, quantityValue],
-      hit: [hitName, hitValue],
-      waranty: [warantyName, warantyValue],
+      currentPrice: currentPriceValue,
+      previousPrice: previousPriceValue,
+      quantity: quantityValue,
+      hit: hitValue,
       description,
       imageUrls: [imageUrl01, imageUrl02, imageUrl03, imageUrl04],
       // === CUSTOM FIELDS ===
-      recordType: [recordTypeName, recordTypeValue],
-
-      lenceType: [lenceTypeName, lenceTypeValue],
-
-      format: [formatName, formatValue],
-
-      resolution: [resolutionName, resolutionValue],
-
-      connectors: [connectorsName, connectorsValue],
+      characteristics: {
+        brand: [brandName, brandValue],
+        model: [modelName, modelValue],
+        artical: [articalName, articalValue],
+        recordType: [recordTypeName, recordTypeValue],
+        lenceType: [lenceTypeName, lenceTypeValue],
+        format: [formatName, formatValue],
+        resolution: [resolutionName, resolutionValue],
+        connectors: [connectorsName, connectorsValue],
+        waranty: [warantyName, warantyValue],
+      },
     };
     createProduct(newProduct);
     console.log(newProduct);
