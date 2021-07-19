@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
@@ -7,26 +8,23 @@ import SingleProductSlider from './SingleProductSlider/SingleProductSlider';
 import SingleProductContent from './SingleProductContent/SingleProductContent';
 import styles from './SingleProductBlock.module.scss';
 
-const SingleProductBlock = ({singleProduct}) => {
-  console.log('test');
-  return (
-    <div className={styles.Wrapper}>
-      <div className={styles.SliderBlock}>
-        <div className={styles.SliderBlockText}>
-          <h2>{singleProduct.name}</h2>
-          <p>
-            Код товара
-            {' '}
-            {singleProduct.artical}
-          </p>
-        </div>
-        {Object.keys(singleProduct).length !== 0 && <SingleProductSlider singleProduct={singleProduct} />}
+const SingleProductBlock = ({singleProduct}) => (
+  <div className={styles.Wrapper}>
+    <div className={styles.SliderBlock}>
+      <div className={styles.SliderBlockText}>
+        <h2>{singleProduct.characteristics.model[1]}</h2>
+        <p>
+          Код товара
+          {' '}
+          { singleProduct.characteristics.artical[1]}
+        </p>
       </div>
-      <div className={styles.ContentBlock}>
-        <SingleProductContent singleProduct={singleProduct} />
-      </div>
+      <SingleProductSlider singleProduct={singleProduct} />
     </div>
+    <div className={styles.ContentBlock}>
+      <SingleProductContent singleProduct={singleProduct} />
+    </div>
+  </div>
   );
-};
  
 export default SingleProductBlock;

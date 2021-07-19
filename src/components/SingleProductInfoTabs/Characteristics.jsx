@@ -10,45 +10,12 @@ import { useSelector } from 'react-redux';
 import styles from './SingleProductInfoTabs.module.scss';
 
 const Characteristics = () => {
-  const singleProd = useSelector((state) => state.singleProduct.singleProduct);
+  const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
 
-  console.log('singleProduct2', singleProd);
-  // const characteristics = [];
-  // const characteristicsArr = () => {
-  //   for (const key in singleProd) {
-  //     if (
-  //       key !== 'category' &&
-  //       key !== 'date' &&
-  //       key !== 'description' &&
-  //       key !== 'enabled' &&
-  //       key !== 'imageUrls' &&
-  //       key !== 'itemNo' &&
-  //       key !== 'enabled' &&
-  //       key !== 'previousPrice' &&
-  //       key !== 'quantity' &&
-  //       key !== 'waranty' &&
-  //       key !== 'hit' &&
-  //       key !== '_id'
-  //     ) {
-  //       const characterItem = (
-  //         <li className={styles.CharacteristicsWrapperItem}>
-  //           <p>{key}</p>
-  //           <p>{singleProd[key][0]}</p>
-  //           <p>{singleProd[key][1]}</p>
-  //         </li>
-  //       );
-  //       characteristics.push(characterItem);
-  //       console.log(characterItem);
-  //       // console.log(key, ':', singleProd[key]);
-  //     }
-  //     return characteristics;
-  //   }
-  //   return characteristics;
-  // };
-  const characteristics = Object.keys(singleProd).map((key) => (
+  const characteristics = Object.keys(singleProduct.characteristics).map((key) => (
     <li className={styles.CharacteristicsWrapperItem}>
-      <p>{singleProd[key][0]}</p>
-      <p>{singleProd[key][1]}</p>
+      <p>{singleProduct.characteristics[key][0]}</p>
+      <p>{singleProduct.characteristics[key][1]}</p>
     </li>
   ));
   console.log('CHARACT', characteristics);

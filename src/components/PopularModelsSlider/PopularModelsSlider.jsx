@@ -85,7 +85,7 @@ const PopularModelsSlider = ({popularModels}) => {
           }}
           slidesPerGroup={1}
           loop
-          loopFillGroupWithBlank
+          // loopFillGroupWithBlank
           navigation
           allowTouchMove
           mousewheel={{

@@ -36,10 +36,10 @@ const ProductCard = ({product}) => {
       <Link to="/single-product">
         <div className={styles.ProductCardImg}>
           <img src={product.imageUrls[0]} alt={product.imageUrls[0]} />
-          {product.hitSale === 'да' && <div className={styles.ProductCardImgHitSale}>Хит продаж</div>}
+          {product.hit === 'yes' && <div className={styles.ProductCardImgHitSale}>Хит продаж</div>}
         </div>
         <h2 className={styles.ProductCardName}>
-          {product.name}
+          {product.characteristics.model[1]}
         </h2>
       </Link>
       <div className={styles.ProductCardPriceAndIconCart}>

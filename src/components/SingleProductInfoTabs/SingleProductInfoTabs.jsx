@@ -11,7 +11,6 @@ import Accessories from './Accessories';
 import AccordeonTabs from './AccordeonTabs';
 
 const SingleProductInfoTabs = ({ singleProduct }) => {
-  console.log('SingleProductInfoTabs ', singleProduct);
   const [currentTab, setCurrentTab] = useState('description');
   const descriptionToggle = () => {
     setCurrentTab('description');
@@ -55,7 +54,7 @@ const SingleProductInfoTabs = ({ singleProduct }) => {
           <Desctiption singleProduct={singleProduct} />
         )}
         {currentTab === 'characteristics' && (
-          <Characteristics singleProduct2={singleProduct} />
+          <Characteristics singleProduct={singleProduct} />
         )}
         {currentTab === 'accessories' && (
           <Accessories singleProduct={singleProduct} />
