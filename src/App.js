@@ -48,13 +48,15 @@ function App() {
   useEffect(() => {
     const cartFromLocalStorage = localStorage.getItem('cart');
     const singleProductFromLocalStorage = localStorage.getItem('singleProduct');
-    console.log(singleProductFromLocalStorage);
+    // console.log('singleProductFromLocalStorage', singleProductFromLocalStorage);
     if (cartFromLocalStorage) {
       dispatch(cartFromLocalStorageAction(cartFromLocalStorage));
     }
     if (singleProductFromLocalStorage) {
+      const currenSingle = JSON.parse(singleProductFromLocalStorage);
+      // console.log('SINGLE ', currenSingle);
       dispatch(
-        singleProductFromLocalStorageAction(singleProductFromLocalStorage)
+        singleProductFromLocalStorageAction(currenSingle)
       );
     }
   }, [dispatch]);

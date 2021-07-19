@@ -7,13 +7,13 @@ const initialState = {
 export const singleProduct = (state = initialState, action) => {
   switch (action.type) {
     case SET_SINGLE_PRODUCT:
-      console.log(action.payload.singleProduct);
+      // console.log(action.payload.singleProduct);
       return {
         ...state,
         singleProduct: action.payload.singleProduct,
       };
     case SINGLE_PRODUCT_FROM_LOCAL_STORAGE:
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         singleProduct: action.payload,
