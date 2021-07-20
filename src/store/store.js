@@ -9,6 +9,7 @@ import { popularModelsReducer } from './popularModels/reducer';
 import { modals } from './madals/reducer';
 import { admin } from './admin/reducer';
 import { cart } from './cart/reducer';
+import { favorites } from './favorites/reducer';
 import { singleProduct } from './singleProduct/reducer';
 import {
   ADD_PRODUCT_TO_CART,
@@ -18,6 +19,7 @@ import {
   DELETE_PRODUCT_FROM_CART,
 } from './cart/types';
 import { SET_SINGLE_PRODUCT } from './singleProduct/types';
+import { ADD_PRODUCT_TO_FAVORITE, DELETE_PRODUCT_FROM_FAVORITE } from './favorites/types';
 
 // eslint-disable-next-line no-underscore-dangle
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
@@ -49,6 +51,13 @@ const localStorageMiddleware =
         JSON.stringify(singleProduct.singleProduct)
       );
     }
+    if (
+      action.type === ADD_PRODUCT_TO_FAVORITE ||
+      action.type === DELETE_PRODUCT_FROM_FAVORITE
+    ) {
+      const { favorites } = getState();
+      localStorage.setItem('favorites', JSON.stringify(favorites.favorites));
+    }
     return result;
   };
 
@@ -59,6 +68,7 @@ const rootReducer = combineReducers({
   admin,
   cart,
   singleProduct,
+  favorites,
 });
 
 const store = createStore(
