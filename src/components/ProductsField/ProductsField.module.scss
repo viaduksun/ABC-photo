@@ -1,11 +1,20 @@
 .ProductsField {
-  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  // flex: 1 1 auto;
   margin-left: 30px;
+  // border: 1px solid #000;
 }
+.ProductsFieldGridWrapp {
+  // border: 1px solid rgb(255, 110, 110);
+  flex: 1 1 auto;
+}
+
 .ProductsFieldGrid {
+  // flex: 1 1 auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(150px, 1fr));
-  gap: 20px;
+  gap: 3px;
 }
 @media (max-width: 1024px) {
   .ProductsFieldGrid {

@@ -9,7 +9,7 @@ import { addSingleProductToCartAction } from '../../../store/cart/actions';
 import Button from '../../UI/Button/Button';
 import styles from './SingleProductContent.module.scss';
 
-const SingleProductContent = ({singleProduct}) => {
+const SingleProductContent = ({ singleProduct }) => {
   const dispatch = useDispatch();
   const addProductToCartHandler = () => {
     dispatch(addSingleProductToCartAction(singleProduct));
@@ -17,7 +17,11 @@ const SingleProductContent = ({singleProduct}) => {
   return (
     <div className={styles.Wrapper}>
       <p className={styles.InStock}>
-        {singleProduct.quantity !== 0 ? <span>в наличии</span> : <span style={{color: 'red'}}>ожидается</span>}
+        {singleProduct.quantity !== 0 ? (
+          <span>в наличии</span>
+        ) : (
+          <span style={{ color: 'red' }}>ожидается</span>
+        )}
       </p>
       <p className={styles.Price}>{singleProduct.currentPrice} грн</p>
 

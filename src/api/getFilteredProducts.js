@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const getFilteredProducts = (currentCategory, page) =>
+const getFilteredProducts = (currentCategory, page, addQuery) =>
   // eslint-disable-next-line implicit-arrow-linebreak
   axios
-    .get(`https://intense-hamlet-33316.herokuapp.com/api/products/filter?category=${currentCategory}&perPage=3&startPage=${page}`)
+    .get(`https://intense-hamlet-33316.herokuapp.com/api/products/filter?category=${currentCategory}${addQuery}&perPage=6&startPage=${page}`)
     // .then((res) => {
     //   console.log('RESULT', res);
     //   // console.log('currentCategory', currentCategory);

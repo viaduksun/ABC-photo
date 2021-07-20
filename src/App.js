@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import './App.scss';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from './containers/Header/Header';
@@ -28,6 +28,9 @@ function App() {
   const cart = useSelector((state) => state.cart.cart);
   const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
   const currentUserFromRedux = useSelector((state) => state.admin.currentUser);
+  const currentQuery = useSelector((state) => state.productsPage.currentQuery);
+  // === USE EFFECT ========
+  // const [currentQuery, setCurrentQuery] = useState('');
   const dispatch = useDispatch();
 
   let totalSum = 0;
@@ -85,7 +88,9 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/products">
+        {/* <Route exact path={`/products${currentQuery}`}> */}
+        {/* <Route exact path="/products"> */}
+        <Route path="/products">
           <Products />
         </Route>
         <Route exact path="/single-product">
