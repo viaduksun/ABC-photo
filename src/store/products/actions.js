@@ -1,15 +1,17 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-import { useSelector } from 'react-redux';
 import getAllFilteredProducts from '../../api/getAllFilteredProducts';
 import getFilteredProducts from '../../api/getFilteredProducts';
-import getProducts from '../../api/getProducts';
+// import getProducts from '../../api/getProducts';
 import {
-  SET_CURRENT_CAREGORY, SET_CURRENT_PAGE, SET_CURRENT_PRODUCTS_ARR, SET_FLAG_IN_CART, SET_PRODUCTS
+  SET_CURRENT_CAREGORY, SET_CURRENT_PAGE, SET_CURRENT_PRODUCTS_ARR, SET_CURRENT_QUERY, SET_FLAG_IN_CART, SET_PRODUCTS
 } from './types';
 
-export const axiosProducts = (currentCategory, page) => (dispatch) => {
-  console.log('Action_currentCategory', currentCategory);
-  getFilteredProducts(currentCategory, page).then((result) => {
+export const getFilteredProductsAction = (currentCategory, page, addQuery) => (dispatch) => {
+  console.log('CURRCATEGORY', currentCategory);
+  console.log('PAGE', page);
+  console.log('QUERY', addQuery);
+  getFilteredProducts(currentCategory, page, addQuery).then((result) => {
     console.log('getFilteredProducts', result);
     dispatch({ type: SET_PRODUCTS, payload: result });
   });
@@ -18,7 +20,7 @@ export const axiosProducts = (currentCategory, page) => (dispatch) => {
   //   dispatch({ type: SET_PRODUCTS, payload: data });
   // });
 };
-export const allProductsCurrentCategory = (currentCategory) => (dispatch) => {
+export const getAllProductsCurrentCategoryAction = (currentCategory) => (dispatch) => {
   getAllFilteredProducts(currentCategory).then((allProducts) => {
     console.log('allProducts', allProducts);
     dispatch({ type: SET_CURRENT_PRODUCTS_ARR, payload: allProducts.data.products });
@@ -36,4 +38,8 @@ export const setCurrentPageAction = (page) => ({
 export const setCurrentCategoryAction = (id) => ({
   type: SET_CURRENT_CAREGORY,
   payload: id,
+});
+export const setCurrentQueryAction = (id, page) => ({
+  type: SET_CURRENT_QUERY,
+  payload: `category=${id}&perPage=6&startPage=${page}`,
 });

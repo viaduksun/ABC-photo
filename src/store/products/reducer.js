@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-case-declarations */
 import {
-  SET_CURRENT_CAREGORY, SET_CURRENT_PAGE, SET_CURRENT_PRODUCTS_ARR, SET_PRODUCTS
+  SET_CURRENT_CAREGORY, SET_CURRENT_PAGE, SET_CURRENT_PRODUCTS_ARR, SET_CURRENT_QUERY, SET_PRODUCTS
 } from './types';
 
 const initialState = {
@@ -10,6 +10,7 @@ const initialState = {
   allProductsCurrentCategory: [],
   currentPage: 1,
   isLoadingProducts: true,
+  currentQuery: '',
 
 };
 
@@ -27,7 +28,14 @@ export const productsReducer = (state = initialState, action) => {
         currentCategory: action.payload,
         isLoadingProducts: false,
       };
+    case SET_CURRENT_QUERY:
+      return {
+        ...state,
+        currentQuery: action.payload,
+
+      };
     case SET_CURRENT_PRODUCTS_ARR:
+      // === for pagination calculation ======
       console.log('SET_CURRENT_PRODUCTS_ARR', action.payload);
       return {
         ...state,

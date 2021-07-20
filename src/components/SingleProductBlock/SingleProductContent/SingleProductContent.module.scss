@@ -1,39 +1,39 @@
 .InStock {
-    font-size: 16px;
-    line-height: 16px;
-    color: #51AD33;
-    font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+  color: #51ad33;
+  font-family: 'Roboto', sans-serif;
 }
 .Price {
-    font-size: 36px;
+  font-size: 36px;
+  line-height: 49px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  span {
+    font-size: 26px;
     line-height: 49px;
-    font-weight: 700;
+    font-weight: 400;
     font-family: 'Roboto', sans-serif;
-    span {
-        font-size: 26px;
-        line-height: 49px;
-        font-weight: 400;
-        font-family: 'Roboto', sans-serif;
-    }
+  }
 }
 .ButtonBuy {
-    margin-top: 20px;
-    span {
-        padding-right: 20px;
-    }
+  margin-top: 20px;
+  span {
+    padding-right: 20px;
+  }
 }
 .Delivery {
-    margin-top: 39px;
-    font-size: 16px;
-    line-height: 29px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
+  margin-top: 39px;
+  font-size: 16px;
+  line-height: 29px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 .DeliveryList {
-    li {
-        font-size: 14px;
-        line-height: 22px;
-        font-family: 'Roboto', sans-serif;
-    }
+  li {
+    font-size: 14px;
+    line-height: 22px;
+    font-family: 'Roboto', sans-serif;
+  }
 }

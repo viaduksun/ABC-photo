@@ -39,6 +39,17 @@
   padding: 4px 6px 2px;
   font-family: 'Roboto', sans-serif;
 }
+.HeaderFavoritesCounter {
+  background-color: #51ad33;
+  color: #fff;
+  position: absolute;
+  left: 18px;
+  border-radius: 50%;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 4px 6px 2px;
+  font-family: 'Roboto', sans-serif;
+}
 
 .HeaderIconWrapper {
   background: rgb(219, 219, 219);
@@ -60,6 +71,9 @@
   color: #fff;
   cursor: pointer;
   &_cart {
+    font-size: 20px;
+  }
+  &_favorites {
     font-size: 20px;
   }
 }

@@ -45,6 +45,20 @@
       padding: 5px 10px;
     }
   }
+  &_cart_disable {
+    font-size: 16px;
+    line-height: 27px;
+    padding: 10px 26px;
+    text-decoration: line-through;
+    text-transform: uppercase;
+    background-color: #8c8d8d;
+    cursor: initial;
+    @media (max-width: 540px) {
+      font-size: 12px;
+      line-height: 22px;
+      padding: 5px 10px;
+    }
+  }
   &_ordering_confirm {
     font-size: 16px;
     line-height: 27px;

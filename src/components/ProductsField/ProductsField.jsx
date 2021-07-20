@@ -8,16 +8,17 @@ import ProductsSorting from '../ProductsSorting/ProductsSorting';
 import ProductCard from '../ProductCard/ProductCard';
 import Pagination from '../Pagination/Pagination';
 
-const ProductsField = ({products}) => {
+const ProductsField = ({ products }) => {
   console.log('test');
   return (
     <div className={styles.ProductsField}>
       <ProductsSorting />
-      <h1>ProductsField</h1>
-      <div className={styles.ProductsFieldGrid}>
-        {products.map((product) => (
-          <ProductCard product={product} key={product._id} />
-      ))}
+      <div className={styles.ProductsFieldGridWrapp}>
+        <div className={styles.ProductsFieldGrid}>
+          {products.map((product) => (
+            <ProductCard product={product} key={product._id} />
+          ))}
+        </div>
       </div>
       <Pagination />
     </div>

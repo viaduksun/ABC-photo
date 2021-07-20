@@ -13,7 +13,7 @@ const Pagination = () => {
   const allProductsArr = useSelector(
     (state) => state.productsPage.allProductsCurrentCategory
   );
-  const pagesCount = Math.ceil(allProductsArr.length / 3);
+  const pagesCount = Math.ceil(allProductsArr.length / 6);
   console.log(allProductsArr.length, pagesCount);
   const [isActive, setIsActive] = useState(1);
   const dispatch = useDispatch();

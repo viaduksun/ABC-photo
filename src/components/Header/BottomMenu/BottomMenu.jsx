@@ -16,6 +16,7 @@ import { setCatalog } from '../../../store/admin/actions';
 
 const BottomMenu = ({ toggleMenu }) => {
   // const [catalog, setCatalog] = useState([]);
+  const currentPage = useSelector((state) => state.productsPage.currentPage);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setCatalog());
@@ -38,6 +39,7 @@ const BottomMenu = ({ toggleMenu }) => {
                     path="/products"
                     title={item.name}
                     key={item.id}
+                    page={currentPage}
                   />
                 );
               }

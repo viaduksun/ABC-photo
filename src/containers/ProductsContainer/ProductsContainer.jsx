@@ -12,8 +12,8 @@ import styles from './ProductsContainer.module.scss';
 import ProductsFilter from '../../components/ProductsFilter/ProductsFilter';
 import ProductsField from '../../components/ProductsField/ProductsField';
 import {
-  allProductsCurrentCategory,
-  axiosProducts,
+  getAllProductsCurrentCategoryAction,
+  getFilteredProductsAction,
 } from '../../store/products/actions';
 import Loader from '../../components/UI/Loader/Loader';
 
@@ -26,8 +26,8 @@ const ProductsContainer = () => {
 
   useEffect(() => {
     console.log(currentCategory, page);
-    dispatch(axiosProducts(currentCategory, page));
-    dispatch(allProductsCurrentCategory(currentCategory));
+    dispatch(getFilteredProductsAction(currentCategory, page, ''));
+    dispatch(getAllProductsCurrentCategoryAction(currentCategory));
   }, [currentCategory, dispatch, page]);
   const products = useSelector((state) => state.productsPage.products);
   console.log(products);

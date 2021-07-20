@@ -4,6 +4,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdShoppingCart } from 'react-icons/md';
+import { BsStar } from 'react-icons/bs';
+
 import { RiLoginCircleLine, RiAdminFill } from 'react-icons/ri';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,6 +19,7 @@ export default function LoginIcon() {
 
   const dispatch = useDispatch();
   const cartCounter = useSelector((state) => state.cart.totalCountCart);
+  const favoritesCounter = useSelector((state) => state.favorites.favorites.length);
   const handleLogin = () => {
     dispatch(loginModalOpenAction());
   };
@@ -48,6 +51,19 @@ export default function LoginIcon() {
             <p className={styles.HeaderIconText}>Личный кабинет</p>
           </Link>
         )}
+      </div>
+      <div>
+        <Link to="/favorites" className={styles.HeaderLink}>
+          <div className={styles.HeaderIconWrapper}>
+            <BsStar
+              className={classNames(styles.HeaderIcon, styles.HeaderIcon_favorites)}
+            />
+          </div>
+          <p className={styles.HeaderIconText}>Избранное</p>
+          {favoritesCounter !== 0 && (
+            <p className={styles.HeaderFavoritesCounter}>{favoritesCounter}</p>
+          )}
+        </Link>
       </div>
       <div>
         <Link to="/cart" className={styles.HeaderLink}>

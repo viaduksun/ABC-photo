@@ -5,10 +5,10 @@ import ProductsContainer from '../containers/ProductsContainer/ProductsContainer
 import Stories from '../containers/Stories/Stories';
 
 const Products = () => {
-  console.log('test');
+  const array = [['/', 'Главная'], ['products', 'Цифровая техника']];
   return (
     <>
-      <Breadcrumbs />
+      <Breadcrumbs data={array} />
       <ProductsContainer />
       <Stories />
     </>

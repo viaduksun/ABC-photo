@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import './App.scss';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from './containers/Header/Header';
@@ -23,11 +23,16 @@ import {
 import CartPopup from './components/UI/CartPopup/CartPopup';
 import { userFromLocalStorageAction } from './store/admin/actions';
 import { singleProductFromLocalStorageAction } from './store/singleProduct/actions';
+import Favorites from './pages/Favorites';
+import { favoritesFromLocalStorageAction } from './store/favorites/actions';
 
 function App() {
   const cart = useSelector((state) => state.cart.cart);
   const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
   const currentUserFromRedux = useSelector((state) => state.admin.currentUser);
+  const currentQuery = useSelector((state) => state.productsPage.currentQuery);
+  // === USE EFFECT ========
+  // const [currentQuery, setCurrentQuery] = useState('');
   const dispatch = useDispatch();
 
   let totalSum = 0;
@@ -47,16 +52,17 @@ function App() {
 
   useEffect(() => {
     const cartFromLocalStorage = localStorage.getItem('cart');
+    const favoritesFromLocalStorage = localStorage.getItem('favorites');
     const singleProductFromLocalStorage = localStorage.getItem('singleProduct');
-    // console.log('singleProductFromLocalStorage', singleProductFromLocalStorage);
     if (cartFromLocalStorage) {
       dispatch(cartFromLocalStorageAction(cartFromLocalStorage));
     }
+    if (favoritesFromLocalStorage) {
+      dispatch(favoritesFromLocalStorageAction(favoritesFromLocalStorage));
+    }
     if (singleProductFromLocalStorage) {
-      const currenSingle = JSON.parse(singleProductFromLocalStorage);
-      // console.log('SINGLE ', currenSingle);
       dispatch(
-        singleProductFromLocalStorageAction(currenSingle)
+        singleProductFromLocalStorageAction(singleProductFromLocalStorage)
       );
     }
   }, [dispatch]);
@@ -85,7 +91,9 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/products">
+        {/* <Route exact path={`/products${currentQuery}`}> */}
+        {/* <Route exact path="/products"> */}
+        <Route path="/products">
           <Products />
         </Route>
         <Route exact path="/single-product">
@@ -93,6 +101,9 @@ function App() {
         </Route>
         <Route exact path="/contacts">
           <Contacts />
+        </Route>
+        <Route exact path="/favorites">
+          <Favorites />
         </Route>
         <Route exact path="/cart">
           <Cart />
