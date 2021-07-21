@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import styles from './CartContainer.module.scss';
 import Button from '../../components/UI/Button/Button';
 import CartProduct from '../../components/CartProduct/CartProduct';
+import emptyCart from '../../assets/img/cartBlock/emptyCart.png';
 
 const CartContainer = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -60,7 +61,13 @@ const CartContainer = () => {
               </div>
             </div>
           </div>
-        ) : <p>Корзина пустая</p>}
+        ) : (
+          <div className={styles.EmptyCart}>
+            <img src={emptyCart} alt="empty cart" />
+            <h3>Корзина пуста</h3>
+            <p>Но это никогда не поздно исправить :)</p>
+          </div>
+)}
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import {BsChevronRight} from 'react-icons/bs';
 import styles from './Breadcrumbs.module.scss';
 
 const Breadcrumbs = ({data}) => {

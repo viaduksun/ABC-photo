@@ -27,7 +27,7 @@ const SingleProductContent = ({singleProduct}) => {
         {singleProduct.quantity !== 0 ? (
           <span>в наличии</span>
         ) : (
-          <span style={{ color: 'red' }}>ожидается</span>
+          <span style={{ color: '#e91e49' }}>ожидается</span>
         )}
       </p>
       <p className={styles.Price}>{singleProduct.currentPrice} грн</p>

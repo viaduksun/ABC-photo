@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import {FaRegGrinStars} from 'react-icons/fa';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import styles from './FavoriteContainer.module.scss';
 
@@ -11,11 +12,14 @@ const FavoriteContainer = () => {
       <div className={styles.Wrapper}>
         <div className="container">
           <h2 className={styles.Title}>Избранные товары</h2>
-          <ul className={styles.Main}>
-            {favoriteProducts.map((favoriteProduct) => (
-              <ProductCard product={favoriteProduct} />
+          {favoriteProducts.length !== 0 ? (
+            <ul className={styles.Main}>
+              {favoriteProducts.map((favoriteProduct) => (
+                <ProductCard product={favoriteProduct} />
               ))}
-          </ul>
+            </ul>
+) : <p className={styles.EmptyFavorites}><FaRegGrinStars style={{color: '#7D7D7D'}} /></p>}
+         
         </div>
       </div>
     );
