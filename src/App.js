@@ -47,7 +47,7 @@ function App() {
     totalCount += item.count;
   });
   useEffect(() => {
-    dispatch(setTotalCountCartAction(totalCount));
+   dispatch(setTotalCountCartAction(totalCount));
   }, [dispatch, totalCount]);
 
   useEffect(() => {

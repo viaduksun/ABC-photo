@@ -11,15 +11,23 @@ import { addSingleProductToCartAction } from '../../../store/cart/actions';
 
 import Button from '../../UI/Button/Button';
 import styles from './SingleProductContent.module.scss';
+import './SingleProductContent.scss';
 
-const SingleProductContent = ({singleProduct}) => {
+const SingleProductContent = ({ singleProduct }) => {
   const cart = useSelector((state) => state.cart.cart);
   const isInCart = cart.some((item) => item._id === singleProduct._id);
   const dispatch = useDispatch();
+   const [moveToCart, setMoveToCart] = useState(false);
   const addProductToCartHandler = () => {
     if (singleProduct.quantity !== 0) {
-      dispatch(addSingleProductToCartAction(singleProduct));
+      setTimeout(() => {
+         dispatch(addSingleProductToCartAction(singleProduct));
+      }, 2800);
+       setMoveToCart(true);
     }
+    setTimeout(() => {
+      setMoveToCart(false);
+    }, 2500);
   };
   return (
     <div className={styles.Wrapper}>
@@ -33,9 +41,13 @@ const SingleProductContent = ({singleProduct}) => {
       <p className={styles.Price}>{singleProduct.currentPrice} грн</p>
 
       <div className={styles.ButtonBuy}>
-        <Button addClass={singleProduct.quantity !== 0 ? 'cart_green' : 'cart_disable'} onClick={addProductToCartHandler}>
+        <Button disabled={moveToCart} addClass={singleProduct.quantity !== 0 ? 'cart_green' : 'cart_disable'} onClick={addProductToCartHandler}>
           <span>Купить</span>
-          {singleProduct.quantity !== 0 ? <FiShoppingCart /> : <MdRemoveShoppingCart style={{color: '#e91e49'}} />}
+          {singleProduct.quantity !== 0 ? (
+            <FiShoppingCart />
+          ) : (
+            <MdRemoveShoppingCart style={{ color: '#e91e49' }} />
+          )}
           &nbsp;
           {isInCart && <GiCheckMark />}
         </Button>
@@ -46,6 +58,9 @@ const SingleProductContent = ({singleProduct}) => {
         <li>• Оплата товара при получении</li>
         <li>• Возможен самовывоз</li>
       </ul>
+      <div className="MoveToCartBlock">
+        <div className={`MoveToCartItem  ${moveToCart ? 'MoveToCartItem_isOpen' : 'MoveToCartItem_isClose'}`}><img src={singleProduct.imageUrls[0]} alt="sdfdf" /></div>
+      </div>
     </div>
   );
 };

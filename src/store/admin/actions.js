@@ -28,7 +28,7 @@ export const adminProducts = () => (dispatch) => {
 };
 export const setCatalog = () => (dispatch) => {
   getCatalog().then((data) => {
-    console.log(data);
+    // console.log(data);
     dispatch({ type: SET_CATALOG, payload: data });
   });
 };

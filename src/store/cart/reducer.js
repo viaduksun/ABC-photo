@@ -44,7 +44,7 @@ export const cart = (state = initialState, action) => {
       return {
         ...state,
         cart: newCartArr,
-        popupIsOpen: true,
+        popupIsOpen: true
       };
     case ADD_SINGLE_PRODUCT_TO_CART:
       const cartSingleProduct = action.payload.singleProduct;
@@ -65,8 +65,7 @@ export const cart = (state = initialState, action) => {
       }
       return {
         ...state,
-        cart: newCartArr2,
-        popupIsOpen: true,
+        cart: newCartArr2
       };
     case DELETE_PRODUCT_FROM_CART:
       const newCart = state.cart.filter(
