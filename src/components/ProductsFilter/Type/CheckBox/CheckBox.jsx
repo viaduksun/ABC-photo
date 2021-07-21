@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-wrap-multilines */
@@ -10,7 +12,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilteredProductsAction } from '../../../../store/products/actions';
-import TypeQueryMaker from '../TypeQueryMaker';
+import TypeQueryMaker from '../../FilterQueryMaker';
 
 const GreenCheckbox = withStyles({
   root: {
@@ -22,88 +24,67 @@ const GreenCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-const CheckBox = () => {
-  const [checkedSet, setCheckedSet] = useState({
-    checkedA: false,
-    checkedB: false,
-    checkedC: false,
-    checkedD: false,
-  });
-  const [qurrentQuery, setQurrentQuery] = useState('');
-  const dispatch = useDispatch();
+const CheckBox = ({ handleChange, typeFilter }) => (
+  // const [checkedSet, setCheckedSet] = useState({
+  //   typeA: false,
+  //   typeB: false,
+  //   typeC: false,
+  //   typeD: false,
+  // });
+  // const [qurrentQuery, setQurrentQuery] = useState('');
+  // const dispatch = useDispatch();
 
-  const handleChange = (event) => {
-    setCheckedSet({ ...checkedSet, [event.target.name]: event.target.checked });
-    // console.log(event.target.name);
-    const queryA = '&characteristics.type[1]=Зеркальный';
-    const queryD = '&characteristics.type[1]=Суперзум';
-    // if (event.target.name === 'checkedA' && state.checkedA) {
-    //   setQurrentQuery(qurrentQuery + queryA);
-    // }
-
-    // const queryArr = Object.keys(checkedSet).map((item, i) => {
-    //   console.log(item);
-    //   if (item === 'checkedA' && checkedSet[item]) {
-    //     return 'Query-A';
-    //   }
-    //   if (item === 'checkedD' && checkedSet[item]) {
-    //     return 'Query-B';
-    //   }
-    //   return null;
-    // });
-    // console.log(queryArr);
-
-    // const addQuery = queryA;
-    // dispatch(getFilteredProductsAction(currentCategory, page, addQuery));
-  };
-
-  return (
-    <>
-      <TypeQueryMaker queryState={checkedSet} />
-      <FormGroup row>
-        <FormControlLabel
-          control={
-            <GreenCheckbox
-              checked={checkedSet.checkedA}
-              onChange={handleChange}
-              name="checkedA"
-            />
-          }
-          label="зеркальные"
-        />
-        <FormControlLabel
-          control={
-            <GreenCheckbox
-              checked={checkedSet.checkedB}
-              onChange={handleChange}
-              name="checkedB"
-            />
-          }
-          label="компактные"
-        />
-        <FormControlLabel
-          control={
-            <GreenCheckbox
-              checked={checkedSet.checkedC}
-              onChange={handleChange}
-              name="checkedC"
-            />
-          }
-          label="системные"
-        />
-        <FormControlLabel
-          control={
-            <GreenCheckbox
-              checked={checkedSet.checkedD}
-              onChange={handleChange}
-              name="checkedD"
-            />
-          }
-          label="суперзум"
-        />
-      </FormGroup>
-    </>
-  );
-};
-
+  // const handleChange = (event) => {
+  //   setCheckedSet({ ...checkedSet, [event.target.name]: event.target.checked });
+  // };
+  // mirror: false,
+  // compact: false,
+  // system: false,
+  // zoom: false,
+  <>
+    {/* <TypeQueryMaker queryState={checkedSet} /> */}
+    <FormGroup row>
+      <FormControlLabel
+        control={
+          <GreenCheckbox
+            checked={typeFilter.mirror}
+            onChange={handleChange}
+            name="mirror"
+          />
+        }
+        label="зеркальные"
+      />
+      <FormControlLabel
+        control={
+          <GreenCheckbox
+            checked={typeFilter.compact}
+            onChange={handleChange}
+            name="compact"
+          />
+        }
+        label="компактные"
+      />
+      <FormControlLabel
+        control={
+          <GreenCheckbox
+            checked={typeFilter.system}
+            onChange={handleChange}
+            name="system"
+          />
+        }
+        label="системные"
+      />
+      <FormControlLabel
+        control={
+          <GreenCheckbox
+            checked={typeFilter.zoom}
+            onChange={handleChange}
+            name="zoom"
+          />
+        }
+        label="суперзум"
+      />
+    </FormGroup>
+  </>
+);
 export default CheckBox;

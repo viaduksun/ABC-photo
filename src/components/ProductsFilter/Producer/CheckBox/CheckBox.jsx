@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-wrap-multilines */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
@@ -16,55 +18,81 @@ const GreenCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-const CheckBox = () => {
-  const [state, setState] = React.useState({
-    checkedA: false,
-    checkedB: false,
-    checkedC: true,
-    checkedD: false,
-    checkedE: false,
-    checkedF: false,
-    checkedG: false
-  });
+const CheckBox = ({ handleChange, brandFilter }) => (
+  // const [state, setState] = React.useState({
+  //   checkedA: false,
+  //   checkedB: false,
+  //   checkedC: true,
+  //   checkedD: false,
+  //   checkedE: false,
+  //   checkedF: false,
+  //   checkedG: false
+  // });
+  // canon: false,
+  //   nikon: false,
+  //   sony: false,
+  //   olympus: false,
+  //   fuji: false,
+  // const handleChange = (event) => {
+  //   setState({ ...state, [event.target.name]: event.target.checked });
+  // };
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
+  <>
+    <FormGroup row>
+      <FormControlLabel
+        control={
+          <GreenCheckbox
+            checked={brandFilter.canon}
+            onChange={handleChange}
+            name="canon"
+          />
+        }
+        label="Canon"
+      />
 
-  return (
-    <>
-      <FormGroup row>
-        <FormControlLabel
-          control={<GreenCheckbox checked={state.checkedA} onChange={handleChange} name="checkedA" />}
-          label="Canon"
-        />
-        <FormControlLabel
-          control={<GreenCheckbox checked={state.checkedB} onChange={handleChange} name="checkedB" />}
-          label="Fujifilm"
-        />
-        <FormControlLabel
-          control={<GreenCheckbox checked={state.checkedC} onChange={handleChange} name="checkedC" />}
-          label="Nikon"
-        />
-        <FormControlLabel
-          control={<GreenCheckbox checked={state.checkedD} onChange={handleChange} name="checkedD" />}
-          label="Olympus"
-        />
-        <FormControlLabel
-          control={<GreenCheckbox checked={state.checkedE} onChange={handleChange} name="checkedE" />}
-          label="Panasonic"
-        />
-        <FormControlLabel
-          control={<GreenCheckbox checked={state.checkedF} onChange={handleChange} name="checkedF" />}
-          label="Pentax"
-        />
-        <FormControlLabel
-          control={<GreenCheckbox checked={state.checkedG} onChange={handleChange} name="checkedG" />}
-          label="Sony"
-        />
-      </FormGroup>
-    </>
-  );
-};
+      <FormControlLabel
+        control={
+          <GreenCheckbox
+            checked={brandFilter.nikon}
+            onChange={handleChange}
+            name="nikon"
+          />
+        }
+        label="Nikon"
+      />
+      <FormControlLabel
+        control={
+          <GreenCheckbox
+            checked={brandFilter.fuji}
+            onChange={handleChange}
+            name="fuji"
+          />
+        }
+        label="Fujifilm"
+      />
 
+      <FormControlLabel
+        control={
+          <GreenCheckbox
+            checked={brandFilter.olympus}
+            onChange={handleChange}
+            name="olympus"
+          />
+        }
+        label="Olympus"
+      />
+
+      <FormControlLabel
+        control={
+          <GreenCheckbox
+            checked={brandFilter.sony}
+            onChange={handleChange}
+            name="sony"
+          />
+        }
+        label="Sony"
+      />
+    </FormGroup>
+  </>
+);
 export default CheckBox;

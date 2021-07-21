@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -11,7 +12,7 @@ import styles from './Equipment.module.scss';
 const useStyles = makeStyles(() => ({
   root: {
     width: '100%',
-    padding: '0px'
+    padding: '0px',
   },
   acordion: {
     boxShadow: '0px 0px 0px 0px #fff',
@@ -19,15 +20,15 @@ const useStyles = makeStyles(() => ({
   accordionSummary: {
     padding: '0px 15px 0px 0px',
     marginBottom: '0px',
-    height: '50px'
+    height: '50px',
   },
   accordionDetails: {
     padding: '0px',
-    width: '70%'
-  }
+    width: '70%',
+  },
 }));
 
-const Equipment = () => {
+const Equipment = ({ handleChange, setFilter }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -42,7 +43,7 @@ const Equipment = () => {
         </AccordionSummary>
         <AccordionDetails className={classes.accordionDetails}>
           <Typography component="span">
-            <CheckBox />
+            <CheckBox handleChange={handleChange} setFilter={setFilter} />
           </Typography>
         </AccordionDetails>
       </Accordion>
