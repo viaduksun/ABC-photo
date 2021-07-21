@@ -7,8 +7,7 @@ import SingleProductContainer from '../containers/SingleProductContainer/SingleP
 const SingleProduct = () => {
   const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
   console.log('singpleProductPage');
-  const data = [['/', 'Главная'], ['products', 'Цифровая техника'], ['single-product',
-  Object.keys(singleProduct).length !== 0 && singleProduct.characteristics.model[1]]];
+  const data = [['/', 'Главная'], ['products', 'Цифровая техника'], ['single-product', Object.keys(singleProduct).length !== 0 && singleProduct.characteristics.model[1]]];
   return (
     <>
       <Breadcrumbs data={data} />

@@ -24,6 +24,8 @@ import { addProdductToFavoritesAction, deleteProdductFromFavoritesAction } from 
 
 const ProductCard = ({product}) => {
   const cart = useSelector((state) => state.cart.cart);
+  const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
+  console.log(popupIsOpen);
   const favorites = useSelector((state) => state.favorites.favorites);
   const isInCart = cart.some((item) => item._id === product._id);
   const isInFavorites = favorites.some((item) => item._id === product._id);
@@ -94,11 +96,11 @@ const ProductCard = ({product}) => {
           {/* {isInFavorites ? <BsStar /> : <BsStar style={{color: '#e91e49'}} />} */}
           {isInFavorites ? <BsFillStarFill /> : <BsStar />}
         </div>
-        <div className={styles.ProductCardIconCart} onClick={addProductToCartHandler}>
+        <button type="button" disabled={popupIsOpen} className={styles.ProductCardIconCart} onClick={addProductToCartHandler}>
           {/* {isInCart ? <FaShoppingCart /> : <BiCart />} */}
           {product.quantity !== 0 ? <BiCart /> : <MdRemoveShoppingCart style={{color: '#e91e49'}} />}
           {isInCart && <span><GiCheckMark /></span>}
-        </div>
+        </button>
       </div>
       <div className={styles.ProductCardInfo}>
         <p>
