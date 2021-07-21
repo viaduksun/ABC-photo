@@ -25,12 +25,12 @@ const ProductsContainer = () => {
   const page = useSelector((state) => state.productsPage.currentPage);
 
   useEffect(() => {
-    console.log(currentCategory, page);
-    dispatch(getFilteredProductsAction(currentCategory, page, ''));
+    // console.log(currentCategory, page);
+    // dispatch(getFilteredProductsAction(currentCategory, page, ''));
     dispatch(getAllProductsCurrentCategoryAction(currentCategory));
   }, [currentCategory, dispatch, page]);
   const products = useSelector((state) => state.productsPage.products);
-  console.log(products);
+  // console.log(products);
   const isLoadingProducts = useSelector(
     (state) => state.productsPage.isLoadingProducts
   );

@@ -8,12 +8,12 @@ import {
 } from './types';
 
 export const getFilteredProductsAction = (currentCategory, page, addQuery) => (dispatch) => {
-  console.log('CURRCATEGORY', currentCategory);
-  console.log('PAGE', page);
-  console.log('QUERY', addQuery);
+  // console.log('CURRCATEGORY', currentCategory);
+  // console.log('PAGE', page);
+  // console.log('QUERY', addQuery);
   getFilteredProducts(currentCategory, page, addQuery).then((result) => {
-    console.log('getFilteredProducts', result);
-    dispatch({ type: SET_PRODUCTS, payload: result });
+    // console.log('getFilteredProducts', result);
+    dispatch({ type: SET_PRODUCTS, payload: result.data.products });
   });
 
   // getProducts().then((data) => {
@@ -22,7 +22,7 @@ export const getFilteredProductsAction = (currentCategory, page, addQuery) => (d
 };
 export const getAllProductsCurrentCategoryAction = (currentCategory) => (dispatch) => {
   getAllFilteredProducts(currentCategory).then((allProducts) => {
-    console.log('allProducts', allProducts);
+    // console.log('allProducts', allProducts);
     dispatch({ type: SET_CURRENT_PRODUCTS_ARR, payload: allProducts.data.products });
   });
 };

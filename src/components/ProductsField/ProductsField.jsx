@@ -9,7 +9,7 @@ import ProductCard from '../ProductCard/ProductCard';
 import Pagination from '../Pagination/Pagination';
 
 const ProductsField = ({ products }) => {
-  console.log('test');
+  console.log('RENDER_ProductsField ');
   return (
     <div className={styles.ProductsField}>
       <ProductsSorting />

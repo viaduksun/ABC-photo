@@ -10,18 +10,16 @@ import { setCurrentPageAction } from '../../store/products/actions';
 import styles from './Pagination.module.scss';
 
 const Pagination = () => {
-  const allProductsArr = useSelector(
-    (state) => state.productsPage.allProductsCurrentCategory
-  );
+  const allProductsArr = useSelector((state) => state.productsPage.products);
   const pagesCount = Math.ceil(allProductsArr.length / 6);
-  console.log(allProductsArr.length, pagesCount);
+  // console.log(allProductsArr.length, pagesCount);
   const [isActive, setIsActive] = useState(1);
   const dispatch = useDispatch();
   const pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-  console.log(pages);
+  // console.log(pages);
   const handleExactPage = (item) => {
     console.log(item);
     setIsActive(item);

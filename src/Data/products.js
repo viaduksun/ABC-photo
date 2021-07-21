@@ -32,7 +32,7 @@ export const product01 = {
 export const product02 = {
 
   brand: 'canon',
-  name: 'Фотоаппарат CANON EOS 250D BK 18-55 IS STM',
+  name: 'CANON EOS 250D BK 18-55 IS STM',
   quantity: 12,
   artical: 1231235,
   hitSale: 'да',
@@ -62,7 +62,7 @@ export const product02 = {
 export const product03 = {
 
   brand: 'canon_TEST',
-  name: 'TEST_Фотоаппарат CANON EOS M100 15-45 RUK (CSC) Black',
+  name: 'CANON EOS M100 15-45 RUK (CSC) Black',
   quantity: 12,
   artical: 1231245,
   hitSale: 'да',
@@ -152,7 +152,7 @@ export const product05 = {
 export const nikon01 = {
 
   brand: 'nikon',
-  name: 'Фотоаппарат NIKON Coolpix B500',
+  name: 'NIKON Coolpix B500',
   quantity: 12,
   artical: 1231878,
   hitSale: 'да',

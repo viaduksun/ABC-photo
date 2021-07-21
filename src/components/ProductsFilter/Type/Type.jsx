@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -7,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CheckBox from './CheckBox/CheckBox';
 import styles from './Type.module.scss';
-import TypeQueryMaker from './TypeQueryMaker';
+// import TypeQueryMaker from './TypeQueryMaker';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -48,7 +49,7 @@ const Type = () => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <TypeQueryMaker />
+      {/* <TypeQueryMaker /> */}
     </div>
   );
 };

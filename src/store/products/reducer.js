@@ -7,7 +7,6 @@ import {
 const initialState = {
   products: [],
   currentCategory: null,
-  allProductsCurrentCategory: [],
   currentPage: 1,
   isLoadingProducts: true,
   currentQuery: '',
@@ -17,9 +16,11 @@ const initialState = {
 export const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_PRODUCTS:
+      // ==== REFACTORING ====
+      console.log('SET_PRODUCTS: ', action.payload);
       return {
         ...state,
-        products: action.payload.data.products,
+        products: action.payload,
         isLoadingProducts: false,
       };
     case SET_CURRENT_CAREGORY:
@@ -36,10 +37,11 @@ export const productsReducer = (state = initialState, action) => {
       };
     case SET_CURRENT_PRODUCTS_ARR:
       // === for pagination calculation ======
-      console.log('SET_CURRENT_PRODUCTS_ARR', action.payload);
+      // console.log('SET_CURRENT_PRODUCTS_ARR', action.payload);
       return {
         ...state,
-        allProductsCurrentCategory: action.payload,
+        products: action.payload,
+        isLoadingProducts: false,
       };
     case SET_CURRENT_PAGE:
       return {

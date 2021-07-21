@@ -23,15 +23,11 @@ const GreenCheckbox = withStyles({
 })((props) => <Checkbox color="default" {...props} />);
 
 const CheckBox = () => {
-  const currentCategory = useSelector(
-    (state) => state.productsPage.currentCategory
-  );
-  const page = useSelector((state) => state.productsPage.currentPage);
   const [checkedSet, setCheckedSet] = useState({
     checkedA: false,
+    checkedB: false,
+    checkedC: false,
     checkedD: false,
-    // checkedB: false,
-    // checkedC: false,
   });
   const [qurrentQuery, setQurrentQuery] = useState('');
   const dispatch = useDispatch();
@@ -45,20 +41,20 @@ const CheckBox = () => {
     //   setQurrentQuery(qurrentQuery + queryA);
     // }
 
-    const queryArr = Object.keys(checkedSet).map((item, i) => {
-      console.log(item);
-      if (item === 'checkedA' && checkedSet[item]) {
-        return 'Query-A';
-      }
-      if (item === 'checkedD' && checkedSet[item]) {
-        return 'Query-B';
-      }
-      return null;
-    });
-    console.log(queryArr);
+    // const queryArr = Object.keys(checkedSet).map((item, i) => {
+    //   console.log(item);
+    //   if (item === 'checkedA' && checkedSet[item]) {
+    //     return 'Query-A';
+    //   }
+    //   if (item === 'checkedD' && checkedSet[item]) {
+    //     return 'Query-B';
+    //   }
+    //   return null;
+    // });
+    // console.log(queryArr);
 
-    const addQuery = queryA;
-    dispatch(getFilteredProductsAction(currentCategory, page, addQuery));
+    // const addQuery = queryA;
+    // dispatch(getFilteredProductsAction(currentCategory, page, addQuery));
   };
 
   return (
@@ -75,7 +71,7 @@ const CheckBox = () => {
           }
           label="зеркальные"
         />
-        {/* <FormControlLabel
+        <FormControlLabel
           control={
             <GreenCheckbox
               checked={checkedSet.checkedB}
@@ -84,8 +80,8 @@ const CheckBox = () => {
             />
           }
           label="компактные"
-        /> */}
-        {/* <FormControlLabel
+        />
+        <FormControlLabel
           control={
             <GreenCheckbox
               checked={checkedSet.checkedC}
@@ -94,7 +90,7 @@ const CheckBox = () => {
             />
           }
           label="системные"
-        /> */}
+        />
         <FormControlLabel
           control={
             <GreenCheckbox

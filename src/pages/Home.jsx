@@ -9,16 +9,13 @@ import DiscountSlider from '../containers/DiscountSlider/DiscountSlider';
 
 import PopularModelsSliderContainer from '../containers/PopularModelsSliderContainer/PopularModelsSliderContainer';
 
-const Home = () => {
-  console.log('test');
+const Home = () => (
+  // console.log('test');
 
-  return (
-    <>
-      <HeaderSlider />
-      <PopularModelsSliderContainer />
-      <DiscountSlider />
-    </>
-  );
-};
-
+  <>
+    <HeaderSlider />
+    <PopularModelsSliderContainer />
+    <DiscountSlider />
+  </>
+);
 export default Home;

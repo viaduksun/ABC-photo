@@ -12,7 +12,7 @@ import { addSingleProductToCartAction } from '../../../store/cart/actions';
 import Button from '../../UI/Button/Button';
 import styles from './SingleProductContent.module.scss';
 
-const SingleProductContent = ({singleProduct}) => {
+const SingleProductContent = ({ singleProduct }) => {
   const cart = useSelector((state) => state.cart.cart);
   const isInCart = cart.some((item) => item._id === singleProduct._id);
   const dispatch = useDispatch();
@@ -33,9 +33,18 @@ const SingleProductContent = ({singleProduct}) => {
       <p className={styles.Price}>{singleProduct.currentPrice} грн</p>
 
       <div className={styles.ButtonBuy}>
-        <Button addClass={singleProduct.quantity !== 0 ? 'cart_green' : 'cart_disable'} onClick={addProductToCartHandler}>
+        <Button
+          addClass={
+            singleProduct.quantity !== 0 ? 'cart_green' : 'cart_disable'
+          }
+          onClick={addProductToCartHandler}
+        >
           <span>Купить</span>
-          {singleProduct.quantity !== 0 ? <FiShoppingCart /> : <MdRemoveShoppingCart style={{color: '#e91e49'}} />}
+          {singleProduct.quantity !== 0 ? (
+            <FiShoppingCart />
+          ) : (
+            <MdRemoveShoppingCart style={{ color: '#e91e49' }} />
+          )}
           &nbsp;
           {isInCart && <GiCheckMark />}
         </Button>
