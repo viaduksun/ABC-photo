@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   products: [],
+  AllProductsForPagination: [],
   currentCategory: null,
   currentPage: 1,
   isLoadingProducts: true,
@@ -40,7 +41,7 @@ export const productsReducer = (state = initialState, action) => {
       // console.log('SET_CURRENT_PRODUCTS_ARR', action.payload);
       return {
         ...state,
-        products: action.payload,
+        AllProductsForPagination: action.payload,
         isLoadingProducts: false,
       };
     case SET_CURRENT_PAGE:

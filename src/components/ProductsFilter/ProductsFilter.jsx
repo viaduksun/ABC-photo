@@ -10,57 +10,59 @@ import FilterQueryMaker from './FilterQueryMaker';
 import RangeSliderContainer from './RangeSlider/RangeSliderContainer';
 
 const ProductsFilter = () => {
-  const [typeFilter, setTypeFilter] = useState({
-    mirror: false,
-    compact: false,
-    system: false,
-    zoom: false,
-  });
-  const [brandFilter, setBrandFilter] = useState({
-    canon: false,
-    nikon: false,
-    sony: false,
-    olympus: false,
-    fuji: false,
-  });
-  const [setFilter, setSetFilter] = useState({
-    yes: false,
-    no: false,
-  });
-  const [matrixSizeFilter, setMatrixSizeFilter] = useState({
-    checkedA: false,
-    checkedB: false,
-    checkedC: false,
-    checkedD: false,
-    checkedE: false,
-    checkedF: false,
-  });
-  const handleChange = (event) => {
-    console.log('CLICK!!!', event.target.name);
-    setTypeFilter({ ...typeFilter, [event.target.name]: event.target.checked });
-  };
-  const handleBrandChange = (event) => {
-    console.log('BRAND!!!', event.target.name);
-    setBrandFilter({
-      ...brandFilter,
-      [event.target.name]: event.target.checked,
-    });
-  };
-  const handleSetChange = (event) => {
-    setSetFilter({
-      ...setFilter,
-      [event.target.name]: event.target.checked,
-    });
-  };
-  const handleMatrixSizeChange = (event) => {
-    setMatrixSizeFilter({
-      ...matrixSizeFilter,
-      [event.target.name]: event.target.checked,
-    });
-  };
+  console.log('PRODUCTS FILTER');
+  // const [typeFilter, setTypeFilter] = useState({
+  //   mirror: false,
+  //   compact: false,
+  //   system: false,
+  //   zoom: false,
+  // });
+  // const [brandFilter, setBrandFilter] = useState({
+  //   canon: false,
+  //   nikon: false,
+  //   sony: false,
+  //   olympus: false,
+  //   fuji: false,
+  // });
+  // const [setFilter, setSetFilter] = useState({
+  //   yes: false,
+  //   no: false,
+  // });
+  // const [matrixSizeFilter, setMatrixSizeFilter] = useState({
+  //   checkedA: false,
+  //   checkedB: false,
+  //   checkedC: false,
+  //   checkedD: false,
+  //   checkedE: false,
+  //   checkedF: false,
+  // });
+  // const handleChange = (event) => {
+  //   console.log('CLICK!!!', event.target.name);
+  //   setTypeFilter({ ...typeFilter, [event.target.name]: event.target.checked });
+  // };
+  // const handleBrandChange = (event) => {
+  //   console.log('BRAND!!!', event.target.name);
+  //   setBrandFilter({
+  //     ...brandFilter,
+  //     [event.target.name]: event.target.checked,
+  //   });
+  // };
+  // const handleSetChange = (event) => {
+  //   setSetFilter({
+  //     ...setFilter,
+  //     [event.target.name]: event.target.checked,
+  //   });
+  // };
+  // const handleMatrixSizeChange = (event) => {
+  //   setMatrixSizeFilter({
+  //     ...matrixSizeFilter,
+  //     [event.target.name]: event.target.checked,
+  //   });
+  // };
   return (
     <div className={styles.ProductsFilter}>
-      <FilterQueryMaker
+      <h1>PRODUCTS FILTER</h1>
+      {/* <FilterQueryMaker
         typeFilter={typeFilter}
         brandFilter={brandFilter}
         setFilter={setFilter}
@@ -73,7 +75,7 @@ const ProductsFilter = () => {
       <Matrix
         handleChange={handleMatrixSizeChange}
         matrixSizeFilter={matrixSizeFilter}
-      />
+      /> */}
     </div>
   );
 };

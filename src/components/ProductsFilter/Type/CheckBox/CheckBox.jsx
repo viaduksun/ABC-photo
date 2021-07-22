@@ -10,9 +10,6 @@ import { green } from '@material-ui/core/colors';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import { useDispatch, useSelector } from 'react-redux';
-import { getFilteredProductsAction } from '../../../../store/products/actions';
-import TypeQueryMaker from '../../FilterQueryMaker';
 
 const GreenCheckbox = withStyles({
   root: {
@@ -25,24 +22,7 @@ const GreenCheckbox = withStyles({
 })((props) => <Checkbox color="default" {...props} />);
 
 const CheckBox = ({ handleChange, typeFilter }) => (
-  // const [checkedSet, setCheckedSet] = useState({
-  //   typeA: false,
-  //   typeB: false,
-  //   typeC: false,
-  //   typeD: false,
-  // });
-  // const [qurrentQuery, setQurrentQuery] = useState('');
-  // const dispatch = useDispatch();
-
-  // const handleChange = (event) => {
-  //   setCheckedSet({ ...checkedSet, [event.target.name]: event.target.checked });
-  // };
-  // mirror: false,
-  // compact: false,
-  // system: false,
-  // zoom: false,
   <>
-    {/* <TypeQueryMaker queryState={checkedSet} /> */}
     <FormGroup row>
       <FormControlLabel
         control={
