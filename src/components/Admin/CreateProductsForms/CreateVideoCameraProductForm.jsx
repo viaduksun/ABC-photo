@@ -77,6 +77,15 @@ const CreateVideoCameraProductForm = ({ currentCategory }) => {
       previousPrice: previousPriceValue,
       quantity: quantityValue,
       hit: hitValue,
+      brand: brandValue,
+      model: modelValue,
+      artical: articalValue,
+      recordType: recordTypeValue,
+      lenceType: lenceTypeValue,
+      format: formatValue,
+      resolution: resolutionValue,
+      connectors: connectorsValue,
+      waranty: warantyValue,
       description,
       imageUrls: [imageUrl01, imageUrl02, imageUrl03, imageUrl04],
       // === CUSTOM FIELDS ===
@@ -93,7 +102,7 @@ const CreateVideoCameraProductForm = ({ currentCategory }) => {
       },
     };
     createProduct(newProduct);
-    console.log(newProduct);
+    // console.log(newProduct);
     setSubmitting(false);
     resetForm();
   };
@@ -126,9 +135,7 @@ const CreateVideoCameraProductForm = ({ currentCategory }) => {
         -
       </option>
       <option value="yes">Да</option>
-      <option value="no" selected>
-        Нет
-      </option>
+      <option value="no">Нет</option>
     </>
   );
   const connectorsOptions = (
@@ -156,7 +163,8 @@ const CreateVideoCameraProductForm = ({ currentCategory }) => {
       <option value="-" hidden>
         -
       </option>
-      <option value="slab">Leica Dicomar</option>
+      <option value="Leica Dicomar">Leica Dicomar</option>
+      <option value="G Lens HXR-MC2500">G Lens HXR-MC2500</option>
     </>
   );
   const recordTypeOptions = (
@@ -165,6 +173,7 @@ const CreateVideoCameraProductForm = ({ currentCategory }) => {
         -
       </option>
       <option value="flash">Flash</option>
+      <option value="SSD-диск">SSD-диск</option>
     </>
   );
   const resolutionOptions = (

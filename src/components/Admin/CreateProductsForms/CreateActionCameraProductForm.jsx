@@ -71,6 +71,15 @@ const CreateActionCameraProductForm = ({ currentCategory }) => {
       previousPrice: previousPriceValue,
       quantity: quantityValue,
       hit: hitValue,
+      brand: brandValue,
+      model: modelValue,
+      artical: articalValue,
+      waranty: warantyValue,
+      matrix: matrixValue,
+      features: featuresValue,
+      wireless: wirelessValue,
+      cameraColor: colorValue,
+      resolution: resolutionValue,
       description,
       imageUrls: [imageUrl01, imageUrl02, imageUrl03, imageUrl04],
       // === CUSTOM FIELDS ===
@@ -190,9 +199,9 @@ const CreateActionCameraProductForm = ({ currentCategory }) => {
         -
       </option>
       <option value="Белый">Белый</option>
-      <option value="Белый">Серый</option>
-      <option value="Белый">Синий</option>
-      <option value="Белый">Черный</option>
+      <option value="Серый">Серый</option>
+      <option value="Синий">Синий</option>
+      <option value="Черный">Черный</option>
     </>
   );
 
