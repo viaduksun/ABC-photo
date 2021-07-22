@@ -6,20 +6,20 @@
   font-size: 12px;
 }
 .FooterCopyrightBefore {
-  border-top: 1px solid rgb(109, 109, 109);
+  // border-top: 1px solid rgb(109, 109, 109);
   position: relative;
-  width: 70%;
-  margin: 0px auto;
+  // width: 70%;
+  // margin: 0px auto;
 }
-// .FooterCopyrightBefore::before {
-//   content: '';
-//   position: absolute;
-//   width: 70%;
-//   height: 1px;
-//   background-color: #5E5C5C;
-//   margin-left: 15%;
-//   // margin-top: 1%;
-// }
+.FooterCopyrightBefore::before {
+  content: '';
+  position: absolute;
+  width: 70%;
+  height: 1px;
+  background-color: #5E5C5C;
+  margin-left: 15%;
+  // margin-top: 1%;
+}
 .FooterCopyrightText {
   text-align: center;
   padding-top: 53px;
@@ -27,7 +27,7 @@
 .FooterGrid {
   // display: flex;
   // flex-direction: row;
-  max-width: 120px;
+  // max-width: 120px;
   justify-content: space-between;
   margin-left: 133px;
   margin-right: 147px;
@@ -42,8 +42,9 @@
 .FooterInformationText {
   margin-bottom: 5px;
 }
-.FooterInformationInput {
-  label {
+// .FooterInformationInput {
+  // label {
+.FooterInformationInputLabel {
     font-size: 16px;
     margin-bottom: 10px;
     font-size: 13px;
@@ -71,16 +72,23 @@
       background-size: contain;
       transition: transform 0.4s;
     }
-  }
-
-  @media (min-width: 768px) {
-    font-size: 16px;
-    cursor: text;
-    &::after {
-      display: none;
+    @media (min-width: 768px) {
+      font-size: 16px;
+      cursor: text;
+      &::after {
+        display: none;
+      }
     }
-  }
 }
+
+//   @media (min-width: 768px) {
+//     font-size: 16px;
+//     cursor: text;
+//     &::after {
+//       display: none;
+//     }
+//   }
+// }
 
 .icons {
   display: flex;
@@ -233,7 +241,10 @@
   background: #000000;
   display: none;
   a {
+    display: flex;
+    flex-direction: column;
     outline: none;
+    color: #fff;
   }
   @media (min-width: 768px) {
     display: block;
