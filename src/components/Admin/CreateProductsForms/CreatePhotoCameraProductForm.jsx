@@ -199,10 +199,8 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
         -
       </option>
       <option value="1` (13.2 х 8.8 мм)">1" (13.2 х 8.8 мм)</option>
-      <option value="1/2.3` (6.2 х 4.6 мм)">1/2.3" (6.2 х 4.6 мм)</option>
       <option value="1/3` (4.52 х 3.39 мм)">1/3" (4.52 х 3.39 мм)</option>
       <option value="APS-C (22.3 х 14.8 мм)">APS-C (22.3 х 14.8 мм)</option>
-      <option value="APS-C (23.5 х 15.7 мм)">APS-C (23.5 х 15.7 мм)</option>
       <option value="Full Frame (36 х 24 мм)">Full Frame (36 х 24 мм)</option>
     </>
   );
@@ -211,11 +209,8 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
       <option value="-" hidden>
         -
       </option>
-      <option value="3">3</option>
       <option value="8">8</option>
-      <option value="12">12</option>
       <option value="16">16</option>
-      <option value="18">18</option>
       <option value="21">21</option>
       <option value="34">34</option>
     </>
@@ -225,8 +220,8 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
       <option value="-" hidden>
         -
       </option>
-      <option value="yes">Да</option>
-      <option value="no">Нет</option>
+      <option value="Да">Да</option>
+      <option value="Нет">Нет</option>
     </>
   );
   const screenBraicingOptions = (
@@ -244,8 +239,8 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
       <option value="-" hidden>
         -
       </option>
-      <option value="yes">Да</option>
-      <option value="no">Нет</option>
+      <option value="Да">Да</option>
+      <option value="Нет">Нет</option>
     </>
   );
   const maxSizeOptions = (
