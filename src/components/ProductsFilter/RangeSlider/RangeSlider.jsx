@@ -29,7 +29,6 @@ price
 }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  console.log(maxPrice);
   const dispatchPriceHandler = () => {
     dispatch(getFilteredProductsAction(currentCategory, page, addQuery));
   };

@@ -11,7 +11,7 @@ import styles from './Pagination.module.scss';
 
 const Pagination = () => {
   const allProductsArr = useSelector((state) => state.productsPage.products);
-  const pagesCount = Math.ceil(allProductsArr.length / 6);
+  const pagesCount = Math.ceil(allProductsArr.length / 3);
   // console.log(allProductsArr.length, pagesCount);
   const [isActive, setIsActive] = useState(1);
   const dispatch = useDispatch();

@@ -32,6 +32,7 @@ import { userFromLocalStorageAction } from './store/admin/actions';
 import { singleProductFromLocalStorageAction } from './store/singleProduct/actions';
 import Favorites from './pages/Favorites';
 import { favoritesFromLocalStorageAction } from './store/favorites/actions';
+import { viewedProductsFromLocalStorageAction } from './store/viewedProducts/actions';
 
 function App() {
   const cart = useSelector((state) => state.cart.cart);
@@ -61,6 +62,7 @@ function App() {
     const cartFromLocalStorage = localStorage.getItem('cart');
     const favoritesFromLocalStorage = localStorage.getItem('favorites');
     const singleProductFromLocalStorage = localStorage.getItem('singleProduct');
+    const viewedProductsFromLocalStorage = localStorage.getItem('viewedProducts');
     if (cartFromLocalStorage) {
       dispatch(cartFromLocalStorageAction(cartFromLocalStorage));
     }
@@ -70,6 +72,11 @@ function App() {
     if (singleProductFromLocalStorage) {
       dispatch(
         singleProductFromLocalStorageAction(singleProductFromLocalStorage)
+      );
+    }
+    if (viewedProductsFromLocalStorage) {
+      dispatch(
+        viewedProductsFromLocalStorageAction(viewedProductsFromLocalStorage)
       );
     }
   }, [dispatch]);
@@ -102,6 +109,9 @@ function App() {
         {/* <Route exact path="/products"> */}
         <Route path="/products">
           <Products />
+        </Route>
+        <Route path="/favorites">
+          <Favorites />
         </Route>
         <Route exact path="/single-product">
           <SingleProduct />
