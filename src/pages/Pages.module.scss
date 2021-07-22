@@ -1,0 +1,71 @@
+.PagesH1 {
+    // color:#00aa4d;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 20px 0;
+    text-align: left;
+}
+.Logo {
+    display: flex;
+    flex-direction:row ;
+}
+.staticBlock {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    font-size: 12px;
+    // width: 578px;
+}
+.aShops {
+    color: #000;
+}
+h2{
+    color:#00aa4d;
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 20px 0;  
+}
+h3 {
+    text-align: left;
+    text-transform: none;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 40px 0 10px 0;
+    height: auto;
+}
+h4 {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 20px 0 5px 0;
+    height: auto;
+}
+.wrapper {
+    font-size: 12px;
+}
+.Guaranty {
+    margin: 0 0 10px 0;
+    width: auto;
+    overflow: hidden;
+}
+.Shops {
+    font-size: 12px;
+    margin: 0;
+    color: #737574;
+}
+.phoneShope {
+    color: #2c2c2c;
+    font-size: 16px;
+    font-weight: bold
+}
+.codeShope {
+    font-weight: normal;
+    font-size: 14px;
+    color: #747675;
+}
+.addressShope {
+    font-size: 18px;
+    font-weight: bold;
+    color: #302e2f;
+    line-height: 23px;
+}

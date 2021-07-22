@@ -3,18 +3,18 @@ const footerConfig = [
     title: 'Информация',
     id: 1,
     links: [
-      { to: '/', text: 'О Компании' },
-      { to: '/signup', text: 'Карта Сайта' },
-      { to: '/signin', text: 'Публичная Оферта' },
+      { to: '/about', text: 'О Компании' },
+      { to: '/maps', text: 'Карта Сайта' },
+      { to: '/public', text: 'Публичная Оферта' },
     ],
   },
   {
     title: 'Покупателям',
     id: 2,
     links: [
-      { to: '/catalog?categories=gamingMonitors', text: 'Кредит' },
-      { to: '/catalog?categories=tablets', text: 'Доставка И Оплата' },
-      { to: '/catalog?categories=laptops', text: 'Сервис И Гарантия' },
+      { to: '/credit', text: 'Кредит' },
+      { to: '/delivery', text: 'Доставка И Оплата' },
+      { to: '/guaranty', text: 'Сервис И Гарантия' },
         
     ],
   },
@@ -22,8 +22,9 @@ const footerConfig = [
     title: 'Связаться с нами',
     id: 3,
     links: [
-      { to: '/catalog?brand=AOC', text: 'Контакты' },
-      { to: '/catalog?brand=MSI', text: 'Магазины' },
+      // { to: '/catalog?brand=AOC', text: 'Контакты' },
+      { to: '/contacts', text: 'Контакты' },
+      { to: '/shops', text: 'Магазины' },
         
     ],
   },

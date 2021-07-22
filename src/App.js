@@ -9,6 +9,13 @@ import Home from './pages/Home';
 import Contacts from './pages/Contacts';
 import Products from './pages/Products';
 import SingleProduct from './pages/SingleProduct';
+import Shops from './pages/Shops';
+// import Maps from './pages/Maps';
+import Credit from './pages/Credit';
+import Guaranty from './pages/Guaranty';
+import About from './pages/About';
+import Delivery from './pages/Delivery';
+// import Public from './pages/Public';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Profile from './pages/Profile';
@@ -102,9 +109,27 @@ function App() {
         <Route exact path="/contacts">
           <Contacts />
         </Route>
-        <Route exact path="/favorites">
-          <Favorites />
+        <Route exact path="/shops">
+          <Shops />
         </Route>
+        <Route exact path="/guaranty">
+          <Guaranty />
+        </Route>
+        <Route exact path="/about">
+          <About />
+        </Route>
+        <Route exact path="/credit">
+          <Credit />
+        </Route>
+        <Route exact path="/delivery">
+          <Delivery />
+        </Route>
+        {/* <Route exact path="/maps">
+          <Maps />
+        </Route>
+        <Route exact path="/public">
+          <Public />
+        </Route> */}
         <Route exact path="/cart">
           <Cart />
         </Route>
