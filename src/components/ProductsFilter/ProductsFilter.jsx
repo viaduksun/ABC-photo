@@ -6,8 +6,8 @@ import Matrix from './Matrix/Matrix';
 import Producer from './Producer/Producer';
 import Type from './Type/Type';
 import styles from './ProductsFilter.module.scss';
-import RangeSlider from './RangeSlider/RangeSlider';
 import FilterQueryMaker from './FilterQueryMaker';
+import RangeSliderContainer from './RangeSlider/RangeSliderContainer';
 
 const ProductsFilter = () => {
   const [typeFilter, setTypeFilter] = useState({
@@ -66,7 +66,7 @@ const ProductsFilter = () => {
         setFilter={setFilter}
         matrixSizeFilter={matrixSizeFilter}
       />
-      <RangeSlider />
+      <RangeSliderContainer />
       <Type handleChange={handleChange} typeFilter={typeFilter} />
       <Producer handleChange={handleBrandChange} brandFilter={brandFilter} />
       <Equipment handleChange={handleSetChange} setFilter={setFilter} />
