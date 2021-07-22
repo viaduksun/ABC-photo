@@ -1,4 +1,46 @@
 .ProductsSorting {
-  height: 50px;
-  background: rgb(241, 241, 241);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.ProductsSortingLeft {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.NumberOf {
+  font-size: 14px;
+  line-height: 26px;
+  font-family: 'Roboto', sans-serif;
+  margin-right: 20px;
+}
+.Show {
+  font-size: 14px;
+  line-height: 26px;
+  font-family: 'Roboto', sans-serif;
+  margin-right: 20px;
+}
+.SelectAmount {
+  margin-left: 10px;
+ border: 1px solid #E5E5E5;
+ color: #6F6F6F;
+ padding: 5px;
+ cursor: pointer;
+}
+.SelectPrice {
+  margin-left: 10px;
+ border: 1px solid #E5E5E5;
+ color: #6F6F6F;
+ padding: 5px;
+ cursor: pointer;
+}
+
+.ProductsSortingRight {
+  span {
+    font-size: 14px;
+    line-height: 26px;
+    font-family: 'Roboto', sans-serif;
+  }
 }

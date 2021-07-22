@@ -41,8 +41,7 @@
   font-size: 16px;
   line-height: 20px;
   color: #000000;
-  padding: 8px 0;
-  height: 55px;
+  // padding: 8px 0;
 }
 .ProductCardPriceAndIconCart {
   display: flex;
@@ -121,11 +120,10 @@
 .ProductCard:hover .ProductCardInfo {
   position: absolute;
   display: block;
-  // max-width: 280px;
   width: 100%;
   z-index: 100;
   box-shadow: 0px 10px 10px 0.1px #51ad33;
-  top: 375px;
+  top: 385px;
   left: 0px;
   background-color: #fff;
 }
