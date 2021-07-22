@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-wrap-multilines */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
@@ -16,30 +18,30 @@ const GreenCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-const CheckBox = () => {
-  const [state, setState] = React.useState({
-    checkedA: false,
-    checkedB: false,
-  });
-
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
-
-  return (
-    <>
-      <FormGroup row>
-        <FormControlLabel
-          control={<GreenCheckbox checked={state.checkedA} onChange={handleChange} name="checkedA" />}
-          label="без объектива"
-        />
-        <FormControlLabel
-          control={<GreenCheckbox checked={state.checkedB} onChange={handleChange} name="checkedB" />}
-          label="с объективом"
-        />
-      </FormGroup>
-    </>
-  );
-};
-
+const CheckBox = ({ handleChange, setFilter }) => (
+  <>
+    <FormGroup row>
+      <FormControlLabel
+        control={
+          <GreenCheckbox
+            checked={setFilter.yes}
+            onChange={handleChange}
+            name="yes"
+          />
+        }
+        label="с объективом"
+      />
+      <FormControlLabel
+        control={
+          <GreenCheckbox
+            checked={setFilter.no}
+            onChange={handleChange}
+            name="no"
+          />
+        }
+        label="без объектива"
+      />
+    </FormGroup>
+  </>
+);
 export default CheckBox;

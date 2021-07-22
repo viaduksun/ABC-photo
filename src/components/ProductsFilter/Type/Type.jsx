@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -30,7 +31,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Type = () => {
+const Type = ({ handleChange, typeFilter }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -41,11 +42,11 @@ const Type = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <h3 className={styles.Title}>По типу</h3>
+          <h3 className={styles.Title}>Тип фотоаппарата</h3>
         </AccordionSummary>
         <AccordionDetails className={classes.accordionDetails}>
           <Typography component="span">
-            <CheckBox />
+            <CheckBox handleChange={handleChange} typeFilter={typeFilter} />
           </Typography>
         </AccordionDetails>
       </Accordion>

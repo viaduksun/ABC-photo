@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -27,7 +28,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Matrix = () => {
+const Matrix = ({ handleChange, matrixSizeFilter }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -38,11 +39,14 @@ const Matrix = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <h3 className={styles.Title}>Матрица</h3>
+          <h3 className={styles.Title}>Размер матрицы</h3>
         </AccordionSummary>
         <AccordionDetails className={classes.accordionDetails}>
           <Typography component="span">
-            <CheckBox />
+            <CheckBox
+              handleChange={handleChange}
+              matrixSizeFilter={matrixSizeFilter}
+            />
           </Typography>
         </AccordionDetails>
       </Accordion>
