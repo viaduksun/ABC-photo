@@ -11,7 +11,7 @@ import 'swiper/components/navigation/navigation.min.css';
 import SwiperCore, { Pagination, Navigation, Autoplay } from 'swiper/core';
 import './ViewedProductsSlider.scss';
 import styles from './ViewedProductsSlider.module.scss';
-import ProductCard from '../../components/ProductCard/ProductCard';
+import ProductCard from '../ProductCard/ProductCard';
 
 SwiperCore.use([Pagination, Navigation, Autoplay]);
 

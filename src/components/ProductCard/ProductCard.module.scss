@@ -78,7 +78,7 @@
   transition: 0.5s ease;
   position: relative;
   &:hover {
-    background-color: red;
+    background-color: #e91e49;
   }
   span {
     position: absolute;
@@ -136,4 +136,49 @@
   font-size: 26px;
   color: #51ad33;
   cursor: pointer;
+  position: relative;
+  
+}
+
+.ProductFavoriteTransparent {
+  position: relative;
+  &:hover::after {
+    font-size: 14px;
+    position: absolute;
+    content: 'Добавить в избранное';
+    top: -30px;
+    left: -100px;
+    color: #fff;
+    background-color: green;
+    padding: 5px;
+    width: 157px;
+    border-radius: 5px;
+  }
+}
+.ProductFavoriteColor {
+  position: relative;
+  &:hover::after {
+    font-size: 14px;
+    position: absolute;
+    content: 'Добавить в избранное';
+    top: -30px;
+    left: -100px;
+    color: #fff;
+    background-color: green;
+    padding: 5px;
+    width: 157px;
+    border-radius: 5px;
+  } 
+  &:hover::after {
+    font-size: 14px;
+    position: absolute;
+    content: 'Удалить из избранного';
+    top: -30px;
+    left: -100px;
+    color: #fff;
+    background-color: green;
+    padding: 5px;
+    width: 165px;
+    border-radius: 5px;
+  }
 }

@@ -56,8 +56,8 @@ const ProductCard = ({product}) => {
   };
 
   return (
-    <div className={styles.ProductCard} onClick={dispatchSingleProductHandler}>
-      <Link to="/single-product">
+    <div className={styles.ProductCard}>
+      <Link to="/single-product" onClick={dispatchSingleProductHandler}>
         <div className={styles.ProductCardImg}>
           <img src={product.imageUrls[0]} alt={product.imageUrls[0]} />
           {product.hit === 'yes' && <div className={styles.ProductCardImgHitSale}>Хит продаж</div>}
@@ -99,7 +99,7 @@ const ProductCard = ({product}) => {
         </p>
         <div className={styles.ProductFavorite} onClick={addProductToFavoritesHandler}>
           {/* {isInFavorites ? <BsStar /> : <BsStar style={{color: '#e91e49'}} />} */}
-          {isInFavorites ? <BsFillStarFill /> : <BsStar />}
+          {isInFavorites ? <span className={styles.ProductFavoriteColor}><BsFillStarFill /></span> : <span className={styles.ProductFavoriteTransparent}><BsStar /></span>}
         </div>
         <button type="button" disabled={popupIsOpen} className={styles.ProductCardIconCart} onClick={addProductToCartHandler}>
           {/* {isInCart ? <FaShoppingCart /> : <BiCart />} */}

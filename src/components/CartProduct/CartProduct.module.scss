@@ -104,6 +104,19 @@
   font-weight: 700;
   color: #a0a0a0;
   cursor: pointer;
+  position: relative;
+  &:hover::after {
+    position: absolute;
+    content: 'Удалить из корзины :(';
+    top: -25px;
+    left: 0;
+    background-color: #e91e49;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+    padding: 5px;
+    border-radius: 5px;
+  }
 }
 
 

@@ -1,0 +1,93 @@
+.Modal {
+  transform: scale(0);
+  width: 0px;
+  height: 0px;
+  &_active {
+    transition: all .5s ease-in-out;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1);
+    z-index: 999;
+  }
+}
+.ModalContent {
+  border-radius: 5px;
+  position: relative;
+  padding: 20px;
+  background-color: white;
+  min-height: 400px;
+  width: 400px;
+  .Button {
+    height: 40px;
+    width: 240px;
+    background-color: rgba(152, 161, 175, 1);
+    color: white;
+  }
+}
+.ModalClose {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  color: white;
+  background-color: transparent;
+  font-size: 40px;
+  height: 40px;
+  top: 0;
+  right: -50px;
+  transition: all 0.2s ease 0s;
+  &:hover {
+    transform: rotate(90deg);
+  }
+}
+.Title {
+  text-align: center;
+}
+.ContactDetailsFormBlock {
+ margin: 30px 0;
+}
+.ContactDetailsField {
+  margin-top: 17px;
+  label {
+      display: block;
+      font-size: 14px;
+      line-height: 14px;
+      font-family: 'Open Sans', sans-serif;
+  }
+  input {
+      margin-top: 5px;
+      border: 1px solid #d3d7da;
+      width: 100%;
+      padding: 15px;
+      border-radius: 5px;
+      &:focus {
+          box-shadow: 0px 0px 5px 1px #d3d7da;
+      }
+  }
+}
+.SubmitButton {
+  margin-top: 25px;
+  width: 100%;
+  background-color: #51ad33;;
+  color: #fff;
+  padding: 15px 0;
+  font-size: 20px;
+  line-height: 22px;
+  transition: all .3s;
+  &:hover {
+    background-color: #368e1a;
+  }
+}
+.Error {
+  font-size: 14px;
+  line-height: 16px;
+  color: red;
+  margin-top: 2px;
+}
+
