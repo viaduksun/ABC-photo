@@ -157,7 +157,7 @@ const CreateActionCameraProductForm = ({ currentCategory }) => {
       <option value="-" hidden>
         -
       </option>
-      <option value="2">1920 x 1080 пикс.</option>
+      <option value="1">1920 x 1080 пикс.</option>
       <option value="2">3264 x 2448 пикс.</option>
       <option value="3">4608 x 3456 пикс.</option>
     </>

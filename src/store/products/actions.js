@@ -4,14 +4,14 @@ import getAllFilteredProducts from '../../api/getAllFilteredProducts';
 import getFilteredProducts from '../../api/getFilteredProducts';
 // import getProducts from '../../api/getProducts';
 import {
-  SET_CURRENT_CAREGORY, SET_CURRENT_PAGE, SET_CURRENT_PRODUCTS_ARR, SET_CURRENT_QUERY, SET_FLAG_IN_CART, SET_PRODUCTS
+  SET_CURRENT_CAREGORY, SET_CURRENT_PAGE, SET_CURRENT_PRODUCTS_ARR, SET_CURRENT_QUERY, SET_FLAG_IN_CART, SET_PER_PAGE, SET_PRODUCTS
 } from './types';
 
-export const getFilteredProductsAction = (currentCategory, page, addQuery) => (dispatch) => {
+export const getFilteredProductsAction = (currentCategory, page, perPage, addQuery) => (dispatch) => {
   // console.log('CURRCATEGORY', currentCategory);
   // console.log('PAGE', page);
   // console.log('QUERY', addQuery);
-  getFilteredProducts(currentCategory, page, addQuery).then((result) => {
+  getFilteredProducts(currentCategory, page, perPage, addQuery).then((result) => {
     console.log('getFilteredProducts', result);
     dispatch({ type: SET_PRODUCTS, payload: result.data.products });
   });
@@ -33,6 +33,10 @@ export const setFlagInCartAction = (product) => ({
 });
 export const setCurrentPageAction = (page) => ({
   type: SET_CURRENT_PAGE,
+  payload: page,
+});
+export const setCurrentPerPageAction = (page) => ({
+  type: SET_PER_PAGE,
   payload: page,
 });
 export const setCurrentCategoryAction = (id) => ({

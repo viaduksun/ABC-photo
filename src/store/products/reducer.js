@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-case-declarations */
 import {
-  SET_CURRENT_CAREGORY, SET_CURRENT_PAGE, SET_CURRENT_PRODUCTS_ARR, SET_CURRENT_QUERY, SET_PRODUCTS
+  SET_CURRENT_CAREGORY, SET_CURRENT_PAGE, SET_CURRENT_PRODUCTS_ARR, SET_CURRENT_QUERY, SET_PER_PAGE, SET_PRODUCTS
 } from './types';
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
   AllProductsForPagination: [],
   currentCategory: null,
   currentPage: 1,
+  currentPerPage: 3,
   isLoadingProducts: true,
   currentQuery: '',
 
@@ -48,6 +50,11 @@ export const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         currentPage: action.payload,
+      };
+    case SET_PER_PAGE:
+      return {
+        ...state,
+        currentPerPage: action.payload,
       };
     default:
       return state;

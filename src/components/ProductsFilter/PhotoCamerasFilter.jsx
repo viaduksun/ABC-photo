@@ -1,42 +1,12 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import Equipment from './Equipment/Equipment';
-import Matrix from './Matrix/Matrix';
-import Producer from './Producer/Producer';
-import Type from './Type/Type';
 import styles from './ProductsFilter.module.scss';
 import FilterQueryMaker from './FilterQueryMaker';
 import RangeSliderContainer from './RangeSlider/RangeSliderContainer';
 import FilterBlock from './FilterBlock/FilterBlock';
 
 const PhotoCamerasFilter = () => {
-  const [typeFilter, setTypeFilter] = useState({
-    checkedA: false,
-    checkedB: false,
-    checkedC: false,
-    checkedD: false,
-  });
-
-  const [brandFilter, setBrandFilter] = useState({
-    canon: false,
-    nikon: false,
-    sony: false,
-    olympus: false,
-    fuji: false,
-  });
-  const [setFilter, setSetFilter] = useState({
-    yes: false,
-    no: false,
-  });
-  const [matrixSizeFilter, setMatrixSizeFilter] = useState({
-    checkedA: false,
-    checkedB: false,
-    checkedC: false,
-    checkedD: false,
-    checkedE: false,
-    checkedF: false,
-  });
   // =============================
   const [setState, setSetState] = useState({
     checkboxA: {
@@ -115,6 +85,24 @@ const PhotoCamerasFilter = () => {
       status: false,
     },
   });
+  // ===== RANGE SELECTOR =====
+  const [priceState, setPriceState] = useState([0, 100000]);
+  const [priceData, setPriceData] = useState(priceState);
+
+  const rangeSelector = (event, newValue) => {
+    setPriceState(newValue);
+  };
+  const handleChangeMinRange = (event) => {
+    setPriceState([+event.target.value, +priceState[1]]);
+  };
+  const handleChangeMaxRange = (event) => {
+    setPriceState([+priceState[0], +event.target.value]);
+  };
+  // const rangeQuery = `&minPrice=${price[0]}&maxPrice=${price[1]}`;
+  const sentPriceDataHandler = () => {
+    console.log('CLICK PRICE COLLECT', priceState);
+    setPriceData(priceState);
+  };
   const handleTypeChange = (event) => {
     setTypeState({
       ...typeState,
@@ -151,35 +139,22 @@ const PhotoCamerasFilter = () => {
       },
     });
   };
-  // const handleBrandChange = (event) => {
-
-  //   setBrandFilter({
-  //     ...brandFilter,
-  //     [event.target.name]: event.target.checked,
-  //   });
-  // };
-  // const handleSetChange = (event) => {
-  //   setSetFilter({
-  //     ...setFilter,
-  //     [event.target.name]: event.target.checked,
-  //   });
-  // };
-  // const handleMatrixSizeChange = (event) => {
-  //   setMatrixSizeFilter({
-  //     ...matrixSizeFilter,
-  //     [event.target.name]: event.target.checked,
-  //   });
-  // };
   return (
     <div className={styles.ProductsFilter}>
       <FilterQueryMaker
         typeState={typeState}
         brandState={brandState}
-        brandFilter={brandFilter}
-        setFilter={setFilter}
-        matrixSizeFilter={matrixSizeFilter}
+        setFilter={setState}
+        matrixState={matrixState}
+        priceState={priceData}
       />
-      <RangeSliderContainer />
+      <RangeSliderContainer
+        priceState={priceState}
+        rangeSelector={rangeSelector}
+        handleChangeMinRange={handleChangeMinRange}
+        handleChangeMaxRange={handleChangeMaxRange}
+        sentPriceDataHandler={sentPriceDataHandler}
+      />
       <FilterBlock
         title="Тип фотоаппарата"
         handleChange={handleTypeChange}

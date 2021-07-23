@@ -1,27 +1,48 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-one-expression-per-line */
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentPerPageAction } from '../../store/products/actions';
 import styles from './ProductsSorting.module.scss';
 
-const ProductsSorting = () => {
-  const allProducts = useSelector((state) => state.productsPage.products.length);
+const ProductsSorting = ({ currentPage, allProducts }) => {
+  const [currentInterval, setCurrentInterval] = useState([1, 3]);
+  const dispatch = useDispatch();
+
+  const handlePerPage = (e) => {
+    console.log(e.target.value);
+    const showBy = +e.target.value;
+    dispatch(setCurrentPerPageAction(showBy));
+    setCurrentInterval(
+      currentInterval.map((item, index) => {
+        if (index === 0) {
+          return showBy * currentPage - showBy + 1;
+        }
+        if (index === 1 && showBy * currentPage < allProducts) {
+          return showBy * currentPage;
+        }
+        return allProducts;
+      })
+    );
+  };
   return (
     <div className={styles.ProductsSorting}>
       <div className={styles.ProductsSortingLeft}>
         <div className={styles.NumberOf}>
-          1 -
-          {' '}
-          {allProducts}
-          {' '}
-          из
-          {' '}
-          {allProducts}
+          {currentInterval[0]} - {currentInterval[1]} из {allProducts}
         </div>
         <div className={styles.Show}>
           <span>Показывать</span>
-          <select className={styles.SelectAmount}>
-            <option>3 товаров</option>
-            <option>6 товаров</option>
-            <option>9 товаров</option>
+          <select
+            className={styles.SelectAmount}
+            onChange={(e) => {
+              handlePerPage(e);
+            }}
+          >
+            <option value="3">3 товара</option>
+            <option value="6">6 товаров</option>
+            <option value="9">9 товаров</option>
           </select>
         </div>
       </div>

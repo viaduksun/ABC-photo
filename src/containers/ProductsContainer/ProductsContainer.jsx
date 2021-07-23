@@ -9,7 +9,6 @@ import { VscChromeClose } from 'react-icons/vsc';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ProductsContainer.module.scss';
-import ProductsFilter from '../../components/ProductsFilter/ProductsFilter';
 import PhotoCamerasFilter from '../../components/ProductsFilter/PhotoCamerasFilter';
 import ProductsField from '../../components/ProductsField/ProductsField';
 import {
@@ -27,12 +26,13 @@ const ProductsContainer = () => {
     (state) => state.productsPage.currentCategory
   );
   const page = useSelector((state) => state.productsPage.currentPage);
-  console.log(currentCategory, page);
+  const perPage = useSelector((state) => state.productsPage.currentPerPage);
+  console.log(currentCategory, page, perPage);
   useEffect(() => {
     // console.log(currentCategory, page);
-    dispatch(getFilteredProductsAction(currentCategory, page, ''));
+    dispatch(getFilteredProductsAction(currentCategory, page, perPage, ''));
     dispatch(getAllProductsCurrentCategoryAction(currentCategory));
-  }, [currentCategory, dispatch, page]);
+  }, [currentCategory, dispatch, page, perPage]);
   const products = useSelector((state) => state.productsPage.products);
   // console.log(products);
   const isLoadingProducts = useSelector(
@@ -85,7 +85,7 @@ const ProductsContainer = () => {
         <div className={styles.filtersCloseBtn} onClick={handleClick}>
           <VscChromeClose />
         </div>
-        <ProductsFilter />
+        <PhotoCamerasFilter />
       </div>
     </div>
   );

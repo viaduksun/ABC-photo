@@ -4,11 +4,22 @@
   font-weight: 700;
   margin-bottom: 15px;
 }
+.RangeSlider {
+  // border: 1px solid #000;
+  // margin: 0 20px;
+  margin-right: 20px;
+}
+.RangeSliderTop {
+  // border: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .RangeSliderTop input {
   border: 2px solid green;
   padding: 3px 5px 3px 5px;
   display: inline-block;
-  width: 60px;
+  width: 40%;
   border-radius: 5px;
 }
 .RangeSliderTop input:focus {
