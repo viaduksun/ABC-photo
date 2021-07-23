@@ -10,12 +10,16 @@ import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ProductsContainer.module.scss';
 import ProductsFilter from '../../components/ProductsFilter/ProductsFilter';
+import PhotoCamerasFilter from '../../components/ProductsFilter/PhotoCamerasFilter';
 import ProductsField from '../../components/ProductsField/ProductsField';
 import {
   getAllProductsCurrentCategoryAction,
   getFilteredProductsAction,
 } from '../../store/products/actions';
 import Loader from '../../components/UI/Loader/Loader';
+import VideoCamerasFilter from '../../components/ProductsFilter/VideoCamerasFilter';
+import ActionCamerasFilter from '../../components/ProductsFilter/ActionCamerasFilter';
+import LensesFilter from '../../components/ProductsFilter/LensesFilter';
 
 const ProductsContainer = () => {
   const dispatch = useDispatch();
@@ -23,10 +27,10 @@ const ProductsContainer = () => {
     (state) => state.productsPage.currentCategory
   );
   const page = useSelector((state) => state.productsPage.currentPage);
-
+  console.log(currentCategory, page);
   useEffect(() => {
     // console.log(currentCategory, page);
-    // dispatch(getFilteredProductsAction(currentCategory, page, ''));
+    dispatch(getFilteredProductsAction(currentCategory, page, ''));
     dispatch(getAllProductsCurrentCategoryAction(currentCategory));
   }, [currentCategory, dispatch, page]);
   const products = useSelector((state) => state.productsPage.products);
@@ -61,7 +65,10 @@ const ProductsContainer = () => {
             <IoMdOptions />
           </div>
           <div className={styles.filterContainer}>
-            <ProductsFilter />
+            {currentCategory === 'photocameras' && <PhotoCamerasFilter />}
+            {currentCategory === 'videocameras' && <VideoCamerasFilter />}
+            {currentCategory === 'actioncameras' && <ActionCamerasFilter />}
+            {currentCategory === 'lenses' && <LensesFilter />}
           </div>
           {products.length === 0 ? (
             <div className={styles.PrductsFieldLoader}>

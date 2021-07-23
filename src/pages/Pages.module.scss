@@ -1,71 +1,51 @@
-.PagesH1 {
-    // color:#00aa4d;
-    font-weight: bold;
+.ShopsWrapper {
+    padding: 20px 0;
+}
+.ShopsTitle {
     font-size: 30px;
-    margin: 20px 0;
-    text-align: left;
+    margin-top: 20px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
 }
-.Logo {
-    display: flex;
-    flex-direction:row ;
-}
-.staticBlock {
-    display: flex;
-    flex-direction: row;
-    // justify-content: space-between;
-    font-size: 12px;
-    // width: 578px;
-}
-.aShops {
-    color: #000;
-}
-h2{
-    color:#00aa4d;
+.ShopsSubTitle {
     font-size: 25px;
     font-weight: bold;
     text-transform: uppercase;
-    margin: 20px 0;  
-}
-h3 {
-    text-align: left;
-    text-transform: none;
-    font-weight: bold;
-    font-size: 18px;
-    margin: 40px 0 10px 0;
+    margin-top: 30px;
+    color: #51ad33;;
     height: auto;
 }
-h4 {
-    font-weight: bold;
-    font-size: 16px;
-    margin: 20px 0 5px 0;
-    height: auto;
+.Line {
+    margin-top: 10px;
+    border-top: solid 1px #dedede;
+    border-bottom: solid 1px #f5f6f6;
+    border-left: 0;
+    border-right: 0;
 }
-.wrapper {
+.ShopsWorkTime {
+    margin-top: 10px;
     font-size: 12px;
-}
-.Guaranty {
-    margin: 0 0 10px 0;
-    width: auto;
-    overflow: hidden;
-}
-.Shops {
-    font-size: 12px;
-    margin: 0;
     color: #737574;
+    span {
+        color: #303030;
+    }
 }
-.phoneShope {
+.ShopsPhone {
+    margin-top: 10px;
     color: #2c2c2c;
     font-size: 16px;
-    font-weight: bold
+    font-weight: bold;
 }
-.codeShope {
-    font-weight: normal;
-    font-size: 14px;
-    color: #747675;
-}
-.addressShope {
+.ShopsAddress {
+    margin-top: 10px;
     font-size: 18px;
     font-weight: bold;
     color: #302e2f;
     line-height: 23px;
+}
+.ShopsMap {
+    margin-top: 15px;
+    a {
+        color: #51ad33;;
+    }
 }

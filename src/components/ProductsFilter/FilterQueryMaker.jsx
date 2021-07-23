@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getFilteredProductsAction } from '../../store/products/actions';
 
 const FilterQueryMaker = ({
-  typeFilter,
   brandFilter,
   setFilter,
   matrixSizeFilter,
+  typeState,
+  brandState,
 }) => {
-  console.log('QUERY', typeFilter);
+  console.log('QUERY', typeState);
   const currentCategory = useSelector(
     (state) => state.productsPage.currentCategory
   );
@@ -19,37 +20,53 @@ const FilterQueryMaker = ({
   const dispatch = useDispatch();
 
   const result = useMemo(() => {
-    const typeArr = Object.keys(typeFilter).map((item) => {
-      if (item === 'mirror' && typeFilter[item]) {
+    const typeStatusArr = Object.keys(typeState).map((item) => {
+      if (item === 'checkboxA' && typeState[item].status) {
         return 'Зеркальный';
       }
-      if (item === 'compact' && typeFilter[item]) {
+      if (item === 'checkboxB' && typeState[item].status) {
         return 'Компактный';
       }
-      if (item === 'system' && typeFilter[item]) {
+      if (item === 'checkboxC' && typeState[item].status) {
         return 'Системный';
       }
-      if (item === 'zoom' && typeFilter[item]) {
+      if (item === 'checkboxD' && typeState[item].status) {
         return 'Суперзум';
       }
       return null;
     });
+    console.log(typeStatusArr);
+    // const typeArr = Object.keys(typeFilter).map((item) => {
+    //   if (item === 'mirror' && typeFilter[item]) {
+    //     return 'Зеркальный';
+    //   }
+    //   if (item === 'compact' && typeFilter[item]) {
+    //     return 'Компактный';
+    //   }
+    //   if (item === 'system' && typeFilter[item]) {
+    //     return 'Системный';
+    //   }
+    //   if (item === 'zoom' && typeFilter[item]) {
+    //     return 'Суперзум';
+    //   }
+    //   return null;
+    // });
 
-    const brandArr = Object.keys(brandFilter).map((item) => {
-      if (item === 'canon' && brandFilter[item]) {
+    const brandArr = Object.keys(brandState).map((item) => {
+      if (item === 'checkboxA' && brandState[item].status) {
         return 'Canon';
       }
-      if (item === 'nikon' && brandFilter[item]) {
+      if (item === 'checkboxB' && brandState[item].status) {
         return 'Nikon';
       }
-      if (item === 'sony' && brandFilter[item]) {
-        return 'Sony';
+      if (item === 'checkboxC' && brandState[item].status) {
+        return 'Fuji';
       }
-      if (item === 'olympus' && brandFilter[item]) {
+      if (item === 'checkboxD' && brandState[item].status) {
         return 'Olympus';
       }
-      if (item === 'fuji' && brandFilter[item]) {
-        return 'Fuji';
+      if (item === 'checkboxE' && brandState[item].status) {
+        return 'Sony';
       }
       return null;
     });
@@ -85,7 +102,7 @@ const FilterQueryMaker = ({
 
       return null;
     });
-    const filteredTypeArr = typeArr.filter((item) => item !== null);
+    const filteredTypeArr = typeStatusArr.filter((item) => item !== null);
     const filteredBrandArr = brandArr.filter((item) => item !== null);
     const filteredSetArr = setArr.filter((item) => item !== null);
     const filteredMatrixSizeArr = matrixSizeArr.filter((item) => item !== null);
@@ -118,13 +135,13 @@ const FilterQueryMaker = ({
       dispatch(getFilteredProductsAction(currentCategory, page, ''));
     }
   }, [
-    brandFilter,
+    brandState,
     currentCategory,
     dispatch,
     matrixSizeFilter,
     page,
     setFilter,
-    typeFilter,
+    typeState,
   ]);
 
   return null;

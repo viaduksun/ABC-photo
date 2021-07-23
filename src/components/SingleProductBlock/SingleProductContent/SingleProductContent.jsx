@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -8,7 +9,7 @@ import { MdRemoveShoppingCart } from 'react-icons/md';
 import { GiCheckMark } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { addSingleProductToCartAction } from '../../../store/cart/actions';
-
+import ModalSubscribeProduct from '../../UI/ModalSubscribeProduct/ModalSubscribeProduct';
 import Button from '../../UI/Button/Button';
 import styles from './SingleProductContent.module.scss';
 import './SingleProductContent.scss';
@@ -29,39 +30,51 @@ const SingleProductContent = ({ singleProduct }) => {
       setMoveToCart(false);
     }, 2500);
   };
-  return (
-    <div className={styles.Wrapper}>
-      <p className={styles.InStock}>
-        {singleProduct.quantity !== 0 ? (
-          <span>в наличии</span>
-        ) : (
-          <span style={{ color: '#e91e49' }}>ожидается</span>
-        )}
-      </p>
-      <p className={styles.Price}>{singleProduct.currentPrice} грн</p>
 
-      <div className={styles.ButtonBuy}>
-        <Button disabled={moveToCart} addClass={singleProduct.quantity !== 0 ? 'cart_green' : 'cart_disable'} onClick={addProductToCartHandler}>
-          <span>Купить</span>
+  const [modalActive, setModalActive] = useState(false);
+  const openModalhandler = () => {
+    setModalActive(true);
+  };
+  return (
+    <>
+      <ModalSubscribeProduct active={modalActive} setActive={setModalActive} />
+      
+      <div className={styles.Wrapper}>
+        <p className={styles.InStock}>
           {singleProduct.quantity !== 0 ? (
-            <FiShoppingCart />
+            <span>в наличии</span>
           ) : (
-            <MdRemoveShoppingCart style={{ color: '#e91e49' }} />
+            <span style={{ color: '#e91e49' }}>ожидается</span>
           )}
-          &nbsp;
-          {isInCart && <GiCheckMark />}
-        </Button>
+        </p>
+        <p className={styles.Price}>{singleProduct.currentPrice} грн</p>
+
+        <div className={styles.ButtonBuy}>
+          {singleProduct.quantity !== 0
+          ? (
+            <Button
+              onClick={addProductToCartHandler}
+              disabled={moveToCart}
+              addClass="cart_green"
+            >Купить
+              <FiShoppingCart />
+              &nbsp;
+              {isInCart && <GiCheckMark />}
+            </Button>
+          )
+            : <Button addClass="cart_grey" onClick={openModalhandler}>Сообщить о поступлении товара</Button>}
+        </div>
+        <p className={styles.Delivery}>Доставка</p>
+        <ul className={styles.DeliveryList}>
+          <li>• Доставка по всей Украине</li>
+          <li>• Оплата товара при получении</li>
+          <li>• Возможен самовывоз</li>
+        </ul>
+        <div className="MoveToCartBlock">
+          <div className={`MoveToCartItem  ${moveToCart ? 'MoveToCartItem_isOpen' : 'MoveToCartItem_isClose'}`}><img src={singleProduct.imageUrls[0]} alt="sdfdf" /></div>
+        </div>
       </div>
-      <p className={styles.Delivery}>Доставка</p>
-      <ul className={styles.DeliveryList}>
-        <li>• Доставка по всей Украине</li>
-        <li>• Оплата товара при получении</li>
-        <li>• Возможен самовывоз</li>
-      </ul>
-      <div className="MoveToCartBlock">
-        <div className={`MoveToCartItem  ${moveToCart ? 'MoveToCartItem_isOpen' : 'MoveToCartItem_isClose'}`}><img src={singleProduct.imageUrls[0]} alt="sdfdf" /></div>
-      </div>
-    </div>
+    </>
   );
 };
 

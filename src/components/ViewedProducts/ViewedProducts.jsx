@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import ProductCard from '../../components/ProductCard/ProductCard';
+import ProductCard from '../ProductCard/ProductCard';
 import styles from './ViewedProducts.module.scss';
 import ViewedProductsSlider from './ViewedProductsSlider';
 

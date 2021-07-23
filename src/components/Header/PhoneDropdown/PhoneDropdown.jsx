@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
 import { FiPhone } from 'react-icons/fi';
@@ -32,7 +33,7 @@ const PhoneDropdown = () => {
           <p className={styles.phoneTitle}>9:00-21:00</p>
           <div className={styles.phonePopapWrapper}>
             <FiPhone className={styles.phonePopapIcon} />
-            <p className={styles.popapMainText}>044 500 50 50</p>
+            <a className={styles.popapMainText} href="tel:044 500 50 50">044 500 50 50</a>
           </div>
         </div>
         <div className={styles.phonePopapItem}>
@@ -40,7 +41,7 @@ const PhoneDropdown = () => {
           <p className={styles.phoneTitle}>9:00-21:00</p>
           <div className={styles.phonePopapWrapper}>
             <FiPhone className={styles.phonePopapIcon} />
-            <p className={styles.popapMainText}>097 500 50 50</p>
+            <a className={styles.popapMainText} href="tel:097 500 50 50">097 500 50 50</a>
           </div>
         </div>
 

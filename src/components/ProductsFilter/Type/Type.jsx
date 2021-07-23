@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CheckBox from './CheckBox/CheckBox';
 import styles from './Type.module.scss';
-// import TypeQueryMaker from './TypeQueryMaker';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -28,6 +27,7 @@ const useStyles = makeStyles(() => ({
   },
   accordionDetails: {
     padding: '0px',
+    width: '70%',
   },
 }));
 
@@ -50,7 +50,6 @@ const Type = ({ handleChange, typeFilter }) => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      {/* <TypeQueryMaker /> */}
     </div>
   );
 };

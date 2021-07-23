@@ -12,7 +12,7 @@ export const getFilteredProductsAction = (currentCategory, page, addQuery) => (d
   // console.log('PAGE', page);
   // console.log('QUERY', addQuery);
   getFilteredProducts(currentCategory, page, addQuery).then((result) => {
-    // console.log('getFilteredProducts', result);
+    console.log('getFilteredProducts', result);
     dispatch({ type: SET_PRODUCTS, payload: result.data.products });
   });
 
