@@ -71,7 +71,7 @@ const SingleProductContent = ({ singleProduct }) => {
           <li>• Возможен самовывоз</li>
         </ul>
         <div className="MoveToCartBlock">
-          <div className={`MoveToCartItem  ${moveToCart ? 'MoveToCartItem_isOpen' : 'MoveToCartItem_isClose'}`}><img src={singleProduct.imageUrls[0]} alt="sdfdf" /></div>
+          <div className={`MoveToCartItem  ${moveToCart ? 'MoveToCartItem_isOpen' : 'MoveToCartItem_isClose'}`}><img src={singleProduct.imageUrls[0]} alt="img" /></div>
         </div>
       </div>
     </>

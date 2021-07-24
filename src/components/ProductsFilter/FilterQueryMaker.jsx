@@ -36,22 +36,6 @@ const FilterQueryMaker = ({
       }
       return null;
     });
-    // console.log(typeStatusArr);
-    // const typeArr = Object.keys(typeFilter).map((item) => {
-    //   if (item === 'mirror' && typeFilter[item]) {
-    //     return 'Зеркальный';
-    //   }
-    //   if (item === 'compact' && typeFilter[item]) {
-    //     return 'Компактный';
-    //   }
-    //   if (item === 'system' && typeFilter[item]) {
-    //     return 'Системный';
-    //   }
-    //   if (item === 'zoom' && typeFilter[item]) {
-    //     return 'Суперзум';
-    //   }
-    //   return null;
-    // });
 
     const brandArr = Object.keys(brandState).map((item) => {
       if (item === 'checkboxA' && brandState[item].status) {
@@ -125,7 +109,7 @@ const FilterQueryMaker = ({
     if (filteredMatrixSizeArr.length > 0) {
       addQueryMatrixSize = `&matrixSize=${filteredMatrixSizeArr.join(',')}`;
     }
-    console.log(addQueryMatrixSize);
+    // console.log(addQueryMatrixSize);
     const finalQuery =
       addQueryType +
       addQueryBrand +
@@ -133,12 +117,12 @@ const FilterQueryMaker = ({
       addQueryMatrixSize +
       rangeQuery;
     if (finalQuery) {
-      console.log('FINAL QUERY: ', finalQuery);
+      // console.log('FINAL QUERY: ', finalQuery);
       dispatch(
         getFilteredProductsAction(currentCategory, page, perPage, finalQuery)
       );
     } else {
-      console.log('SHOW ALL!!!');
+      // console.log('SHOW ALL!!!');
       dispatch(getFilteredProductsAction(currentCategory, page, perPage, ''));
     }
   }, [

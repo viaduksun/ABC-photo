@@ -13,7 +13,6 @@ const initialState = {
   currentPerPage: 3,
   isLoadingProducts: true,
   currentQuery: '',
-
 };
 
 export const productsReducer = (state = initialState, action) => {

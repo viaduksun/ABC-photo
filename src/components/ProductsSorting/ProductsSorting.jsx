@@ -1,7 +1,8 @@
+/* eslint-disable no-debugger */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPerPageAction } from '../../store/products/actions';
 import styles from './ProductsSorting.module.scss';
@@ -9,9 +10,13 @@ import styles from './ProductsSorting.module.scss';
 const ProductsSorting = ({ currentPage, allProducts }) => {
   const [currentInterval, setCurrentInterval] = useState([1, 3]);
   const dispatch = useDispatch();
+  console.log(currentPage);
 
+  // const [, updateState] = useState();
+  // const forceUpdate = React.useCallback(() => updateState({}), []);
+ 
   const handlePerPage = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     const showBy = +e.target.value;
     dispatch(setCurrentPerPageAction(showBy));
     setCurrentInterval(
