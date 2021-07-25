@@ -39,46 +39,7 @@ const CheckBoxBlock = ({ handleChange, checkState }) => (
           label={checkState[item].title}
         />
       ))}
-      {/* <FormControlLabel
-          control={
-            <GreenCheckbox
-              checked={typeFilter.mirror}
-              onChange={handleChange}
-              name="mirror"
-            />
-          }
-          label="зеркальные"
-        />
-        <FormControlLabel
-          control={
-            <GreenCheckbox
-              checked={typeFilter.compact}
-              onChange={handleChange}
-              name="compact"
-            />
-          }
-          label="компактные"
-        />
-        <FormControlLabel
-          control={
-            <GreenCheckbox
-              checked={typeFilter.system}
-              onChange={handleChange}
-              name="system"
-            />
-          }
-          label="системные"
-        />
-        <FormControlLabel
-          control={
-            <GreenCheckbox
-              checked={typeFilter.zoom}
-              onChange={handleChange}
-              name="zoom"
-            />
-          }
-          label="суперзум"
-        /> */}
+      
     </FormGroup>
   </>
 );

@@ -6,17 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getFilteredProductsAction } from '../../store/products/actions';
 
 const FilterQueryMaker = ({
-  brandFilter,
   setFilter,
-  matrixSizeFilter,
+  matrixState,
   typeState,
   brandState,
+  priceState,
 }) => {
-  console.log('QUERY', typeState);
+  const rangeQuery = `&minPrice=${priceState[0]}&maxPrice=${priceState[1]}`;
   const currentCategory = useSelector(
     (state) => state.productsPage.currentCategory
   );
   const page = useSelector((state) => state.productsPage.currentPage);
+  const perPage = useSelector((state) => state.productsPage.currentPerPage);
   const dispatch = useDispatch();
 
   const result = useMemo(() => {
@@ -35,22 +36,6 @@ const FilterQueryMaker = ({
       }
       return null;
     });
-    console.log(typeStatusArr);
-    // const typeArr = Object.keys(typeFilter).map((item) => {
-    //   if (item === 'mirror' && typeFilter[item]) {
-    //     return 'Зеркальный';
-    //   }
-    //   if (item === 'compact' && typeFilter[item]) {
-    //     return 'Компактный';
-    //   }
-    //   if (item === 'system' && typeFilter[item]) {
-    //     return 'Системный';
-    //   }
-    //   if (item === 'zoom' && typeFilter[item]) {
-    //     return 'Суперзум';
-    //   }
-    //   return null;
-    // });
 
     const brandArr = Object.keys(brandState).map((item) => {
       if (item === 'checkboxA' && brandState[item].status) {
@@ -72,31 +57,31 @@ const FilterQueryMaker = ({
     });
 
     const setArr = Object.keys(setFilter).map((item) => {
-      if (item === 'yes' && setFilter[item]) {
+      if (item === 'checkboxA' && setFilter[item].status) {
         return 'С объективом';
       }
-      if (item === 'no' && setFilter[item]) {
+      if (item === 'checkboxB' && setFilter[item].status) {
         return 'Без объектива';
       }
       return null;
     });
-    const matrixSizeArr = Object.keys(matrixSizeFilter).map((item) => {
-      if (item === 'checkedA' && matrixSizeFilter[item]) {
+    const matrixSizeArr = Object.keys(matrixState).map((item) => {
+      if (item === 'checkboxA' && matrixState[item].status) {
         return '1` (13.2 х 8.8 мм)';
       }
-      if (item === 'checkedB' && matrixSizeFilter[item]) {
+      if (item === 'checkboxB' && matrixState[item].status) {
         return '1/2.3` (6.2 х 4.6 мм)';
       }
-      if (item === 'checkedC' && matrixSizeFilter[item]) {
+      if (item === 'checkboxC' && matrixState[item].status) {
         return '1/3` (4.52 х 3.39 мм)';
       }
-      if (item === 'checkedD' && matrixSizeFilter[item]) {
+      if (item === 'checkboxD' && matrixState[item].status) {
         return 'APS-C (22.3 х 14.8 мм)';
       }
-      if (item === 'checkedE' && matrixSizeFilter[item]) {
+      if (item === 'checkboxE' && matrixState[item].status) {
         return 'APS-C (23.5 х 15.7 мм)';
       }
-      if (item === 'checkedF' && matrixSizeFilter[item]) {
+      if (item === 'checkboxF' && matrixState[item].status) {
         return 'Full Frame (36 х 24 мм)';
       }
 
@@ -124,22 +109,30 @@ const FilterQueryMaker = ({
     if (filteredMatrixSizeArr.length > 0) {
       addQueryMatrixSize = `&matrixSize=${filteredMatrixSizeArr.join(',')}`;
     }
-    console.log(addQueryMatrixSize);
+    // console.log(addQueryMatrixSize);
     const finalQuery =
-      addQueryType + addQueryBrand + addQuerySet + addQueryMatrixSize;
+      addQueryType +
+      addQueryBrand +
+      addQuerySet +
+      addQueryMatrixSize +
+      rangeQuery;
     if (finalQuery) {
-      console.log('FINAL QUERY: ', finalQuery);
-      dispatch(getFilteredProductsAction(currentCategory, page, finalQuery));
+      // console.log('FINAL QUERY: ', finalQuery);
+      dispatch(
+        getFilteredProductsAction(currentCategory, page, perPage, finalQuery)
+      );
     } else {
-      console.log('SHOW ALL!!!');
-      dispatch(getFilteredProductsAction(currentCategory, page, ''));
+      // console.log('SHOW ALL!!!');
+      dispatch(getFilteredProductsAction(currentCategory, page, perPage, ''));
     }
   }, [
     brandState,
     currentCategory,
     dispatch,
-    matrixSizeFilter,
+    matrixState,
     page,
+    perPage,
+    rangeQuery,
     setFilter,
     typeState,
   ]);
