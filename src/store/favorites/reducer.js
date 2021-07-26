@@ -7,7 +7,7 @@ import {
   ADD_PRODUCT_TO_FAVORITE,
   DELETE_PRODUCT_FROM_FAVORITE,
   FAVORITES_FROM_LOCAL_STORAGE,
-  PRODUCT_CHANGE_ORDER,
+  FAVORITE_PRODUCT_CHANGE_ORDER,
 } from './types';
 
 const initialState = {
@@ -38,19 +38,22 @@ export const favorites = (state = initialState, action) => {
         favorites: action.payload,
       };
     }
-    case PRODUCT_CHANGE_ORDER:
-      const newArr2 = state.favorites.map((t) => {
-        if (t._id === action.payload.product._id) {
-          return { ...t, order: action.payload.currentProduct.order };
+    case FAVORITE_PRODUCT_CHANGE_ORDER:
+      const orderedFavorites = state.favorites.map((favoriteProduct) => {
+        if (favoriteProduct._id === action.payload.product._id) {
+          return {
+            ...favoriteProduct,
+            order: action.payload.currentProduct.order,
+          };
         }
-        if (t._id === action.payload.currentProduct._id) {
-          return { ...t, order: action.payload.product.order };
+        if (favoriteProduct._id === action.payload.currentProduct._id) {
+          return { ...favoriteProduct, order: action.payload.product.order };
         }
-        return t;
+        return favoriteProduct;
       });
       return {
         ...state,
-        favorites: newArr2,
+        favorites: orderedFavorites,
       };
     default:
       return state;

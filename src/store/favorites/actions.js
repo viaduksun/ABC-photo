@@ -2,7 +2,7 @@ import {
   ADD_PRODUCT_TO_FAVORITE,
   DELETE_PRODUCT_FROM_FAVORITE,
   FAVORITES_FROM_LOCAL_STORAGE,
-  PRODUCT_CHANGE_ORDER,
+  FAVORITE_PRODUCT_CHANGE_ORDER,
 } from './types';
 
 export const addProdductToFavoritesAction = (favoriteProduct) => ({
@@ -21,6 +21,6 @@ export const favoritesFromLocalStorageAction = (favoritesFromLocalStorage) => ({
 });
 
 export const favoriteChangeOrderAction = (product, currentProduct) => ({
-  type: PRODUCT_CHANGE_ORDER,
+  type: FAVORITE_PRODUCT_CHANGE_ORDER,
   payload: { product, currentProduct },
 });

@@ -32,7 +32,7 @@ const newOrder = {
           'img/products/men/001.png',
           'img/products/men/002.png',
           'img/products/men/003.png',
-          'img/products/men/004.png'
+          'img/products/men/004.png',
         ],
         quantity: 156,
         _id: '5da463678cca382250dd7bc7',
@@ -50,10 +50,10 @@ const newOrder = {
         oneMoreCustomParam: {
           description: 'blablabla',
           rate: 4.8,
-          likes: 20
-        }
+          likes: 20,
+        },
       }),
-      cartQuantity: 2
+      cartQuantity: 2,
     },
     {
       _id: '5dac20058b2cb420e0af4676',
@@ -72,16 +72,16 @@ const newOrder = {
         weight: '200g',
         itemNo: '243965',
         __v: 0,
-        date: '2019-10-20T08:51:19.287Z'
+        date: '2019-10-20T08:51:19.287Z',
       }),
-      cartQuantity: 3
-    }
+      cartQuantity: 3,
+    },
   ],
   deliveryAddress: {
     country: 'Ukraine',
     city: 'Kiev',
     address: 'Kreshchatic Street 56//A',
-    postal: '01044'
+    postal: '01044',
   },
   shipping: 'Kiev 50UAH',
   paymentInfo: 'Credit card',
@@ -91,15 +91,16 @@ const newOrder = {
   letterSubject: 'Thank you for order! You are welcome!',
   letterHtml:
     '<h1>Your order is placed. OrderNo is 023689452.</h1><p>{Other details about order in your HTML}</p>',
-  canceled: false
+  canceled: false,
 };
 // const newOrderJson = JSON.stringify(newOrder);
 // const newParsedOrder = JSON.parse(newOrderJson);
-const createOrder = () => {
-  const headers = {
-    'Content-Type': 'application/json',
-  };
-  return axios
+const createOrder = () =>
+  // const headers = {
+  //   'Content-Type': 'application/json',
+  // };
+  // eslint-disable-next-line implicit-arrow-linebreak
+  axios
     // .post('http://localhost:5000/api/orders', newOrder)
     .post('https://intense-hamlet-33316.herokuapp.com/api/orders', newOrder)
     .then((newOrderRes) => {
@@ -110,6 +111,4 @@ const createOrder = () => {
       /* Do something with error, e.g. show error to user */
       console.log(err);
     });
-};
-
 export default createOrder;
