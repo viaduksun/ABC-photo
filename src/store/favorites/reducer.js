@@ -7,6 +7,7 @@ import {
   ADD_PRODUCT_TO_FAVORITE,
   DELETE_PRODUCT_FROM_FAVORITE,
   FAVORITES_FROM_LOCAL_STORAGE,
+  PRODUCT_CHANGE_ORDER,
 } from './types';
 
 const initialState = {
@@ -17,6 +18,7 @@ export const favorites = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PRODUCT_TO_FAVORITE:
       const { favoriteProduct } = action.payload;
+      favoriteProduct.order = Date.now();
       return {
         ...state,
         favorites: [...state.favorites, favoriteProduct],
@@ -36,6 +38,20 @@ export const favorites = (state = initialState, action) => {
         favorites: action.payload,
       };
     }
+    case PRODUCT_CHANGE_ORDER:
+      const newArr2 = state.favorites.map((t) => {
+        if (t._id === action.payload.product._id) {
+          return { ...t, order: action.payload.currentProduct.order };
+        }
+        if (t._id === action.payload.currentProduct._id) {
+          return { ...t, order: action.payload.product.order };
+        }
+        return t;
+      });
+      return {
+        ...state,
+        favorites: newArr2,
+      };
     default:
       return state;
   }

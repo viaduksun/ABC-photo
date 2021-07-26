@@ -12,13 +12,16 @@ const FilterQueryMaker = ({
   brandState,
   priceState,
 }) => {
-  const rangeQuery = `&minPrice=${priceState[0]}&maxPrice=${priceState[1]}`;
   const currentCategory = useSelector(
     (state) => state.productsPage.currentCategory
   );
   const page = useSelector((state) => state.productsPage.currentPage);
   const perPage = useSelector((state) => state.productsPage.currentPerPage);
+  const sortBy = useSelector((state) => state.productsPage.sortBy);
   const dispatch = useDispatch();
+
+  const rangeQuery = `&minPrice=${priceState[0]}&maxPrice=${priceState[1]}`;
+  const addQuerySortBy = `&sort=${sortBy}`;
 
   const result = useMemo(() => {
     const typeStatusArr = Object.keys(typeState).map((item) => {
@@ -97,6 +100,7 @@ const FilterQueryMaker = ({
     let addQueryBrand = '';
     let addQuerySet = '';
     let addQueryMatrixSize = '';
+    
     if (filteredTypeArr.length > 0) {
       addQueryType = `&type=${filteredTypeArr.join(',')}`;
     }
@@ -115,6 +119,7 @@ const FilterQueryMaker = ({
       addQueryBrand +
       addQuerySet +
       addQueryMatrixSize +
+      addQuerySortBy +
       rangeQuery;
     if (finalQuery) {
       // console.log('FINAL QUERY: ', finalQuery);
@@ -135,6 +140,7 @@ const FilterQueryMaker = ({
     rangeQuery,
     setFilter,
     typeState,
+    addQuerySortBy
   ]);
 
   return null;

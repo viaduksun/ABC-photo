@@ -2,7 +2,13 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-case-declarations */
 import {
-  SET_CURRENT_CAREGORY, SET_CURRENT_PAGE, SET_CURRENT_PRODUCTS_ARR, SET_CURRENT_QUERY, SET_PER_PAGE, SET_PRODUCTS
+  SET_CURRENT_CAREGORY,
+  SET_CURRENT_PAGE,
+  SET_CURRENT_PRODUCTS_ARR,
+  SET_CURRENT_QUERY,
+  SET_PER_PAGE,
+  SET_PRODUCTS,
+  SET_SORT_BY,
 } from './types';
 
 const initialState = {
@@ -13,6 +19,7 @@ const initialState = {
   currentPerPage: 3,
   isLoadingProducts: true,
   currentQuery: '',
+  sortBy: '',
 };
 
 export const productsReducer = (state = initialState, action) => {
@@ -35,7 +42,6 @@ export const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         currentQuery: action.payload,
-
       };
     case SET_CURRENT_PRODUCTS_ARR:
       // === for pagination calculation ======
@@ -54,6 +60,11 @@ export const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         currentPerPage: action.payload,
+      };
+    case SET_SORT_BY:
+      return {
+        ...state,
+        sortBy: action.payload,
       };
     default:
       return state;

@@ -23,7 +23,13 @@ import { setSingleProductAction } from '../../store/singleProduct/actions';
 import { addProdductToFavoritesAction, deleteProdductFromFavoritesAction } from '../../store/favorites/actions';
 import { addViewedProductAction } from '../../store/viewedProducts/actions';
 
-const ProductCard = ({product}) => {
+const ProductCard = ({
+  product,
+  dragStart,
+  dragEnd,
+  dragOver,
+  drop
+}) => {
   const cart = useSelector((state) => state.cart.cart);
   const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
   const favorites = useSelector((state) => state.favorites.favorites);
@@ -56,7 +62,15 @@ const ProductCard = ({product}) => {
   };
 
   return (
-    <div className={styles.ProductCard}>
+    <div
+      className={styles.ProductCard}
+      onDragStart={(e) => dragStart(e, product)}
+      onDragLeave={(e) => dragEnd(e)}
+      onDragEnd={(e) => dragEnd(e)}
+      onDragOver={(e) => dragOver(e)}
+      onDrop={(e) => drop(e, product)}
+      draggable
+    >
       <Link to="/single-product" onClick={dispatchSingleProductHandler}>
         <div className={styles.ProductCardImg}>
           <img src={product.imageUrls[0]} alt={product.imageUrls[0]} />
