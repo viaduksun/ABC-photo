@@ -23,7 +23,7 @@ import axios from 'axios';
 //  === LOGGED IN ========
 
 const newOrder = {
-  products: [
+  products: JSON.stringify([
     {
       _id: '5dac20058b2cb420e0af4677',
       product: JSON.stringify({
@@ -34,8 +34,8 @@ const newOrder = {
           'img/products/men/003.png',
           'img/products/men/004.png',
         ],
-        quantity: 156,
-        _id: '5da463678cca382250dd7bc7',
+        _id: '60f7f0b633f8ea00157c2cd5',
+        quantity: 5,
         name: 'updted product for testing purposes 222',
         currentPrice: 100,
         previousPrice: 250,
@@ -55,36 +55,15 @@ const newOrder = {
       }),
       cartQuantity: 2,
     },
-    {
-      _id: '5dac20058b2cb420e0af4676',
-      product: JSON.stringify({
-        enabled: true,
-        imageUrls: ['products/itemNo2'],
-        quantity: 40,
-        _id: '5d73ad04fcad90130470f08b',
-        name: 'test product',
-        currentPrice: 280,
-        categories: 'phones',
-        someOtherFeature: 'Test feature strict false 2222222222',
-        color: 'black',
-        size: 'xl',
-        ram: '5',
-        weight: '200g',
-        itemNo: '243965',
-        __v: 0,
-        date: '2019-10-20T08:51:19.287Z',
-      }),
-      cartQuantity: 3,
-    },
-  ],
-  deliveryAddress: {
+  ]),
+  deliveryAddress: JSON.stringify({
     country: 'Ukraine',
     city: 'Kiev',
     address: 'Kreshchatic Street 56//A',
     postal: '01044',
-  },
-  shipping: 'Kiev 50UAH',
-  paymentInfo: 'Credit card',
+  }),
+  shipping: JSON.stringify('Kiev 50UAH'),
+  paymentInfo: JSON.stringify('Credit card'),
   status: 'not shipped',
   email: 'saribeg@gmail.com',
   mobile: '+380630000000',

@@ -21,6 +21,7 @@ const ProductsInCart = () => {
   const cartProducts = useSelector((state) => state.cart.cart);
   const totalSumCart = useSelector((state) => state.cart.totalSumCart);
 
+    console.log(cartProducts);
   return (
     <div className={styles.ProductsInCart}>
       <div className={styles.Header}>
