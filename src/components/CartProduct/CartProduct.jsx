@@ -54,7 +54,9 @@ const CartProduct = ({cartProduct}) => {
         {' '}
         грн
       </div>
-      <div className={styles.CartMainItemBtnClose} onClick={deleteProductFromCartHandler}><MdClose /></div>
+      <div>
+        <div className={styles.CartMainItemBtnClose} onClick={deleteProductFromCartHandler}><MdClose /></div>
+      </div>
     </li>
   );
 };

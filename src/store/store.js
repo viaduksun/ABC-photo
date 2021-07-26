@@ -23,6 +23,7 @@ import { SET_SINGLE_PRODUCT } from './singleProduct/types';
 import {
   ADD_PRODUCT_TO_FAVORITE,
   DELETE_PRODUCT_FROM_FAVORITE,
+  FAVORITE_PRODUCT_CHANGE_ORDER,
 } from './favorites/types';
 import { ADD_VIEWED_PRODUCT } from './viewedProducts/types';
 
@@ -58,7 +59,8 @@ const localStorageMiddleware =
     }
     if (
       action.type === ADD_PRODUCT_TO_FAVORITE ||
-      action.type === DELETE_PRODUCT_FROM_FAVORITE
+      action.type === DELETE_PRODUCT_FROM_FAVORITE ||
+      action.type === FAVORITE_PRODUCT_CHANGE_ORDER
     ) {
       const { favorites } = getState();
       localStorage.setItem('favorites', JSON.stringify(favorites.favorites));

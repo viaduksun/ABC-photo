@@ -23,11 +23,12 @@ const useStyles = makeStyles(() => ({
   accordionSummary: {
     padding: '0px 15px 0px 0px',
     marginBottom: '0px',
-    height: '50px',
+    height: '40px',
   },
   accordionDetails: {
     padding: '0px',
-    width: '70%',
+    marginLeft: '-10px',
+    width: '100%',
   },
 }));
 
@@ -44,8 +45,8 @@ const FilterBlock = ({ title, handleChange, checkState }) => {
         >
           <h3 className={styles.Title}>{title}</h3>
         </AccordionSummary>
-        <AccordionDetails className={classes.accordionDetails}>
-          <Typography component="span">
+        <AccordionDetails>
+          <Typography component="span" className={classes.accordionDetails}>
             <CheckBox handleChange={handleChange} checkState={checkState} />
           </Typography>
         </AccordionDetails>
