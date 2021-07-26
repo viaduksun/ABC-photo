@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import styles from './ProductsFilter.module.scss';
-import FilterQueryMaker from './FilterQueryMaker';
+import VideoCamerasQueryMaker from './VideoCamerasQueryMaker';
 import RangeSliderContainer from './RangeSlider/RangeSliderContainer';
 import FilterBlock from './FilterBlock/FilterBlock';
 
@@ -101,6 +101,12 @@ const VideoCamerasFilter = () => {
         matrixState={matrixState}
         priceState={priceData}
       /> */}
+      <VideoCamerasQueryMaker
+        priceState={priceData}
+        lenseType={lenseType}
+        fileFormat={fileFormat}
+        connectors={connectors}
+      />
       <RangeSliderContainer
         priceState={priceState}
         rangeSelector={rangeSelector}
