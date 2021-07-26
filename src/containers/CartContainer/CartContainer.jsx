@@ -13,6 +13,7 @@ const CartContainer = () => {
   const cart = useSelector((state) => state.cart.cart);
   const totalSumCart = useSelector((state) => state.cart.totalSumCart);
   const totalCountCart = useSelector((state) => state.cart.totalCountCart);
+  console.log(cart);
   return (
     <div className={styles.CartBlock}>
       <div className="container">

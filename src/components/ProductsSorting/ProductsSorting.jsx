@@ -4,7 +4,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentPerPageAction } from '../../store/products/actions';
+import { setCurrentPerPageAction, setSortQueryAction } from '../../store/products/actions';
 import styles from './ProductsSorting.module.scss';
 
 const ProductsSorting = ({ currentPage, allProducts }) => {
@@ -31,6 +31,11 @@ const ProductsSorting = ({ currentPage, allProducts }) => {
       })
     );
   };
+
+  const handleMinMaxSort = (e) => {
+    dispatch(setSortQueryAction(e.target.value));
+  };
+
   return (
     <div className={styles.ProductsSorting}>
       <div className={styles.ProductsSortingLeft}>
@@ -53,9 +58,13 @@ const ProductsSorting = ({ currentPage, allProducts }) => {
       </div>
       <div className={styles.ProductsSortingRight}>
         <span>Сортировать по</span>
-        <select className={styles.SelectPrice}>
-          <option>Возростанию цены</option>
-          <option>По уменьшению цены</option>
+        <select
+          className={styles.SelectPrice}
+          onChange={(e) => handleMinMaxSort(e)}
+        >
+          <option>-</option>
+          <option value="+currentPrice">Возростанию цены</option>
+          <option value="-currentPrice">Уменьшению цены</option>
         </select>
       </div>
     </div>
