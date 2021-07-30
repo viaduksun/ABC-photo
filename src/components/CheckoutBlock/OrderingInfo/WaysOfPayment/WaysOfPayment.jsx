@@ -11,7 +11,7 @@ const GreenRadio = withStyles({
     '&$checked': {
       color: green[600],
     },
-    paddingLeft: 0
+    paddingLeft: 0,
   },
   checked: {},
 })((props) => <Radio color="default" {...props} />);
@@ -22,11 +22,14 @@ const WaysOfPayment = () => {
   const handleChangePaymant = (event) => {
     setSelectedValuePaymant(event.target.value);
   };
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    console.log(event.target);
+  };
   return (
-     
     <div className={styles.WaysOfPayment}>
       <h2>Способы оплаты</h2>
-      <form className={styles.WaysOfPaymentForm}>
+      <form className={styles.WaysOfPaymentForm} onSubmit={handleFormSubmit}>
         <div className={styles.WaysOfPaymentFormLeft}>
           <div>
             <GreenRadio
@@ -37,9 +40,7 @@ const WaysOfPayment = () => {
               inputProps={{ 'aria-label': 'D' }}
               id="cash"
             />
-            <label htmlFor="cash">
-              Наличными при получении
-            </label>
+            <label htmlFor="cash">Наличными при получении</label>
           </div>
           <div>
             <GreenRadio
@@ -99,6 +100,7 @@ const WaysOfPayment = () => {
             <label htmlFor="UKRSIBBANK">Кредит УКРСИББАНК</label>
           </div>
         </div>
+        <button type="submit">Go</button>
       </form>
     </div>
   );

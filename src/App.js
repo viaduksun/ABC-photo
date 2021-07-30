@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
 import './App.scss';
 import React, { useEffect, useState } from 'react';
@@ -25,8 +26,10 @@ import ButtonTop from './components/UI/ButtonTop/ButtonTop';
 import {
   cartFromLocalStorageAction,
   hidePopupAction,
+  getCartFromDB_action,
   setTotalCountCartAction,
   setTotalPriceCartAction,
+  logOutAction,
 } from './store/cart/actions';
 import CartPopup from './components/UI/CartPopup/CartPopup';
 import { userFromLocalStorageAction } from './store/admin/actions';
@@ -34,29 +37,67 @@ import { singleProductFromLocalStorageAction } from './store/singleProduct/actio
 import Favorites from './pages/Favorites';
 import { favoritesFromLocalStorageAction } from './store/favorites/actions';
 import { viewedProductsFromLocalStorageAction } from './store/viewedProducts/actions';
+import deleteCart from './api/deleteCart';
 
 function App() {
   const cart = useSelector((state) => state.cart.cart);
+  const cartDB = useSelector((state) => state.cart.cartDB);
   const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
   const currentUserFromRedux = useSelector((state) => state.admin.currentUser);
+  const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
   const currentQuery = useSelector((state) => state.productsPage.currentQuery);
+  const dispatch = useDispatch();
   // === USE EFFECT ========
   // const [currentQuery, setCurrentQuery] = useState('');
-  const dispatch = useDispatch();
+  // === USER ===
+  useEffect(() => {
+    const userFromLocalStorage = localStorage.getItem('currentUser');
+    if (userFromLocalStorage) {
+      dispatch(userFromLocalStorageAction(JSON.parse(userFromLocalStorage)));
+    }
+  }, [dispatch]);
+  useEffect(() => {
+    if (isLoggedIn) {
+      localStorage.setItem('currentUser', JSON.stringify(currentUserFromRedux));
+    }
+  }, [currentUserFromRedux, dispatch, isLoggedIn]);
+  useEffect(() => {
+    if (isLoggedIn) {
+      console.log('LOG', isLoggedIn);
+      dispatch(getCartFromDB_action());
+      // dispatch(setTotalCountCartAction());
+      // deleteCart();
+    } else {
+      console.log('LOG OUT');
+      dispatch(logOutAction());
+    }
+  }, [dispatch, isLoggedIn]);
 
   let totalSum = 0;
-  cart.forEach((item) => {
-    totalSum += item.currentPrice * item.count;
-  });
+
+  if (isLoggedIn && Object.keys(cartDB).length > 0) {
+    cartDB.forEach((item) => {
+      totalSum += item.product.currentPrice * item.cartQuantity;
+    });
+  }
+  if (!isLoggedIn && cart.length > 0) {
+    cart.forEach((item) => {
+      totalSum += item.currentPrice * item.count;
+    });
+  }
+
   useEffect(() => {
     dispatch(setTotalPriceCartAction(totalSum));
   }, [dispatch, totalSum]);
+
   let totalCount = 0;
-  cart.forEach((item) => {
-    totalCount += item.count;
-  });
+  if (!isLoggedIn && cart.length > 0) {
+    cart.forEach((item) => {
+      totalCount += item.count;
+    });
+  }
   useEffect(() => {
-   dispatch(setTotalCountCartAction(totalCount));
+    dispatch(setTotalCountCartAction(totalCount));
   }, [dispatch, totalCount]);
 
   useEffect(() => {
@@ -87,16 +128,6 @@ function App() {
       dispatch(hidePopupAction());
     }, 1500);
   }, [dispatch, popupIsOpen]);
-  // === USER ===
-  useEffect(() => {
-    const userFromLocalStorage = localStorage.getItem('currentUser');
-    if (userFromLocalStorage) {
-      dispatch(userFromLocalStorageAction(JSON.parse(userFromLocalStorage)));
-    }
-  }, [dispatch]);
-  useEffect(() => {
-    localStorage.setItem('currentUser', JSON.stringify(currentUserFromRedux));
-  }, [currentUserFromRedux, dispatch]);
 
   return (
     <div className="wrapper">

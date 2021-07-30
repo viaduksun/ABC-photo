@@ -15,7 +15,7 @@ import ProductCard from '../ProductCard/ProductCard';
 
 SwiperCore.use([Pagination, Navigation, Autoplay]);
 
-const ViewedProductsSlider = ({viewedProducts}) => {
+const ViewedProductsSlider = ({ viewedProducts }) => {
   if (!viewedProducts) return null;
   return (
     <>
@@ -34,16 +34,16 @@ const ViewedProductsSlider = ({viewedProducts}) => {
           navigation
           allowTouchMove
           mousewheel={{
-            releaseOnEdges: true
+            releaseOnEdges: true,
           }}
           breakpoints={{
             1280: {
               slidesPerView: 4,
-              spaceBetween: 10
+              spaceBetween: 10,
             },
             1100: {
               slidesPerView: 3,
-              touchRatio: 1
+              touchRatio: 1,
             },
             600: {
               slidesPerView: 2,
@@ -57,7 +57,6 @@ const ViewedProductsSlider = ({viewedProducts}) => {
           ))}
         </Swiper>
       </div>
-                
     </>
   );
 };
