@@ -37,8 +37,7 @@ const SingleProductContent = ({ singleProduct }) => {
   };
   return (
     <>
-      <ModalSubscribeProduct active={modalActive} setActive={setModalActive} />
-      
+      <ModalSubscribeProduct active={modalActive} setActive={setModalActive} singleProduct={singleProduct} />
       <div className={styles.Wrapper}>
         <p className={styles.InStock}>
           {singleProduct.quantity !== 0 ? (

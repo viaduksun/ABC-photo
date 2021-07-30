@@ -44,3 +44,15 @@
     font-family: 'Roboto', sans-serif;
   }
 }
+
+.SwitchIcon {
+  font-size: 30px;
+  cursor: pointer;
+  transition: .3s all;
+}
+.SwitchIconRotate {
+  font-size: 30px;
+  cursor: pointer;
+  transform: rotate(90deg);
+  transition: .3s all;
+}

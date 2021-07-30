@@ -27,7 +27,6 @@ const CheckBoxBlock = ({ handleChange, checkState }) => (
   <>
     <FormGroup row className={styles.CheckboxGroup}>
       {Object.keys(checkState).map((item) => (
-        // console.log(typeState[item].title);
         <FormControlLabel
           control={
             <GreenCheckbox

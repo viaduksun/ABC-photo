@@ -6,9 +6,10 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { BsX } from 'react-icons/bs';
 import styles from './ModalSubscribeProduct.module.scss';
+import addSubscriber from '../../../api/addSubscriber';
 
 // eslint-disable-next-line react/prop-types
-const ModalSubscribeProduct = ({ active, setActive }) => {
+const ModalSubscribeProduct = ({ active, setActive, singleProduct }) => {
   const handleClose = () => {
     setActive(false);
   };
@@ -18,8 +19,24 @@ const ModalSubscribeProduct = ({ active, setActive }) => {
     name: yup.string().typeError('Должна быть строка').required('Введите имя'),
     phone: yup.string().matches(phoneRegExp, 'Номер телефона должен начинаться с "+380", допустимые символы - от 0 до 9.').required('Введите номер телефона +380 XX XXX XXXX'),
     email: yup.string().email('Введите корректный email')
-    
   });
+
+  // eslint-disable-next-line no-unused-vars
+  const handleOnSubmitForm = (values, { setSubmitting, resetForm }) => {
+      setSubmitting(true);
+      const form = {
+        name: values.name,
+        phone: values.phone,
+        email: values.email,
+      };
+      console.log(form);
+      addSubscriber(singleProduct, form).then((res) => {
+        setSubmitting(false);
+        resetForm();
+        console.log(res);
+      });
+  };
+
   return (
     <div
       className={active ? styles.Modal_active : styles.Modal}
@@ -41,13 +58,14 @@ const ModalSubscribeProduct = ({ active, setActive }) => {
           phone: '',
           email: ''
         }}
+            onSubmit={handleOnSubmitForm}
             validateOnBlur
             validationSchema={validation}
           >
             {({
 values, errors, touched, handleChange, handleBlur
 }) => (
-  <form className={styles.ContactDetailsFormBlock}>
+  <form className={styles.ContactDetailsFormBlock} onSubmit={handleOnSubmitForm}>
     <div className={styles.ContactDetailsField}>
       <label htmlFor="name">Имя</label>
       <input name="name" id="name" type="text" placeholder="Иван Петрович" onChange={handleChange} onBlur={handleBlur} value={values.name} />

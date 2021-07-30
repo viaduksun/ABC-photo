@@ -1,12 +1,34 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .Title{
     text-transform: uppercase;
     font-size: 22px;
     line-height: 20px;
     font-weight: 700;  
 }
+.HeaderIcon {
+    font-size: 30px;
+    cursor: pointer;
+    transition: .3s all;
+}
+.HeaderIconRotate {
+    font-size: 30px;
+    cursor: pointer;
+    transition: .3s all;
+    transform: rotate(90deg);
+}
 .Main {
     display: grid;
     grid-template-columns: repeat(4, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 30px 0;
+}
+.MainCardLine {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(150px, 1fr));
     gap: 20px;
     padding: 30px 0;
 }
