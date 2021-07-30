@@ -2,16 +2,17 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
-import styles from './ProductsField.module.scss';
+import styles from './SearchProductsField.module.scss';
 import {showGridAction} from '../../store/products/actions';
 import ProductsSorting from '../ProductsSorting/ProductsSorting';
 import ProductCard from '../ProductCard/ProductCard';
 import ProductCardLine from '../ProductCardLine/ProductCardLine';
 import Pagination from '../Pagination/Pagination';
+import PaginationSearchProducts from '../PaginationSearchProducts/PaginationSearchProducts';
 
-const ProductsField = ({ products }) => {
+const SearchProductsField = ({ searchProducts }) => {
   console.log('RENDER_ProductsField ');
   const currentPage = useSelector((state) => state.productsPage.currentPage);
   const allProducts = useSelector(
@@ -22,13 +23,7 @@ const ProductsField = ({ products }) => {
   const handlerSwitch = () => {
     dispatch(showGridAction());
   };
-    
-  const scrollToTopHandler = () => {
-    window.scrollTo({
-      behavior: 'smooth',
-    top: 0,
-    });
-};
+
   return (
     <div className={styles.ProductsField}>
       <ProductsSorting
@@ -39,23 +34,21 @@ const ProductsField = ({ products }) => {
       <div className={styles.ProductsFieldGridWrapp}>
         {showGrid ? (
           <div className={styles.ProductsFieldGrid}>
-            {products.map((product) => (
+            {searchProducts.map((product) => (
               <ProductCard product={product} key={product._id} dragable={false} />
           ))}
           </div>
           ) : (
             <div className={styles.ProductsFieldLine}>
-              {products.map((product) => (
+              {searchProducts.map((product) => (
                 <ProductCardLine product={product} key={product._id} />
-                    ))}
+              ))}
             </div>
           )}
       </div>
-      <Pagination
-        scrollTo={scrollToTopHandler}
-      />
+   
     </div>
   );
 };
 
-export default ProductsField;
+export default SearchProductsField;

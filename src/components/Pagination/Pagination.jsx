@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -9,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPageAction } from '../../store/products/actions';
 import styles from './Pagination.module.scss';
 
-const Pagination = () => {
+const Pagination = ({scrollTo}) => {
   const allProductsArr = useSelector(
     (state) => state.productsPage.AllProductsForPagination
   );
@@ -18,23 +19,36 @@ const Pagination = () => {
   );
   const currentPage = useSelector((state) => state.productsPage.currentPage);
   const pagesCount = Math.ceil(allProductsArr.length / productPerPage);
-  // console.log(allProductsArr.length, pagesCount);
-  // const [isActive, setIsActive] = useState(1);
   const dispatch = useDispatch();
   const pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-  // console.log(pages);
   const handleExactPage = (item) => {
     console.log(item);
-    // setIsActive(item);
     dispatch(setCurrentPageAction(item));
+    scrollTo();
+  };
+
+  const handleRightPage = () => {
+    if (currentPage <= pages.length - 1) {
+      dispatch(setCurrentPageAction(currentPage + 1));
+      scrollTo();
+    }
+  };
+  const handleLeftPage = () => {
+    if (currentPage > 1) {
+      dispatch(setCurrentPageAction(currentPage - 1));
+      scrollTo();
+    }
   };
 
   return (
     <div className={styles.Pagination}>
-      <FaChevronLeft className={styles.ButtonPrev} />
+      <FaChevronLeft
+        className={styles.ButtonPrev}
+        onClick={handleLeftPage}
+      />
       {pages.map((item) => (
         <div
           className={classNames({
@@ -49,7 +63,10 @@ const Pagination = () => {
           {item}
         </div>
       ))}
-      <FaChevronRight className={styles.ButtonNext} />
+      <FaChevronRight
+        className={styles.ButtonNext}
+        onClick={handleRightPage}
+      />
     </div>
   );
 };

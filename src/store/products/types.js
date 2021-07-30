@@ -6,3 +6,4 @@ export const SET_CURRENT_QUERY = 'SET_CURRENT_QUERY';
 export const SET_FLAG_IN_CART = 'SET_FLAG_IN_CART';
 export const SET_CURRENT_PRODUCTS_ARR = 'SET_CURRENT_PRODUCTS_ARR';
 export const SET_SORT_BY = 'SET_SORT_BY';
+export const SHOW_GRID = 'SHOW_GRID';

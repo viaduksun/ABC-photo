@@ -12,6 +12,7 @@ import { cart } from './cart/reducer';
 import { favorites } from './favorites/reducer';
 import { singleProduct } from './singleProduct/reducer';
 import { viewedProducts } from './viewedProducts/reducer';
+import { searchProducts } from './searchProducts/reducer';
 import {
   ADD_PRODUCT_TO_CART,
   ADD_SINGLE_PRODUCT_TO_CART,
@@ -84,6 +85,7 @@ const rootReducer = combineReducers({
   singleProduct,
   favorites,
   viewedProducts,
+  searchProducts
 });
 
 const store = createStore(

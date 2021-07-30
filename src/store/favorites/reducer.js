@@ -8,10 +8,12 @@ import {
   DELETE_PRODUCT_FROM_FAVORITE,
   FAVORITES_FROM_LOCAL_STORAGE,
   FAVORITE_PRODUCT_CHANGE_ORDER,
+  SHOW_GRID,
 } from './types';
 
 const initialState = {
   favorites: [],
+  showGrid: true,
 };
 
 export const favorites = (state = initialState, action) => {
@@ -54,6 +56,11 @@ export const favorites = (state = initialState, action) => {
       return {
         ...state,
         favorites: orderedFavorites,
+      };
+    case SHOW_GRID:
+      return {
+        ...state,
+        showGrid: !state.showGrid,
       };
     default:
       return state;

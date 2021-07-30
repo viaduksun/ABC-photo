@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -7,10 +8,9 @@ import React, { useEffect, useState } from 'react';
 import { IoMdOptions } from 'react-icons/io';
 import { VscChromeClose } from 'react-icons/vsc';
 import classNames from 'classnames';
-import { useDispatch, useSelector } from 'react-redux';
-import styles from './ProductsContainer.module.scss';
+import { useSelector } from 'react-redux';
+import styles from './SearchProductsContainer.module.scss';
 import PhotoCamerasFilter from '../../components/ProductsFilter/PhotoCamerasFilter';
-import ProductsField from '../../components/ProductsField/ProductsField';
 import {
   getAllProductsCurrentCategoryAction,
   getFilteredProductsAction,
@@ -19,27 +19,20 @@ import Loader from '../../components/UI/Loader/Loader';
 import VideoCamerasFilter from '../../components/ProductsFilter/VideoCamerasFilter';
 import ActionCamerasFilter from '../../components/ProductsFilter/ActionCamerasFilter';
 import LensesFilter from '../../components/ProductsFilter/LensesFilter';
+import SearchProductsFilter from '../../components/ProductsFilter/SearchProductsFilter';
+import SearchProductsField from '../../components/SearchProductsField/SearchProductsField';
+import PaginationSearchProducts from '../../components/PaginationSearchProducts/PaginationSearchProducts';
 
-const ProductsContainer = () => {
-  const dispatch = useDispatch();
-  const currentCategory = useSelector(
-    (state) => state.productsPage.currentCategory
+const SearchProductsContainer = () => {
+  const searchProducts = useSelector((state) => state.searchProducts.searchProducts);
+  const isLoadingSearchProducts = useSelector(
+    (state) => state.searchProducts.isLoadingSearchProducts
   );
-  const page = useSelector((state) => state.productsPage.currentPage);
-  const perPage = useSelector((state) => state.productsPage.currentPerPage);
-  console.log(currentCategory, page, perPage);
-  useEffect(() => {
-    dispatch(getFilteredProductsAction(currentCategory, page, perPage, ''));
-    dispatch(getAllProductsCurrentCategoryAction(currentCategory));
-  }, [currentCategory, dispatch, page, perPage]);
-  const products = useSelector((state) => state.productsPage.products);
-  const isLoadingProducts = useSelector(
-    (state) => state.productsPage.isLoadingProducts
-  );
+  const currentPage = useSelector((state) => state.searchProducts.currentPage);
+  const searchProductsPerPage = useSelector((state) => state.searchProducts.searchProductsPerPage);
 
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
-    console.log('Close');
     document.body.classList.toggle('no-scroll');
     setIsActive(!isActive);
   };
@@ -55,6 +48,20 @@ const ProductsContainer = () => {
     [styles.showFiltersBtn]: true,
     [styles.showFiltersBtn_hidden]: isActive,
   });
+
+  const lastSearchProductsIndex = currentPage * searchProductsPerPage;
+  const firstSearchProductsIndex = lastSearchProductsIndex - searchProductsPerPage;
+  const currentSearchProducts = (
+    searchProducts.slice(firstSearchProductsIndex, lastSearchProductsIndex)
+  );
+
+  const scrollToTopHandler = () => {
+      window.scrollTo({
+        behavior: 'smooth',
+      top: 0,
+      });
+	};
+
   return (
     <div className={styles.ProductsBlock}>
       <div className="container">
@@ -63,19 +70,26 @@ const ProductsContainer = () => {
             <IoMdOptions />
           </div>
           <div className={styles.filterContainer}>
-            {currentCategory === 'photocameras' && <PhotoCamerasFilter />}
-            {currentCategory === 'videocameras' && <VideoCamerasFilter />}
-            {currentCategory === 'actioncameras' && <ActionCamerasFilter />}
-            {currentCategory === 'lenses' && <LensesFilter />}
+            <SearchProductsFilter />
           </div>
-          {products.length === 0 ? (
+          {searchProducts.length === 0 ? (
             <div className={styles.PrductsFieldLoader}>
               <Loader />
             </div>
           ) : (
-            !isLoadingProducts && <ProductsField products={products} />
+            !isLoadingSearchProducts && (
+              <SearchProductsField
+                searchProducts={currentSearchProducts}
+              />
+            )
           )}
         </div>
+        <PaginationSearchProducts
+          currentPage={currentPage}
+          productsPerPage={searchProductsPerPage}
+          totalProducts={searchProducts.length}
+          scrollToTop={scrollToTopHandler}
+        />
       </div>
 
       <div className={filtersOverLay} onClick={handleClick}></div>
@@ -85,8 +99,9 @@ const ProductsContainer = () => {
         </div>
         <PhotoCamerasFilter />
       </div>
+    
     </div>
   );
 };
 
-export default ProductsContainer;
+export default SearchProductsContainer;

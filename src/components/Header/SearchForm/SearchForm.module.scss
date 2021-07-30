@@ -1,5 +1,6 @@
 .SearchFormWrapper {
   flex: 1 1 auto;
+  position: relative;
 }
 
 .searchFormWrapper {
@@ -45,5 +46,10 @@
   height: 12px;
   width: 10px;
 }
+.searchIconActive {
+  color: #51ad33;
+  border-radius: 50%;
+}
 @media (max-width: 950px) {
 }
+
