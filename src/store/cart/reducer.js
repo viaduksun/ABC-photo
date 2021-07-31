@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-case-declarations */
 // eslint-disable no-underscore-dangle
@@ -8,7 +9,12 @@ import {
   CART_DECREMENT,
   CART_FROM_LOCAL_STORAGE,
   CART_INCREMENT,
+  DELETE_CART_DB_REDUX,
+  DELETE_LOCAL_CART,
   DELETE_PRODUCT_FROM_CART,
+  GET_CART_FROM_DB,
+  LOG_OUT,
+  SET_CART_DB,
   SET_POPUP_FALSE,
   SET_TOTAL_COUNT_CART,
   SET_TOTAL_SUM_CART,
@@ -16,6 +22,7 @@ import {
 
 const initialState = {
   cart: [],
+  cartDB: {},
   totalSumCart: 0,
   totalCountCart: 0,
   popupIsOpen: false,
@@ -75,6 +82,43 @@ export const cart = (state = initialState, action) => {
         ...state,
         cart: newCart,
       };
+    // === Этот код срабатывает в App.js при загрузке приложения
+    case GET_CART_FROM_DB:
+      let cartArrayFromDB = [];
+      if (action.payload.data) {
+        cartArrayFromDB = action.payload.data.products;
+      } else {
+        console.log('NO CART IN DB');
+      }
+      console.log('CART_FROM_DB_reducer', cartArrayFromDB);
+      const totalCartCoutn = cartArrayFromDB.reduce((a, b) => a + b.cartQuantity, 0);
+
+      return {
+        ...state,
+        cartDB: cartArrayFromDB,
+        totalCountCart: totalCartCoutn,
+      };
+
+    case SET_CART_DB:
+      console.log(action.payload);
+      return {
+        ...state,
+        cartDB: action.payload.resultCart.data.products,
+        totalCountCart: action.payload.cartCounter
+      };
+    case DELETE_CART_DB_REDUX:
+      console.log('DELETE_CART_DB_REDUX');
+      return {
+        ...state,
+        cartDB: {},
+      };
+    case DELETE_LOCAL_CART:
+      console.log('DELETE_LOCAL_CART');
+      localStorage.removeItem('cart');
+      return {
+        ...state,
+        cart: [],
+      };
     case CART_FROM_LOCAL_STORAGE:
       console.log(action.payload);
       return {
@@ -112,6 +156,13 @@ export const cart = (state = initialState, action) => {
       return {
         ...state,
         popupIsOpen: false,
+      };
+    case LOG_OUT:
+      return {
+        ...state,
+        cartDB: {},
+        totalSumCart: 0,
+        totalCountCart: 0,
       };
     default:
       return state;

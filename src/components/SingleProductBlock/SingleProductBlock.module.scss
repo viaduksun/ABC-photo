@@ -1,29 +1,28 @@
 .Wrapper {
-    margin-top: 50px;
-    margin-bottom: 100px;
-    display: grid;
-    grid-template-columns: 1fr 30%;
-    grid-column-gap: 100px;
-    align-items: center;
-
+  margin-top: 50px;
+  margin-bottom: 100px;
+  display: grid;
+  grid-template-columns: 1fr 30%;
+  grid-column-gap: 100px;
+  align-items: center;
 }
 .SliderBlockText {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    h2 {
-        font-size: 26px;
-        line-height: 26px;
-        font-weight: 700;
-        text-transform: uppercase;
-        font-family: 'Roboto', sans-serif;
-    }
-    p {
-        font-size: 14px;
-        line-height: 26px;
-        background-color: #F7F5F6;
-        padding: 7px 13px;
-        margin-left: 50px;
-        font-family: 'Roboto', sans-serif;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    font-size: 26px;
+    line-height: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+  }
+  p {
+    font-size: 14px;
+    line-height: 26px;
+    background-color: #f7f5f6;
+    padding: 7px 13px;
+    margin-left: 50px;
+    font-family: 'Roboto', sans-serif;
+  }
 }

@@ -8,20 +8,28 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { CgMenuGridR } from 'react-icons/cg';
-import { setCurrentPerPageAction, setSortQueryAction } from '../../store/products/actions';
-import { setSearchProductsPerPageAction, sortSearchProductsAction} from '../../store/searchProducts/actions';
+import {
+  setCurrentPerPageAction,
+  setSortQueryAction,
+} from '../../store/products/actions';
+import {
+  setSearchProductsPerPageAction,
+  sortSearchProductsAction,
+} from '../../store/searchProducts/actions';
 import styles from './ProductsSorting.module.scss';
 
-const ProductsSorting = ({
- currentPage, allProducts, handlerSwitch
-}) => {
+const ProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
   const [currentInterval, setCurrentInterval] = useState([1, 3]);
   const dispatch = useDispatch();
   console.log(currentPage);
   const showGrid = useSelector((state) => state.productsPage.showGrid);
-  const searchProductsPerPage = useSelector((state) => state.searchProducts.searchProductsPerPage);
-  const searchProductsShowBy = useSelector((state) => state.searchProducts.showBy);
-  
+  const searchProductsPerPage = useSelector(
+    (state) => state.searchProducts.searchProductsPerPage
+  );
+  const searchProductsShowBy = useSelector(
+    (state) => state.searchProducts.showBy
+  );
+
   const handlePerPage = (e) => {
     const showBy = +e.target.value;
     dispatch(setCurrentPerPageAction(showBy));
@@ -77,7 +85,9 @@ const ProductsSorting = ({
             }}
           >
             <option value="3">3 товара</option>
-            <option selected value="6">6 товаров</option>
+            <option selected value="6">
+              6 товаров
+            </option>
             <option value="9">9 товаров</option>
             {/* {stateValue.map((value) => (
               <option key={value.id} value={value.id}>
@@ -102,8 +112,11 @@ const ProductsSorting = ({
         className={showGrid ? styles.SwitchIcon : styles.SwitchIconRotate}
         onClick={handlerSwitch}
       >
-        {showGrid ? <GiHamburgerMenu style={{color: '#51ad33'}} /> : <CgMenuGridR style={{color: '#51ad33'}} />}
-       
+        {showGrid ? (
+          <GiHamburgerMenu style={{ color: '#51ad33' }} />
+        ) : (
+          <CgMenuGridR style={{ color: '#51ad33' }} />
+        )}
       </div>
     </div>
   );

@@ -35,6 +35,7 @@ export const setSearchProductsPerPageAction = (showBy) => ({
 export const clearSearchProductsAction = () => ({
   type: CLEAR_SEARCH_PRODUCTS,
 });
-export const sortSearchProductsAction = () => ({
+export const sortSearchProductsAction = (value) => ({
   type: SORT_SEARCH_PRODUCTS,
+  payload: {value}
 });

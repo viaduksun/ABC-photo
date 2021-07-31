@@ -23,7 +23,6 @@ export const searchProducts = (state = initialState, action) => {
       return {
         ...state,
         searchProducts: action.payload.data,
-        searchProducts2: action.payload.data,
         isLoadingSearchProducts: false,
         searchProductsPerPage: 6,
       };
@@ -54,7 +53,15 @@ export const searchProducts = (state = initialState, action) => {
         searchProducts: [],
       };
     case SORT_SEARCH_PRODUCTS:
-      const newArr = (state.searchProducts.sort((a, b) => a.currentPrice + b.currentPrice)).slice(0, -1);
+      console.log(action.payload.value);
+      let newArr = [];
+      if (action.payload.value === '-currentPrice') {
+        newArr = state.searchProducts.slice(0).sort((a, b) => parseFloat(b.currentPrice) - parseFloat(a.currentPrice));
+      } else if (action.payload.value === '+currentPrice') {
+        newArr = state.searchProducts.slice(0).sort((a, b) => parseFloat(a.currentPrice) - parseFloat(b.currentPrice));
+      } else {
+        newArr = state.searchProducts.slice(0).sort(() => Math.random() - 0.5);
+      }
       return {
         ...state,
         searchProducts: newArr,

@@ -1,3 +1,5 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
@@ -8,27 +10,36 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { MdRemoveShoppingCart } from 'react-icons/md';
 import { GiCheckMark } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSingleProductToCartAction } from '../../../store/cart/actions';
+import {
+  addSingleProductToCartAction,
+  addToCartMongoDB,
+} from '../../../store/cart/actions';
 import ModalSubscribeProduct from '../../UI/ModalSubscribeProduct/ModalSubscribeProduct';
 import Button from '../../UI/Button/Button';
 import styles from './SingleProductContent.module.scss';
 import './SingleProductContent.scss';
+import getOneProduct from '../../../api/getOneProduct';
 
 const SingleProductContent = ({ singleProduct }) => {
   const cart = useSelector((state) => state.cart.cart);
+  const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
   const isInCart = cart.some((item) => item._id === singleProduct._id);
   const dispatch = useDispatch();
-   const [moveToCart, setMoveToCart] = useState(false);
+  const [moveToCart, setMoveToCart] = useState(false);
   const addProductToCartHandler = () => {
     if (singleProduct.quantity !== 0) {
       setTimeout(() => {
-         dispatch(addSingleProductToCartAction(singleProduct));
-      }, 2800);
-       setMoveToCart(true);
+        if (isLoggedIn) {
+          dispatch(addToCartMongoDB(singleProduct));
+        } else {
+          dispatch(addSingleProductToCartAction(singleProduct));
+        }
+      }, 2000);
+      setMoveToCart(true);
     }
     setTimeout(() => {
       setMoveToCart(false);
-    }, 2500);
+    }, 2000);
   };
 
   const [modalActive, setModalActive] = useState(false);
@@ -37,7 +48,11 @@ const SingleProductContent = ({ singleProduct }) => {
   };
   return (
     <>
-      <ModalSubscribeProduct active={modalActive} setActive={setModalActive} singleProduct={singleProduct} />
+      <ModalSubscribeProduct
+        active={modalActive}
+        setActive={setModalActive}
+        singleProduct={singleProduct}
+      />
       <div className={styles.Wrapper}>
         <p className={styles.InStock}>
           {singleProduct.quantity !== 0 ? (
@@ -49,19 +64,22 @@ const SingleProductContent = ({ singleProduct }) => {
         <p className={styles.Price}>{singleProduct.currentPrice} грн</p>
 
         <div className={styles.ButtonBuy}>
-          {singleProduct.quantity !== 0
-          ? (
+          {singleProduct.quantity !== 0 ? (
             <Button
               onClick={addProductToCartHandler}
               disabled={moveToCart}
               addClass="cart_green"
-            >Купить
+            >
+              Купить
               <FiShoppingCart />
               &nbsp;
               {isInCart && <GiCheckMark />}
             </Button>
-          )
-            : <Button addClass="cart_grey" onClick={openModalhandler}>Сообщить о поступлении товара</Button>}
+          ) : (
+            <Button addClass="cart_grey" onClick={openModalhandler}>
+              Сообщить о поступлении товара
+            </Button>
+          )}
         </div>
         <p className={styles.Delivery}>Доставка</p>
         <ul className={styles.DeliveryList}>
@@ -70,7 +88,13 @@ const SingleProductContent = ({ singleProduct }) => {
           <li>• Возможен самовывоз</li>
         </ul>
         <div className="MoveToCartBlock">
-          <div className={`MoveToCartItem  ${moveToCart ? 'MoveToCartItem_isOpen' : 'MoveToCartItem_isClose'}`}><img src={singleProduct.imageUrls[0]} alt="img" /></div>
+          <div
+            className={`MoveToCartItem  ${
+              moveToCart ? 'MoveToCartItem_isOpen' : 'MoveToCartItem_isClose'
+            }`}
+          >
+            <img src={singleProduct.imageUrls[0]} alt="img" />
+          </div>
         </div>
       </div>
     </>

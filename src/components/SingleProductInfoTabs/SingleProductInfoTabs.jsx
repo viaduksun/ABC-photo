@@ -18,9 +18,9 @@ const SingleProductInfoTabs = ({ singleProduct }) => {
   const characteristicsToggle = () => {
     setCurrentTab('characteristics');
   };
-  const accessoriesToggle = () => {
-    setCurrentTab('accessories');
-  };
+  // const accessoriesToggle = () => {
+  //   setCurrentTab('accessories');
+  // };
   const descriptionClass = classNames({
     [styles.tabBtn]: true,
     [styles.tabBtn_active]: currentTab === 'description',
@@ -29,10 +29,10 @@ const SingleProductInfoTabs = ({ singleProduct }) => {
     [styles.tabBtn]: true,
     [styles.tabBtn_active]: currentTab === 'characteristics',
   });
-  const accessoriesClass = classNames({
-    [styles.tabBtn]: true,
-    [styles.tabBtn_active]: currentTab === 'accessories',
-  });
+  // const accessoriesClass = classNames({
+  //   [styles.tabBtn]: true,
+  //   [styles.tabBtn_active]: currentTab === 'accessories',
+  // });
   return (
     <div className={styles.SingleProductInfoTabs}>
       <div className={styles.header}>
@@ -41,9 +41,6 @@ const SingleProductInfoTabs = ({ singleProduct }) => {
         </p>
         <p className={characteristicsClass} onClick={characteristicsToggle}>
           характеристики
-        </p>
-        <p className={accessoriesClass} onClick={accessoriesToggle}>
-          аксессуары
         </p>
       </div>
       <div className={styles.headerAccordion}>
