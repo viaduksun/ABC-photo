@@ -12,3 +12,4 @@ export const SET_CART_DB = 'SET_CART_DB';
 export const DELETE_CART_DB_REDUX = 'DELETE_CART_DB_REDUX';
 export const LOG_OUT = 'LOG_OUT';
 export const DELETE_LOCAL_CART = 'DELETE_LOCAL_CART';
+export const DELETE_ALL_DATA_FROM_CART = 'DELETE_LOCAL_CART';

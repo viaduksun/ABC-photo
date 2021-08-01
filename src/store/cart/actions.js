@@ -18,6 +18,7 @@ import {
   CART_DECREMENT,
   CART_FROM_LOCAL_STORAGE,
   CART_INCREMENT,
+  DELETE_ALL_DATA_FROM_CART,
   DELETE_CART_DB_REDUX,
   DELETE_LOCAL_CART,
   DELETE_PRODUCT_FROM_CART,
@@ -240,6 +241,9 @@ export const setTotalCountCartAction = (totalCount) => ({
 });
 export const deleteLocalCartAction = () => ({
   type: DELETE_LOCAL_CART
+});
+export const deleteAllDataFromCartAction = () => ({
+  type: DELETE_ALL_DATA_FROM_CART
 });
 export const hidePopupAction = () => ({
   type: SET_POPUP_FALSE,

@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-underscore-dangle */
 import getProducts from '../../api/getProducts';
 import getCatalog from '../../api/getCatalog';
@@ -17,8 +18,10 @@ import {
   DELETE_CATEGORY,
   IS_LOGGED_IN,
   CURRENT_USER_SET_UP,
-  EXIT
+  EXIT,
+  UPDATE_CUSTOMER
 } from './types';
+import updateCustomer from '../../api/updateCustomer';
 
 export const adminProducts = () => (dispatch) => {
   getProducts().then((data) => {
@@ -31,6 +34,17 @@ export const setCatalog = () => (dispatch) => {
     // console.log(data);
     dispatch({ type: SET_CATALOG, payload: data });
   });
+};
+export const updateCustomerAction = (form) => (dispatch) => {
+  updateCustomer(form).then((newUserResponse) => {
+    console.log('UPDATED USER', newUserResponse);
+    dispatch({ type: UPDATE_CUSTOMER, payload: newUserResponse.data });
+  })
+    .catch((err) => {
+      console.log(err.response);
+      alert(err.response.data);
+      /* Do something with error, e.g. show error to user */
+    });
 };
 // export const setNewCatalog = () => (dispatch) => {
 //   getCatalog().then((data) => {

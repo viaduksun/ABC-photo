@@ -4,48 +4,53 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
 import TextInput from './TextInput';
 import styles from './ProfileBlock.module.scss';
 import Button from '../UI/Button/Button';
+import { updateCustomerAction } from '../../store/admin/actions';
 
 const EditProfile = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.admin.currentUser);
+
   const handleSubmitForm = (values, { setSubmitting }) => {
-    const { firstName, lastName, sex, birth, email, phone } = values;
+    console.log('SUBMIT');
+    const { firstName, lastName, login, email, phone } = values;
     // const isPasswordMatch = newPassword === confirmPassword;
-    const isFormValid = firstName && lastName && sex && birth && email && phone;
+    const isFormValid = firstName && lastName && email && phone;
 
     if (isFormValid) {
       setSubmitting(true);
-
-      setSubmitting(false);
       const form = {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        age: values.age,
-        address: values.address,
-        phone: values.phone,
+        firstName,
+        lastName,
+        login,
+        phone,
+        email,
       };
       console.log(form);
+      dispatch(updateCustomerAction(form));
+      setSubmitting(false);
     }
   };
 
   const validate = Yup.object({
     firstName: Yup.string()
-      .max(10, 'Must be 10 characters or less')
-      .required('First name is required'),
+      .max(20, 'Must be 20 characters or less')
+      .required('Введите ваше имя'),
     lastName: Yup.string()
       .max(20, 'Must be 20 characters or less')
-      .required('Last name is required'),
-    age: Yup.number()
-      .max(99, 'Must be 2 characters or less')
-      .required('Age is required'),
-    sex: Yup.string()
-      .max(40, 'Must be 40 characters or less')
-      .required('Address is required'),
+      .required('Введите вашу фамилию'),
+    login: Yup.string()
+      .min(3, 'Login must be between 3 and 10 characters')
+      .max(10, 'Login must be between 3 and 10 characters')
+      .required('Введите логин'),
+
     email: Yup.string().email('Email is invalid').required('Email is required'),
     phone: Yup.string()
       .max(15, 'Must be 15 characters or less')
-      .required('Phone is required'),
+      .required('Введите телефон'),
   });
 
   console.log('Edit');
@@ -54,12 +59,11 @@ const EditProfile = () => {
       <h2>Профиль пользователя</h2>
       <Formik
         initialValues={{
-          firstName: '',
-          lastName: '',
-          sex: '',
-          email: '',
-          phone: '',
-          birth: '',
+          firstName: currentUser.firstName,
+          lastName: currentUser.lastName,
+          login: currentUser.login,
+          email: currentUser.email,
+          phone: currentUser.phone,
         }}
         onSubmit={handleSubmitForm}
         validationSchema={validate}
@@ -67,15 +71,16 @@ const EditProfile = () => {
         {(formik) => (
           <Form className={styles.formWrapper}>
             <div className={styles.inputsWrapper}>
-              <TextInput label="Имя" name="firstName" type="text" />
-              <TextInput label="Фамилия" name="lastName" type="text" />
-              <TextInput label="Пол" name="sex" type="text" />
-              <TextInput label="Телефон" name="phone" type="text" />
-              <TextInput label="Email" name="email" type="email" />
-              <TextInput label="Дата рождения" name="birth" type="select" />
+              <TextInput label="Имя*" name="firstName" type="text" />
+              <TextInput label="Фамилия*" name="lastName" type="text" />
+              <TextInput label="Логин*" name="login" type="text" />
+              <TextInput label="Телефон*" name="phone" type="text" />
+              <TextInput label="Email*" name="email" type="email" />
             </div>
             <div className="form-btn-group">
-              <Button addClass="cart_green">Готово</Button>
+              <Button type="submit" addClass="cart_green">
+                Готово
+              </Button>
             </div>
           </Form>
         )}

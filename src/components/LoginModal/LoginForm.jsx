@@ -26,14 +26,24 @@ import { loginModalCloseAction } from '../../store/madals/actions';
 const LoginForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const dispatch = useDispatch();
+
+  const lowercaseRegex = /(?=.*[a-z])/;
+  // const uppercaseRegex = /(?=.*[A-Z])/;
+  const numericRegex = /(?=.*[0-9])/;
+  // const cirillicRegex = /(?=.*[а-я])/;
+
   const loginSchema = Yup.object().shape({
     loginOrEmail: Yup.string()
-      .email('Email is invalid')
-      .required('Email is required'),
+      .email('Некорректный емэйл')
+      .required('Введите емэйл'),
     password: Yup.string()
-      .max(12, 'Must be 12 characters or less')
-      .min(7, 'Must be 7 characters or more')
-      .required('Password is required'),
+      .matches(lowercaseRegex, 'Один символ в нижнем регистре обязателен')
+      // .matches(uppercaseRegex, 'Один символ в верхнем регистре обязателен')
+      .matches(numericRegex, 'Один числовой символ обязателен')
+      // .matches(cirillicRegex, 'Недопустимые символы')
+      .min(7, 'Введите не менее 7 символов')
+      .max(30, 'Введите не более 30 символов')
+      .required('Введите пароль'),
   });
 
   const handleRemoveToken = () => {
@@ -111,7 +121,7 @@ const LoginForm = () => {
                 />
               </div>
             </div>
-            <div className={styles.addFunctionsWrapper}>
+            {/* <div className={styles.addFunctionsWrapper}>
               <div className={styles.CheckBoxWrapper}>
                 <label htmlFor="comp">Чужой компьютер</label>
                 <input
@@ -122,7 +132,7 @@ const LoginForm = () => {
                 />
               </div>
               <p className={styles.forgotPass}>Забыли пароль?</p>
-            </div>
+            </div> */}
             <div className={styles.BtnsWrapper}>
               <Button
                 type="submit"

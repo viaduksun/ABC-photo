@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdShoppingCart } from 'react-icons/md';
@@ -19,9 +20,13 @@ export default function LoginIcon() {
 
   const dispatch = useDispatch();
   const cartCounter = useSelector((state) => state.cart.totalCountCart);
+  const currentUser = useSelector((state) => state.admin.currentUser);
   const favoritesCounter = useSelector(
     (state) => state.favorites.favorites.length
   );
+  useEffect(() => {
+    console.log(currentUser);
+  }, [currentUser]);
   const handleLogin = () => {
     dispatch(loginModalOpenAction());
   };
@@ -29,8 +34,8 @@ export default function LoginIcon() {
     <div className={styles.HeaderlinksBlockWrapper}>
       <div>
         {!isLoggedIn && (
-          <div className={styles.LoginBlock}>
-            <div className={styles.HeaderIconWrapper} onClick={handleLogin}>
+          <div className={styles.LoginBlock} onClick={handleLogin}>
+            <div className={styles.HeaderIconWrapper}>
               <RiLoginCircleLine className={styles.HeaderIconLogin} />
             </div>
             <p className={styles.HeaderIconText}>Вход</p>
@@ -40,15 +45,27 @@ export default function LoginIcon() {
         {isLoggedIn && !isAdmin && (
           <Link to="/profile" className={styles.HeaderLink}>
             <div className={styles.HeaderIconWrapper}>
+              <span className={styles.HeaderUserName}>
+                {currentUser.firstName}
+              </span>
               <FaUserAlt className={styles.HeaderIcon} />
             </div>
-            <p className={styles.HeaderIconText}>Личный кабинет</p>
+            <div className={styles.HeaderProfileTitle}>
+              <p className={styles.HeaderIconText}>Личный кабинет</p>
+              {/* <p className={styles.HeaderIconText}>
+                <span>(</span>
+                {currentUser.firstName}
+                <span>)</span>
+              </p> */}
+            </div>
           </Link>
         )}
         {isLoggedIn && isAdmin && (
           <Link to="/profile" className={styles.HeaderLink}>
-            <div className={styles.HeaderIconWrapper}>
-              <RiAdminFill className={styles.HeaderIconAdmin} />
+            <div className={styles.HeaderAdminWrapper}>
+              <div className={styles.HeaderIconWrapper}>
+                <RiAdminFill className={styles.HeaderIconAdmin} />
+              </div>
             </div>
             <p className={styles.HeaderIconText}>Личный кабинет</p>
           </Link>

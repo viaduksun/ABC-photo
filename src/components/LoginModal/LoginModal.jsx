@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { VscChromeClose } from 'react-icons/vsc';
 import classNames from 'classnames';
 import { FaTwitter, FaFacebookF, FaGooglePlusG } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 import { loginModalCloseAction } from '../../store/madals/actions';
 import styles from './LoginModal.module.scss';
@@ -84,26 +85,38 @@ const LoginModal = () => {
                 </div>
               </div>
             </a>
-            <div
-              className={classNames({
-                [styles.iconItem]: true,
-                [styles.iconItem_fb]: true,
-              })}
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noreferrer"
             >
-              <div className={styles.iconCircle}>
-                <FaFacebookF className={styles.fb} />
+              <div
+                className={classNames({
+                  [styles.iconItem]: true,
+                  [styles.iconItem_fb]: true,
+                })}
+              >
+                <div className={styles.iconCircle}>
+                  <FaFacebookF className={styles.fb} />
+                </div>
               </div>
-            </div>
-            <div
-              className={classNames({
-                [styles.iconItem]: true,
-                [styles.iconItem_go]: true,
-              })}
+            </a>
+            <a
+              href="https://www.google.com/intl/ru/gmail/about/"
+              target="_blank"
+              rel="noreferrer"
             >
-              <div className={styles.iconCircle}>
-                <FaGooglePlusG className={styles.google} />
+              <div
+                className={classNames({
+                  [styles.iconItem]: true,
+                  [styles.iconItem_go]: true,
+                })}
+              >
+                <div className={styles.iconCircle}>
+                  <SiGmail className={styles.google} />
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
