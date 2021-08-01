@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { VscChromeClose } from 'react-icons/vsc';
 import classNames from 'classnames';
 import { FaTwitter, FaFacebookF, FaGooglePlusG } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { loginModalCloseAction } from '../../store/madals/actions';
 import styles from './LoginModal.module.scss';
 import LoginForm from './LoginForm';
@@ -67,16 +68,22 @@ const LoginModal = () => {
         </div>
         <div className={styles.Footer}>
           <div className={styles.socials}>
-            <div
-              className={classNames({
-                [styles.iconItem]: true,
-                [styles.iconItem_tw]: true,
-              })}
+            <a
+              href="https://twitter.com/home?lang=ru"
+              target="_blank"
+              rel="noreferrer"
             >
-              <div className={styles.iconCircle}>
-                <FaTwitter className={styles.twitter} />
+              <div
+                className={classNames({
+                  [styles.iconItem]: true,
+                  [styles.iconItem_tw]: true,
+                })}
+              >
+                <div className={styles.iconCircle}>
+                  <FaTwitter className={styles.twitter} />
+                </div>
               </div>
-            </div>
+            </a>
             <div
               className={classNames({
                 [styles.iconItem]: true,

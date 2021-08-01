@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 /* eslint-disable object-curly-newline */
 /* eslint-disable operator-linebreak */
-import React from 'react';
+import React, { useState } from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { withStyles } from '@material-ui/core/styles';
@@ -23,6 +24,7 @@ import {
 import getOneProduct from '../../../../api/getOneProduct';
 import RadioInput from '../../../UI/RadioInput/RadioInput';
 import RadioInput2 from '../../../UI/RadioInput2/RadioInput';
+import FinalModal from '../../../FinalModal/FinalModal';
 
 const GreenRadio = withStyles({
   root: {
@@ -35,12 +37,18 @@ const GreenRadio = withStyles({
   checked: {},
 })((props) => <Radio color="default" {...props} />);
 
-const ContactDetails = () => {
+const ContactDetails = ({ currentUser }) => {
   const cart = useSelector((state) => state.cart.cart);
   const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
+  // const currentUser = useSelector((state) => state.admin.currentUser);
   const dispatch = useDispatch();
   const currentUserId = useSelector((state) => state.admin.currentUser._id);
   const [selectedValueDelivery, setSelectedValueDelivery] = React.useState('a');
+
+  const [modalActive, setModalActive] = useState(false);
+  // const handleOrderConfirm = () => {
+  //   setModalActive(true);
+  // };
 
   const orderProducts = [];
   if (!isLoggedIn) {
@@ -78,25 +86,26 @@ const ContactDetails = () => {
       letterSubject: 'ABC_Photo_ordering confirm',
       letterHtml: `<h1>${values.name}, Ваш заказ принят. Номер заказа ${orderNo}.</h1><p>Мы свяжемся с Вами в ближайшее время</p>`,
     };
-    if (isLoggedIn) {
-      newOrder.customerId = currentUserId;
-    } else {
-      newOrder.products = JSON.stringify(orderProducts);
-    }
-    if (isLoggedIn) {
-      createOrder(newOrder);
-      dispatch(cartDeleteAction());
-    } else {
-      createOrder(newOrder);
-      // clear cart in REDUX & LocalStorege
-      dispatch(deleteLocalCartAction());
-    }
-    resetForm();
+    // if (isLoggedIn) {
+    //   newOrder.customerId = currentUserId;
+    // } else {
+    //   newOrder.products = JSON.stringify(orderProducts);
+    // }
+    // if (isLoggedIn) {
+    //   createOrder(newOrder);
+    //   dispatch(cartDeleteAction());
+    // } else {
+    //   createOrder(newOrder);
+    //   // clear cart in REDUX & LocalStorege
+    //   dispatch(deleteLocalCartAction());
+    // }
+    // resetForm();
+    // setModalActive(true);
   };
 
-  const handleChangeDelivery = (event) => {
-    console.log(event.target.value);
-    setSelectedValueDelivery(event.target.value);
+  const handleChangeDelivery = (e) => {
+    console.log(e.target.value);
+    setSelectedValueDelivery(e.target.value);
   };
   // ==================================================
   const phoneRegExp =
@@ -104,19 +113,24 @@ const ContactDetails = () => {
   const validation = yup.object().shape({
     name: yup.string().typeError('Должна быть строка').required('Введите имя'),
     radioButton: yup.string(),
-    phone: yup
-      .string()
-      .matches(
-        phoneRegExp,
-        'Номер телефона должен начинаться с "+380", допустимые символы - от 0 до 9.'
-      )
-      .required('Введите номер телефона +380 XX XXX XXXX'),
-    email: yup
-      .string()
-      .email('Введите корректный email')
-      .required('Введите емэйл'),
+    // phone: yup
+    //   .string()
+    //   .matches(
+    //     phoneRegExp,
+    //     'Номер телефона должен начинаться с "+380", допустимые символы - от 0 до 9.'
+    //   )
+    //   .required('Введите номер телефона +380 XX XXX XXXX'),
+    // email: yup
+    //   .string()
+    //   .email('Введите корректный email')
+    //   .required('Введите емэйл'),
+
+    // optionsSelfDelivery: yup.string().required('Введите емэйл'),
+    // optionsNPDelivery: yup.string().required('Введите емэйл'),
+    // address: yup.string().required('Введите емэйл'),
+
     optionsSelfDelivery: yup.string().when('radioButton', {
-      is: 'a',
+      is: '',
       then: yup.string().required('Выберите пункт выдачи'),
     }),
   });
@@ -146,19 +160,34 @@ const ContactDetails = () => {
       </option>
     </>
   );
+
+  const initialValues1 = {
+    name: '123',
+    phone: '',
+    email: '',
+    address: '',
+    optionsSelfDelivery: '',
+    optionsNPDelivery: '',
+    radioButton: '',
+    radioButton3: '',
+  };
+
+  const initialValues2 = {
+    name: currentUser.firstName,
+    phone: currentUser.phone,
+    email: currentUser.email,
+    address: '',
+    optionsSelfDelivery: '',
+    optionsNPDelivery: '',
+    radioButton: '',
+    radioButton3: '',
+  };
+  console.log(currentUser.firstName);
+  console.log(initialValues2);
   return (
     <div className={styles.ContactDetails}>
       <Formik
-        initialValues={{
-          name: '',
-          phone: '',
-          email: '',
-          address: '',
-          optionsSelfDelivery: '',
-          optionsNPDelivery: '',
-          radioButton: '',
-          radioButton3: '',
-        }}
+        initialValues={initialValues2}
         validateOnBlur
         validationSchema={validation}
         onSubmit={handleFormSubmit}
@@ -215,13 +244,13 @@ const ContactDetails = () => {
                   label="Female"
                   onChange={handleChangeDelivery}
                 /> */}
-                {/* <RadioInput2
+                <RadioInput2
                   checked={selectedValueDelivery === 'a'}
                   name="radioButton"
                   label="RadioInput2"
                   value="a"
                   type="radio"
-                  onChange={(e) => handleChangeDelivery}
+                  onChange={(e) => handleChangeDelivery(e)}
                 />
                 <RadioInput2
                   checked={selectedValueDelivery === 'b'}
@@ -229,8 +258,8 @@ const ContactDetails = () => {
                   label="RadioInput2"
                   value="b"
                   type="radio"
-                  onChange={(e) => handleChangeDelivery}
-                /> */}
+                  onChange={(e) => handleChangeDelivery(e)}
+                />
                 <GreenRadio
                   checked={selectedValueDelivery === 'a'}
                   onChange={handleChangeDelivery}
@@ -300,6 +329,7 @@ const ContactDetails = () => {
           </Form>
         )}
       </Formik>
+      <FinalModal active={modalActive} setActive={setModalActive} />
     </div>
   );
 };

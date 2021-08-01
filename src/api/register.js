@@ -24,13 +24,19 @@ const userRegister = (userData) => {
       {
         headers,
       }
-    )
-    // .then((res) => {
-    //   console.log('newUser', res);
-    //   /* Do something with customer */
-    // })
-    .catch((err) => {
-      console.log(err);
-    });
+    );
+  // .then((res) => {
+  //   console.log('newUser', res);
+  //   /* Do something with customer */
+  // })
+
+  // .catch((err) => {
+  //   console.log(err.message);
+  //   console.log(err);
+  //   if (err.response) {
+  //     console.log(err.response);
+  //   }
+  //   return Promise.reject(err.message);
+  // });
 };
 export default userRegister;

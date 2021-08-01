@@ -3,6 +3,7 @@
 import React from 'react';
 import { ErrorMessage, useField } from 'formik';
 import './TextInput.scss';
+import styles from './Input.module.scss';
 // import Checked from './icons/Checked';
 
 const TextInput = ({ label, ...props }) => {
@@ -23,7 +24,8 @@ const TextInput = ({ label, ...props }) => {
       <ErrorMessage
         component="div"
         name={field.name}
-        className="text-input-error"
+        className={styles.ErrorText}
+        // className="text-input-error"
       />
       {/* {meta.touched && !meta.error && <Checked />} */}
     </div>

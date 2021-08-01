@@ -14,7 +14,11 @@ import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import LoginApi from '../../api/login';
 import TextInput from '../UI/Input/TextInput';
-import { isAdminAction, isLoggedInAction } from '../../store/admin/actions';
+import {
+  exitAction,
+  isAdminAction,
+  isLoggedInAction,
+} from '../../store/admin/actions';
 import styles from './LoginModal.module.scss';
 import Button from '../UI/Button/Button';
 import { loginModalCloseAction } from '../../store/madals/actions';
@@ -31,6 +35,14 @@ const LoginForm = () => {
       .min(7, 'Must be 7 characters or more')
       .required('Password is required'),
   });
+
+  const handleRemoveToken = () => {
+    setTimeout(() => {
+      dispatch(exitAction());
+      // localStorage.removeItem('token');
+      localStorage.removeItem('currentUser');
+    }, 3600000);
+  };
 
   const handleLogin = (values, { setSubmitting, resetForm }) => {
     console.log('handleLogin');
@@ -112,7 +124,11 @@ const LoginForm = () => {
               <p className={styles.forgotPass}>Забыли пароль?</p>
             </div>
             <div className={styles.BtnsWrapper}>
-              <Button type="submit" addClass="loginForm">
+              <Button
+                type="submit"
+                addClass="loginForm"
+                onClick={handleRemoveToken}
+              >
                 Войти
               </Button>
             </div>

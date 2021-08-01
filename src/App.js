@@ -32,7 +32,7 @@ import {
   logOutAction,
 } from './store/cart/actions';
 import CartPopup from './components/UI/CartPopup/CartPopup';
-import { userFromLocalStorageAction } from './store/admin/actions';
+import { exitAction, userFromLocalStorageAction } from './store/admin/actions';
 import { singleProductFromLocalStorageAction } from './store/singleProduct/actions';
 import Favorites from './pages/Favorites';
 import { favoritesFromLocalStorageAction } from './store/favorites/actions';
@@ -52,6 +52,7 @@ function App() {
   // === USER ===
   useEffect(() => {
     const userFromLocalStorage = localStorage.getItem('currentUser');
+    // const tokenFromLocalStorage = localStorage.getItem('token');
     if (userFromLocalStorage) {
       dispatch(userFromLocalStorageAction(JSON.parse(userFromLocalStorage)));
     }
@@ -69,7 +70,7 @@ function App() {
       // deleteCart();
     } else {
       console.log('LOG OUT');
-      dispatch(logOutAction());
+      // dispatch(logOutAction());
     }
   }, [dispatch, isLoggedIn]);
 

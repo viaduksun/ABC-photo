@@ -133,6 +133,7 @@
 // ====== FORMS =================================
 .formWrapper {
   // background: rgb(255, 198, 198);
+  padding-right: 5px;
 }
 .InputsWrapper {
   margin-top: 20px;
@@ -187,5 +188,5 @@
 }
 
 .Body::-webkit-scrollbar-thumb {
-  background-color: #5f5f5f;
+  background-color: #999999;
 }

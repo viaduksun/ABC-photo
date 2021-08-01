@@ -47,7 +47,7 @@ const TopMenu = () => {
             delete cart from DB
           </Button> */}
 
-          <LanguageSelector />
+          {/* <LanguageSelector /> */}
         </div>
       </div>
     </div>

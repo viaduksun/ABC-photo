@@ -11,46 +11,77 @@ import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
 import styles from './LoginModal.module.scss';
 import userRegister from '../../api/register';
 import TextInput from '../UI/Input/TextInput';
 import Button from '../UI/Button/Button';
+import { loginModalCloseAction } from '../../store/madals/actions';
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
   const takenEmailsFromDB = [
     'test01@gmail.com',
     'test02@gmail.com',
     'test03@gmail.com',
   ];
   const [visiblePassword, setVisiblePassword] = useState(false);
+  const [visiblePasswordConfirm, setVisiblePasswordConfirm] = useState(false);
+  const lowercaseRegex = /(?=.*[a-z])/;
+  const uppercaseRegex = /(?=.*[A-Z])/;
+  const numericRegex = /(?=.*[0-9])/;
   const registrationSchema = Yup.object().shape({
     firstName: Yup.string()
-      .max(7, 'Must be 7 characters or less')
-      .required('First name is required'),
+      .max(20, 'Must be 20 characters or less')
+      .required('Введите ваше имя'),
     lastName: Yup.string()
       .max(20, 'Must be 20 characters or less')
-      .required('Last name is required'),
+      .required('Введите вашу фамилию'),
     email: Yup.string()
+      .lowercase()
       .email('Email is invalid')
       .notOneOf(takenEmailsFromDB, 'Email already taken')
-      .required('Email is required'),
+      .required('Введите емэйл'),
     login: Yup.string()
-      .max(20, 'Must be 20 characters or less')
-      .required('Last name is required'),
+      .min(3, 'Login must be between 3 and 10 characters')
+      .max(10, 'Login must be between 3 and 10 characters')
+      .required('Введите логин'),
     phone: Yup.string()
       .max(15, 'Must be 15 characters or less')
-      .required('Phone is required'),
+      .required('Введите телефон'),
     password: Yup.string()
-      .max(10, 'Must be 10 characters or less')
-      .required('Phone is required'),
+      .matches(lowercaseRegex, 'Один символ в нижнем регистре обязателен')
+      .matches(uppercaseRegex, 'Один символ в верхнем регистре обязателен')
+      .matches(numericRegex, 'Один числовой символ обязателен')
+      .min(7, 'Введите не менее 7 символов')
+      .max(30, 'Введите не более 30 символов')
+      .required('Введите пароль'),
+    passwordConfirm: Yup.string()
+      .oneOf([Yup.ref('password')], 'Пароли не совпадают')
+      .required('Введите пароль'),
   });
 
   const handleRegister = (values, { setSubmitting, resetForm }) => {
     console.log('Register');
-    const { firstName, lastName, email, login, phone, password, isAdmin } =
-      values;
+    const {
+      firstName,
+      lastName,
+      email,
+      login,
+      phone,
+      password,
+      passwordConfirm,
+      isAdmin,
+    } = values;
     const isFormValid =
-      firstName && lastName && email && login && phone && password && isAdmin;
+      firstName &&
+      lastName &&
+      email &&
+      login &&
+      phone &&
+      password &&
+      passwordConfirm &&
+      isAdmin;
     if (isFormValid) {
       setSubmitting(true);
 
@@ -64,13 +95,24 @@ const RegisterForm = () => {
         isAdmin: values.isAdmin,
       };
       console.log(form);
-      userRegister(form).then((res) => {
-        resetForm();
-        setSubmitting(false);
-        console.log(res);
-        const userName = res.data.firstName;
-        alert(`Hello, ${userName}! You have been registered successfully!`);
-      });
+      userRegister(form)
+        .then((res) => {
+          if (res) {
+            // console.log(res);
+            resetForm();
+            setSubmitting(false);
+            const userName = res.data.firstName;
+            dispatch(loginModalCloseAction());
+            alert(`Hello, ${userName}! You have been registered successfully!`);
+          }
+        })
+        .catch((err) => {
+          if (err.response) {
+            // console.log(err.response);
+            // console.log(err.response.data.message);
+            alert(err.response.data.message);
+          }
+        });
     }
   };
 
@@ -84,6 +126,7 @@ const RegisterForm = () => {
           login: '',
           phone: '',
           password: '',
+          passwordConfirm: '',
           isAdmin: 'false',
         }}
         onSubmit={handleRegister}
@@ -92,14 +135,14 @@ const RegisterForm = () => {
         {(formik) => (
           <Form className={styles.FormWrapper}>
             <div className={styles.InputsWrapper}>
-              <TextInput label="First name" name="firstName" type="text" />
-              <TextInput label="Last name" name="lastName" type="text" />
-              <TextInput label="Email" name="email" type="email" />
-              <TextInput label="Login" name="login" type="text" />
-              <TextInput label="Phone" name="phone" type="text" />
+              <TextInput label="Имя" name="firstName" type="text" />
+              <TextInput label="Фамилия" name="lastName" type="text" />
+              <TextInput label="Емэйл" name="email" type="email" />
+              <TextInput label="Логин" name="login" type="text" />
+              <TextInput label="Телефон" name="phone" type="text" />
               <div className={styles.PasswordBlock}>
                 <TextInput
-                  label="Password"
+                  label="Пароль"
                   name="password"
                   type={visiblePassword ? 'text' : 'password'}
                 />
@@ -114,6 +157,27 @@ const RegisterForm = () => {
                   display={visiblePassword ? 'none' : 'block'}
                   onClick={() =>
                     setVisiblePassword((visibility) => !visibility)
+                  }
+                  className={styles.PasswordIcon}
+                />
+              </div>
+              <div className={styles.PasswordBlock}>
+                <TextInput
+                  label="Подтверждение пароля"
+                  name="passwordConfirm"
+                  type={visiblePasswordConfirm ? 'text' : 'password'}
+                />
+                <BsEye
+                  display={visiblePasswordConfirm ? 'block' : 'none'}
+                  onClick={() =>
+                    setVisiblePasswordConfirm((visibility) => !visibility)
+                  }
+                  className={styles.PasswordIcon}
+                />
+                <BsEyeSlash
+                  display={visiblePasswordConfirm ? 'none' : 'block'}
+                  onClick={() =>
+                    setVisiblePasswordConfirm((visibility) => !visibility)
                   }
                   className={styles.PasswordIcon}
                 />
