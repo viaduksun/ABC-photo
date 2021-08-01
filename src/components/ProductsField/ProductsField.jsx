@@ -13,10 +13,10 @@ import Pagination from '../Pagination/Pagination';
 
 const ProductsField = ({ products }) => {
   console.log('RENDER_ProductsField ');
-  const currentPage = useSelector((state) => state.productsPage.currentPage);
-  const allProducts = useSelector(
-    (state) => state.productsPage.AllProductsForPagination.length
-  );
+  // const currentPage = useSelector((state) => state.productsPage.currentPage);
+  // const allProducts = useSelector(
+  //   (state) => state.productsPage.AllProductsForPagination.length
+  // );
   const showGrid = useSelector((state) => state.productsPage.showGrid);
   const dispatch = useDispatch();
   const handlerSwitch = () => {
@@ -31,11 +31,11 @@ const ProductsField = ({ products }) => {
 };
   return (
     <div className={styles.ProductsField}>
-      <ProductsSorting
+      {/* <ProductsSorting
         currentPage={currentPage}
         allProducts={allProducts}
         handlerSwitch={handlerSwitch}
-      />
+      /> */}
       <div className={styles.ProductsFieldGridWrapp}>
         {showGrid ? (
           <div className={styles.ProductsFieldGrid}>

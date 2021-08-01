@@ -1,7 +1,7 @@
 .ProductsSorting {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin-left: 30px;
   margin-bottom: 25px;
 }
 .ProductsSortingLeft {
@@ -49,10 +49,14 @@
   font-size: 30px;
   cursor: pointer;
   transition: .3s all;
+  position: absolute;
+  right: -2.5%;
 }
 .SwitchIconRotate {
   font-size: 30px;
   cursor: pointer;
   transform: rotate(90deg);
   transition: .3s all;
+  position: absolute;
+  right: -2.5%;
 }

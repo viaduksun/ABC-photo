@@ -33,18 +33,6 @@ const ProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
   const handlePerPage = (e) => {
     const showBy = +e.target.value;
     dispatch(setCurrentPerPageAction(showBy));
-    setCurrentInterval(
-      currentInterval.map((item, index) => {
-        if (index === 0) {
-          return showBy * currentPage - showBy + 1;
-        }
-        if (index === 1 && showBy * currentPage < allProducts) {
-          return showBy * currentPage;
-        }
-        return allProducts;
-      })
-    );
-    dispatch(setSearchProductsPerPageAction(showBy));
   };
 
   const handleMinMaxSort = (e) => {
@@ -52,30 +40,9 @@ const ProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
     dispatch(setSortQueryAction(e.target.value));
   };
 
-  // const stateValue = [
-  //   {
-  //     text: 'товара',
-  //     id: 3,
-  //     value: '3',
-  //   },
-  //   {
-  //     text: 'товаров',
-  //     id: 6,
-  //     value: '6',
-  //   },
-  //   {
-  //     text: 'товаров',
-  //     id: 9,
-  //     value: '9'
-  //   }
-  // ];
-
   return (
     <div className={styles.ProductsSorting}>
       <div className={styles.ProductsSortingLeft}>
-        <div className={styles.NumberOf}>
-          {currentInterval[0]} - {currentInterval[1]} из {allProducts}
-        </div>
         <div className={styles.Show}>
           <span>Показывать по</span>
           <select
@@ -89,11 +56,6 @@ const ProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
               6 товаров
             </option>
             <option value="9">9 товаров</option>
-            {/* {stateValue.map((value) => (
-              <option key={value.id} value={value.id}>
-                {value.value} {value.text}
-              </option>
-            ))} */}
           </select>
         </div>
       </div>

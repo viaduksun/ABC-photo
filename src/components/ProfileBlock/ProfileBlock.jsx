@@ -29,6 +29,7 @@ const ProfileBlock = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('currentUser');
   };
+
   const btnAdmin = classNames({
     [styles.btnProfile]: true,
     [styles.btnProfile_active]: current === 'admin',

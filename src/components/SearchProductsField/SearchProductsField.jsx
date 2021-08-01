@@ -6,11 +6,12 @@ import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import styles from './SearchProductsField.module.scss';
 import {showGridAction} from '../../store/products/actions';
-import ProductsSorting from '../ProductsSorting/ProductsSorting';
+import SearchProductsSorting from '../SearchProductsSorting/SearchProductsSorting';
 import ProductCard from '../ProductCard/ProductCard';
 import ProductCardLine from '../ProductCardLine/ProductCardLine';
 import Pagination from '../Pagination/Pagination';
 import PaginationSearchProducts from '../PaginationSearchProducts/PaginationSearchProducts';
+import { showGridSearchProductsAction } from '../../store/searchProducts/actions';
 
 const SearchProductsField = ({ searchProducts }) => {
   console.log('RENDER_ProductsField ');
@@ -18,15 +19,15 @@ const SearchProductsField = ({ searchProducts }) => {
   const allProducts = useSelector(
     (state) => state.productsPage.AllProductsForPagination.length
   );
-  const showGrid = useSelector((state) => state.productsPage.showGrid);
+  const showGrid = useSelector((state) => state.searchProducts.showGrid);
   const dispatch = useDispatch();
   const handlerSwitch = () => {
-    dispatch(showGridAction());
+    dispatch(showGridSearchProductsAction());
   };
 
   return (
     <div className={styles.ProductsField}>
-      <ProductsSorting
+      <SearchProductsSorting
         currentPage={currentPage}
         allProducts={allProducts}
         handlerSwitch={handlerSwitch}

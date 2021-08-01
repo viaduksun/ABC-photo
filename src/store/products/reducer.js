@@ -2,6 +2,8 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-case-declarations */
 import {
+  CLEAR_PRODUCTS,
+  GET_PRODUCTS_FROM_LOCAL_STORAGE,
   SET_CURRENT_CAREGORY,
   SET_CURRENT_PAGE,
   SET_CURRENT_PRODUCTS_ARR,
@@ -61,17 +63,29 @@ export const productsReducer = (state = initialState, action) => {
     case SET_PER_PAGE:
       return {
         ...state,
+        currentPage: 1,
         currentPerPage: action.payload,
       };
     case SET_SORT_BY:
       return {
         ...state,
+        products: [],
         sortBy: action.payload,
       };
     case SHOW_GRID:
       return {
         ...state,
         showGrid: !state.showGrid,
+      };
+    case CLEAR_PRODUCTS:
+      return {
+        ...state,
+        products: [],
+      };
+    case GET_PRODUCTS_FROM_LOCAL_STORAGE:
+      return {
+        ...state,
+        products: action.payload,
       };
     default:
       return state;

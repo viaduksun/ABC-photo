@@ -27,6 +27,8 @@ import {
   FAVORITE_PRODUCT_CHANGE_ORDER,
 } from './favorites/types';
 import { ADD_VIEWED_PRODUCT } from './viewedProducts/types';
+import { SET_SEARCH_PRODUCTS } from './searchProducts/types';
+import { SET_PRODUCTS } from './products/types';
 
 // eslint-disable-next-line no-underscore-dangle
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
@@ -71,6 +73,20 @@ const localStorageMiddleware =
       localStorage.setItem(
         'viewedProducts',
         JSON.stringify(viewedProducts.viewedProducts)
+      );
+    }
+    if (action.type === SET_SEARCH_PRODUCTS) {
+      const { searchProducts } = getState();
+      localStorage.setItem(
+        'searchProducts',
+        JSON.stringify(searchProducts.searchProducts)
+      );
+    }
+    if (action.type === SET_PRODUCTS) {
+      const { productsPage } = getState();
+      localStorage.setItem(
+        'products',
+        JSON.stringify(productsPage.products)
       );
     }
     return result;

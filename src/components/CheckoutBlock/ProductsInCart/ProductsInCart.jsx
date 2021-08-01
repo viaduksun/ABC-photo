@@ -15,10 +15,10 @@ import ProductInCart from './ProductInCart/ProductInCart';
 import createOrder from '../../../api/createOrder';
 
 const ProductsInCart = () => {
-  const [modalActive, setModalActive] = useState(false);
-  const handleOrderConfirm = () => {
-    setModalActive(true);
-  };
+  // const [modalActive, setModalActive] = useState(false);
+  // const handleOrderConfirm = () => {
+  //   setModalActive(true);
+  // };
 
   const cartDB = useSelector((state) => state.cart.cartDB);
   const cart = useSelector((state) => state.cart.cart);
@@ -71,12 +71,11 @@ const ProductsInCart = () => {
           type="submit"
           form="orderCheckoutForm"
           className="Button Button_ordering_confirm"
-          onClick={handleOrderConfirm}
         >
           Подтвердить
         </button>
       </div>
-      <FinalModal active={modalActive} setActive={setModalActive} />
+      {/* <FinalModal active={modalActive} setActive={setModalActive} /> */}
     </div>
   );
 };

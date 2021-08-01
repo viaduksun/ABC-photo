@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable max-len */
 /* eslint-disable prefer-const */
 /* eslint-disable no-underscore-dangle */
@@ -197,12 +199,11 @@ export const cartDeleteAction = () => (dispatch) => {
     }
   );
 };
-export const logOutAction = () => {
+export const logOutAction = () =>
   localStorage.removeItem('token');
-  return ({
-    type: LOG_OUT
-  });
-};
+({
+  type: LOG_OUT
+});
 export const addSingleProductToCartAction = (singleProduct) => ({
   type: ADD_SINGLE_PRODUCT_TO_CART,
   payload: { singleProduct },
