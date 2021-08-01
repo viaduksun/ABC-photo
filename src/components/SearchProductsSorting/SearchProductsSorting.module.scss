@@ -1,0 +1,58 @@
+.ProductsSorting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.ProductsSortingLeft {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.NumberOf {
+  font-size: 14px;
+  line-height: 26px;
+  font-family: 'Roboto', sans-serif;
+  margin-right: 20px;
+}
+.Show {
+  font-size: 14px;
+  line-height: 26px;
+  font-family: 'Roboto', sans-serif;
+  margin-right: 20px;
+}
+.SelectAmount {
+  margin-left: 10px;
+ border: 1px solid #E5E5E5;
+ color: #6F6F6F;
+ padding: 5px;
+ cursor: pointer;
+}
+.SelectPrice {
+  margin-left: 10px;
+ border: 1px solid #E5E5E5;
+ color: #6F6F6F;
+ padding: 5px;
+ cursor: pointer;
+}
+
+.ProductsSortingRight {
+  span {
+    font-size: 14px;
+    line-height: 26px;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.SwitchIcon {
+  font-size: 30px;
+  cursor: pointer;
+  transition: .3s all;
+}
+.SwitchIconRotate {
+  font-size: 30px;
+  cursor: pointer;
+  transform: rotate(90deg);
+  transition: .3s all;
+}

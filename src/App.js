@@ -38,6 +38,8 @@ import Favorites from './pages/Favorites';
 import { favoritesFromLocalStorageAction } from './store/favorites/actions';
 import { viewedProductsFromLocalStorageAction } from './store/viewedProducts/actions';
 import deleteCart from './api/deleteCart';
+import { searchProductsFromLocalStorageAction } from './store/searchProducts/actions';
+import { getProductsFromLocalStorageAction } from './store/products/actions';
 
 function App() {
   const cart = useSelector((state) => state.cart.cart);
@@ -106,6 +108,8 @@ function App() {
     const favoritesFromLocalStorage = localStorage.getItem('favorites');
     const singleProductFromLocalStorage = localStorage.getItem('singleProduct');
     const viewedProductsFromLocalStorage = localStorage.getItem('viewedProducts');
+    const searchProductsFromLocalStorage = localStorage.getItem('searchProducts');
+    const productsFromLocalStorage = localStorage.getItem('products');
     if (cartFromLocalStorage) {
       dispatch(cartFromLocalStorageAction(cartFromLocalStorage));
     }
@@ -120,6 +124,16 @@ function App() {
     if (viewedProductsFromLocalStorage) {
       dispatch(
         viewedProductsFromLocalStorageAction(viewedProductsFromLocalStorage)
+      );
+    }
+    if (searchProductsFromLocalStorage) {
+      dispatch(
+        searchProductsFromLocalStorageAction(searchProductsFromLocalStorage)
+      );
+    }
+    if (productsFromLocalStorage) {
+      dispatch(
+        getProductsFromLocalStorageAction(productsFromLocalStorage)
       );
     }
   }, [dispatch]);

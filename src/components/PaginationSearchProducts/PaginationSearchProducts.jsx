@@ -26,11 +26,13 @@ productsPerPage, totalProducts, currentPage, scrollToTop
     const handlePaginateRight = () => {
       if (currentPage <= pageNumbers.length - 1) {
         dispatch(paginateAction(currentPage + 1));
+        scrollToTop();
       }
     };
     const handlePaginateLeft = () => {
       if (currentPage > 1) {
         dispatch(paginateAction(currentPage - 1));
+        scrollToTop();
       }
     };
     return (

@@ -1,35 +1,41 @@
-import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
-import { getSearchProductsAction, clearSearchProductsAction } from '../../../store/searchProducts/actions';
+import {
+ getSearchProductsAction,
+ clearSearchProductsAction,
+ setSearchValueAction,
+ clearSearchValueAction,
+ setSearchValueForUSerAction
+} from '../../../store/searchProducts/actions';
 import styles from './SearchForm.module.scss';
 
 const SearchForm = () => {
-  const [value, setValue] = useState('');
-  const handleChange = (e) => {
-    console.log(e.target.value);
-    setValue(e.target.value);
-  };
   const dispatch = useDispatch();
+  const searchValue = useSelector((state) => state.searchProducts.searchValue);
+  const handleChange = (e) => {
+    dispatch(setSearchValueAction(e.target.value));
+  };
 
   const handleClick = () => {
     dispatch(clearSearchProductsAction());
-    dispatch(getSearchProductsAction(value));
-    setValue('');
+    dispatch(setSearchValueForUSerAction(searchValue));
+    dispatch(getSearchProductsAction(searchValue));
+    dispatch(clearSearchValueAction());
   };
   
   return (
     <div className={styles.searchFormWrapper}>
       <form className={styles.searchForm}>
         <input
-          value={value}
+          value={searchValue}
           type="text"
           className={styles.searchInput}
           placeholder="Search text"
           onChange={(e) => handleChange(e)}
         />
-        {!value ? (
+        {!searchValue ? (
           <button
             className={styles.searchButton}
             type="button"

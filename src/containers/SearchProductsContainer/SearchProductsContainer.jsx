@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-tabs */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/self-closing-comp */
@@ -9,6 +10,7 @@ import { IoMdOptions } from 'react-icons/io';
 import { VscChromeClose } from 'react-icons/vsc';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
+import ProductsNotFound from '../../assets/img/searchProducts/ProductsNotFound.png';
 import styles from './SearchProductsContainer.module.scss';
 import PhotoCamerasFilter from '../../components/ProductsFilter/PhotoCamerasFilter';
 import {
@@ -30,7 +32,7 @@ const SearchProductsContainer = () => {
   );
   const currentPage = useSelector((state) => state.searchProducts.currentPage);
   const searchProductsPerPage = useSelector((state) => state.searchProducts.searchProductsPerPage);
-
+  const searchValueForUser = useSelector((state) => state.searchProducts.searchValueForUser);
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
     document.body.classList.toggle('no-scroll');
@@ -72,26 +74,37 @@ const SearchProductsContainer = () => {
           <div className={styles.filterContainer}>
             <SearchProductsFilter />
           </div>
-          {searchProducts.length === 0 ? (
+          {searchProducts.length ? (
+            <SearchProductsField
+              searchProducts={currentSearchProducts}
+            />
+          ) : (isLoadingSearchProducts
+          ? (
             <div className={styles.PrductsFieldLoader}>
               <Loader />
             </div>
           ) : (
-            !isLoadingSearchProducts && (
-              <SearchProductsField
-                searchProducts={currentSearchProducts}
-              />
-            )
-          )}
+            <div className={styles.ProductsNotFound}>
+              <p>
+                По запросу
+                {' "'}
+                <span>{searchValueForUser}</span>
+                {'" '}
+                ничего не найдено
+              </p>
+              <img src={ProductsNotFound} alt={ProductsNotFound} />
+            </div>
+          ))}
         </div>
+        {searchProducts.length !== 0 && (
         <PaginationSearchProducts
           currentPage={currentPage}
           productsPerPage={searchProductsPerPage}
           totalProducts={searchProducts.length}
           scrollToTop={scrollToTopHandler}
         />
+        )}
       </div>
-
       <div className={filtersOverLay} onClick={handleClick}></div>
       <div className={filtersMobile}>
         <div className={styles.filtersCloseBtn} onClick={handleClick}>
@@ -99,7 +112,6 @@ const SearchProductsContainer = () => {
         </div>
         <PhotoCamerasFilter />
       </div>
-    
     </div>
   );
 };

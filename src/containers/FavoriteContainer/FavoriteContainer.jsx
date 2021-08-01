@@ -53,7 +53,7 @@ const FavoriteContainer = () => {
             onClick={switchHandler}
             className={showGrid ? styles.HeaderIcon : styles.HeaderIconRotate}
           >
-            {showGrid ? <GiHamburgerMenu /> : <CgMenuGridR />}
+            {showGrid ? <GiHamburgerMenu style={{color: '#51ad33'}} /> : <CgMenuGridR style={{color: '#51ad33'}} />}
           </div>
           )}
         </div>

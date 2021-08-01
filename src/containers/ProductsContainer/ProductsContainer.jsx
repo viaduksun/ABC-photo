@@ -12,13 +12,16 @@ import styles from './ProductsContainer.module.scss';
 import PhotoCamerasFilter from '../../components/ProductsFilter/PhotoCamerasFilter';
 import ProductsField from '../../components/ProductsField/ProductsField';
 import {
+  clearProductsAction,
   getAllProductsCurrentCategoryAction,
   getFilteredProductsAction,
+  showGridAction,
 } from '../../store/products/actions';
 import Loader from '../../components/UI/Loader/Loader';
 import VideoCamerasFilter from '../../components/ProductsFilter/VideoCamerasFilter';
 import ActionCamerasFilter from '../../components/ProductsFilter/ActionCamerasFilter';
 import LensesFilter from '../../components/ProductsFilter/LensesFilter';
+import ProductsSorting from '../../components/ProductsSorting/ProductsSorting';
 
 const ProductsContainer = () => {
   const dispatch = useDispatch();
@@ -29,6 +32,7 @@ const ProductsContainer = () => {
   const perPage = useSelector((state) => state.productsPage.currentPerPage);
   console.log(currentCategory, page, perPage);
   useEffect(() => {
+    dispatch(clearProductsAction());
     dispatch(getFilteredProductsAction(currentCategory, page, perPage, ''));
     dispatch(getAllProductsCurrentCategoryAction(currentCategory));
   }, [currentCategory, dispatch, page, perPage]);
@@ -36,6 +40,14 @@ const ProductsContainer = () => {
   const isLoadingProducts = useSelector(
     (state) => state.productsPage.isLoadingProducts
   );
+  const currentPage = useSelector((state) => state.productsPage.currentPage);
+  const allProducts = useSelector(
+    (state) => state.productsPage.AllProductsForPagination.length
+  );
+
+  const handlerSwitch = () => {
+    dispatch(showGridAction());
+  };
 
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
@@ -68,16 +80,22 @@ const ProductsContainer = () => {
             {currentCategory === 'actioncameras' && <ActionCamerasFilter />}
             {currentCategory === 'lenses' && <LensesFilter />}
           </div>
-          {products.length === 0 ? (
-            <div className={styles.PrductsFieldLoader}>
-              <Loader />
-            </div>
+          <div>
+            <ProductsSorting
+              currentPage={currentPage}
+              allProducts={allProducts}
+              handlerSwitch={handlerSwitch}
+            />
+            {products.length === 0 ? (
+              <div className={styles.PrductsFieldLoader}>
+                <Loader />
+              </div>
           ) : (
             !isLoadingProducts && <ProductsField products={products} />
           )}
+          </div>
         </div>
       </div>
-
       <div className={filtersOverLay} onClick={handleClick}></div>
       <div className={filtersMobile}>
         <div className={styles.filtersCloseBtn} onClick={handleClick}>
