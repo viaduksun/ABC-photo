@@ -27,6 +27,7 @@ const BottomMenuLink = ({ parentId, path, title, key, page }) => {
     setdropActive(!dropActive);
   };
   const handleDropdownClick = (id) => {
+    console.log('DROP');
     setdropActive(false);
     // console.log('MENU clicked', id);
     // &characteristics.type[1]=Зеркальный,Суперзум

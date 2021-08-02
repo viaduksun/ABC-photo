@@ -8,7 +8,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 .NumberOf {
   font-size: 14px;
@@ -24,17 +23,17 @@
 }
 .SelectAmount {
   margin-left: 10px;
- border: 1px solid #E5E5E5;
- color: #6F6F6F;
- padding: 5px;
- cursor: pointer;
+  border: 1px solid #e5e5e5;
+  color: #6f6f6f;
+  padding: 5px;
+  cursor: pointer;
 }
 .SelectPrice {
   margin-left: 10px;
- border: 1px solid #E5E5E5;
- color: #6F6F6F;
- padding: 5px;
- cursor: pointer;
+  border: 1px solid #e5e5e5;
+  color: #6f6f6f;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .ProductsSortingRight {
@@ -48,15 +47,15 @@
 .SwitchIcon {
   font-size: 30px;
   cursor: pointer;
-  transition: .3s all;
+  transition: 0.3s all;
   position: absolute;
-  right: -2.5%;
+  right: 0;
 }
 .SwitchIconRotate {
   font-size: 30px;
   cursor: pointer;
   transform: rotate(90deg);
-  transition: .3s all;
+  transition: 0.3s all;
   position: absolute;
-  right: -2.5%;
+  right: 0;
 }

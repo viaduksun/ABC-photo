@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
@@ -8,8 +10,16 @@ import styles from './PhoneDropdown.module.scss';
 
 const PhoneDropdown = () => {
   const [isActive, setIsActive] = useState(false);
-  const handleActive = () => {
-    setIsActive(!isActive);
+  const handleActive = (event) => {
+    event.preventDefault();
+    console.log(event.target.id);
+    if (event.target.id === 'phoneDropdown') {
+      setIsActive(!isActive);
+    }
+  };
+  const handleCallMe = (event, value) => {
+    event.preventDefault();
+    console.log('CALL ME', value);
   };
   const iconClass = classNames({
     [styles.arrowIcon]: true,
@@ -20,11 +30,12 @@ const PhoneDropdown = () => {
     [styles.phonePopap_active]: isActive,
   });
   return (
-    <div
-      className={styles.phoneWrapper}
-      onMouseEnter={handleActive}
-      onMouseLeave={handleActive}
-    >
+    <div className={styles.phoneWrapper}>
+      <div
+        className={styles.phoneButtonCap}
+        onClick={(event) => handleActive(event)}
+        id="phoneDropdown"
+      />
       <p className={styles.phoneMainText}>044 500 50 50</p>
       <BsChevronDown className={iconClass} />
       <div className={phonePopap}>
@@ -33,7 +44,9 @@ const PhoneDropdown = () => {
           <p className={styles.phoneTitle}>9:00-21:00</p>
           <div className={styles.phonePopapWrapper}>
             <FiPhone className={styles.phonePopapIcon} />
-            <a className={styles.popapMainText} href="tel:044 500 50 50">044 500 50 50</a>
+            <a className={styles.popapMainText} href="tel:044 500 50 50">
+              044 500 50 50
+            </a>
           </div>
         </div>
         <div className={styles.phonePopapItem}>
@@ -41,11 +54,16 @@ const PhoneDropdown = () => {
           <p className={styles.phoneTitle}>9:00-21:00</p>
           <div className={styles.phonePopapWrapper}>
             <FiPhone className={styles.phonePopapIcon} />
-            <a className={styles.popapMainText} href="tel:097 500 50 50">097 500 50 50</a>
+            <a className={styles.popapMainText} href="tel:097 500 50 50">
+              097 500 50 50
+            </a>
           </div>
         </div>
 
-        <form className={styles.phonePopapForm}>
+        <form
+          className={styles.phonePopapForm}
+          onSubmit={(event) => handleCallMe(event)}
+        >
           <p className={styles.formSeparator}>Или</p>
           <p className={styles.popapMainText}>Перезвонить мне</p>
           <label htmlFor="phone" className={styles.phoneLabel}>

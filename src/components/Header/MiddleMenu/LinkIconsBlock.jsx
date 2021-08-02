@@ -44,11 +44,16 @@ export default function LoginIcon() {
         {/* Если залогинился то показываем это: */}
         {isLoggedIn && !isAdmin && (
           <Link to="/profile" className={styles.HeaderLink}>
-            <div className={styles.HeaderIconWrapper}>
+            <div className={styles.HeaderIconAvatarWrapper}>
               <span className={styles.HeaderUserName}>
                 {currentUser.firstName}
               </span>
-              <FaUserAlt className={styles.HeaderIcon} />
+              {currentUser.avatar ? (
+                <img src={currentUser.avatar} alt="avatar" />
+              ) : (
+                <FaUserAlt className={styles.HeaderIcon} />
+              )}
+              {/* <FaUserAlt className={styles.HeaderIcon} /> */}
             </div>
             <div className={styles.HeaderProfileTitle}>
               <p className={styles.HeaderIconText}>Личный кабинет</p>

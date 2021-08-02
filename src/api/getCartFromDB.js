@@ -10,10 +10,6 @@ const getCartFromDB = () => {
     Authorization: token,
   };
   return axios
-    .get('https://intense-hamlet-33316.herokuapp.com/api/cart', { headers })
-
-    .catch((err) => {
-      /* Do something with error, e.g. show error to user */
-    });
+    .get('https://intense-hamlet-33316.herokuapp.com/api/cart', { headers });
 };
 export default getCartFromDB;
