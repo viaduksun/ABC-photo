@@ -6,10 +6,10 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { BsX } from 'react-icons/bs';
 import styles from './ModalSubscribeProduct.module.scss';
-import addSubscriber from '../../../api/addSubscriber';
+// import addSubscriber from '../../../api/addSubscriber';
 
 // eslint-disable-next-line react/prop-types
-const ModalSubscribeProduct = ({ active, setActive, singleProduct }) => {
+const ModalSubscribeProduct = ({ active, setActive }) => {
   const handleClose = () => {
     setActive(false);
   };
@@ -23,18 +23,7 @@ const ModalSubscribeProduct = ({ active, setActive, singleProduct }) => {
 
   // eslint-disable-next-line no-unused-vars
   const handleOnSubmitForm = (values, { setSubmitting, resetForm }) => {
-      setSubmitting(true);
-      const form = {
-        name: values.name,
-        phone: values.phone,
-        email: values.email,
-      };
-      console.log(form);
-      addSubscriber(singleProduct, form).then((res) => {
-        setSubmitting(false);
-        resetForm();
-        console.log(res);
-      });
+     setActive(false);
   };
 
   return (
@@ -63,9 +52,9 @@ const ModalSubscribeProduct = ({ active, setActive, singleProduct }) => {
             validationSchema={validation}
           >
             {({
-values, errors, touched, handleChange, handleBlur
+values, errors, touched, handleChange, handleBlur, handleSubmit
 }) => (
-  <form className={styles.ContactDetailsFormBlock} onSubmit={handleOnSubmitForm}>
+  <form className={styles.ContactDetailsFormBlock} onSubmit={handleSubmit}>
     <div className={styles.ContactDetailsField}>
       <label htmlFor="name">Имя</label>
       <input name="name" id="name" type="text" placeholder="Иван Петрович" onChange={handleChange} onBlur={handleBlur} value={values.name} />
@@ -86,7 +75,6 @@ values, errors, touched, handleChange, handleBlur
     )}
           </Formik>
         </div>
- 
       </div>
     </div>
   );

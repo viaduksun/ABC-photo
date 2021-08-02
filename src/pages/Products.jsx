@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Breadcrumbs from '../containers/Breadcrumbs/Breadcrumbs';
 import ProductsContainer from '../containers/ProductsContainer/ProductsContainer';
 import Stories from '../containers/Stories/Stories';
@@ -12,6 +12,18 @@ import {
 } from '../store/products/actions';
 
 const Products = () => {
+  const currentCategory = useSelector((state) => state.productsPage.currentCategory);
+  let activeBreadcrumbs = '';
+  if (currentCategory === 'photocameras') {
+    activeBreadcrumbs = 'Фотоаппараты';
+  } else if (currentCategory === 'videocameras') {
+    activeBreadcrumbs = 'Видеокамеры';
+  } else if (currentCategory === 'actioncameras') {
+    activeBreadcrumbs = 'Экшнкамеры';
+  } else if (currentCategory === 'lenses') {
+    activeBreadcrumbs = 'Объективы';
+  }
+  const array = [['/', 'Главная'], ['products', activeBreadcrumbs]];
   const dispatch = useDispatch();
   useEffect(() => {
     const currentCategory = localStorage.getItem('currentCategory');
@@ -32,10 +44,6 @@ const Products = () => {
       dispatch(setCurrentPerPageAction(6));
     }
   }, [dispatch]);
-  const array = [
-    ['/', 'Главная'],
-    ['products', 'Цифровая техника'],
-  ];
   return (
     <>
       <Breadcrumbs data={array} />

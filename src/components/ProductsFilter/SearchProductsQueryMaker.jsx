@@ -3,10 +3,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useMemo, memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {getFilteredSearchProductsAction, getSearchProductsAction } from '../../store/searchProducts/actions';
+import {filterPriceSearchProductsAction, getFilteredSearchProductsAction, getSearchProductsAction } from '../../store/searchProducts/actions';
 
 const FilterQueryMaker = ({
   brandState,
+  priceState
 }) => {
   const dispatch = useDispatch();
   const result = useMemo(() => {
@@ -42,12 +43,14 @@ const FilterQueryMaker = ({
       addQueryBrandNikon = filteredBrandArrNikon.join(',');
     }
 
-    if (addQueryBrandCanon === 'Canon') {
-      dispatch(getFilteredSearchProductsAction('Canon'));
-    } else {
-      // dispatch(getSearchProductsAction('photocameras'));
-    }
-  }, [brandState, dispatch]);
+    // if (addQueryBrandCanon === 'Canon') {
+    //   dispatch(getFilteredSearchProductsAction('Canon'));
+    // } else {
+    //   // dispatch(getSearchProductsAction('photocameras'));
+    // }
+    // console.log(priceState);
+    dispatch(filterPriceSearchProductsAction(priceState));
+  }, [brandState, dispatch, priceState]);
 
   return null;
 };
