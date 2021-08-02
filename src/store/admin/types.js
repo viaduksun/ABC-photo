@@ -14,4 +14,5 @@ export const MODAL_DELETE_CATEGORY_CLOSE = 'MODAL_DELETE_CATEGORY_CLOSE';
 export const IS_ADMIN = 'IS_ADMIN';
 export const IS_LOGGED_IN = 'IS_LOGGED_IN';
 export const CURRENT_USER_SET_UP = 'CURRENT_USER_SET_UP';
+export const UPDATE_CUSTOMER = 'UPDATE_CUSTOMER';
 export const EXIT = 'EXIT';

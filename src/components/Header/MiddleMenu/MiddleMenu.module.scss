@@ -93,6 +93,12 @@
   cursor: pointer;
   font-size: 24px;
 }
+.HeaderAdminWrapper {
+  border: 2px solid rgb(251, 42, 130);
+  width: 45px;
+  border-radius: 25px;
+  padding: 2px;
+}
 .HeaderIconAdmin {
   color: #fff;
   cursor: pointer;
@@ -102,9 +108,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  &:hover {
+    .HeaderIconWrapper {
+      background-color: #51ad33;
+    }
+  }
 }
 .HeaderIconText {
   color: $middleGray;
+}
+.HeaderUserName {
+  position: absolute;
+  left: 55px;
+  top: -5px;
+  padding: 0 3px 3px 5px;
+  border-radius: 10px;
+  min-width: 30px;
+  background: #51ad33;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
 }
 @media (max-width: 768px) {
   .HeaderWrapper {

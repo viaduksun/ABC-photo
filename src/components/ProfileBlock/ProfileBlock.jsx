@@ -7,6 +7,7 @@ import Orders from './Orders';
 import ChangePassword from './ChangePassword';
 import styles from './ProfileBlock.module.scss';
 import { exitAction } from '../../store/admin/actions';
+import { deleteAllDataFromCartAction } from '../../store/cart/actions';
 
 const ProfileBlock = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const ProfileBlock = () => {
   };
   const handleExit = () => {
     dispatch(exitAction());
+    dispatch(deleteAllDataFromCartAction());
     localStorage.removeItem('token');
     localStorage.removeItem('currentUser');
   };

@@ -9,6 +9,7 @@ import {
   CART_DECREMENT,
   CART_FROM_LOCAL_STORAGE,
   CART_INCREMENT,
+  DELETE_ALL_DATA_FROM_CART,
   DELETE_CART_DB_REDUX,
   DELETE_LOCAL_CART,
   DELETE_PRODUCT_FROM_CART,
@@ -22,7 +23,7 @@ import {
 
 const initialState = {
   cart: [],
-  cartDB: {},
+  cartDB: [],
   totalSumCart: 0,
   totalCountCart: 0,
   popupIsOpen: false,
@@ -110,7 +111,16 @@ export const cart = (state = initialState, action) => {
       console.log('DELETE_CART_DB_REDUX');
       return {
         ...state,
-        cartDB: {},
+        cartDB: [],
+      };
+    case DELETE_ALL_DATA_FROM_CART:
+      console.log('DELETE_ALL_DATA_FROM_CART');
+      return {
+        cart: [],
+        cartDB: [],
+        totalSumCart: 0,
+        totalCountCart: 0,
+        popupIsOpen: false,
       };
     case DELETE_LOCAL_CART:
       console.log('DELETE_LOCAL_CART');
@@ -160,7 +170,7 @@ export const cart = (state = initialState, action) => {
     case LOG_OUT:
       return {
         ...state,
-        cartDB: {},
+        cartDB: [],
         totalSumCart: 0,
         totalCountCart: 0,
       };

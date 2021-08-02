@@ -32,26 +32,26 @@ const RegisterForm = () => {
   const numericRegex = /(?=.*[0-9])/;
   const registrationSchema = Yup.object().shape({
     firstName: Yup.string()
-      .max(20, 'Must be 20 characters or less')
+      .max(20, 'Допустимо не более 20 символов')
       .required('Введите ваше имя'),
     lastName: Yup.string()
-      .max(20, 'Must be 20 characters or less')
+      .max(20, 'Допустимо не более 20 символов')
       .required('Введите вашу фамилию'),
     email: Yup.string()
       .lowercase()
-      .email('Email is invalid')
-      .notOneOf(takenEmailsFromDB, 'Email already taken')
+      .email('Некорректный емэйл')
+      .notOneOf(takenEmailsFromDB, 'Емэйл уже зарегистрирован')
       .required('Введите емэйл'),
     login: Yup.string()
-      .min(3, 'Login must be between 3 and 10 characters')
-      .max(10, 'Login must be between 3 and 10 characters')
+      .min(3, 'Логин должен содержать от 3 до 10 символов')
+      .max(10, 'Логин должен содержать от 3 до 10 символов')
       .required('Введите логин'),
     phone: Yup.string()
-      .max(15, 'Must be 15 characters or less')
+      .max(15, 'Допустимо не более 20 символов')
       .required('Введите телефон'),
     password: Yup.string()
       .matches(lowercaseRegex, 'Один символ в нижнем регистре обязателен')
-      .matches(uppercaseRegex, 'Один символ в верхнем регистре обязателен')
+      // .matches(uppercaseRegex, 'Один символ в верхнем регистре обязателен')
       .matches(numericRegex, 'Один числовой символ обязателен')
       .min(7, 'Введите не менее 7 символов')
       .max(30, 'Введите не более 30 символов')
