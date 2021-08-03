@@ -1,53 +1,56 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/style-prop-object */
 import React, { useState, useEffect } from 'react';
+import getCustomerOrders from '../../api/getCustomerOrders';
+import Loader from '../UI/Loader/Loader';
+import CartItem from './CartItem/CartItem';
 import styles from './Orders.module.scss';
 
 const Orders = () => {
-  const [itemsOrder, setItems] = useState([]);
+  const [ordersDB, setOrdersDB] = useState([]);
+  const [active, setActive] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    fetch('/api/allOrders.json')
-      .then((res) => res.json())
-      .then((result) => {
-        setItems(result.orders);
-      }, []);
-  });
-  const lastOrder = itemsOrder[itemsOrder.length - 1];
+    getCustomerOrders()
+      .then((response) => {
+        /* Do something with loggedInCustomer */
+        console.log('ORDERS', response);
+        setOrdersDB(response.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        /* Do something with error */
+        console.log(err);
+      });
+  }, []);
+  const toggleActive = (itemNo) => {
+    console.log(itemNo, '===', active);
+    if (itemNo === active) {
+      console.log('Mach');
+      return setActive(null);
+    }
+    return setActive(itemNo);
+  };
   return (
-    <div>
-      <div className={styles.Header}>
-        <p>Номер заказа</p>
-        <p>К-во товаров</p>
-        <p>Дата</p>
-        <p>Сумма</p>
-        <p>Статус</p>
-      </div>
-      <p className={styles.LastOrderP}>Ваш последний заказ</p>
-      {lastOrder ? (
-        <div className={styles.LastOrder}>
-          <p>{lastOrder.orderNumber}</p>
-          <p>{lastOrder.value}</p>
-          <p>{lastOrder.date}</p>
-          <p>{lastOrder.price}</p>
-          <p style={{ color: lastOrder.status ? 'green' : 'red' }}>
-            {lastOrder.status ? 'Выполнен' : 'Отменен'}
-          </p>
-        </div>
-      ) : null}
-      <p className={styles.LastOrderP}>Ваши заказы</p>
-      <div>
-        {itemsOrder.map((item) => (
-          <div className={styles.LastOrder}>
-            <p>{item.orderNumber}</p>
-            <p>{item.value}</p>
-            <p>{item.date}</p>
-            <p>{item.price}</p>
-            <p style={{ color: item.status ? 'green' : 'red' }}>
-              {item.status ? 'Выполнен' : 'Отменен'}
-            </p>
+    <>
+      <div className={styles.OrdersWrapper}>
+        {isLoading && (
+          <div className={styles.loaderWrapper}>
+            <Loader />
           </div>
+        )}
+        <div className={styles.Header}>
+          <p>Номер заказа</p>
+          <p>Количество товаров</p>
+          <p>Дата</p>
+          <p>Сумма</p>
+          <p>Статус</p>
+        </div>
+        {ordersDB.map((item) => (
+          <CartItem item={item} toggleActive={toggleActive} active={active} />
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

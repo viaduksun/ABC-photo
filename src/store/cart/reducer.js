@@ -141,6 +141,8 @@ export const cart = (state = initialState, action) => {
       return {
         ...state,
         cartDB: [],
+        totalSumCart: 0,
+        totalCountCart: 0,
       };
     case DELETE_ALL_DATA_FROM_CART:
       console.log('DELETE_ALL_DATA_FROM_CART');

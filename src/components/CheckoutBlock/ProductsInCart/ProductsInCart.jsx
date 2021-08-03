@@ -42,7 +42,7 @@ const ProductsInCart = () => {
           {isLoggedIn &&
             cartArr.map((cartProduct) => (
               <ProductInCart
-                cartProduct={cartProduct.product}
+                cartProduct={cartProduct}
                 key={cartProduct._id}
                 totalSumCart={totalSumCart}
               />

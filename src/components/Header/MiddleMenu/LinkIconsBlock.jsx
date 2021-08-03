@@ -67,10 +67,15 @@ export default function LoginIcon() {
         )}
         {isLoggedIn && isAdmin && (
           <Link to="/profile" className={styles.HeaderLink}>
-            <div className={styles.HeaderAdminWrapper}>
-              <div className={styles.HeaderIconWrapper}>
-                <RiAdminFill className={styles.HeaderIconAdmin} />
-              </div>
+            <div className={styles.HeaderIconAvatarWrapper}>
+              <span className={styles.HeaderUserAdminName}>
+                {currentUser.firstName}
+              </span>
+              {currentUser.avatar ? (
+                <img src={currentUser.avatar} alt="avatar" />
+              ) : (
+                <FaUserAlt className={styles.HeaderIcon} />
+              )}
             </div>
             <p className={styles.HeaderIconText}>Личный кабинет</p>
           </Link>

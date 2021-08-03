@@ -1,0 +1,95 @@
+.CartItemWrapper {
+  // border: 1px solid #000;
+}
+.CartItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 40px;
+  text-align: center;
+  grid-template-rows: repeat(1, 65px);
+  color: rgb(0, 0, 0);
+  border-bottom: 1px solid black;
+  p {
+    margin-top: 20px;
+  }
+}
+
+.orderDetailsContainer {
+  max-height: 0px;
+  background: rgb(255, 232, 195);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease 0s;
+  &_active {
+    max-height: 610px;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.orderDetailsHeader {
+  background: rgb(143, 143, 143);
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+}
+.orderDetailsItemWrapper {
+  background: rgb(255, 222, 187);
+  border-bottom: 1px solid #000;
+  div:nth-of-type(odd) {
+    background: rgb(255, 239, 222);
+  }
+}
+.orderDetailsItem {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+}
+.arrowWrapper {
+  position: relative;
+  transition: all 0.3s ease 0s;
+  &:before {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    width: 50px;
+    height: 0px;
+    font-size: 12px;
+    padding-top: 2px;
+    border-radius: 3px;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: all 0.3s ease 0s;
+  }
+  &:hover {
+    &:before {
+      content: 'Состав заказа';
+      position: absolute;
+      right: -20px;
+      top: -10px;
+      width: 50px;
+      height: 30px;
+      font-size: 12px;
+      padding-top: 2px;
+      border-radius: 3px;
+      background: rgb(65, 182, 70);
+      transform: scaleY(1);
+    }
+  }
+}
+.arrow {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  font-size: 25px;
+  transition: all 0.2s ease 0s;
+  cursor: pointer;
+
+  &_active {
+    transform: rotate(180deg);
+  }
+}

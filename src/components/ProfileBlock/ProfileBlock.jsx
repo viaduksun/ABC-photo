@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,11 +8,18 @@ import ChangePassword from './ChangePassword';
 import styles from './ProfileBlock.module.scss';
 import { exitAction } from '../../store/admin/actions';
 import { deleteAllDataFromCartAction } from '../../store/cart/actions';
+import getCustomer from '../../api/getOneCustomer';
 
 const ProfileBlock = () => {
   const dispatch = useDispatch();
   const isAdmin = useSelector((state) => state.admin.isAdmin);
   const [current, setCurrent] = useState('edit');
+
+  useEffect(() => {
+    console.log('USE EFFECT');
+    getCustomer();
+  }, []);
+
   const handleAdmin = () => {
     setCurrent('admin');
   };

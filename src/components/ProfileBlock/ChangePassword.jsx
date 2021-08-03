@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-tabs */
 /* eslint-disable react/style-prop-object */
 /* eslint-disable no-unused-vars */
@@ -9,11 +10,14 @@ import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import TextInput from './TextInput';
 import styles from './ProfileBlock.module.scss';
 import Button from '../UI/Button/Button';
+import editCustomerPassword from '../../api/editCustomerPassword';
+import Loader from '../UI/Loader/Loader';
 
 const ChangePassword = () => {
   const [visibleFirst, setVisibleFirst] = useState(false);
   const [visibleSecond, setVisibleSecond] = useState(false);
   const [visibleThird, setVisibleThird] = useState(false);
+
   const handleSubmitForm = (values, { setSubmitting }) => {
     // eslint-disable-next-line object-curly-newline
     const { existPassword, newPassword, newPasswordRepeat } = values;
@@ -22,13 +26,32 @@ const ChangePassword = () => {
     if (isFormValid) {
       setSubmitting(true);
 
-      setSubmitting(false);
       const form = {
         existPassword: values.existPassword,
         newPassword: values.newPassword,
         newPasswordRepeat: values.newPasswordRepeat,
       };
-      console.log(form);
+      const passwords = {
+        password: existPassword,
+        newPassword,
+      };
+      console.log(passwords);
+      editCustomerPassword(passwords)
+        .then((response) => {
+          /* Do something with loggedInCustomer */
+          console.log('editedCustomer', response);
+          setSubmitting(false);
+          if (response.data.password) {
+            alert('Вы ввели неправильный текущий пароль');
+          }
+          if (response.data.message) {
+            alert('Пароль изменен успешно');
+          }
+        })
+        .catch((err) => {
+          /* Do something with error */
+          console.log(err);
+        });
     }
   };
 
@@ -118,8 +141,15 @@ const ChangePassword = () => {
               </div>
             </div>
             <div className="form-btn-group">
-              <Button addClass="cart_green">Готово</Button>
+              <Button
+                addClass="cart_green"
+                type="submit"
+                disabled={formik.isSubmitting}
+              >
+                Готово
+              </Button>
             </div>
+            {formik.isSubmitting && <Loader />}
           </Form>
         )}
       </Formik>

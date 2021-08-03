@@ -80,7 +80,11 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className={styles.ProductCard}>
-      <Link to="/single-product" onClick={dispatchSingleProductHandler}>
+      <Link
+        to="/single-product"
+        onClick={dispatchSingleProductHandler}
+        className={styles.ProductCardImgLink}
+      >
         <div className={styles.ProductCardImg}>
           <img src={product.imageUrls[0]} alt={product.imageUrls[0]} />
           {product.hit === 'yes' && (
