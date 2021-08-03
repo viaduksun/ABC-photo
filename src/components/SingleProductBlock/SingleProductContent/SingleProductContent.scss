@@ -10,6 +10,9 @@
     opacity: 0;
     visibility: hidden;
     transform: rotate(0deg) scale(3);
+    @media (max-width: 768px) {
+        display: none;
+    }
 }
 .MoveToCartItem_isOpen {
     top: -690px;

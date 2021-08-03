@@ -25,7 +25,7 @@ import {
   addSingleProductToCartAction,
   addToCartMongoDB,
 } from '../../store/cart/actions';
-import { setFlagInCartAction } from '../../store/products/actions';
+import { setCategoryForBreadcrumbsAction, setFlagInCartAction } from '../../store/products/actions';
 import { setSingleProductAction } from '../../store/singleProduct/actions';
 import {
   addProdductToFavoritesAction,
@@ -71,6 +71,7 @@ const ProductCard = ({ product }) => {
   };
 
   const dispatchSingleProductHandler = () => {
+    dispatch(setCategoryForBreadcrumbsAction(product));
     dispatch(setSingleProductAction(product));
     if (!isInViewedProducts) {
       dispatch(addViewedProductAction(product));

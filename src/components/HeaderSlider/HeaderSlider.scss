@@ -115,7 +115,9 @@
   }
 }
 @media screen and (max-width: 480px) {
-  .header-slider-wrapper {
-    display: none;
+  .swiper-button-prev,
+  .swiper-button-next {
+    max-width: 25px;
+    max-height: 25px;
   }
 }

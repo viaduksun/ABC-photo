@@ -62,7 +62,7 @@ const SearchProductsFilter = () => {
     <div className={styles.ProductsFilter}>
       <SearchProductsQueryMaker
         priceState={priceData}
-        brandState={brandState}
+        // brandState={brandState}
       />
       <RangeSliderContainer
         priceState={priceState}
@@ -71,11 +71,11 @@ const SearchProductsFilter = () => {
         handleChangeMaxRange={handleChangeMaxRange}
         sentPriceDataHandler={sentPriceDataHandler}
       />
-      <FilterBlock
+      {/* <FilterBlock
         title="Производитель"
         handleChange={handleBrandChange}
         checkState={brandState}
-      />
+      /> */}
     </div>
   );
 };

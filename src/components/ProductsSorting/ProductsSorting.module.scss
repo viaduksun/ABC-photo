@@ -3,11 +3,18 @@
   align-items: center;
   margin-left: 30px;
   margin-bottom: 25px;
+  @media (max-width: 650px) {
+   display: block;
+    align-items: left;
+  }
 }
 .ProductsSortingLeft {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 650px) {
+    margin-bottom: 10px;
+   }
 }
 .NumberOf {
   font-size: 14px;
@@ -27,6 +34,9 @@
   color: #6f6f6f;
   padding: 5px;
   cursor: pointer;
+  @media (max-width: 868px) {
+    margin-left: 0;
+  }
 }
 .SelectPrice {
   margin-left: 10px;
@@ -34,6 +44,9 @@
   color: #6f6f6f;
   padding: 5px;
   cursor: pointer;
+  @media (max-width: 868px) {
+    margin-left: 0;
+  }
 }
 
 .ProductsSortingRight {
@@ -50,6 +63,15 @@
   transition: 0.3s all;
   position: absolute;
   right: 0;
+  @media (max-width: 768px) {
+    right: 65px;
+  }
+  @media (max-width: 650px) {
+    top: 40px;
+  }
+  @media (max-width: 480px) {
+    display: none;
+  }
 }
 .SwitchIconRotate {
   font-size: 30px;
@@ -58,4 +80,13 @@
   transition: 0.3s all;
   position: absolute;
   right: 0;
+  @media (max-width: 768px) {
+    right: 65px;
+  }
+  @media (max-width: 650px) {
+    top: 40px;
+  }
+  @media (max-width: 480px) {
+    display: none;
+  }
 }

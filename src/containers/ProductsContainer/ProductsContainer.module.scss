@@ -3,6 +3,7 @@
 }
 .ProductsBlock {
   width: 100%;
+  position: relative;
 }
 .ProductsContainer {
   position: relative;
@@ -10,6 +11,7 @@
   justify-content: flex-start;
   align-items: left;
   width: 100%;
+  min-height: 500px;
 }
 .showFiltersBtn {
   display: none;
@@ -79,7 +81,7 @@
 }
 .PrductsFieldLoader {
   position: absolute;
-  left: 60%;
+  left: 50%;
   top: 25%;
 }
 // =================================================================

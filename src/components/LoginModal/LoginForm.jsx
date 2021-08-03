@@ -12,6 +12,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
+import { FaSmileWink } from 'react-icons/fa';
 import LoginApi from '../../api/login';
 import TextInput from '../UI/Input/TextInput';
 import {
@@ -21,7 +22,7 @@ import {
 } from '../../store/admin/actions';
 import styles from './LoginModal.module.scss';
 import Button from '../UI/Button/Button';
-import { loginModalCloseAction } from '../../store/madals/actions';
+import { authorizationPopupAction, loginModalCloseAction } from '../../store/madals/actions';
 
 const LoginForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
@@ -75,14 +76,15 @@ const LoginForm = () => {
         }
       })
       .then(() => {
-        alert('Login successful');
+        dispatch(authorizationPopupAction('Авторизация прошла успешно'));
         setSubmitting(false);
       })
       .catch((err) => {
         console.log(err);
-        alert(
-          'Login failed'
-        ); /* Show error to customer, may be incorrect password or something else */
+        dispatch(authorizationPopupAction('Неверный логин или пароль, попробуйте снова'));
+        // alert(
+        //   'Login failed'
+        // ); /* Show error to customer, may be incorrect password or something else */
       });
   };
   return (

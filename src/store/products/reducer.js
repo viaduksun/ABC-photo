@@ -3,7 +3,9 @@
 /* eslint-disable no-case-declarations */
 import {
   CLEAR_PRODUCTS,
+  GET_CATEGORY_FROM_LOCAL_STORAGE,
   GET_PRODUCTS_FROM_LOCAL_STORAGE,
+  SET_CATEGORY_FOR_BREADCRUMBS,
   SET_CURRENT_CATEGORY,
   SET_CURRENT_PAGE,
   SET_CURRENT_PRODUCTS_ARR,
@@ -86,6 +88,16 @@ export const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload,
+      };
+    case SET_CATEGORY_FOR_BREADCRUMBS:
+      return {
+        ...state,
+        currentCategory: action.payload.product.category
+      };
+    case GET_CATEGORY_FROM_LOCAL_STORAGE:
+      return {
+        ...state,
+        currentCategory: action.payload
       };
     default:
       return state;

@@ -24,6 +24,15 @@
 .phoneMainText {
   font-size: 14px;
   color: $middleGray;
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+.phoneMainTextMobile {
+  display: none;
+  @media (max-width: 1024px) {
+    display: block;
+  }
 }
 .arrowIcon {
   display: flex;

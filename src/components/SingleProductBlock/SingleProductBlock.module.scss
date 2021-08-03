@@ -5,6 +5,11 @@
   grid-template-columns: 1fr 30%;
   grid-column-gap: 100px;
   align-items: center;
+  @media (max-width: 1024px) {
+    grid-column-gap: 10px; 
+    grid-row-gap: 100px; 
+    grid-template-columns: 1fr;
+  }
 }
 .SliderBlockText {
   display: flex;
