@@ -28,7 +28,7 @@ import {
 } from './favorites/types';
 import { ADD_VIEWED_PRODUCT } from './viewedProducts/types';
 import { SET_SEARCH_PRODUCTS } from './searchProducts/types';
-import { SET_PRODUCTS } from './products/types';
+import { SET_CATEGORY_FOR_BREADCRUMBS, SET_PRODUCTS } from './products/types';
 
 // eslint-disable-next-line no-underscore-dangle
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
@@ -87,6 +87,13 @@ const localStorageMiddleware =
       localStorage.setItem(
         'products',
         JSON.stringify(productsPage.products)
+      );
+    }
+    if (action.type === SET_CATEGORY_FOR_BREADCRUMBS) {
+      const { productsPage } = getState();
+      localStorage.setItem(
+        'category',
+        JSON.stringify(productsPage.currentCategory)
       );
     }
     return result;

@@ -6,7 +6,9 @@ import getSearchProducts from '../../api/getSearchProducts';
 // import getProducts from '../../api/getProducts';
 import {
   CLEAR_PRODUCTS,
+  GET_CATEGORY_FROM_LOCAL_STORAGE,
   GET_PRODUCTS_FROM_LOCAL_STORAGE,
+  SET_CATEGORY_FOR_BREADCRUMBS,
   SET_CURRENT_CATEGORY,
   SET_CURRENT_PAGE,
   SET_CURRENT_PRODUCTS_ARR,
@@ -91,4 +93,12 @@ export const clearProductsAction = () => ({
 export const getProductsFromLocalStorageAction = (productsFromLocalStorage) => ({
   type: GET_PRODUCTS_FROM_LOCAL_STORAGE,
   payload: JSON.parse(productsFromLocalStorage)
+});
+export const setCategoryForBreadcrumbsAction = (product) => ({
+  type: SET_CATEGORY_FOR_BREADCRUMBS,
+  payload: {product}
+});
+export const getCategoryFromLocalStorageAction = (categoryFromLocalStorage) => ({
+  type: GET_CATEGORY_FROM_LOCAL_STORAGE,
+  payload: JSON.parse(categoryFromLocalStorage)
 });

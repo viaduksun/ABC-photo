@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
 import { FiPhone } from 'react-icons/fi';
+import { IoIosPhonePortrait } from 'react-icons/io';
 import classNames from 'classnames';
 import styles from './PhoneDropdown.module.scss';
 // import Button from '../../UI/Button/Button';
@@ -37,6 +38,7 @@ const PhoneDropdown = () => {
         id="phoneDropdown"
       />
       <p className={styles.phoneMainText}>044 500 50 50</p>
+      <p className={styles.phoneMainTextMobile}><IoIosPhonePortrait style={{color: 'grey', fontSize: '18px'}} /></p>
       <BsChevronDown className={iconClass} />
       <div className={phonePopap}>
         <div className={styles.phonePopapItem}>

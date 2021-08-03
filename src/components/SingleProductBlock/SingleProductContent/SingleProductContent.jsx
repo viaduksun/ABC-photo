@@ -53,39 +53,43 @@ const SingleProductContent = ({ singleProduct }) => {
         setActive={setModalActive}
       />
       <div className={styles.Wrapper}>
-        <p className={styles.InStock}>
-          {singleProduct.quantity !== 0 ? (
-            <span>в наличии</span>
-          ) : (
-            <span style={{ color: '#e91e49' }}>ожидается</span>
-          )}
-        </p>
-        <p className={styles.Price}>{singleProduct.currentPrice} грн</p>
+        <div className={styles.BlockLeft}>
+          <p className={styles.InStock}>
+            {singleProduct.quantity !== 0 ? (
+              <span>в наличии</span>
+            ) : (
+              <span style={{ color: '#e91e49' }}>ожидается</span>
+            )}
+          </p>
+          <p className={styles.Price}>{singleProduct.currentPrice} грн</p>
 
-        <div className={styles.ButtonBuy}>
-          {singleProduct.quantity !== 0 ? (
-            <Button
-              onClick={addProductToCartHandler}
-              disabled={moveToCart}
-              addClass="cart_green"
-            >
-              Купить
-              <FiShoppingCart />
-              &nbsp;
-              {isInCart && <GiCheckMark />}
-            </Button>
-          ) : (
-            <Button addClass="cart_grey" onClick={openModalhandler}>
-              Сообщить о поступлении товара
-            </Button>
-          )}
+          <div className={styles.ButtonBuy}>
+            {singleProduct.quantity !== 0 ? (
+              <Button
+                onClick={addProductToCartHandler}
+                disabled={moveToCart}
+                addClass="cart_green"
+              >
+                Купить
+                <FiShoppingCart />
+                &nbsp;
+                {isInCart && <GiCheckMark />}
+              </Button>
+            ) : (
+              <Button addClass="cart_grey" onClick={openModalhandler}>
+                Сообщить о поступлении товара
+              </Button>
+            )}
+          </div>
         </div>
-        <p className={styles.Delivery}>Доставка</p>
-        <ul className={styles.DeliveryList}>
-          <li>• Доставка по всей Украине</li>
-          <li>• Оплата товара при получении</li>
-          <li>• Возможен самовывоз</li>
-        </ul>
+        <div>
+          <p className={styles.Delivery}>Доставка</p>
+          <ul className={styles.DeliveryList}>
+            <li>• Доставка по всей Украине</li>
+            <li>• Оплата товара при получении</li>
+            <li>• Возможен самовывоз</li>
+          </ul>
+        </div>
         <div className="MoveToCartBlock">
           <div
             className={`MoveToCartItem  ${

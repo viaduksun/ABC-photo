@@ -141,6 +141,9 @@
 }
 .HeaderIconText {
   color: $middleGray;
+  @media (max-width: 1024px) {
+      display: none;
+  }
 }
 .HeaderUserName {
   position: absolute;

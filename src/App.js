@@ -1,9 +1,11 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
 import './App.scss';
 import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { FaSmileWink } from 'react-icons/fa';
 import Header from './containers/Header/Header';
 import Footer from './containers/Footer/Footer';
 import Home from './pages/Home';
@@ -39,12 +41,17 @@ import { favoritesFromLocalStorageAction } from './store/favorites/actions';
 import { viewedProductsFromLocalStorageAction } from './store/viewedProducts/actions';
 import deleteCart from './api/deleteCart';
 import { searchProductsFromLocalStorageAction } from './store/searchProducts/actions';
-import { getProductsFromLocalStorageAction } from './store/products/actions';
+import { getCategoryFromLocalStorageAction, getProductsFromLocalStorageAction } from './store/products/actions';
+import AuthorizationPopup from './components/UI/AuthorizationPopup/AuthorizationPopup';
 
 function App() {
   const cart = useSelector((state) => state.cart.cart);
   const cartDB = useSelector((state) => state.cart.cartDB);
   const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
+  const authorizationPopupIsOpen = useSelector(
+    (state) => state.modals.authorizationPopupIsOpen
+  );
+  const textAuthorizationPopup = useSelector((state) => state.modals.text);
   const currentUserFromRedux = useSelector((state) => state.admin.currentUser);
   const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
   const currentQuery = useSelector((state) => state.productsPage.currentQuery);
@@ -107,9 +114,12 @@ function App() {
     const cartFromLocalStorage = localStorage.getItem('cart');
     const favoritesFromLocalStorage = localStorage.getItem('favorites');
     const singleProductFromLocalStorage = localStorage.getItem('singleProduct');
-    const viewedProductsFromLocalStorage = localStorage.getItem('viewedProducts');
-    const searchProductsFromLocalStorage = localStorage.getItem('searchProducts');
+    const viewedProductsFromLocalStorage =
+      localStorage.getItem('viewedProducts');
+    const searchProductsFromLocalStorage =
+      localStorage.getItem('searchProducts');
     const productsFromLocalStorage = localStorage.getItem('products');
+    const categoryFromLocalStorage = localStorage.getItem('category');
     if (cartFromLocalStorage) {
       dispatch(cartFromLocalStorageAction(cartFromLocalStorage));
     }
@@ -132,9 +142,10 @@ function App() {
       );
     }
     if (productsFromLocalStorage) {
-      dispatch(
-        getProductsFromLocalStorageAction(productsFromLocalStorage)
-      );
+      dispatch(getProductsFromLocalStorageAction(productsFromLocalStorage));
+    }
+    if (categoryFromLocalStorage) {
+      dispatch(getCategoryFromLocalStorageAction(categoryFromLocalStorage));
     }
   }, [dispatch]);
 
@@ -147,6 +158,7 @@ function App() {
   return (
     <div className="wrapper">
       <CartPopup />
+      <AuthorizationPopup>{textAuthorizationPopup}</AuthorizationPopup>
       <Header />
       <Switch>
         <Route exact path="/">

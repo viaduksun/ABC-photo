@@ -1,4 +1,9 @@
 .SingleProductSlider {
     max-width: 500px;
     transform: rotate(90deg);
+    @media (max-width: 768px) {
+        max-width: 300px;
+        max-height: 300px;
+        margin-left: 130px;
+    }
 }

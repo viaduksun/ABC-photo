@@ -1,0 +1,39 @@
+.AuthorizationPopup {
+    position: fixed;
+    width: 400px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    color:green;
+    padding: 20px 15px;
+    transition: margin .5s;
+    visibility: hidden;
+    opacity: 0;
+    margin-top: -2%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    font-size: 20px;
+    line-height: 26px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0.5px #51ad33;
+}
+.AuthorizationPopup_IsOpen {
+    visibility: visible;
+    opacity: 1;
+    margin-top: 0.5%;
+}
+.AuthorizationPopupButton {
+    margin-top: 15px;
+    button {
+        width: 50px;
+        padding: 5px 10px;
+        outline: none;
+        cursor: pointer;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        background-color: #51ad33;
+        border-radius: 5px;
+    } 
+}

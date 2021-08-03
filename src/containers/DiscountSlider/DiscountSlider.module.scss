@@ -1,5 +1,8 @@
 .Sale {
   background-color: #e5e5e5;
+  @media (max-width: 870px) {
+    display: none;
+  }
   .SaleContainer {
     max-width: 1180px;
     margin: 0 auto;
@@ -215,8 +218,3 @@
   }
 }
 
-@media (max-width: 870px) {
-  .Sale {
-    display: none;
-  }
-}

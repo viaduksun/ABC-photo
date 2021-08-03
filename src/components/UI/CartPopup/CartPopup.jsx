@@ -7,14 +7,11 @@ import { useSelector } from 'react-redux';
 import './CartPopup.scss';
 
 const CartPopup = () => {
-  // console.log('test');
   const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
   return (
-    <>
-      <div className={`Popup  ${popupIsOpen ? 'Popup_popupIsOpen' : ''}`}>
-        Товар добавлен в корзину <FaCartArrowDown />
-      </div>
-    </>
+    <div className={`Popup  ${popupIsOpen ? 'Popup_popupIsOpen' : ''}`}>
+      Товар добавлен в корзину <FaCartArrowDown />
+    </div>
   );
 };
 

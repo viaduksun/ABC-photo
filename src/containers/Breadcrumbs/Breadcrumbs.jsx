@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 
 const Breadcrumbs = ({ data }) => (
-  // console.log('breadcrumbs');
   <div className={styles.Breadcrumbs}>
     <div className="container">
       {data.map((item, index, arr) => {

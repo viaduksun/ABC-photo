@@ -17,11 +17,12 @@ import { MdRemoveShoppingCart } from 'react-icons/md';
 
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ProductCardFavorite.module.scss';
-import { addProductToCartAction } from '../../store/cart/actions';
-import { setFlagInCartAction } from '../../store/products/actions';
+// import { addProductToCartAction } from '../../store/cart/actions';
+import { setCategoryForBreadcrumbsAction, setFlagInCartAction } from '../../store/products/actions';
 import { setSingleProductAction } from '../../store/singleProduct/actions';
 import { addProdductToFavoritesAction, deleteProdductFromFavoritesAction } from '../../store/favorites/actions';
 import { addViewedProductAction } from '../../store/viewedProducts/actions';
+import { addSingleProductToCartAction, addToCartMongoDB } from '../../store/cart/actions';
 
 const ProductCard = ({
   product,
@@ -30,6 +31,7 @@ const ProductCard = ({
   dragOver,
   drop,
 }) => {
+  const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
   const cart = useSelector((state) => state.cart.cart);
   const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
   const favorites = useSelector((state) => state.favorites.favorites);
@@ -41,8 +43,13 @@ const ProductCard = ({
   if (!product) return null;
   const addProductToCartHandler = () => {
     if (product.quantity !== 0) {
-      dispatch(addProductToCartAction(product));
-      dispatch(setFlagInCartAction(product));
+      if (isLoggedIn) {
+        dispatch(addToCartMongoDB(product));
+      } else {
+        dispatch(addSingleProductToCartAction(product));
+        // dispatch(addProductToCartAction(product));
+        dispatch(setFlagInCartAction(product));
+      }
     }
   };
  
@@ -55,6 +62,7 @@ const ProductCard = ({
   };
 
   const dispatchSingleProductHandler = () => {
+    dispatch(setCategoryForBreadcrumbsAction(product));
     dispatch(setSingleProductAction(product));
     if (!isInViewedProducts) {
       dispatch(addViewedProductAction(product));

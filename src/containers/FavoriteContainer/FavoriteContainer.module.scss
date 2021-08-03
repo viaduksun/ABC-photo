@@ -13,18 +13,33 @@
     font-size: 30px;
     cursor: pointer;
     transition: .3s all;
+    @media (max-width: 480px) {
+        display: none;        
+    }
 }
 .HeaderIconRotate {
     font-size: 30px;
     cursor: pointer;
     transition: .3s all;
     transform: rotate(90deg);
+    @media (max-width: 480px) {
+        display: none;        
+    }
 }
 .Main {
     display: grid;
     grid-template-columns: repeat(4, minmax(150px, 1fr));
     gap: 20px;
     padding: 30px 0;
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(3, minmax(150px, 1fr));    
+    }
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, minmax(150px, 1fr));    
+    }
+    @media (max-width: 480px) {
+        grid-template-columns: repeat(1, minmax(150px, 1fr));    
+    }
 }
 .MainCardLine {
     display: grid;

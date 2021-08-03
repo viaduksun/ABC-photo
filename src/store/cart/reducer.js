@@ -9,11 +9,14 @@ import {
   CART_DECREMENT,
   CART_FROM_LOCAL_STORAGE,
   CART_INCREMENT,
+  DECREMENT_CART_DB,
   DELETE_ALL_DATA_FROM_CART,
+  DELETE_CART_DB,
   DELETE_CART_DB_REDUX,
   DELETE_LOCAL_CART,
   DELETE_PRODUCT_FROM_CART,
   GET_CART_FROM_DB,
+  INCREMENT_CART_DB,
   LOG_OUT,
   SET_CART_DB,
   SET_POPUP_FALSE,
@@ -52,7 +55,7 @@ export const cart = (state = initialState, action) => {
       return {
         ...state,
         cart: newCartArr,
-        popupIsOpen: true
+        popupIsOpen: true,
       };
     case ADD_SINGLE_PRODUCT_TO_CART:
       const cartSingleProduct = action.payload.singleProduct;
@@ -73,7 +76,8 @@ export const cart = (state = initialState, action) => {
       }
       return {
         ...state,
-        cart: newCartArr2
+        cart: newCartArr2,
+        popupIsOpen: true,
       };
     case DELETE_PRODUCT_FROM_CART:
       const newCart = state.cart.filter(
@@ -92,7 +96,10 @@ export const cart = (state = initialState, action) => {
         console.log('NO CART IN DB');
       }
       console.log('CART_FROM_DB_reducer', cartArrayFromDB);
-      const totalCartCoutn = cartArrayFromDB.reduce((a, b) => a + b.cartQuantity, 0);
+      const totalCartCoutn = cartArrayFromDB.reduce(
+        (a, b) => a + b.cartQuantity,
+        0
+      );
 
       return {
         ...state,
@@ -105,7 +112,29 @@ export const cart = (state = initialState, action) => {
       return {
         ...state,
         cartDB: action.payload.resultCart.data.products,
-        totalCountCart: action.payload.cartCounter
+        totalCountCart: action.payload.cartCounter,
+        popupIsOpen: true,
+      };
+    case INCREMENT_CART_DB:
+      console.log(action.payload);
+      return {
+        ...state,
+        cartDB: action.payload.resultCart.data.products,
+        totalCountCart: action.payload.cartCounter,
+      };
+    case DECREMENT_CART_DB:
+      console.log(action.payload);
+      return {
+        ...state,
+        cartDB: action.payload.resultCart.data.products,
+        totalCountCart: action.payload.cartCounter,
+      };
+    case DELETE_CART_DB:
+      console.log(action.payload);
+      return {
+        ...state,
+        cartDB: action.payload.resultCart.data.products,
+        totalCountCart: action.payload.cartCounter,
       };
     case DELETE_CART_DB_REDUX:
       console.log('DELETE_CART_DB_REDUX');

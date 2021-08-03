@@ -11,6 +11,9 @@
     transform: scale(1.02);
     z-index: 90;
   }
+  @media (max-width: 768px) {
+    max-width: 300px;
+  }
 }
 .ProductCardImg {
   padding: 30px 10px;
@@ -191,3 +194,5 @@
     border-radius: 5px;
   }
 }
+
+

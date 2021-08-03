@@ -45,6 +45,7 @@ const ProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
       <div className={styles.ProductsSortingLeft}>
         <div className={styles.Show}>
           <span>Показывать по</span>
+          &nbsp;
           <select
             className={styles.SelectAmount}
             onChange={(e) => {
@@ -61,6 +62,7 @@ const ProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
       </div>
       <div className={styles.ProductsSortingRight}>
         <span>Сортировать по</span>
+        &nbsp;
         <select
           className={styles.SelectPrice}
           onChange={(e) => handleMinMaxSort(e)}

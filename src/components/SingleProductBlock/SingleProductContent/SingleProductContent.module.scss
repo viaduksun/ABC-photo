@@ -1,3 +1,15 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 1024px) {
+    flex-direction: row; 
+  }
+}
+.BlockLeft {
+  @media (max-width: 1024px) {
+    margin-right: 30px;
+  }
+}
 .InStock {
   font-size: 16px;
   line-height: 16px;

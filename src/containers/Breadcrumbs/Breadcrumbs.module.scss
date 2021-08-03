@@ -1,6 +1,9 @@
 .Breadcrumbs {
   padding: 20px 0px;
   max-width: 100%;
+  @media (max-width: 768px) {
+    margin-left: 30px;
+  }
 }
 .Link {
   position: relative;
