@@ -1,5 +1,8 @@
-.ProductsBlock {
+.ProductsPageWrapper {
   background: rgb(255, 255, 255);
+}
+.ProductsBlock {
+  width: 100%;
 }
 .ProductsContainer {
   position: relative;
@@ -7,7 +10,6 @@
   justify-content: flex-start;
   align-items: left;
   width: 100%;
-  // border: 1px solid #000;
 }
 .showFiltersBtn {
   display: none;

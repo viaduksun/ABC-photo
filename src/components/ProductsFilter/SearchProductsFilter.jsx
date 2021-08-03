@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styles from './ProductsFilter.module.scss';
 import SearchProductsQueryMaker from './SearchProductsQueryMaker';
 import RangeSliderContainer from './RangeSlider/RangeSliderContainer';

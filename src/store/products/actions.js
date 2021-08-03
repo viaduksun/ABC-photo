@@ -7,7 +7,7 @@ import getSearchProducts from '../../api/getSearchProducts';
 import {
   CLEAR_PRODUCTS,
   GET_PRODUCTS_FROM_LOCAL_STORAGE,
-  SET_CURRENT_CAREGORY,
+  SET_CURRENT_CATEGORY,
   SET_CURRENT_PAGE,
   SET_CURRENT_PRODUCTS_ARR,
   SET_CURRENT_QUERY,
@@ -51,18 +51,28 @@ export const setFlagInCartAction = (product) => ({
   type: SET_FLAG_IN_CART,
   payload: { product },
 });
-export const setCurrentPageAction = (page) => ({
-  type: SET_CURRENT_PAGE,
-  payload: page,
-});
-export const setCurrentPerPageAction = (page) => ({
-  type: SET_PER_PAGE,
-  payload: page,
-});
-export const setCurrentCategoryAction = (id) => ({
-  type: SET_CURRENT_CAREGORY,
-  payload: id,
-});
+export const setCurrentPageAction = (page) => {
+  console.log('setCurrentPageAction');
+  localStorage.setItem('currentPage', page);
+  return ({
+    type: SET_CURRENT_PAGE,
+    payload: page,
+  });
+};
+export const setCurrentPerPageAction = (page) => {
+  localStorage.setItem('currentPerPage', page);
+  return ({
+    type: SET_PER_PAGE,
+    payload: page,
+  });
+};
+export const setCurrentCategoryAction = (id) => {
+  localStorage.setItem('currentCategory', id);
+  return ({
+    type: SET_CURRENT_CATEGORY,
+    payload: id,
+  });
+};
 export const setCurrentQueryAction = (id, page) => ({
   type: SET_CURRENT_QUERY,
   payload: `category=${id}&perPage=6&startPage=${page}`,

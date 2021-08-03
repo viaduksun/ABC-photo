@@ -12,10 +12,20 @@ const SingleProduct = () => {
   const singleProduct = useSelector(
     (state) => state.singleProduct.singleProduct
   );
-  console.log('singpleProductPage');
+  const currentCategory = useSelector((state) => state.productsPage.currentCategory);
+  let activeBreadcrumbs = '';
+  if (currentCategory === 'photocameras') {
+    activeBreadcrumbs = 'Фотоаппараты';
+  } else if (currentCategory === 'videocameras') {
+    activeBreadcrumbs = 'Видеокамеры';
+  } else if (currentCategory === 'actioncameras') {
+    activeBreadcrumbs = 'Экшнкамеры';
+  } else if (currentCategory === 'lenses') {
+    activeBreadcrumbs = 'Объективы';
+  }
   const data = [
     ['/', 'Главная'],
-    ['products', 'Цифровая техника'],
+    ['products', activeBreadcrumbs],
     [
       'single-product',
       Object.keys(singleProduct).length !== 0 &&

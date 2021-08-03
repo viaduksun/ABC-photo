@@ -4,7 +4,7 @@
 import {
   CLEAR_PRODUCTS,
   GET_PRODUCTS_FROM_LOCAL_STORAGE,
-  SET_CURRENT_CAREGORY,
+  SET_CURRENT_CATEGORY,
   SET_CURRENT_PAGE,
   SET_CURRENT_PRODUCTS_ARR,
   SET_CURRENT_QUERY,
@@ -36,7 +36,7 @@ export const productsReducer = (state = initialState, action) => {
         products: action.payload,
         isLoadingProducts: false,
       };
-    case SET_CURRENT_CAREGORY:
+    case SET_CURRENT_CATEGORY:
       return {
         ...state,
         currentCategory: action.payload,

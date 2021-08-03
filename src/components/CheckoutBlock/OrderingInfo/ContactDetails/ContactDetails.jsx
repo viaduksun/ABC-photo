@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -25,6 +26,8 @@ import getOneProduct from '../../../../api/getOneProduct';
 import RadioInput from '../../../UI/RadioInput/RadioInput';
 import RadioInput2 from '../../../UI/RadioInput2/RadioInput';
 import FinalModal from '../../../FinalModal/FinalModal';
+import InputRadio from '../../../UI/InputRadio/InputRadio';
+import Select from '../../../UI/Select/Select';
 
 const GreenRadio = withStyles({
   root: {
@@ -113,26 +116,26 @@ const ContactDetails = ({ currentUser }) => {
   const validation = yup.object().shape({
     name: yup.string().typeError('Должна быть строка').required('Введите имя'),
     radioButton: yup.string(),
-    // phone: yup
-    //   .string()
-    //   .matches(
-    //     phoneRegExp,
-    //     'Номер телефона должен начинаться с "+380", допустимые символы - от 0 до 9.'
-    //   )
-    //   .required('Введите номер телефона +380 XX XXX XXXX'),
-    // email: yup
-    //   .string()
-    //   .email('Введите корректный email')
-    //   .required('Введите емэйл'),
+    phone: yup
+      .string()
+      .matches(
+        phoneRegExp,
+        'Номер телефона должен начинаться с "+380", допустимые символы - от 0 до 9.'
+      )
+      .required('Введите номер телефона +380 XX XXX XXXX'),
+    email: yup
+      .string()
+      .email('Введите корректный email')
+      .required('Введите емэйл'),
 
-    // optionsSelfDelivery: yup.string().required('Введите емэйл'),
-    // optionsNPDelivery: yup.string().required('Введите емэйл'),
-    // address: yup.string().required('Введите емэйл'),
+    optionsSelfDelivery: yup.string().required('Введите емэйл'),
+    optionsNPDelivery: yup.string().required('Введите емэйл'),
+    address: yup.string().required('Введите емэйл'),
 
-    optionsSelfDelivery: yup.string().when('radioButton', {
-      is: '',
-      then: yup.string().required('Выберите пункт выдачи'),
-    }),
+    // optionsSelfDelivery: yup.string().when('radioButton', {
+    //   is: '',
+    //   then: yup.string().required('Выберите пункт выдачи'),
+    // }),
   });
   const optionsSelfDelivery = (
     <>
@@ -161,29 +164,44 @@ const ContactDetails = ({ currentUser }) => {
     </>
   );
 
+  let optionsSelfDeliveryValue = '';
+
+  const handleChangeSelectselfExport = (e) => {
+    console.log(e.target.value);
+    optionsSelfDeliveryValue = e.target.value;
+  };
+
   const initialValues1 = {
     name: '123',
     phone: '',
     email: '',
     address: '',
-    optionsSelfDelivery: '',
+    optionsSelfDelivery: optionsSelfDeliveryValue,
     optionsNPDelivery: '',
     radioButton: '',
     radioButton3: '',
   };
+
+  console.log(initialValues1);
 
   const initialValues2 = {
     name: currentUser.firstName,
     phone: currentUser.phone,
     email: currentUser.email,
     address: '',
-    optionsSelfDelivery: '',
+    optionsSelfDelivery: optionsSelfDeliveryValue,
     optionsNPDelivery: '',
     radioButton: '',
     radioButton3: '',
   };
-  console.log(currentUser.firstName);
-  console.log(initialValues2);
+
+  const [check, setCheck] = useState('random');
+    
+    const handleChange = (id) => {
+        console.log('Click radio');
+        setCheck(id);
+    };
+  
   return (
     <div className={styles.ContactDetails}>
       <Formik
@@ -199,7 +217,6 @@ const ContactDetails = ({ currentUser }) => {
                 <h2 className={styles.FormBlockTitle}>Контактные данные</h2>
                 <p>*Поля, обязательные для заполнения</p>
               </div>
-
               <label htmlFor="name">Имя получителя*</label>
               <TextInput
                 name="name"
@@ -214,117 +231,31 @@ const ContactDetails = ({ currentUser }) => {
                 type="text"
                 placeholder="example@gmail.com"
               />
-            </div>
-            <div className={styles.FormBlock}>
-              <div className={styles.FormBlockTitleWrapper}>
-                <h2 className={styles.FormBlockTitle}>Способы доставки</h2>
-              </div>
-              <div className={styles.radioOptionBlock}>
-                {/* <RadioInput
-                  checked={selectedValueDelivery === 'b'}
-                  onChange={handleChangeDelivery}
-                  type="radio"
-                  value="b"
-                  name="radioButton"
-                  label="TEST222"
-                /> */}
-                {/* <FormControlLabel
-                  name="radioButton3"
-                  checked={selectedValueDelivery === 'a'}
-                  value="a"
-                  control={<Radio />}
-                  label="Female"
-                  onChange={handleChangeDelivery}
-                />
-                <FormControlLabel
-                  name="radioButton3"
-                  checked={selectedValueDelivery === 'b'}
-                  value="b"
-                  control={<Radio />}
-                  label="Female"
-                  onChange={handleChangeDelivery}
-                /> */}
-                <RadioInput2
-                  checked={selectedValueDelivery === 'a'}
-                  name="radioButton"
-                  label="RadioInput2"
-                  value="a"
-                  type="radio"
-                  onChange={(e) => handleChangeDelivery(e)}
-                />
-                <RadioInput2
-                  checked={selectedValueDelivery === 'b'}
-                  name="radioButton"
-                  label="RadioInput2"
-                  value="b"
-                  type="radio"
-                  onChange={(e) => handleChangeDelivery(e)}
-                />
-                <GreenRadio
-                  checked={selectedValueDelivery === 'a'}
-                  onChange={handleChangeDelivery}
-                  value="a"
-                  name="radioButton"
-                  inputProps={{ 'aria-label': 'A' }}
-                  id="pointOfDelivery"
-                />
-                <label htmlFor="pointOfDelivery">
-                  Самовывоз из пункта выдачи
-                </label>
-                {selectedValueDelivery === 'a' && (
-                  <FormikControl
-                    control="select"
-                    name="optionsSelfDelivery"
-                    options={optionsSelfDelivery}
-                  />
-                )}
-              </div>
-              <div className={styles.radioOptionBlock}>
-                <Field
-                  type="radio"
-                  as={GreenRadio}
-                  checked={selectedValueDelivery === 'b'}
-                  onChange={handleChangeDelivery}
-                  value="b"
-                  name="radioButton222"
-                />
-                {/* <GreenRadio
-                  checked={selectedValueDelivery === 'b'}
-                  onChange={handleChangeDelivery}
-                  value="b"
-                  name="radioButtonB"
-                  inputProps={{ 'aria-label': 'A' }}
-                  id="pointOfDelivery"
-                /> */}
-                <label htmlFor="pointOfDelivery">
-                  Новая почта (в отделение)
-                </label>
-                {selectedValueDelivery === 'b' && (
-                  <FormikControl
-                    control="select"
-                    name="optionsNPDelivery"
-                    options={optionsNP}
-                  />
-                )}
-              </div>
-              <div className={styles.radioOptionBlock}>
-                <GreenRadio
-                  checked={selectedValueDelivery === 'c'}
-                  onChange={handleChangeDelivery}
-                  value="c"
-                  name="radioButtonC"
-                  inputProps={{ 'aria-label': 'A' }}
-                  id="pointOfDelivery"
-                />
-                <label htmlFor="pointOfDelivery">Курьерская доставка</label>
-                {selectedValueDelivery === 'c' && (
-                  <TextInput
-                    name="address"
-                    type="text"
-                    placeholder="Адрес доставки"
-                  />
-                )}
-              </div>
+              <h2 className={styles.FormBlockTitle}>Способы доставки</h2>
+              {/* <InputRadio onChange={handleChange} currentId={check} id="selfExport" name="options" label="Самовывоз из пункта выдачи" />
+              {check === 'selfExport' && (
+              <select onChange={(e) => {
+                handleChangeSelectselfExport(e);
+              }}
+              >
+                <option value="г.Киев, ул. Б. Васильковская (Красноармейская), 132...">г.Киев, ул. Б. Васильковская (Красноармейская), 132...</option>
+                <option value="г.Днепр, ул. Б. Васильковская (Красноармейская), 138...">г.Днепр, ул. Б. Васильковская (Красноармейская), 138...</option>
+              </select>
+              )}
+              <InputRadio onChange={handleChange} currentId={check} id="newMail" name="options" label="Новая почта (в отделение)" />
+              {check === 'newMail' && (
+              <select>
+                <option>г.Киев, ул. Б. Васильковская (Красноармейская), 132...</option>
+                <option>г.Киев, ул. Б. Васильковская (Красноармейская), 132...</option>
+              </select>
+              )}
+              <InputRadio onChange={handleChange} currentId={check} id="Courier" name="options" label="Курьерская доставка" />
+              {check === 'Courier' && (
+              <select>
+                <option>г.Киев, ул. Б. Васильковская (Красноармейская), 132...</option>
+                <option>г.Киев, ул. Б. Васильковская (Красноармейская), 132...</option>
+              </select>
+              )} */}
             </div>
           </Form>
         )}

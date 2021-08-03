@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable max-len */
 /* eslint-disable no-case-declarations */
 import { SHOW_GRID } from '../products/types';
@@ -12,17 +13,20 @@ import {
   CLEAR_SEARCH_VALUE,
   SET_SEARCH_VALUE_FOR_USER,
   SEARCH_PRODUCTS_FROM_LOCAL_STORAGE,
+  FILTER_PRICE_SEARCH_PRODUCTS,
 } from './types';
 
 const initialState = {
   searchProducts: [],
+  searchProductsForFilter: [],
   isLoadingSearchProducts: true,
   currentPage: 1,
   searchProductsPerPage: 6,
   showBy: 3,
   showGrid: true,
   searchValue: '',
-  searchValueForUser: ''
+  searchValueForUser: '',
+  priceState: [],
 };
 
 export const searchProducts = (state = initialState, action) => {
@@ -31,6 +35,7 @@ export const searchProducts = (state = initialState, action) => {
       return {
         ...state,
         searchProducts: action.payload.data,
+        searchProductsForFilter: action.payload.data,
         isLoadingSearchProducts: false,
         currentPage: 1,
         searchProductsPerPage: 6,
@@ -70,30 +75,52 @@ export const searchProducts = (state = initialState, action) => {
     case SET_SEARCH_VALUE:
       return {
         ...state,
-        searchValue: action.payload.searchValue
+        searchValue: action.payload.searchValue,
       };
     case CLEAR_SEARCH_VALUE:
       return {
         ...state,
-        searchValue: ''
+        searchValue: '',
       };
     case SET_SEARCH_VALUE_FOR_USER:
       return {
         ...state,
-        searchValueForUser: action.payload.searchValueForUser
+        searchValueForUser: action.payload.searchValueForUser,
       };
     case SEARCH_PRODUCTS_FROM_LOCAL_STORAGE:
       return {
         ...state,
-        searchProducts: action.payload
+        searchProducts: action.payload,
+      };
+    case FILTER_PRICE_SEARCH_PRODUCTS:
+      // eslint-disable-next-line no-unused-vars
+      console.log(action.payload);
+      const filteredPriceArr = state.searchProductsForFilter.filter(
+        (item) =>
+          // eslint-disable-next-line implicit-arrow-linebreak
+          item.currentPrice >= action.payload[0] &&
+          item.currentPrice <= action.payload[1]
+      );
+      console.log(filteredPriceArr);
+      return {
+        ...state,
+        searchProducts: filteredPriceArr,
       };
     case SORT_SEARCH_PRODUCTS:
       console.log(action.payload.value);
       let newArr = [];
       if (action.payload.value === '-currentPrice') {
-        newArr = state.searchProducts.slice(0).sort((a, b) => parseFloat(b.currentPrice) - parseFloat(a.currentPrice));
+        newArr = state.searchProducts
+          .slice(0)
+          .sort(
+            (a, b) => parseFloat(b.currentPrice) - parseFloat(a.currentPrice)
+          );
       } else if (action.payload.value === '+currentPrice') {
-        newArr = state.searchProducts.slice(0).sort((a, b) => parseFloat(a.currentPrice) - parseFloat(b.currentPrice));
+        newArr = state.searchProducts
+          .slice(0)
+          .sort(
+            (a, b) => parseFloat(a.currentPrice) - parseFloat(b.currentPrice)
+          );
       } else {
         newArr = state.searchProducts.slice(0).sort(() => Math.random() - 0.5);
       }

@@ -29,11 +29,6 @@ const menuItems = [
     pageURL: '/contacts',
     id: 6,
   },
-  {
-    menuTitle: 'Поиск продуктов',
-    pageURL: '/search-products',
-    id: 6,
-  },
   // {
   //   menuTitle: 'Admin panel',
   //   pageURL: '/admin',

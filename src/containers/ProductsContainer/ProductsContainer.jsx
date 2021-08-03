@@ -68,7 +68,7 @@ const ProductsContainer = () => {
     [styles.showFiltersBtn_hidden]: isActive,
   });
   return (
-    <div className={styles.ProductsBlock}>
+    <div className={styles.ProductsPageWrapper}>
       <div className="container">
         <div className={styles.ProductsContainer}>
           <div className={showFiltersBtn} onClick={handleClick}>
@@ -80,7 +80,7 @@ const ProductsContainer = () => {
             {currentCategory === 'actioncameras' && <ActionCamerasFilter />}
             {currentCategory === 'lenses' && <LensesFilter />}
           </div>
-          <div>
+          <div className={styles.ProductsBlock}>
             <ProductsSorting
               currentPage={currentPage}
               allProducts={allProducts}

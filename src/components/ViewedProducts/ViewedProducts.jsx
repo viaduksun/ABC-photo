@@ -9,7 +9,7 @@ const ViewedProducts = () => {
   return (
     <div className={styles.ViewedProductsSlider}>
       <div className="container">
-        <h2 className={styles.Title}>Просмотренные товары</h2>
+        {viewedProducts.length !== 0 && <h2 className={styles.Title}>Просмотренные товары</h2>}
         {viewedProducts.length <= 4 ? (
           <ul className={styles.Products}>
             {viewedProducts.map((viewedProduct) => (

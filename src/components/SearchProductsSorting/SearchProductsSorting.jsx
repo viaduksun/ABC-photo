@@ -1,30 +1,21 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-debugger */
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { CgMenuGridR } from 'react-icons/cg';
+import PropTypes from 'prop-types';
 import {
   setSearchProductsPerPageAction,
   sortSearchProductsAction,
 } from '../../store/searchProducts/actions';
 import styles from './SearchProductsSorting.module.scss';
 
-const SearchProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
-  const [currentInterval, setCurrentInterval] = useState([1, 3]);
+const SearchProductsSorting = ({ handlerSwitch }) => {
   const dispatch = useDispatch();
-  console.log(currentPage);
   const showGrid = useSelector((state) => state.productsPage.showGrid);
-  const searchProductsPerPage = useSelector(
-    (state) => state.searchProducts.searchProductsPerPage
-  );
-  const searchProductsShowBy = useSelector(
-    (state) => state.searchProducts.showBy
-  );
 
   const handlePerPage = (e) => {
     const showBy = +e.target.value;
@@ -38,9 +29,6 @@ const SearchProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
   return (
     <div className={styles.ProductsSorting}>
       <div className={styles.ProductsSortingLeft}>
-        <div className={styles.NumberOf}>
-          {currentInterval[0]} - {currentInterval[1]} из {allProducts}
-        </div>
         <div className={styles.Show}>
           <span>Показывать по</span>
           <select
@@ -80,6 +68,10 @@ const SearchProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
       </div>
     </div>
   );
+};
+
+SearchProductsSorting.propTypes = {
+  handlerSwitch: PropTypes.func.isRequired,
 };
 
 export default SearchProductsSorting;

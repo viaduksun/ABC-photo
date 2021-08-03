@@ -12,6 +12,7 @@ import deleteCart from '../../api/deleteCart';
 import deleteFromCart from '../../api/deleteFromCart';
 import getCartFromDB from '../../api/getCartFromDB';
 import updateCart from '../../api/updateCart';
+import { exitAction } from '../admin/actions';
 import {
   ADD_PRODUCT_TO_CART,
   ADD_SINGLE_PRODUCT_TO_CART,
@@ -189,7 +190,14 @@ export const getCartFromDB_action = () => (dispatch) => {
         dispatch({ type: GET_CART_FROM_DB, payload: result });
       }
     }
-  );
+  ).catch((err) => {
+    console.log(err.response);
+    if (err.response.data === 'Unauthorized') {
+      localStorage.removeItem('token');
+      dispatch(exitAction());
+      dispatch({ type: LOG_OUT });
+    }
+  });
 };
 
 export const cartDeleteAction = () => (dispatch) => {

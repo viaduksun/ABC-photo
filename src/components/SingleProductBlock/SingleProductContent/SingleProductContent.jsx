@@ -51,7 +51,6 @@ const SingleProductContent = ({ singleProduct }) => {
       <ModalSubscribeProduct
         active={modalActive}
         setActive={setModalActive}
-        singleProduct={singleProduct}
       />
       <div className={styles.Wrapper}>
         <p className={styles.InStock}>

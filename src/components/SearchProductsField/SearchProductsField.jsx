@@ -1,20 +1,15 @@
-/* eslint-disable no-debugger */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from './SearchProductsField.module.scss';
-import {showGridAction} from '../../store/products/actions';
 import SearchProductsSorting from '../SearchProductsSorting/SearchProductsSorting';
 import ProductCard from '../ProductCard/ProductCard';
 import ProductCardLine from '../ProductCardLine/ProductCardLine';
-import Pagination from '../Pagination/Pagination';
-import PaginationSearchProducts from '../PaginationSearchProducts/PaginationSearchProducts';
 import { showGridSearchProductsAction } from '../../store/searchProducts/actions';
 
 const SearchProductsField = ({ searchProducts }) => {
-  console.log('RENDER_ProductsField ');
   const currentPage = useSelector((state) => state.productsPage.currentPage);
   const allProducts = useSelector(
     (state) => state.productsPage.AllProductsForPagination.length
@@ -24,7 +19,6 @@ const SearchProductsField = ({ searchProducts }) => {
   const handlerSwitch = () => {
     dispatch(showGridSearchProductsAction());
   };
-
   return (
     <div className={styles.ProductsField}>
       <SearchProductsSorting
@@ -47,9 +41,16 @@ const SearchProductsField = ({ searchProducts }) => {
             </div>
           )}
       </div>
-   
     </div>
   );
+};
+
+SearchProductsField.propTypes = {
+  // eslint-disable-next-line react/require-default-props
+  searchProducts: PropTypes.arrayOf(PropTypes.any),
+};
+SearchProductsField.defaultProps = {
+  searchProducts: []
 };
 
 export default SearchProductsField;

@@ -8,6 +8,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import getFilteredProducts from '../../../api/getFilteredProducts';
 // import { NavLink } from 'react-router-dom';
 // import getFilteredProducts from '../../../api/getFilteredProducts';
@@ -27,6 +28,7 @@ const BottomMenuLink = ({ parentId, path, title, key, page }) => {
     setdropActive(!dropActive);
   };
   const handleDropdownClick = (id) => {
+    console.log('DROP');
     setdropActive(false);
     // console.log('MENU clicked', id);
     // &characteristics.type[1]=Зеркальный,Суперзум
@@ -55,6 +57,10 @@ const BottomMenuLink = ({ parentId, path, title, key, page }) => {
       )}
     </li>
   );
+};
+
+BottomMenuLink.propTypes = {
+  key: PropTypes.string.isRequired,
 };
 
 export default BottomMenuLink;
