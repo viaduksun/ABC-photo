@@ -211,11 +211,14 @@ export const getCartFromDB_action = () => (dispatch) => {
     })
     .catch((err) => {
       console.log(err.response);
-      if (err.response.data === 'Unauthorized') {
-        localStorage.removeItem('token');
-        dispatch(exitAction());
-        dispatch({ type: LOG_OUT });
-      }
+      // if (!err.response) {
+      //   console.log('No response');
+      // }
+      // if (err.response.data && err.response.data === 'Unauthorized') {
+      //   localStorage.removeItem('token');
+      //   dispatch(exitAction());
+      //   dispatch({ type: LOG_OUT });
+      // }
     });
 };
 

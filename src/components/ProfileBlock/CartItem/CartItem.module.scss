@@ -27,7 +27,7 @@
   }
 }
 .orderDetailsHeader {
-  background: rgb(143, 143, 143);
+  background: rgb(206, 206, 206);
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
   align-items: center;
@@ -35,10 +35,10 @@
   padding: 5px;
 }
 .orderDetailsItemWrapper {
-  background: rgb(255, 222, 187);
+  background: rgb(240, 240, 240);
   border-bottom: 1px solid #000;
   div:nth-of-type(odd) {
-    background: rgb(255, 239, 222);
+    background: rgb(248, 248, 248);
   }
 }
 .orderDetailsItem {
@@ -46,7 +46,10 @@
   grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
   align-items: center;
   text-align: center;
-  padding: 5px;
+  padding: 10px;
+  & p {
+    font-size: 12px;
+  }
 }
 .arrowWrapper {
   position: relative;

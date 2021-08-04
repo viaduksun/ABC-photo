@@ -30,22 +30,23 @@ const EditProfile = () => {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPreviewSource(reader.result);
-      // setPreviewBigActive(true);
+      setPreviewBigActive(true);
     };
   };
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
-    setImageSelected(file);
-    // previewFile(file);
+    // setImageSelected(file);
+    previewFile(file);
   };
 
   const handleUploadImg = () => {
-    // if (!previewSource) return;
+    setIsLoading(true);
+    if (!previewSource) return;
     console.log('UPLOAD CLICK');
-    uploadImg(imageSelected)
-      // uploadImg(previewSource)
+    // console.log('previewSource', previewSource);
+    // uploadImg(imageSelected)
+    uploadImg(previewSource)
       .then((result) => {
-        setIsLoading(true);
         setPreviewBigActive(false);
         console.log('upload: ', result);
         setCloudUrl(result.data.url);
@@ -57,7 +58,19 @@ const EditProfile = () => {
         console.log(err);
       });
   };
-
+  // const handleUploadImg = () => {
+  //   if (!previewSource) return;
+  //   uploadImg(previewSource)
+  //     .then((result) => {
+  //       console.log('upload: ', result);
+  //       setCloudUrl(result.data.url);
+  //     })
+  //     .catch((err) => {
+  //       console.log(
+  //         err
+  //       ); /* Show error to customer, may be incorrect password or something else */
+  //     });
+  // };
   const handleSubmitForm = (values, { setSubmitting }) => {
     console.log('SUBMIT', cloudUrl);
     const { firstName, lastName, login, email, phone } = values;
@@ -80,11 +93,10 @@ const EditProfile = () => {
       setPreviewBigActive(false);
     }
   };
-  // const numericRegex = /(?=.*[0-9])/;
+
   const validate = Yup.object({
     firstName: Yup.string()
       .max(20, 'Must be 20 characters or less')
-      // .matches(numericRegex, 'Числовой символ недопустим')
       .required('Введите ваше имя'),
     lastName: Yup.string()
       .max(20, 'Must be 20 characters or less')

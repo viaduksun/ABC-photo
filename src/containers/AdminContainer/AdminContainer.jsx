@@ -6,8 +6,9 @@ import Categories from '../../components/Admin/Categories/Categories';
 import SideNavBar from '../../components/Admin/SideNavBar/SideNavBar';
 import styles from './AdminContainer.module.scss';
 import Products from '../../components/Admin/Products/Products';
-import CreateCategory from '../../components/Admin/CreateCategory';
+
 import CreateProductsFormContainer from '../../components/Admin/CreateProductsForms/CreateProductsFormContainer';
+import CreateCategory from '../../components/Admin/CreateCategory/CreateCategory';
 
 const AdminContainer = () => {
   const [isActive, setIsActive] = useState('catalog');

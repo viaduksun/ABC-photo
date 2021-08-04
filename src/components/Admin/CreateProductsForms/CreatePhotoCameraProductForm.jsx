@@ -472,7 +472,7 @@ const CreatePhotoCameraProductForm = ({ currentCategory }) => {
                   options={maxSizeOptions}
                 />
               </div>
-              <div className={styles.productInputsGroup}>
+              <div className={styles.productTextsGroup}>
                 <FormikControl
                   control="textarea"
                   label="Описание"

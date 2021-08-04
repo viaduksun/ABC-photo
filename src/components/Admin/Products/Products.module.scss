@@ -54,7 +54,7 @@
   }
 }
 .productDataWrapper {
-  background: rgb(255, 232, 194);
+  background: rgb(240, 240, 240);
   // display: none;
   // transform: scaleY(0.5);
   // transform: translateY(-150px);
@@ -74,13 +74,13 @@
 .dataItem {
   border-bottom: 1px solid rgb(173, 173, 173);
   display: flex;
-  padding-left: 10px;
+  padding: 2px 10px;
 }
 .dataTitle {
-  flex: 1 1 30%;
+  flex: 1 1 50%;
 }
 .dataContent {
-  flex: 1 1 70%;
+  flex: 1 1 50%;
 }
 // ==== MODAL ==========
 .modalContentBlock {

@@ -26,12 +26,14 @@ import {
   modalDeleteClose,
 } from '../../../store/admin/actions';
 import EditProduct from '../EditProduct';
+import Characteristics from './Characteristics';
 
 const Products = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(adminProducts());
   }, [dispatch]);
+  const [isLoading, setIsLoading] = useState(true);
   // ========= REDUX =================
   const isModalEditProductOpen = useSelector(
     (state) => state.modals.isEditProductModalOpen
@@ -159,6 +161,11 @@ const Products = () => {
             <Loader />
           </div>
         )}
+        {isLoading && !productsArr && (
+          <div className={styles.loader}>
+            <Loader />
+          </div>
+        )}
         {!isLoadingProducts &&
           productsArr.map((product, index) => (
             <div key={product._id} className={styles.ProductWrapper}>
@@ -170,9 +177,9 @@ const Products = () => {
               >
                 <span className={styles.number}>{index + 1}</span>
                 <div className={styles.preview}>
-                  <img src={product.imageUrls[0]} alt={product.name} />
+                  <img src={product.imageUrls[0]} alt={product.model} />
                 </div>
-                {/* <div className={styles.title}>{product.name}</div> */}
+                <div className={styles.title}>{product.model}</div>
                 <div className={styles.btnbArrowWrapper}>
                   <BsChevronDown
                     className={classNames({
@@ -208,18 +215,8 @@ const Products = () => {
                 })}
               >
                 <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Производитель</div>
-                  <div className={styles.dataContent}>{product.brand}</div>
-                </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Модель</div>
-                  <div className={styles.dataContent}>{product.name}</div>
-                </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>
-                    Комплектация (c/без объектива)
-                  </div>
-                  <div className={styles.dataContent}>{product.set}</div>
+                  <div className={styles.dataTitle}>Категория</div>
+                  <div className={styles.dataContent}>{product.category}</div>
                 </div>
                 <div className={styles.dataItem}>
                   <div className={styles.dataTitle}>Текущая цена</div>
@@ -233,69 +230,17 @@ const Products = () => {
                     {product.previousPrice}
                   </div>
                 </div>
-                {/* ===================== */}
                 <div className={styles.dataItem}>
                   <div className={styles.dataTitle}>Количество на складе</div>
                   <div className={styles.dataContent}>{product.quantity}</div>
                 </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Артикул</div>
-                  <div className={styles.dataContent}>{product.artical}</div>
-                </div>
+
                 <div className={styles.dataItem}>
                   <div className={styles.dataTitle}>Хит продаж</div>
-                  <div className={styles.dataContent}>{product.hitSale}</div>
+                  <div className={styles.dataContent}>{product.hit}</div>
                 </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Категория</div>
-                  <div className={styles.dataContent}>{product.categories}</div>
-                </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Гарантия</div>
-                  <div className={styles.dataContent}>{product.waranty}</div>
-                </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Тип фотоаппарата</div>
-                  <div className={styles.dataContent}>{product.type}</div>
-                </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>
-                    Количество мегапикселей
-                  </div>
-                  <div className={styles.dataContent}>{product.megapixels}</div>
-                </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Тип матрицы</div>
-                  <div className={styles.dataContent}>{product.matrixType}</div>
-                </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Размер матрицы</div>
-                  <div className={styles.dataContent}>{product.matrixSize}</div>
-                </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Диагональ экрана</div>
-                  <div className={styles.dataContent}>
-                    {product.screenDiagonal}
-                  </div>
-                </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Сенсорный экран</div>
-                  <div className={styles.dataContent}>
-                    {product.sensorScreen}
-                  </div>
-                </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Цифровой зум</div>
-                  <div className={styles.dataContent}>
-                    {product.digitalMagnification}
-                  </div>
-                </div>
-                <div className={styles.dataItem}>
-                  <div className={styles.dataTitle}>Стабилизация</div>
-                  <div className={styles.dataContent}>
-                    {product.stabilization}
-                  </div>
-                </div>
+                {/* ===================== */}
+                <Characteristics charObj={product.characteristics} />
               </div>
             </div>
           ))}
