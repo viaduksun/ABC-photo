@@ -12,7 +12,9 @@ import {
 } from '../store/products/actions';
 
 const Products = () => {
-  const currentCategory = useSelector((state) => state.productsPage.currentCategory);
+  const currentCategory = useSelector(
+    (state) => state.productsPage.currentCategory
+  );
   let activeBreadcrumbs = '';
   if (currentCategory === 'photocameras') {
     activeBreadcrumbs = 'Фотоаппараты';
@@ -23,7 +25,10 @@ const Products = () => {
   } else if (currentCategory === 'lenses') {
     activeBreadcrumbs = 'Объективы';
   }
-  const array = [['/', 'Главная'], ['products', activeBreadcrumbs]];
+  const array = [
+    ['/', 'Главная'],
+    ['products', activeBreadcrumbs],
+  ];
   const dispatch = useDispatch();
   useEffect(() => {
     const currentCategory = localStorage.getItem('currentCategory');

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -7,7 +8,7 @@ import { BsX } from 'react-icons/bs';
 import styles from './FinalModal.module.scss';
 
 // eslint-disable-next-line react/prop-types
-const FinalModal = ({ active, setActive }) => {
+const FinalModal = ({ active, setActive, orderNo }) => {
   const handleClose = () => {
     setActive(false);
   };
@@ -53,7 +54,7 @@ const FinalModal = ({ active, setActive }) => {
         <h2>Спасибо, что выбрали нас!</h2>
         <div>
           <p>
-            Ваш заказ №`hardcode` успешно оформлен. Мы свяжемся с вами ближайшее
+            Ваш заказ № {orderNo} успешно оформлен. Мы свяжемся с вами ближайшее
             время.
           </p>
         </div>

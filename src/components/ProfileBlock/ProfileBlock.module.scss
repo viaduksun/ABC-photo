@@ -69,6 +69,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .avatarBlockTitle {
   color: rgb(98, 98, 98);
@@ -86,6 +87,44 @@
   justify-content: center;
   align-items: center;
   background: rgb(189, 189, 189);
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.previewAvatarBigWrapper {
+  position: absolute;
+  left: -20px;
+  top: -50px;
+  &:after {
+    position: absolute;
+    right: -30px;
+    top: 30px;
+    content: 'preview';
+    width: 70px;
+    height: 25px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 12px;
+    background: rgb(246, 91, 143);
+    z-index: 3;
+  }
+}
+.previewAvatarBig {
+  position: absolute;
+  border: 2px solid rgb(156, 156, 156);
+  border-radius: 50%;
+  min-width: 170px;
+  max-width: 170px;
+  min-height: 170px;
+  max-height: 170px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(189, 189, 189);
+  z-index: 2;
   & img {
     width: 100%;
     height: 100%;
@@ -123,4 +162,16 @@
   top: 50%;
   color: rgb(88, 88, 88);
   transform: translateY(-50%);
+}
+.loaderWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.459);
+  z-index: 10;
 }
