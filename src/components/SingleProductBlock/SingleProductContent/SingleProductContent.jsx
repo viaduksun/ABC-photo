@@ -39,7 +39,7 @@ const SingleProductContent = ({ singleProduct }) => {
     }
     setTimeout(() => {
       setMoveToCart(false);
-    }, 2000);
+    }, 900);
   };
 
   const [modalActive, setModalActive] = useState(false);
@@ -48,10 +48,7 @@ const SingleProductContent = ({ singleProduct }) => {
   };
   return (
     <>
-      <ModalSubscribeProduct
-        active={modalActive}
-        setActive={setModalActive}
-      />
+      <ModalSubscribeProduct active={modalActive} setActive={setModalActive} />
       <div className={styles.Wrapper}>
         <div className={styles.BlockLeft}>
           <p className={styles.InStock}>

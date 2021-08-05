@@ -8,6 +8,7 @@ import CreatePhotoCameraProductForm from './CreatePhotoCameraProductForm';
 import CreateVideoCameraProductForm from './CreateVideoCameraProductForm';
 import CreateActionCameraProductForm from './CreateActionCameraProductForm';
 import CreateLensesProductForm from './CreateLensesProductForm';
+import CreateMicroForm from './CreateMicroForm';
 import styles from './CreateProductsForms.module.scss';
 
 const CreateProductsFormContainer = () => {
@@ -39,6 +40,9 @@ const CreateProductsFormContainer = () => {
       )}
       {currentCategory && currentCategory.id === 'lenses' && (
         <CreateLensesProductForm currentCategory={currentCategory} />
+      )}
+      {currentCategory && currentCategory.id === 'micro' && (
+        <CreateMicroForm currentCategory={currentCategory} />
       )}
     </div>
   );

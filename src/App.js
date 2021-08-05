@@ -43,6 +43,7 @@ import deleteCart from './api/deleteCart';
 import { searchProductsFromLocalStorageAction } from './store/searchProducts/actions';
 import { getCategoryFromLocalStorageAction, getProductsFromLocalStorageAction } from './store/products/actions';
 import AuthorizationPopup from './components/UI/AuthorizationPopup/AuthorizationPopup';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   const cart = useSelector((state) => state.cart.cart);
@@ -119,7 +120,7 @@ function App() {
     const searchProductsFromLocalStorage =
       localStorage.getItem('searchProducts');
     const productsFromLocalStorage = localStorage.getItem('products');
-    const categoryFromLocalStorage = localStorage.getItem('category');
+    const categoryForBreadcrumbsFromLocalStorage = localStorage.getItem('categoryForBreadcrumbs');
     if (cartFromLocalStorage) {
       dispatch(cartFromLocalStorageAction(cartFromLocalStorage));
     }
@@ -144,8 +145,8 @@ function App() {
     if (productsFromLocalStorage) {
       dispatch(getProductsFromLocalStorageAction(productsFromLocalStorage));
     }
-    if (categoryFromLocalStorage) {
-      dispatch(getCategoryFromLocalStorageAction(categoryFromLocalStorage));
+    if (categoryForBreadcrumbsFromLocalStorage) {
+      dispatch(getCategoryFromLocalStorageAction(categoryForBreadcrumbsFromLocalStorage));
     }
   }, [dispatch]);
 
@@ -214,6 +215,7 @@ function App() {
         <Route exact path="/search-products">
           <SearchProducts />
         </Route>
+        <Route><ErrorPage /></Route>
       </Switch>
       <Footer />
       <ButtonTop />

@@ -19,3 +19,21 @@
   justify-content: space-evenly;
   align-items: center;
 }
+.NoOrders {
+  display: none;
+}
+.NoOrdersActive {
+  display: block;
+  text-align: center;
+  width: 100%;
+  h2 {
+    margin-top: 50px;
+    color: #51ad33;
+    font-size: 20px;
+  }
+  .Emoji {
+    margin-top: 20px;
+    font-size: 70px;
+    color: #51ad33;
+  }
+}

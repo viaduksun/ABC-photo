@@ -30,7 +30,7 @@ const EditProfile = () => {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPreviewSource(reader.result);
-      // setPreviewBigActive(true);
+      setPreviewBigActive(true);
     };
   };
   const handleFileInputChange = (e) => {
@@ -40,13 +40,14 @@ const EditProfile = () => {
   };
 
   const handleUploadImg = () => {
-    if (!previewSource) return;
     setIsLoading(true);
+    if (!previewSource) return;
     console.log('UPLOAD CLICK');
+    // console.log('previewSource', previewSource);
     // uploadImg(imageSelected)
-      uploadImg(previewSource)
+    uploadImg(previewSource)
       .then((result) => {
-        // setPreviewBigActive(false);
+        setPreviewBigActive(false);
         console.log('upload: ', result);
         setCloudUrl(result.data.url);
       })
@@ -57,7 +58,19 @@ const EditProfile = () => {
         console.log(err);
       });
   };
-
+  // const handleUploadImg = () => {
+  //   if (!previewSource) return;
+  //   uploadImg(previewSource)
+  //     .then((result) => {
+  //       console.log('upload: ', result);
+  //       setCloudUrl(result.data.url);
+  //     })
+  //     .catch((err) => {
+  //       console.log(
+  //         err
+  //       ); /* Show error to customer, may be incorrect password or something else */
+  //     });
+  // };
   const handleSubmitForm = (values, { setSubmitting }) => {
     console.log('SUBMIT', cloudUrl);
     const { firstName, lastName, login, email, phone } = values;
@@ -80,11 +93,10 @@ const EditProfile = () => {
       setPreviewBigActive(false);
     }
   };
-  // const numericRegex = /(?=.*[0-9])/;
+
   const validate = Yup.object({
     firstName: Yup.string()
       .max(20, 'Must be 20 characters or less')
-      // .matches(numericRegex, 'Числовой символ недопустим')
       .required('Введите ваше имя'),
     lastName: Yup.string()
       .max(20, 'Must be 20 characters or less')
@@ -127,13 +139,13 @@ const EditProfile = () => {
               <div className={styles.avatarBlockWrapper}>
                 <p className={styles.avatarBlockTitle}>Аватар</p>
                 <div className={styles.avatarBlock}>
-                  {/* {previewSource && previewBigActive && (
+                  {previewSource && previewBigActive && (
                     <div className={styles.previewAvatarBigWrapper}>
                       <div className={styles.previewAvatarBig}>
                         <img src={previewSource} alt="avatar" />
                       </div>
                     </div>
-                  )} */}
+                  )}
                   <div className={styles.previewAvatar}>
                     {previewSource && <img src={previewSource} alt="avatar" />}
                     {!previewSource && currentUser.avatar && (

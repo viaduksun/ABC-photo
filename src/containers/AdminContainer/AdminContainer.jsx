@@ -1,15 +1,22 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Categories from '../../components/Admin/Categories/Categories';
 // import Login from '../../components/Admin/Login';
 // import Register from '../../components/Admin/Register';
 import SideNavBar from '../../components/Admin/SideNavBar/SideNavBar';
 import styles from './AdminContainer.module.scss';
 import Products from '../../components/Admin/Products/Products';
-import CreateCategory from '../../components/Admin/CreateCategory';
+
 import CreateProductsFormContainer from '../../components/Admin/CreateProductsForms/CreateProductsFormContainer';
+import CreateCategory from '../../components/Admin/CreateCategory/CreateCategory';
+import { adminProducts } from '../../store/admin/actions';
 
 const AdminContainer = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(adminProducts());
+  }, [dispatch]);
   const [isActive, setIsActive] = useState('catalog');
   const handleActive = (activeBtn) => {
     setIsActive(activeBtn);

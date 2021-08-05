@@ -73,22 +73,41 @@
 }
 .CreditBankName {
   font-size: 25px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 20px 0;
-    color: #51ad33;
-    height: auto;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 20px 0;
+  color: #51ad33;
+  height: auto;
 }
 .CreditInstallment {
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 22px;
-    margin-top: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 10px;
 }
 .CreditInstallmentList {
   margin-top: 10px;
   li {
     font-size: 16px;
     line-height: 20px;
+  }
+}
+.ErrorPage {
+  height: 30vh;
+  text-align: center;
+  h2 {
+    margin-top: 5vh;
+    color: #51ad33;
+    font-size: 30px;
+  }
+  p {
+    margin-top: 30px;
+  }
+  .LinkHome {
+    color: #51ad33;
+    transition: 0.2s ease;
+    &:hover {
+      font-size: 17px;
+    }
   }
 }

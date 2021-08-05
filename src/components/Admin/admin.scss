@@ -1,6 +1,7 @@
 .formBlock {
   background: rgb(230, 230, 230);
-  width: 600px;
+  // width: 600px;
+  width: 100%;
   padding: 30px;
   // margin: 20px; мешает в модалке!!!
   &.create {

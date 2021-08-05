@@ -10,11 +10,12 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import createCategory from '../../api/createCategory';
-import TextInput from './Input/TextInput';
-import FormikControl from './FormikControl';
-import Button from '../UI/Button/Button';
-import { setCatalog } from '../../store/admin/actions';
+import createCategory from '../../../api/createCategory';
+import TextInput from '../Input/TextInput';
+import FormikControl from '../FormikControl';
+import Button from '../../UI/Button/Button';
+import { setCatalog } from '../../../store/admin/actions';
+import styles from './CreateCategory.module.scss';
 
 const CreateCategoryForm = () => {
   // const handleCreateCategory2 = () => {
@@ -76,12 +77,12 @@ const CreateCategoryForm = () => {
     path: Yup.string().required('Is required'),
     parentId: Yup.string().required('Is required'),
     imgUrl: Yup.string().required('Is required'),
-    description: Yup.string().required('Is required'),
+    description: Yup.string(),
   });
 
   return (
-    <div className="formBlock create">
-      <h2 className="form-name">Create new category</h2>
+    <div className={styles.formBlock}>
+      <h2 className={styles.formBlockTitle}>Создать категорию</h2>
       <Formik
         initialValues={{
           id: '',
@@ -95,8 +96,8 @@ const CreateCategoryForm = () => {
         validationSchema={productSchema}
       >
         {(formik) => (
-          <Form className="product-form">
-            <div className="product-inputs-area">
+          <Form className={styles.formBody}>
+            <div className={styles.inputsWrapper}>
               <TextInput label="Идентификатор" name="id" type="text" />
               <TextInput label="Название" name="name" type="text" />
               <TextInput
