@@ -43,6 +43,7 @@ import deleteCart from './api/deleteCart';
 import { searchProductsFromLocalStorageAction } from './store/searchProducts/actions';
 import { getCategoryFromLocalStorageAction, getProductsFromLocalStorageAction } from './store/products/actions';
 import AuthorizationPopup from './components/UI/AuthorizationPopup/AuthorizationPopup';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   const cart = useSelector((state) => state.cart.cart);
@@ -214,6 +215,7 @@ function App() {
         <Route exact path="/search-products">
           <SearchProducts />
         </Route>
+        <Route><ErrorPage /></Route>
       </Switch>
       <Footer />
       <ButtonTop />
