@@ -9,7 +9,7 @@ import {
 } from './types';
 
 const initialState = {
-  products: [],
+  adminProducts: [],
   catalog: [],
   isLoadingProducts: true,
   isLoadingCategories: true,
@@ -73,7 +73,7 @@ export const admin = (state = initialState, action) => {
       // console.log('SET_PRODUCTS', action.payload.data);
       return {
         ...state,
-        products: action.payload.data,
+        adminProducts: action.payload.data,
         isLoadingProducts: false
       };
     case SET_CATALOG:
@@ -93,10 +93,10 @@ export const admin = (state = initialState, action) => {
         isModalRemoveProductOpen: false
       };
     case REMOVE_PRODUCT:
-      const newProducts = state.products.filter((product) => product._id !== action.payload.productID);
+      const newProducts = state.adminProducts.filter((product) => product._id !== action.payload.productID);
       return {
         ...state,
-        products: newProducts,
+        adminProducts: newProducts,
         isModalRemoveProductOpen: false
       };
     case UPDATE_CUSTOMER:
@@ -126,9 +126,9 @@ export const admin = (state = initialState, action) => {
       // console.log('STATE', state);
       // console.log('PAYLOAD_', action.payload);
       const productFromEditForm = action.payload;
-      // const targetProduct = state.products.find((product) => product._id === productFromEditForm._id);
-      // const productsEditedArr = state.products.filter((product) => product._id !== productFromEditForm._id);
-      const productsEditedArr = state.products.map((product) => {
+      // const targetProduct = state.adminProducts.find((product) => product._id === productFromEditForm._id);
+      // const productsEditedArr = state.adminProducts.filter((product) => product._id !== productFromEditForm._id);
+      const productsEditedArr = state.adminProducts.map((product) => {
         if (product._id === productFromEditForm._id) {
           return Object.assign(product, productFromEditForm);
         }
@@ -141,12 +141,12 @@ export const admin = (state = initialState, action) => {
       // console.log('UP-PRO', updatedProduct);
       return {
         ...state,
-        products: productsEditedArr,
+        adminProducts: productsEditedArr,
       };
     case EDIT_CATEGORY:
       const categoryFromEditForm = action.payload;
-      // const targetProduct = state.products.find((product) => product._id === productFromEditForm._id);
-      // const productsEditedArr = state.products.filter((product) => product._id !== productFromEditForm._id);
+      // const targetProduct = state.adminProducts.find((product) => product._id === productFromEditForm._id);
+      // const productsEditedArr = state.adminProducts.filter((product) => product._id !== productFromEditForm._id);
       const categoryEditedArr = state.catalog.map((category) => {
         if (category._id === categoryFromEditForm._id) {
           return Object.assign(category, categoryFromEditForm);

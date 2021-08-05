@@ -30,15 +30,15 @@ import Characteristics from './Characteristics';
 
 const Products = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(adminProducts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(adminProducts());
+  // }, [dispatch]);
   const [isLoading, setIsLoading] = useState(true);
   // ========= REDUX =================
   const isModalEditProductOpen = useSelector(
     (state) => state.modals.isEditProductModalOpen
   );
-  const productsArr = useSelector((state) => state.admin.products);
+  const productsArr = useSelector((state) => state.admin.adminProducts);
   const isModalRemoveProductOpen = useSelector(
     (state) => state.admin.isModalRemoveProductOpen
   );

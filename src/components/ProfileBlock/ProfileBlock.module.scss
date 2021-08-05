@@ -42,8 +42,8 @@
   flex: 1 1 70%;
   background: rgb(255, 255, 255);
 }
-.formWrapper {
-}
+// .formWrapper {
+// }
 .inputsWrapper {
   height: 220px;
   // border: 3px solid rgb(0, 160, 35);
@@ -96,11 +96,11 @@
 .previewAvatarBigWrapper {
   position: absolute;
   left: -20px;
-  top: -50px;
+  top: -20px;
   &:after {
     position: absolute;
     right: -30px;
-    top: 30px;
+    top: 0px;
     content: 'preview';
     width: 70px;
     height: 25px;
@@ -115,10 +115,10 @@
   position: absolute;
   border: 2px solid rgb(156, 156, 156);
   border-radius: 50%;
-  min-width: 170px;
-  max-width: 170px;
-  min-height: 170px;
-  max-height: 170px;
+  min-width: 100px;
+  max-width: 100px;
+  min-height: 100px;
+  max-height: 100px;
   overflow: hidden;
   display: flex;
   justify-content: center;

@@ -20,6 +20,7 @@ const initialState = {
   products: [],
   AllProductsForPagination: [],
   currentCategory: null,
+  currentCategoryForBreadcrumbs: null,
   currentPage: 1,
   currentPerPage: 6,
   isLoadingProducts: true,
@@ -42,6 +43,7 @@ export const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         currentCategory: action.payload,
+        currentCategoryForBreadcrumbs: action.payload,
         isLoadingProducts: false,
       };
     case SET_CURRENT_QUERY:
@@ -92,12 +94,13 @@ export const productsReducer = (state = initialState, action) => {
     case SET_CATEGORY_FOR_BREADCRUMBS:
       return {
         ...state,
-        currentCategory: action.payload.product.category
+        currentCategory: action.payload.product.category,
+        currentCategoryForBreadcrumbs: action.payload.product.category
       };
     case GET_CATEGORY_FROM_LOCAL_STORAGE:
       return {
         ...state,
-        currentCategory: action.payload
+        currentCategoryForBreadcrumbs: action.payload
       };
     default:
       return state;

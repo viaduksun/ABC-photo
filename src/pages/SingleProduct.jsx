@@ -12,7 +12,7 @@ const SingleProduct = () => {
   const singleProduct = useSelector(
     (state) => state.singleProduct.singleProduct
   );
-  const currentCategory = useSelector((state) => state.productsPage.currentCategory);
+  const currentCategory = useSelector((state) => state.productsPage.currentCategoryForBreadcrumbs);
   let activeBreadcrumbs = '';
   if (currentCategory === 'photocameras') {
     activeBreadcrumbs = 'Фотоаппараты';

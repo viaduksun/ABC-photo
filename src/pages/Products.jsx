@@ -12,17 +12,17 @@ import {
 } from '../store/products/actions';
 
 const Products = () => {
-  const currentCategory = useSelector(
-    (state) => state.productsPage.currentCategory
+  const currentCategoryForBreadcrumbs = useSelector(
+    (state) => state.productsPage.currentCategoryForBreadcrumbs
   );
   let activeBreadcrumbs = '';
-  if (currentCategory === 'photocameras') {
+  if (currentCategoryForBreadcrumbs === 'photocameras') {
     activeBreadcrumbs = 'Фотоаппараты';
-  } else if (currentCategory === 'videocameras') {
+  } else if (currentCategoryForBreadcrumbs === 'videocameras') {
     activeBreadcrumbs = 'Видеокамеры';
-  } else if (currentCategory === 'actioncameras') {
+  } else if (currentCategoryForBreadcrumbs === 'actioncameras') {
     activeBreadcrumbs = 'Экшнкамеры';
-  } else if (currentCategory === 'lenses') {
+  } else if (currentCategoryForBreadcrumbs === 'lenses') {
     activeBreadcrumbs = 'Объективы';
   }
   const array = [

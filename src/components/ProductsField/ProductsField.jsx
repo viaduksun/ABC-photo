@@ -30,6 +30,7 @@ const ProductsField = ({ products }) => {
       top: 0,
     });
   };
+  console.log('PRODUCTS', products);
   return (
     <div className={styles.ProductsField}>
       {/* <ProductsSorting

@@ -8,7 +8,7 @@ const uploadImg = (imageSelected) => {
 
   const token = localStorage.getItem('token');
   const headers = {
-    'Content-Type': 'application/json',
+    'Content-Type': 'multipart/form-data',
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     Authorization: token,
@@ -16,7 +16,8 @@ const uploadImg = (imageSelected) => {
 
   return axios
     .post(
-      'https://api.cloudinary.com/v1_1/finalprojectfe242021/image/upload/', formData
+      'https://api.cloudinary.com/v1_1/finalprojectfe242021/image/upload/', formData,
+      headers
     );
 };
 

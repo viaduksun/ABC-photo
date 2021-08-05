@@ -35,18 +35,18 @@ const EditProfile = () => {
   };
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
-    setImageSelected(file);
-    // previewFile(file);
+    // setImageSelected(file);
+    previewFile(file);
   };
 
   const handleUploadImg = () => {
-    // if (!previewSource) return;
+    if (!previewSource) return;
+    setIsLoading(true);
     console.log('UPLOAD CLICK');
-    uploadImg(imageSelected)
-      // uploadImg(previewSource)
+    // uploadImg(imageSelected)
+      uploadImg(previewSource)
       .then((result) => {
-        setIsLoading(true);
-        setPreviewBigActive(false);
+        // setPreviewBigActive(false);
         console.log('upload: ', result);
         setCloudUrl(result.data.url);
       })
@@ -127,13 +127,13 @@ const EditProfile = () => {
               <div className={styles.avatarBlockWrapper}>
                 <p className={styles.avatarBlockTitle}>Аватар</p>
                 <div className={styles.avatarBlock}>
-                  {previewSource && previewBigActive && (
+                  {/* {previewSource && previewBigActive && (
                     <div className={styles.previewAvatarBigWrapper}>
                       <div className={styles.previewAvatarBig}>
                         <img src={previewSource} alt="avatar" />
                       </div>
                     </div>
-                  )}
+                  )} */}
                   <div className={styles.previewAvatar}>
                     {previewSource && <img src={previewSource} alt="avatar" />}
                     {!previewSource && currentUser.avatar && (
