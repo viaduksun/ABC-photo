@@ -10,7 +10,6 @@
 }
 .LoginModal {
   width: 470px;
-  min-height: 500px;
   max-height: 90vh;
   background: #dddddd;
   padding: 40px;
@@ -80,7 +79,6 @@
 .Footer {
   border-top: 1px solid rgb(149, 149, 149);
   height: 80px;
-  // background: rgb(255, 123, 123);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,11 +137,6 @@
   margin-top: 20px;
   // border: 1px solid #000;
 }
-.BtnsWrapper {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
 .addFunctionsWrapper {
   display: flex;
   justify-content: space-between;
@@ -163,9 +156,9 @@
   color: rgb(41, 129, 163);
 }
 .BtnsWrapper {
-  margin-bottom: 40px;
-  margin-top: 30px;
-  // border: 1px solid #000;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 .PasswordBlock {
   position: relative;

@@ -36,11 +36,14 @@ const LoginModal = () => {
   return (
     <div
       className={styles.Cover}
-      onClick={() => {
+      onMouseDown={() => {
         handleModalClose();
       }}
     >
-      <div className={styles.LoginModal} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={styles.LoginModal}
+        onMouseDown={(e) => e.stopPropagation()}
+      >
         <div className={styles.closeIconWrapper} onClick={handleModalClose}>
           <VscChromeClose className={styles.closeIcon} />
         </div>
@@ -67,7 +70,7 @@ const LoginModal = () => {
           {isActive === 'enter' && <LoginForm />}
           {isActive === 'register' && <RegisterForm />}
         </div>
-        <div className={styles.Footer}>
+        {/* <div className={styles.Footer}>
           <div className={styles.socials}>
             <a
               href="https://twitter.com/home?lang=ru"
@@ -118,7 +121,7 @@ const LoginModal = () => {
               </div>
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -38,6 +38,5 @@
       "flowVersion": "0.86"
     },
     "propWrapperFunctions": [ "forbidExtraProps" ]
-  } 
-  
+  }  
 }
