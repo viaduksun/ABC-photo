@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import styles from './Dropdown.module.scss';
 
 const DropdownMenu = ({ handleClick, parentId }) => {
+  console.log(parentId);
   const catalog = useSelector((state) => state.admin.catalog);
   const currentQuery = useSelector((state) => state.productsPage.currentQuery);
 

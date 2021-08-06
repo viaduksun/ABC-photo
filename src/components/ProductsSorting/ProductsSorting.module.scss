@@ -7,6 +7,9 @@
    display: block;
     align-items: left;
   }
+  @media (max-width: 480px) {
+    margin-left: 10px;
+  }
 }
 .ProductsSortingLeft {
   display: flex;

@@ -6,11 +6,11 @@
   top: -100px;
   left: -580px;
   color: red;
-  transition: 0.8s all ease-in-out;
+  transition: 1.3s all ease-in-out;
   opacity: 0;
   visibility: hidden;
   transform: rotate(0deg) scale(3);
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 }

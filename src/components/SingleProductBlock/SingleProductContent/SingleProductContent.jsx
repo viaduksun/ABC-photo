@@ -39,7 +39,7 @@ const SingleProductContent = ({ singleProduct }) => {
     }
     setTimeout(() => {
       setMoveToCart(false);
-    }, 900);
+    }, 1500);
   };
 
   const [modalActive, setModalActive] = useState(false);

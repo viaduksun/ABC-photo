@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -5,8 +6,9 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { MdViewHeadline, MdShoppingCart } from 'react-icons/md';
-
+import { AiFillStar} from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import MenuItems from '../../../Data/buttomMenuItems';
 import getCatalog from '../../../api/getCatalog';
 import SearchForm from '../SearchForm/SearchForm';
@@ -17,6 +19,8 @@ import { setCatalog } from '../../../store/admin/actions';
 const BottomMenu = ({ toggleMenu }) => {
   // const [catalog, setCatalog] = useState([]);
   const currentPage = useSelector((state) => state.productsPage.currentPage);
+  const cartCounter = useSelector((state) => state.cart.totalCountCart);
+  const favoriteCounter = useSelector((state) => state.favorites.favorites.length);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setCatalog());
@@ -47,9 +51,19 @@ const BottomMenu = ({ toggleMenu }) => {
             })}
           </ul>
           <div className={styles.mobiileMenuWrapper}>
-            <div className={styles.cartIcon}>
-              <MdShoppingCart />
-            </div>
+            <Link to="/cart">
+              <div className={styles.cartIcon}>
+                <MdShoppingCart style={{fontSize: '30px'}} />
+                {cartCounter !== 0 && <span className={styles.cartIconCounter}>{cartCounter}</span>}
+               
+              </div>
+            </Link>
+            <Link to="/favorites">
+              <div className={styles.favoriteIcon}>
+                <AiFillStar style={{fontSize: '30px'}} />
+                {favoriteCounter !== 0 && <span className={styles.favoriteIconCounter}>{favoriteCounter}</span>}
+              </div>
+            </Link>
             <SearchForm />
             <div className={styles.BurgerIcon}>
               <MdViewHeadline onClick={toggleMenu} />

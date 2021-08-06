@@ -25,7 +25,7 @@ const PopularModelsSlider = ({popularModels}) => {
           slidesPerView={1}
           spaceBetween={5}
           autoplay={{
-            delay: 3000,
+            delay: 90000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
@@ -42,11 +42,11 @@ const PopularModelsSlider = ({popularModels}) => {
               slidesPerView: 4,
               spaceBetween: 10
             },
-            1100: {
+            850: {
               slidesPerView: 3,
               touchRatio: 1
             },
-            600: {
+            320: {
               slidesPerView: 2,
             },
           }}

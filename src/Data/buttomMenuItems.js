@@ -1,34 +1,32 @@
 const MenuItems = [
   {
-    title: 'Цифровая техника',
+    title: 'Фотоаппараты',
     path: '/products',
     itemClass: 'dropdown-link',
-    id: 1
+    id: 1,
+    category: 'photocameras',
   },
   {
-    title: 'Оптика для фото',
+    title: 'Видеокамеры',
     path: '/products',
     itemClass: 'dropdown-link',
-    id: 2
+    id: 2,
+    category: 'videocameras',
   },
   {
-    title: 'Аксесуары',
+    title: 'Экшнкамеры',
     path: '/products',
     itemClass: 'dropdown-link',
-    id: 3
+    id: 3,
+    category: 'actioncameras',
   },
   {
-    title: 'Чехлы',
+    title: 'Объективы',
     path: '/products',
     itemClass: 'dropdown-link',
-    id: 4
+    id: 4,
+    category: 'lenses',
   },
-  {
-    title: 'Студийное оборудование',
-    path: '/products',
-    itemClass: 'dropdown-link',
-    id: 5
-  }
 ];
 
 export default MenuItems;

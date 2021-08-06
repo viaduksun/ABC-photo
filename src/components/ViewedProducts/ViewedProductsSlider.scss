@@ -1,7 +1,13 @@
 .ViewedProductsSlider {
-    height: 650px;
+    height: 550px;
     margin: 0 auto;
     position: initial;
+    @media (max-width: 1024px) {
+      height: 400px;
+    }
+    @media (max-width: 480px) {
+      height: 300px;
+    }
     .swiper-button-next,
     .swiper-button-prev {
       width: 9px;

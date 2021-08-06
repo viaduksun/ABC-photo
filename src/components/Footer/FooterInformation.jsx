@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
 const FooterInformation = ({title, links, id}) => (
@@ -8,16 +9,14 @@ const FooterInformation = ({title, links, id}) => (
     <label htmlFor={id} className={styles.FooterInformationInputLabel}>{title}</label>
     <div className={styles.FooterInformationLinkWrapper}>
       {links.map((link) => (
-        <a key={link.text} href={link.to} className={styles.FooterInformationText}>
+        <Link key={link.text} to={link.to} className={styles.FooterInformationText}>
           {link.text}
-        </a>
-      // <FooterLinkItem key={link.text} to={link.to} onClick={() => window.scrollTo(0, 0)}>
-      //   {link.text}
-      // </FooterLinkItem>
+        </Link>
     ))}
     </div>
   </div>
 );
+
 FooterInformation.propTypes = {
   title: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
@@ -26,4 +25,5 @@ FooterInformation.propTypes = {
     text: PropTypes.string.isRequired,
   })).isRequired,
 };
+
 export default FooterInformation;

@@ -45,11 +45,13 @@ export const productsReducer = (state = initialState, action) => {
         currentCategory: action.payload,
         currentCategoryForBreadcrumbs: action.payload,
         isLoadingProducts: false,
+        
       };
     case SET_CURRENT_QUERY:
       return {
         ...state,
         currentQuery: action.payload,
+        isLoadingProducts: false,
       };
     case SET_CURRENT_PRODUCTS_ARR:
       // === for pagination calculation ======
@@ -57,7 +59,7 @@ export const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         AllProductsForPagination: action.payload,
-        isLoadingProducts: false,
+        // isLoadingProducts: false,
       };
     case SET_CURRENT_PAGE:
       return {
@@ -84,6 +86,7 @@ export const productsReducer = (state = initialState, action) => {
     case CLEAR_PRODUCTS:
       return {
         ...state,
+        // isLoadingProducts: false,
         products: [],
       };
     case GET_PRODUCTS_FROM_LOCAL_STORAGE:

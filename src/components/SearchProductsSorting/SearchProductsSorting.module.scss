@@ -39,6 +39,9 @@
 
 .ProductsSortingRight {
   margin-right: 300px;
+  @media (max-width: 940px) {
+    margin-right: 0px;   
+  }
   span {
     font-size: 14px;
     line-height: 26px;
