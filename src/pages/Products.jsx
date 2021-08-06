@@ -6,6 +6,9 @@ import Breadcrumbs from '../containers/Breadcrumbs/Breadcrumbs';
 import ProductsContainer from '../containers/ProductsContainer/ProductsContainer';
 import Stories from '../containers/Stories/Stories';
 import {
+historyActioncameras, historyPhotocameras, historyVideocameras, historyLenses
+} from '../Data/historyData';
+import {
   setCurrentCategoryAction,
   setCurrentPageAction,
   setCurrentPerPageAction,
@@ -16,14 +19,19 @@ const Products = () => {
     (state) => state.productsPage.currentCategoryForBreadcrumbs
   );
   let activeBreadcrumbs = '';
+  let historyData = '';
   if (currentCategoryForBreadcrumbs === 'photocameras') {
     activeBreadcrumbs = 'Фотоаппараты';
+    historyData = historyPhotocameras;
   } else if (currentCategoryForBreadcrumbs === 'videocameras') {
     activeBreadcrumbs = 'Видеокамеры';
+    historyData = historyVideocameras;
   } else if (currentCategoryForBreadcrumbs === 'actioncameras') {
     activeBreadcrumbs = 'Экшнкамеры';
+    historyData = historyActioncameras;
   } else if (currentCategoryForBreadcrumbs === 'lenses') {
     activeBreadcrumbs = 'Объективы';
+    historyData = historyLenses;
   }
   const array = [
     ['/', 'Главная'],
@@ -49,11 +57,12 @@ const Products = () => {
       dispatch(setCurrentPerPageAction(6));
     }
   }, [dispatch]);
+
   return (
     <>
       <Breadcrumbs data={array} />
       <ProductsContainer />
-      <Stories />
+      <Stories historyData={historyData} />
     </>
   );
 };

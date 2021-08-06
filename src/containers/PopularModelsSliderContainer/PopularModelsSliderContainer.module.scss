@@ -2,6 +2,10 @@
     height: 550px;
     margin-top: 50px;
     position: relative;
+    @media (max-width: 480px) {
+        margin-top: 20px;
+        height: 370px;
+    }
 }
 .SliderTitle {
     text-align: left;
@@ -11,6 +15,13 @@
     line-height: 27px;
     text-transform: uppercase;
     color: #677283;
+    @media (max-width: 1280px) {
+        text-align: center;
+    }
+    @media (max-width: 480px) {
+        font-size: 20px;
+        line-height: 22px;
+    }
   }
   .Loader {
       position: absolute;

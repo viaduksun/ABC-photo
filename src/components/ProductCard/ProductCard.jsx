@@ -95,7 +95,7 @@ const ProductCard = ({ product }) => {
           {product.characteristics.model[1]}
         </h2>
       </Link>
-      <div className={styles.ProductCardPriceAndIconCart}>
+      <div className={styles.ProductCardPriceAndIconCartAndFavorite}>
         <p className={styles.ProductCardPriceBlock}>
           {product.previousPrice !== 0 ? (
             <span className={styles.ProductCardOldPrice}>

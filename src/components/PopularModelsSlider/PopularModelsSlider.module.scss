@@ -1,6 +1,9 @@
 .PopularContainer {
   max-width: 1200px;
   margin: 60px auto 0;
+  @media (max-width: 480px) {
+    margin: 25px auto 0;
+  }
   @media (max-width: 1280px) {
     max-width: 1200px;
     min-width: 1020px;
@@ -22,17 +25,19 @@
     max-width: 760px;
     min-width: 470px;
     margin-right: 5px;
-    margin-left: 55px;
+    margin-left: 80px;
   }
   @media (max-width: 600px) {
     max-width: 760px;
     min-width: 470px;
-    margin-left: 0;
+    margin-left: 40px;
+    margin-left: 50px;
   }
 
   @media (max-width: 480px) {
     max-width: 480px;
     min-width: 300px;
+    margin-left: 0px;
   }
 }
 .PopularModelsSlider {

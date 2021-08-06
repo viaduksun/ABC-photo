@@ -74,12 +74,12 @@ function App() {
   }, [currentUserFromRedux, dispatch, isLoggedIn]);
   useEffect(() => {
     if (isLoggedIn) {
-      console.log('LOG', isLoggedIn);
+      // console.log('LOG', isLoggedIn);
       dispatch(getCartFromDB_action());
       // dispatch(setTotalCountCartAction());
       // deleteCart();
     } else {
-      console.log('LOG OUT');
+      // console.log('LOG OUT');
       // dispatch(logOutAction());
     }
   }, [dispatch, isLoggedIn]);

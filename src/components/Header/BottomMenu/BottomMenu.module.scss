@@ -45,10 +45,31 @@
   }
 }
 .cartIcon {
+  position: relative;
+  color: rgb(255, 255, 255);
+  margin-right: 15px;
+  &:hover {
+    color: rgb(48, 107, 0);
+  }
+}
+.favoriteIcon {
+  position: relative;
   color: rgb(255, 255, 255);
   &:hover {
     color: rgb(48, 107, 0);
   }
+}
+.cartIconCounter,
+.favoriteIconCounter {
+  position: absolute;
+  top: 1px;
+  left: 24px;
+  padding: 2px 4px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
 }
 .mobiileMenuWrapper {
   display: none;
@@ -61,7 +82,7 @@
     color: rgb(48, 107, 0);
   }
 }
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 768px) {
   .BottomMenuWrapp {
     justify-content: center;
     padding: 10px;
@@ -71,6 +92,7 @@
   }
   .BurgerIcon {
     display: flex;
+    cursor: pointer;
   }
   .BottomUl {
     display: none;

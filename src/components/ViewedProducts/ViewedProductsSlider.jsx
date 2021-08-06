@@ -41,11 +41,11 @@ const ViewedProductsSlider = ({ viewedProducts }) => {
               slidesPerView: 4,
               spaceBetween: 10,
             },
-            1100: {
+            850: {
               slidesPerView: 3,
               touchRatio: 1,
             },
-            600: {
+            320: {
               slidesPerView: 2,
             },
           }}

@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Footer.module.scss';
-
 import FooterContacts from '../../components/Footer/FooterContacts';
 import FooterInformation from '../../components/Footer/FooterInformation';
 import FooterSubscribe from '../../components/Footer/FooterSubscribe';
@@ -11,7 +10,6 @@ const Footer = () => (
   <div className={styles.Footer}>
     <div className="container">
       <div className={styles.FooterGrid}>
-      
         <FooterContacts />
         {footerConfig.map((links) => (
           <FooterInformation key={links.id} title={links.title} links={links.links} id={links.id} />
@@ -20,10 +18,8 @@ const Footer = () => (
       </div>
       <div className={styles.FooterCopyrightBefore}>
         <FooterCopyright />
-      
       </div>
     </div>
-    
   </div>
 );
 

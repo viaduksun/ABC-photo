@@ -6,10 +6,7 @@
   font-size: 12px;
 }
 .FooterCopyrightBefore {
-  // border-top: 1px solid rgb(109, 109, 109);
   position: relative;
-  // width: 70%;
-  // margin: 0px auto;
 }
 .FooterCopyrightBefore::before {
   content: '';
@@ -18,16 +15,12 @@
   height: 1px;
   background-color: #5E5C5C;
   margin-left: 15%;
-  // margin-top: 1%;
 }
 .FooterCopyrightText {
   text-align: center;
   padding-top: 53px;
 }
 .FooterGrid {
-  // display: flex;
-  // flex-direction: row;
-  // max-width: 120px;
   justify-content: space-between;
   margin-left: 133px;
   margin-right: 147px;
@@ -42,8 +35,6 @@
 .FooterInformationText {
   margin-bottom: 5px;
 }
-// .FooterInformationInput {
-  // label {
 .FooterInformationInputLabel {
     font-size: 16px;
     margin-bottom: 10px;
@@ -52,7 +43,6 @@
     font-weight: bold;
     align-items: center;
     color: rgba(255, 255, 255, 0.5);
-    padding: 14px 0;
     display: block;
     cursor: pointer;
     position: relative;
@@ -80,20 +70,9 @@
       }
     }
 }
-
-//   @media (min-width: 768px) {
-//     font-size: 16px;
-//     cursor: text;
-//     &::after {
-//       display: none;
-//     }
-//   }
-// }
-
 .icons {
   display: flex;
   flex-direction: row;
-  padding-left: 20px;
   margin-top: 20px;
 }
 .form {
@@ -130,16 +109,13 @@
 .footerSubscribeIcon {
   width: 120px;
   justify-content: space-between;
-  // padding-top: 2px;
   padding-left: 15px;
-  // margin-top: 7px;
 }
 .footerSubscribeTitle {
   color: rgba(255, 255, 255, 0.5);
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-  padding-left: 20px;
   margin-bottom: 25px;
   padding-top: 15px;
 }
@@ -159,20 +135,10 @@
   .Footer {
     height: 320px;
   }
-  // .FooterGrid {
-  //   display: flex;
-  //   flex-direction: column;
-  // }
-  // .FooterInformation {
-  //   display: block;
-  // }
-  // .FooterCopyrightBefore {
-  //   width: 60%;
-  // }
 }
 @media screen and (max-width: 1100px) {
   .Footer {
-    height: 680px;
+    height: 480px;
     padding-top: 5px;
   }
   .FooterGrid {
@@ -180,8 +146,11 @@
     flex-direction: column;
   }
   .FooterCopyrightText {
-    margin-top: 450px;
+    margin-top: 470px;
     padding-top: 15px;
+    @media (max-width: 768px) {
+      margin-top: 270px;
+    }
   }
   .FooterCopyrightBefore {
     align-items: center;
@@ -195,34 +164,18 @@
   .Footer {
     min-height: 200px;
   }
-  .FooterCopyrightBefore {
-    width: 35%;
-    margin-left: 15%;
-  }
-}
-@media screen and (max-width: 768px) {
-  // .FooterGrid {
-  //   flex-direction: column;
-  // }
-  // .FooterInformation {
-  //   display: none;
-  // }
 }
 @media screen and (max-width: 480px) {
   label::after {
     right: 60px;
   }
-  .form {
-    margin-left: -30px;
-    //   width: 180px;
-  }
   .label {
-    // width: 250px;
     margin-left: -20px;
   }
 }
 .FooterInformation {
   color: #fff;
+  margin-top: 30px;
 }
 .FooterInformationText {
   margin-bottom: 10px;
@@ -251,4 +204,3 @@
     padding: 10px 0 0 0;
   }
 }
-// }

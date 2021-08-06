@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
@@ -7,7 +8,7 @@ import styles from './Stories.module.scss';
 // import styles from './DescribeSection.module.scss';
 // import { FaBeer } from 'react-icons/fa';
 
-const DescribeSection = () => {
+const DescribeSection = ({historyData}) => {
     const [readMore, setReadMore] = useState(false);
     return (
       <div className={styles.Wrapper}>
@@ -15,24 +16,15 @@ const DescribeSection = () => {
           <div className={styles.DescribeSection}>
             <article>
               <div className={styles.DescribeSectionTitle}>
-                <h2>Фотоаппарат - яркие кадры жизни</h2>
+                <h2>{historyData.title}</h2>
               </div>
               <div className={styles.DescribeSectionText}>
                 <p>
-                  Вас интересуют цифровые фотоаппараты? Вы не знаете, как выбрать цифровой фото
-                  аппарат? Вы ищете в своем городе цифровые фотоаппараты(в Одессе, Харькове, вся
-                  Украина.)? Если «да», то вы попали в самое подходящее место. Компания «АВС Фото»
-                  поможет вам выбрать и купить цифровой фотоаппарат в Киеве, Одессе и других
-                  городах Украины.
+                  {historyData.text1}
                   <br />
                 </p>
                 <p hidden={!readMore}>
-                  Следует заметить, что далеко не все знают, как выбрать цифровой фотоаппарат.
-                  А между тем цифровые фотокамеры предлагаются широким спектром.
-                  Вы можете выбрать недорогие цифровые фотоапараты, либо же дорогостоящие «зеркалки».
-                  Однако не следует отталкиваться от параметра цены, и рассуждать,
-                  что чем дороже, тем лучше.
-                  Выбор цифрового фотоаппарата – процесс индивидуальный, и почти что «интимный».
+                  {historyData.text2}
                 </p>
                 
               </div>
