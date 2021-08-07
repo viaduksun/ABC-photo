@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable no-underscore-dangle */
 import getProducts from '../../api/getProducts';
 import getCatalog from '../../api/getCatalog';
 import {
-  SET_PRODUCTS,
+  SET_ADMIN_PRODUCTS,
   REMOVE_PRODUCT,
   MODAL_REMOVE_PRODUCT,
   MODAL_REMOVE_PRODUCT_CLOSE,
@@ -22,11 +23,12 @@ import {
   UPDATE_CUSTOMER
 } from './types';
 import updateCustomer from '../../api/updateCustomer';
+import getAllProductsAdmin from '../../api/getAllProductsAdmin';
 
 export const adminProducts = () => (dispatch) => {
-  getProducts().then((data) => {
+  getAllProductsAdmin().then((data) => {
     console.log('DATA', data);
-    dispatch({ type: SET_PRODUCTS, payload: data });
+    dispatch({ type: SET_ADMIN_PRODUCTS, payload: data.data.products });
   });
 };
 export const setCatalog = () => (dispatch) => {

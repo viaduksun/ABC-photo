@@ -8,20 +8,16 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsCaretLeft } from 'react-icons/bs';
 import { FaUserAlt } from 'react-icons/fa';
-import classNames from 'classnames';
 import TextInput from './TextInput';
 import styles from './ProfileBlock.module.scss';
 import Button from '../UI/Button/Button';
 import { updateCustomerAction } from '../../store/admin/actions';
 import uploadImg from '../../api/uploadImg';
-import Loader from '../UI/Loader/Loader';
 
 const EditProfile = () => {
   const dispatch = useDispatch();
   const [imageSelected, setImageSelected] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [previewSource, setPreviewSource] = useState('');
-  const [previewBigActive, setPreviewBigActive] = useState(false);
   const [cloudUrl, setCloudUrl] = useState('');
   const currentUser = useSelector((state) => state.admin.currentUser);
 
@@ -31,30 +27,24 @@ const EditProfile = () => {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPreviewSource(reader.result);
-      setPreviewBigActive(true);
     };
   };
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
-    // setImageSelected(file);
     previewFile(file);
   };
 
   const handleUploadImg = () => {
     if (!previewSource) return;
-    setIsLoading(true);
-    console.log('UPLOAD CLICK');
     uploadImg(previewSource)
       .then((result) => {
-        setPreviewBigActive(false);
         console.log('upload: ', result);
         setCloudUrl(result.data.url);
       })
-      .then(() => {
-        setIsLoading(false);
-      })
       .catch((err) => {
-        console.log(err);
+        console.log(
+          err
+        ); /* Show error to customer, may be incorrect password or something else */
       });
   };
 
@@ -77,14 +67,12 @@ const EditProfile = () => {
       console.log(form);
       dispatch(updateCustomerAction(form));
       setSubmitting(false);
-      setPreviewBigActive(false);
     }
   };
-  // const numericRegex = /(?=.*[0-9])/;
+
   const validate = Yup.object({
     firstName: Yup.string()
       .max(20, 'Must be 20 characters or less')
-      // .matches(numericRegex, 'Числовой символ недопустим')
       .required('Введите ваше имя'),
     lastName: Yup.string()
       .max(20, 'Must be 20 characters or less')
@@ -116,7 +104,7 @@ const EditProfile = () => {
         onSubmit={handleSubmitForm}
         validationSchema={validate}
       >
-        {({ isSubmitting }) => (
+        {(formik) => (
           <Form className={styles.formWrapper}>
             <div className={styles.inputsWrapper}>
               <TextInput label="Имя*" name="firstName" type="text" />
@@ -127,19 +115,7 @@ const EditProfile = () => {
               <div className={styles.avatarBlockWrapper}>
                 <p className={styles.avatarBlockTitle}>Аватар</p>
                 <div className={styles.avatarBlock}>
-                  {/* {previewSource && previewBigActive && (
-                    <div className={styles.previewAvatarBigWrapper}>
-                      <div className={styles.previewAvatarBig}>
-                        <img src={previewSource} alt="avatar" />
-                      </div>
-                    </div>
-                  )} */}
-                  <div
-                    className={classNames({
-                      [styles.previewAvatar]: true,
-                      [styles.previewAvatar_preview]: previewBigActive,
-                    })}
-                  >
+                  <div className={styles.previewAvatar}>
                     {previewSource && <img src={previewSource} alt="avatar" />}
                     {!previewSource && currentUser.avatar && (
                       <img src={currentUser.avatar} alt="avatar" />
@@ -150,6 +126,7 @@ const EditProfile = () => {
                   </div>
                   <input
                     type="file"
+                    value={imageSelected}
                     onChange={handleFileInputChange}
                     className={styles.fileInput}
                     id="upload"
@@ -170,27 +147,13 @@ const EditProfile = () => {
               </div>
             </div>
             <div className="form-btn-group">
-              <Button
-                type="submit"
-                addClass="cart_green"
-                disabled={isSubmitting}
-              >
+              <Button type="submit" addClass="cart_green">
                 Готово
               </Button>
             </div>
-            {isSubmitting && (
-              <div className={styles.loaderWrapper}>
-                <Loader />
-              </div>
-            )}
           </Form>
         )}
       </Formik>
-      {isLoading && (
-        <div className={styles.loaderWrapper}>
-          <Loader />
-        </div>
-      )}
     </div>
   );
 };

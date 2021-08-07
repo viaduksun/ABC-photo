@@ -5,7 +5,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable array-callback-return */
 import {
-  SET_PRODUCTS, REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT_CLOSE, EDIT_PRODUCT, SET_CATALOG, MODAL_EDIT_CATEGORY_OPEN, MODAL_EDIT_CATEGORY_CLOSE, EDIT_CATEGORY, MODAL_DELETE_CATEGORY_OPEN, MODAL_DELETE_CATEGORY_CLOSE, IS_ADMIN, DELETE_CATEGORY, IS_LOGGED_IN, CURRENT_USER_SET_UP, EXIT, UPDATE_CUSTOMER
+  SET_ADMIN_PRODUCTS, REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT_CLOSE, EDIT_PRODUCT, SET_CATALOG, MODAL_EDIT_CATEGORY_OPEN, MODAL_EDIT_CATEGORY_CLOSE, EDIT_CATEGORY, MODAL_DELETE_CATEGORY_OPEN, MODAL_DELETE_CATEGORY_CLOSE, IS_ADMIN, DELETE_CATEGORY, IS_LOGGED_IN, CURRENT_USER_SET_UP, EXIT, UPDATE_CUSTOMER
 } from './types';
 
 const initialState = {
@@ -69,11 +69,11 @@ export const admin = (state = initialState, action) => {
         ...state,
         isModalRemoveCategoryOpen: false
       };
-    case SET_PRODUCTS:
-      // console.log('SET_PRODUCTS', action.payload.data);
+    case SET_ADMIN_PRODUCTS:
+      console.log('SET_PRODUCTS', action.payload);
       return {
         ...state,
-        adminProducts: action.payload.data,
+        adminProducts: action.payload,
         isLoadingProducts: false
       };
     case SET_CATALOG:
