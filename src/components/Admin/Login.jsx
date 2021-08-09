@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import LoginApi from '../../api/login';
 import TextInput from '../UI/Input/TextInput';
 import { isAdminAction } from '../../store/admin/actions';
+import { authorizationPopupAction } from '../../store/madals/actions';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -44,14 +45,17 @@ const Login = () => {
         }
       })
       .then(() => {
-        alert('Login successful');
+        dispatch(authorizationPopupAction('Авторизация прошла успешно'));
+        // alert('Login successful');
+        
         setSubmitting(false);
       })
       .catch((err) => {
         console.log(err);
-        alert(
-          'Login failed'
-        ); /* Show error to customer, may be incorrect password or something else */
+        dispatch(authorizationPopupAction('Неверный логин или пароль'));
+        // alert(
+        //   'Login failed'
+        // ); /* Show error to customer, may be incorrect password or something else */
       });
   };
   return (

@@ -16,7 +16,7 @@
   align-items: center;
 }
 .RangeSliderTop input {
-  border: 2px solid green;
+  border: 2px solid #51ad33;;
   padding: 3px 5px 3px 5px;
   display: inline-block;
   width: 40%;
@@ -32,15 +32,3 @@
   align-items: center;
 }
 
-.RangeSliderButton {
-  background-color: rgb(31, 153, 31);
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  padding: 8px 15px;
-  cursor: pointer;
-}
-.RangeSliderButton:hover {
-  background-color: rgb(17, 110, 17);
-}

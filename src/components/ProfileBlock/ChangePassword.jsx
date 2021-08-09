@@ -7,13 +7,16 @@ import React, { useState, useEffect } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
 import TextInput from './TextInput';
 import styles from './ProfileBlock.module.scss';
 import Button from '../UI/Button/Button';
 import editCustomerPassword from '../../api/editCustomerPassword';
 import Loader from '../UI/Loader/Loader';
+import { authorizationPopupAction } from '../../store/madals/actions';
 
 const ChangePassword = () => {
+  const dispatch = useDispatch();
   const [visibleFirst, setVisibleFirst] = useState(false);
   const [visibleSecond, setVisibleSecond] = useState(false);
   const [visibleThird, setVisibleThird] = useState(false);
@@ -42,10 +45,12 @@ const ChangePassword = () => {
           console.log('editedCustomer', response);
           setSubmitting(false);
           if (response.data.password) {
-            alert('Вы ввели неправильный текущий пароль');
+            dispatch(authorizationPopupAction('Вы ввели неверный текущий пароль'));
+            // alert('Вы ввели неправильный текущий пароль');
           }
           if (response.data.message) {
-            alert('Пароль изменен успешно');
+            dispatch(authorizationPopupAction('Пароль изменен успешно'));
+            // alert('Пароль изменен успешно');
           }
         })
         .catch((err) => {

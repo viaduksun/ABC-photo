@@ -25,6 +25,7 @@ import getOneProduct from '../../../../api/getOneProduct';
 import RadioInput from '../../../UI/RadioInput/RadioInput';
 import RadioInput2 from '../../../UI/RadioInput2/RadioInput';
 import FinalModal from '../../../FinalModal/FinalModal';
+import sendMessageToTelegram from '../../../../api/telegram';
 
 const GreenRadio = withStyles({
   root: {
@@ -113,6 +114,7 @@ const ContactDetails = ({ currentUser }) => {
       // clear cart in REDUX & LocalStorege
       dispatch(deleteLocalCartAction());
     }
+    sendMessageToTelegram(`Номер заказа: №${orderNo}, Имя: ${values.name}, Телефон: ${values.phone}, Email: ${values.email}`);
     resetForm();
     setModalActive(true);
   };
