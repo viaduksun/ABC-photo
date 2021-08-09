@@ -1,104 +1,205 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-unused-vars */
-/* eslint-disable object-curly-newline */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable operator-linebreak */
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { Field, Form, Formik } from 'formik';
-import * as yup from 'yup';
-import { withStyles } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
+import { useFormik } from 'formik';
+import { FormatItalic } from '@material-ui/icons';
 import Radio from '@material-ui/core/Radio';
-import { useDispatch, useSelector } from 'react-redux';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import { FormControlLabel } from '@material-ui/core';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import purple from '@material-ui/core/colors/purple';
+
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './ContactDetails.module.scss';
-import TextInput from '../../../UI/Input/TextInput';
-import FormikControl from '../../../UI/FormikControl';
+import getAreas from '../../../../api/novaPoshta/getAreas';
+import getCities from '../../../../api/novaPoshta/getCities';
+import getWarehouses from '../../../../api/novaPoshta/getWarehouses';
+import getOneProduct from '../../../../api/getOneProduct';
 import createOrder from '../../../../api/createOrder';
-import deleteCart from '../../../../api/deleteCart';
 import {
   cartDeleteAction,
   deleteLocalCartAction,
 } from '../../../../store/cart/actions';
-import getOneProduct from '../../../../api/getOneProduct';
-import RadioInput from '../../../UI/RadioInput/RadioInput';
-import RadioInput2 from '../../../UI/RadioInput2/RadioInput';
 import FinalModal from '../../../FinalModal/FinalModal';
 import sendMessageToTelegram from '../../../../api/telegram';
 
-const GreenRadio = withStyles({
-  root: {
-    color: green[400],
-    '&$checked': {
-      color: green[600],
-    },
-    paddingLeft: 0,
-  },
-  checked: {},
-})((props) => <Radio color="default" {...props} />);
-
-const ContactDetails = ({ currentUser }) => {
-  const cart = useSelector((state) => state.cart.cart);
+const ContactDetails = () => {
   const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
-  // const currentUser = useSelector((state) => state.admin.currentUser);
-  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
   const currentUserId = useSelector((state) => state.admin.currentUser._id);
-  const [selectedValueDelivery, setSelectedValueDelivery] = React.useState('a');
-  const [orderNoState, setorderNo] = React.useState('');
 
+  const [orderNo, setOrderNo] = useState('');
   const [modalActive, setModalActive] = useState(false);
-  // const handleOrderConfirm = () => {
-  //   setModalActive(true);
-  // };
+
+  const [radioDeliveryValue, setRadioDeliveryValue] = useState('a');
+  const [radioPaymentValue, setRadioPaymentValue] = useState('');
+
+  const [areasNP, setAreasNP] = useState([]);
+  const [filteredCitiesNP, setFilteredCitiesNP] = useState([]);
+  const [warehousesNP, setWarehousesNP] = useState([]);
+  const dispatch = useDispatch();
 
   const orderProducts = [];
   if (!isLoggedIn) {
     cart.forEach((product) => {
-      console.log(product);
+      // console.log(product);
       getOneProduct(product.itemNo).then((res) => {
-        /* Do something with product */
-        console.log('GETTED', res);
+        // console.log('GETTED', res);
         const productObj = {
           product: res.data,
           cartQuantity: product.count,
         };
         orderProducts.push(productObj);
-        console.log(orderProducts);
+        // console.log(orderProducts);
       });
     });
   }
-  const handleFormSubmit = (values, { setSubmitting, resetForm }) => {
-    setSubmitting(true);
-    console.log('CREATE ORDER');
-    console.log(values);
-    console.log('selectedValueDelivery', selectedValueDelivery);
-    const orderNo = Math.floor(Math.random() * 999999);
-    setorderNo(orderNo);
+  // === NP ===
+  const handleRadioPaymentChange = (e) => {
+    setRadioPaymentValue(e.target.value);
+  };
+  const handleRadioDeliveryChange = (e) => {
+    setRadioDeliveryValue(e.target.value);
+    if (e.target.value === 'b') {
+      getAreas().then((response) => {
+        setAreasNP(response.data.data);
+      });
+    }
+  };
+  // === NP handle API ===
+  const handleSelectArea = (e) => {
+    const areaRef = e.target.value;
+    getCities().then((response) => {
+      const citiArr = response.data.data;
+      const filteredCityArr = citiArr.filter((c) => c.Area === areaRef);
+      setFilteredCitiesNP(filteredCityArr);
+    });
+  };
+  const handleSelectCity = (e) => {
+    const cityRef = e.target.value;
+    getWarehouses(cityRef).then((response) => {
+      setWarehousesNP(response.data.data);
+    });
+  };
+  // === OPTIONS ========
+  const selfDeliveryOptions = (
+    <>
+      <option value="" selected hidden>
+        Выберите пункт выдачи
+      </option>
+      <option value="point-01">Бульвар Кольцова 2а. Пункт выдачи №1</option>
+      <option value="point-02">Ул. Куприянова 12. Пункт выдачи №2</option>
+      <option value="point-03">
+        Бульвар Ромена Роллана 5/8. Пункт выдачи №3
+      </option>
+    </>
+  );
+  const areaOptionsNP = () => {
+    const areasOptions = [];
+    const defaultOption = (
+      <option hidden selected>
+        Выберите область
+      </option>
+    );
+    areasOptions.push(defaultOption);
+    if (areasNP.length > 0) {
+      const areasOptionsNP = areasNP.map((area) => (
+        <option value={area.Ref}>{area.DescriptionRu}</option>
+      ));
+      const areasOptionsNPconcat = areasOptions.concat(areasOptionsNP);
+      return areasOptionsNPconcat;
+    }
+    return areasOptions;
+  };
+  const cityOptionsNP = () => {
+    if (filteredCitiesNP.length > 0) {
+      const citiesOptions = filteredCitiesNP.map((city) => (
+        <option value={city.Ref}>{city.DescriptionRu}</option>
+      ));
+      const defaultOption = (
+        <option value="" hidden selected>
+          Выберите город
+        </option>
+      );
+      citiesOptions.push(defaultOption);
+      return citiesOptions;
+    }
+    return (
+      <option value="" hidden selected>
+        Выберите город
+      </option>
+    );
+  };
+  const wirehousesOptionsNP = () => {
+    if (warehousesNP.length > 0) {
+      const wirehouseOptions = warehousesNP.map((item) => (
+        <option value={item.Number}>{item.DescriptionRu}</option>
+      ));
+      const defaultOption = (
+        <option value="" hidden selected>
+          Выберите отделение
+        </option>
+      );
+      wirehouseOptions.push(defaultOption);
+      return wirehouseOptions;
+    }
+    return (
+      <option value="" hidden selected>
+        Выберите отделение
+      </option>
+    );
+  };
+
+  // === FORMIK ===
+  const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+
+  const initialValues = {
+    name: '',
+    phone: '',
+    email: '',
+    selfDelivery: '',
+    npArea: '',
+    npCity: '',
+    npOffice: '',
+    address: '',
+    paymentRadioGroup: '',
+    comment: '',
+  };
+  const onSubmit = (values) => {
+    console.log('SUBMIT:', values, radioPaymentValue);
+    const orderNumber = Math.floor(Math.random() * 999999);
+    setOrderNo(orderNumber);
+
     let deliveryOption = '';
-    if (selectedValueDelivery === 'a') {
-      deliveryOption = values.optionsSelfDelivery;
+    if (radioDeliveryValue === 'a') {
+      deliveryOption = values.selfDelivery;
     }
-    if (selectedValueDelivery === 'b') {
-      deliveryOption = values.optionsNPDelivery;
+    if (radioDeliveryValue === 'b') {
+      deliveryOption = {
+        npArea: values.npArea,
+        npCity: values.npCity,
+        npOffice: values.npOffice,
+      };
     }
-    if (selectedValueDelivery === 'c') {
+    if (radioDeliveryValue === 'c') {
       deliveryOption = values.address;
     }
-
     const newOrder = {
       deliveryAddress: JSON.stringify({
         country: 'Ukraine',
-        city: 'Kiev',
+        city: values.npCity,
         deliveryOption,
       }),
       shipping: JSON.stringify('Kiev 50UAH'),
-      paymentInfo: JSON.stringify('Credit card'),
+      paymentInfo: JSON.stringify(values.paymentRadioGroup),
       name: values.name,
       email: values.email,
       mobile: values.phone,
+      comment: values.comment,
       letterSubject: 'ABC_Photo_ordering confirm',
-      letterHtml: `<h1>${values.name}, Ваш заказ принят. Номер заказа ${orderNo}.</h1><p>Мы свяжемся с Вами в ближайшее время</p>`,
+      letterHtml: `<h1>${values.name}, Ваш заказ принят. Номер заказа ${orderNumber}.</h1><p>Мы свяжемся с Вами в ближайшее время</p>`,
     };
     if (isLoggedIn) {
       newOrder.customerId = currentUserId;
@@ -111,260 +212,390 @@ const ContactDetails = ({ currentUser }) => {
       dispatch(cartDeleteAction());
     } else {
       createOrder(newOrder);
-      // clear cart in REDUX & LocalStorege
       dispatch(deleteLocalCartAction());
     }
-    sendMessageToTelegram(`Номер заказа: №${orderNo}, Имя: ${values.name}, Телефон: ${values.phone}, Email: ${values.email}`);
-    resetForm();
+    sendMessageToTelegram(
+      `Номер заказа: №${orderNo}, Имя: ${values.name}, Телефон: ${values.phone}, Email: ${values.email}`
+    );
+    // resetForm();
     setModalActive(true);
   };
 
-  const handleChangeDelivery = (e) => {
-    console.log(e.target.value);
-    setSelectedValueDelivery(e.target.value);
-  };
-  // ==================================================
-  const phoneRegExp =
-    /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
-  let validation = yup.object().shape({
-    name: yup.string().typeError('Должна быть строка').required('Введите имя'),
-    radioButton: yup.string(),
-    phone: yup
-      .string()
-      .matches(
-        phoneRegExp,
-        'Номер телефона должен начинаться с "+380", допустимые символы - от 0 до 9.'
-      )
-      .required('Введите номер телефона +380 XX XXX XXXX'),
-    email: yup
-      .string()
-      .email('Введите корректный email')
-      .required('Введите емэйл'),
+  const validate = (values) => {
+    const errors = {};
+    if (!values.name) {
+      errors.name = 'Required';
+    }
+    if (!values.phone) {
+      errors.phone = 'Required';
+    }
+    if (!values.selfDelivery && radioDeliveryValue === 'a') {
+      errors.selfDelivery = 'Required';
+    }
 
-    // optionsSelfDelivery: yup.string().required('Выберите пункт выдачи'),
-    // optionsNPDelivery: yup.string().required('Введите емэйл'),
-    // address: yup.string().required('Введите емэйл'),
+    if (!values.npArea && radioDeliveryValue === 'b') {
+      errors.npArea = 'Required';
+    }
+    if (!values.npCity && radioDeliveryValue === 'b') {
+      errors.npCity = 'Required';
+    }
+    if (!values.npOffice && radioDeliveryValue === 'b') {
+      errors.npOffice = 'Required';
+    }
+    if (!values.address && radioDeliveryValue === 'c') {
+      errors.address = 'Required';
+    }
+    if (!values.paymentRadioGroup) {
+      errors.paymentRadioGroup = 'Выберите способ оплаты';
+    }
+
+    if (!values.email) {
+      errors.email = 'Required';
+    } else if (!emailRegex.test(values.email)) {
+      errors.email = 'Invalid email';
+    }
+    return errors;
+  };
+
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validate,
   });
-  if (selectedValueDelivery === 'a') {
-    validation = yup.object().shape({
-      name: yup
-        .string()
-        .typeError('Должна быть строка')
-        .required('Введите имя'),
-      radioButton: yup.string(),
-      phone: yup
-        .string()
-        .matches(
-          phoneRegExp,
-          'Номер телефона должен начинаться с "+380", допустимые символы - от 0 до 9.'
-        )
-        .required('Введите номер телефона +380 XX XXX XXXX'),
-      email: yup
-        .string()
-        .email('Введите корректный email')
-        .required('Введите емэйл'),
-      optionsSelfDelivery: yup.string().required('Выберите пункт выдачи'),
-      // optionsNPDelivery: yup.string().required('Введите емэйл'),
-      // address: yup.string().required('Введите емэйл'),
-    });
-  }
-  if (selectedValueDelivery === 'c') {
-    validation = yup.object().shape({
-      name: yup
-        .string()
-        .typeError('Должна быть строка')
-        .required('Введите имя'),
-      radioButton: yup.string(),
-      phone: yup
-        .string()
-        .matches(
-          phoneRegExp,
-          'Номер телефона должен начинаться с "+380", допустимые символы - от 0 до 9.'
-        )
-        .required('Введите номер телефона +380 XX XXX XXXX'),
-      email: yup
-        .string()
-        .email('Введите корректный email')
-        .required('Введите емэйл'),
-      // optionsSelfDelivery: yup.string().required('Выберите пункт выдачи'),
-      // optionsNPDelivery: yup.string().required('Введите емэйл'),
-      address: yup.string().required('Введите емэйл'),
-    });
-  }
-  if (selectedValueDelivery === 'b') {
-    validation = yup.object().shape({
-      name: yup
-        .string()
-        .typeError('Должна быть строка')
-        .required('Введите имя'),
-      radioButton: yup.string(),
-      phone: yup
-        .string()
-        .matches(
-          phoneRegExp,
-          'Номер телефона должен начинаться с "+380", допустимые символы - от 0 до 9.'
-        )
-        .required('Введите номер телефона +380 XX XXX XXXX'),
-      email: yup
-        .string()
-        .email('Введите корректный email')
-        .required('Введите емэйл'),
-
-      optionsNPDelivery: yup.string().required('Выберите отделение НП'),
-      // address: yup.string().required('Введите емэйл'),
-    });
-  }
-
-  const optionsSelfDelivery = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="self-01">г.Киев, ул. Гната Юры, 15б</option>
-      <option value="self-02">
-        г.Киев, ул. Б. Васильковская (Красноармейская), 132...
-      </option>
-      <option value="self-03">г.Киев, ул. Ромена Роллана 24</option>
-    </>
-  );
-  const optionsNP = (
-    <>
-      <option value="-" hidden>
-        -
-      </option>
-      <option value="NP_01">
-        Киев, ул. Гната Хоткевича, 8 (м.Черниговская)
-      </option>
-      <option value="NP_02">Киев, ул. Бережанская, 9 (Оболонь Луговая)</option>
-      <option value="NP_03">
-        Киев, ул. Николая Василенко, 2 (метро Берестейская)
-      </option>
-    </>
-  );
-
-  const initialValues1 = {
-    name: '123',
-    phone: '',
-    email: '',
-    address: '',
-    optionsSelfDelivery: '',
-    optionsNPDelivery: '',
-  };
-
-  const initialValues2 = {
-    name: currentUser.firstName,
-    phone: currentUser.phone,
-    email: currentUser.email,
-    address: '',
-    optionsSelfDelivery: '',
-    optionsNPDelivery: '',
-    hiddenInput: selectedValueDelivery,
-    RadioInput2: '',
-  };
-  // console.log(currentUser.firstName);
-  // console.log(initialValues2);
+  // console.log('Form values:', formik.values);
+  // console.log('Form errors:', formik.errors);
+  // console.log('Visited fields:', formik.touched);
+  const theme = createMuiTheme({
+    palette: {
+      primary: { main: purple[500] }, // Purple - just for example.
+      secondary: { main: '#51AD33' }, // Secondary - is a default radio color, so we override it.
+    },
+  });
   return (
-    <div className={styles.ContactDetails}>
-      <Formik
-        initialValues={initialValues2}
-        validateOnBlur
-        validationSchema={validation}
-        onSubmit={handleFormSubmit}
+    <div className={styles.formWrapper}>
+      <form
+        className={styles.form}
+        onSubmit={formik.handleSubmit}
+        id="orderCheckoutForm"
       >
-        {(formik) => (
-          <Form className={styles.FormWrapper} id="orderCheckoutForm">
-            <div className={styles.FormBlock}>
-              <div className={styles.FormBlockTitleWrapper}>
-                <h2 className={styles.FormBlockTitle}>Контактные данные</h2>
-                <p>*Поля, обязательные для заполнения</p>
+        <div className={styles.formSectionTitle}>
+          <h2>*Контактные данные</h2>
+          <p>*Поля, обязательные для заполнения</p>
+        </div>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel} htmlFor="nameId">
+            Имя
+          </label>
+          <input
+            name="name"
+            className={styles.formInput}
+            type="text"
+            id="nameId"
+            placeholder="Your name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.name && formik.touched.name ? (
+            <div className={styles.formError}>{formik.errors.name}</div>
+          ) : null}
+        </div>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel} htmlFor="phoneId">
+            Телефон
+          </label>
+          <input
+            name="phone"
+            className={styles.formInput}
+            type="text"
+            id="phoneId"
+            placeholder="Your phone"
+            onChange={formik.handleChange}
+            value={formik.values.phone}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.phone && formik.touched.phone ? (
+            <div className={styles.formError}>{formik.errors.phone}</div>
+          ) : null}
+        </div>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel} htmlFor="emailId">
+            Емэйл
+          </label>
+          <input
+            name="email"
+            className={styles.formInput}
+            type="text"
+            id="emailId"
+            placeholder="Your email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.email && formik.touched.email ? (
+            <div className={styles.formError}>{formik.errors.email}</div>
+          ) : null}
+        </div>
+        {/* =============================== RADIO =========  */}
+        <div className={styles.formSectionTitle}>
+          <h2>*Способы доставки</h2>
+        </div>
+        <div className={styles.formRadioWrapp}>
+          <MuiThemeProvider theme={theme}>
+            <RadioGroup
+              name="npRadioGroup"
+              value={radioDeliveryValue}
+              onChange={handleRadioDeliveryChange}
+            >
+              <div className={styles.formGroup}>
+                <div className={styles.radioWrapp}>
+                  <FormControlLabel
+                    value="a"
+                    control={<Radio />}
+                    label="Самовывоз из пункта выдачи"
+                  />
+                  {/* <input
+                    className={styles.formRadio}
+                    type="radio"
+                    name="deliveryOption"
+                    id="delivery"
+                    value="a"
+                    onChange={handleRadioDeliveryChange}
+                    checked={radioDeliveryValue === 'a'}
+                  />
+                  <label className={styles.radioLabel} htmlFor="delivery">
+                    Самовывоз из пункта выдачи
+                  </label> */}
+                </div>
+                <div className={styles.formGroup}>
+                  {radioDeliveryValue === 'a' && (
+                    <>
+                      <label className={styles.formLabel} htmlFor="country">
+                        Пункт выдачи
+                      </label>
+                      <select
+                        name="selfDelivery"
+                        className={styles.formSelect}
+                        id="country"
+                        value={formik.values.selfDelivery}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                      >
+                        {selfDeliveryOptions}
+                      </select>
+                    </>
+                  )}
+                  {radioDeliveryValue === 'a' &&
+                  formik.errors.selfDelivery &&
+                  formik.touched.selfDelivery ? (
+                    <div className={styles.formError}>{formik.errors.name}</div>
+                  ) : null}
+                </div>
               </div>
+              <div className={styles.formGroup}>
+                <div className={styles.radioWrapp}>
+                  <FormControlLabel
+                    value="b"
+                    control={<Radio />}
+                    label="Новая почта (в отделение)"
+                  />
+                </div>
+                {radioDeliveryValue === 'b' && (
+                  <>
+                    <div className={styles.formGroup}>
+                      <label className={styles.formLabel} htmlFor="npArea">
+                        Выберите район
+                      </label>
+                      <select
+                        name="npArea"
+                        className={styles.formSelect}
+                        id="npArea"
+                        value={formik.values.npArea}
+                        onChange={(e) => {
+                          formik.handleChange(e);
+                          handleSelectArea(e);
+                        }}
+                        onBlur={formik.handleBlur}
+                      >
+                        {areaOptionsNP()}
+                      </select>
+                      {formik.errors.npArea &&
+                      formik.touched.npArea &&
+                      radioDeliveryValue === 'b' ? (
+                        <div className={styles.formError}>
+                          {formik.errors.npArea}
+                        </div>
+                      ) : null}
+                    </div>
 
-              <label htmlFor="name">Имя получителя*</label>
-              <TextInput
-                name="name"
-                type="text"
-                placeholder="Введиде ваше имя"
-              />
-              <label htmlFor="phone">Телефон*</label>
-              <TextInput name="phone" type="text" placeholder="+380970001234" />
-              <label htmlFor="email">E-mail*</label>
-              <TextInput
-                name="email"
-                type="text"
-                placeholder="example@gmail.com"
-              />
-              <input name="hiddenInput" type="hidden" value="hiddenValue" />
-            </div>
-            <div className={styles.FormBlock}>
-              <div className={styles.FormBlockTitleWrapper}>
-                <h2 className={styles.FormBlockTitle}>Способы доставки</h2>
+                    <div className={styles.formGroup}>
+                      <label className={styles.formLabel} htmlFor="npCity">
+                        Выберите город
+                      </label>
+                      <select
+                        name="npCity"
+                        className={styles.formSelect}
+                        id="npCity"
+                        value={formik.values.npCity}
+                        onChange={(e) => {
+                          formik.handleChange(e);
+                          handleSelectCity(e);
+                        }}
+                        onBlur={formik.handleBlur}
+                        disabled={filteredCitiesNP.length === 0}
+                      >
+                        {cityOptionsNP()}
+                      </select>
+                      {formik.errors.npCity &&
+                      formik.touched.npCity &&
+                      radioDeliveryValue === 'b' ? (
+                        <div className={styles.formError}>
+                          {formik.errors.npCity}
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div className={styles.formGroup}>
+                      <label className={styles.formLabel} htmlFor="npOffice">
+                        Выберите отделение
+                      </label>
+                      <select
+                        name="npOffice"
+                        className={styles.formSelect}
+                        id="npOffice"
+                        value={formik.values.npOffice}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        disabled={warehousesNP.length === 0}
+                      >
+                        {wirehousesOptionsNP()}
+                      </select>
+                      {formik.errors.npOffice &&
+                      formik.touched.npOffice &&
+                      radioDeliveryValue === 'b' ? (
+                        <div className={styles.formError}>
+                          {formik.errors.npOffice}
+                        </div>
+                      ) : null}
+                    </div>
+                  </>
+                )}
               </div>
-              <div className={styles.radioOptionBlock}>
-                <GreenRadio
-                  checked={selectedValueDelivery === 'a'}
-                  onChange={handleChangeDelivery}
+              <div className={styles.formGroup}>
+                <div className={styles.radioWrapp}>
+                  <FormControlLabel
+                    value="c"
+                    control={<Radio />}
+                    label="Доставка по адресу"
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  {radioDeliveryValue === 'c' && (
+                    <>
+                      <label className={styles.formLabel} htmlFor="address">
+                        Адрес
+                      </label>
+                      <input
+                        name="address"
+                        className={styles.formInput}
+                        type="text"
+                        id="address"
+                        placeholder="Address"
+                        value={formik.values.address}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                      />
+                      {formik.errors.address &&
+                      formik.touched.address &&
+                      radioDeliveryValue === 'c' ? (
+                        <div className={styles.formError}>
+                          {formik.errors.address}
+                        </div>
+                      ) : null}
+                    </>
+                  )}
+                </div>
+              </div>
+            </RadioGroup>
+          </MuiThemeProvider>
+        </div>
+        <div className={styles.formSectionTitle}>
+          <h2>*Способы оплаты</h2>
+          {formik.errors.paymentRadioGroup && formik.touched.address ? (
+            <div className={styles.formDeliveryError}>
+              {formik.errors.paymentRadioGroup}
+            </div>
+          ) : null}
+        </div>
+        <div className={styles.formRadioWrapp}>
+          <MuiThemeProvider theme={theme}>
+            <RadioGroup
+              name="paymentRadioGroup"
+              value={radioPaymentValue}
+              onChange={(e) => {
+                formik.handleChange(e);
+                handleRadioPaymentChange(e);
+              }}
+              onBlur={formik.handleBlur}
+            >
+              <div className={styles.paymentWrapper}>
+                <FormControlLabel
                   value="a"
-                  name="radioButtonA"
-                  inputProps={{ 'aria-label': 'A' }}
-                  id="pointOfDelivery"
+                  control={<Radio />}
+                  label="Наличными при получении"
                 />
-                <label htmlFor="pointOfDelivery">
-                  Самовывоз из пункта выдачи
-                </label>
-                {selectedValueDelivery === 'a' && (
-                  <FormikControl
-                    control="select"
-                    name="optionsSelfDelivery"
-                    options={optionsSelfDelivery}
-                  />
-                )}
-              </div>
-              <div className={styles.radioOptionBlock}>
-                <GreenRadio
-                  checked={selectedValueDelivery === 'b'}
-                  onChange={handleChangeDelivery}
+                <FormControlLabel
                   value="b"
-                  name="radioButtonB"
-                  inputProps={{ 'aria-label': 'B' }}
-                  id="pointOfDelivery"
+                  control={<Radio />}
+                  label="Картой при получении"
                 />
-                <label htmlFor="pointOfDelivery">
-                  Новая почта (в отделение)
-                </label>
-                {selectedValueDelivery === 'b' && (
-                  <FormikControl
-                    control="select"
-                    name="optionsNPDelivery"
-                    options={optionsNP}
-                  />
-                )}
-              </div>
-              <div className={styles.radioOptionBlock}>
-                <GreenRadio
-                  checked={selectedValueDelivery === 'c'}
-                  onChange={handleChangeDelivery}
+                <FormControlLabel
                   value="c"
-                  name="radioButtonC"
-                  inputProps={{ 'aria-label': 'C' }}
-                  id="pointOfDelivery"
+                  control={<Radio />}
+                  label="Безналичный расчет"
                 />
-                <label htmlFor="pointOfDelivery">Курьерская доставка</label>
-                {selectedValueDelivery === 'c' && (
-                  <TextInput
-                    name="address"
-                    type="text"
-                    placeholder="Адрес доставки"
-                  />
-                )}
+                <FormControlLabel
+                  value="d"
+                  control={<Radio />}
+                  label="Кредит Альфа Банк"
+                />
+                <FormControlLabel
+                  value="e"
+                  control={<Radio />}
+                  label="Кредит Credit Agricole"
+                />
+                <FormControlLabel
+                  value="f"
+                  control={<Radio />}
+                  label="Кредит УКРСИББАНК"
+                />
+                {/* <div className={styles.paymentColumn}>
+                </div> */}
+                {/* <div className={styles.paymentColumn} /> */}
               </div>
-            </div>
-          </Form>
-        )}
-      </Formik>
+            </RadioGroup>
+          </MuiThemeProvider>
+        </div>
+        <div className={styles.formSectionTitle}>
+          <h2>Комментарий к заказу</h2>
+        </div>
+        <div className={styles.formGroup}>
+          <textarea
+            name="comment"
+            className={styles.formTextarea}
+            type="text"
+            id="comment"
+            placeholder="Комментарий к заказу"
+            value={formik.values.comment}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </div>
+      </form>
       <FinalModal
         active={modalActive}
         setActive={setModalActive}
-        orderNo={orderNoState}
+        orderNo={orderNo}
       />
     </div>
   );

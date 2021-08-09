@@ -21,7 +21,7 @@ import styles from './CartProduct.module.scss';
 
 const CartProduct = ({ cartProduct, cartQuantity }) => {
   const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
-  console.log(cartProduct);
+  // console.log(cartProduct);
   const dispatch = useDispatch();
   const deleteProductFromCartHandler = () => {
     if (isLoggedIn) {

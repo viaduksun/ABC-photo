@@ -25,7 +25,10 @@ import {
   addSingleProductToCartAction,
   addToCartMongoDB,
 } from '../../store/cart/actions';
-import { setCategoryForBreadcrumbsAction, setFlagInCartAction } from '../../store/products/actions';
+import {
+  setCategoryForBreadcrumbsAction,
+  setFlagInCartAction,
+} from '../../store/products/actions';
 import { setSingleProductAction } from '../../store/singleProduct/actions';
 import {
   addProdductToFavoritesAction,
@@ -116,7 +119,9 @@ const ProductCard = ({ product }) => {
           )}
           <br />
           {product.quantity !== 0 ? (
-            <span className={styles.ProductCardInStock}>в наличии</span>
+            <span className={styles.ProductCardInStock}>
+              в наличии ({product.quantity})
+            </span>
           ) : (
             <span className={styles.ProductCardIsExpected}>ожидается</span>
           )}

@@ -7,8 +7,8 @@ import styles from './ProductInCart.module.scss';
 
 const ProductInCart = ({ cartProduct }) => {
   const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
-  console.log(cartProduct);
-  console.log(cartProduct.count);
+  // console.log(cartProduct);
+  // console.log(cartProduct.count);
   let product = null;
   if (isLoggedIn) {
     product = cartProduct.product;
