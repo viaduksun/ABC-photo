@@ -16,7 +16,7 @@ import styles from './LoginModal.module.scss';
 import userRegister from '../../api/register';
 import TextInput from '../UI/Input/TextInput';
 import Button from '../UI/Button/Button';
-import { loginModalCloseAction } from '../../store/madals/actions';
+import { authorizationPopupAction, loginModalCloseAction } from '../../store/madals/actions';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -103,14 +103,16 @@ const RegisterForm = () => {
             setSubmitting(false);
             const userName = res.data.firstName;
             dispatch(loginModalCloseAction());
-            alert(`Hello, ${userName}! You have been registered successfully!`);
+            dispatch(authorizationPopupAction(`${userName}, регистрация прошла успешно!`));
+            // alert(`Hello, ${userName}! You have been registered successfully!`);
           }
         })
         .catch((err) => {
           if (err.response) {
             // console.log(err.response);
             // console.log(err.response.data.message);
-            alert(err.response.data.message);
+            dispatch(authorizationPopupAction(err.response.data.message));
+            // alert(err.response.data.message);
           }
         });
     }

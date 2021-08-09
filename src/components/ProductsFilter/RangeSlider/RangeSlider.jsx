@@ -8,13 +8,14 @@ import React from 'react';
 import Slider from '@material-ui/core/Slider';
 import { makeStyles } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import Button from '../../UI/Button/Button';
 import styles from './RangeSlider.module.scss';
 import { getFilteredProductsAction } from '../../../store/products/actions';
 
 const useStyles = makeStyles({
   root: {
     background: 'white',
-    color: 'green',
+    color: '#51ad33',
   },
 });
 
@@ -49,13 +50,12 @@ const RangeSlider = ({
           onChange={handleChangeMaxRange}
         />
         &nbsp; &nbsp;
-        <button
-          type="button"
-          className={styles.RangeSliderButton}
+        <Button
+          addClass="filter-price-confirm"
           onClick={sentPriceDataHandler}
         >
-          OK
-        </button>
+          Ok
+        </Button>
       </form>
 
       <Slider

@@ -41,7 +41,10 @@ import { favoritesFromLocalStorageAction } from './store/favorites/actions';
 import { viewedProductsFromLocalStorageAction } from './store/viewedProducts/actions';
 import deleteCart from './api/deleteCart';
 import { searchProductsFromLocalStorageAction } from './store/searchProducts/actions';
-import { getCategoryFromLocalStorageAction, getProductsFromLocalStorageAction } from './store/products/actions';
+import {
+  getCategoryFromLocalStorageAction,
+  getProductsFromLocalStorageAction,
+} from './store/products/actions';
 import AuthorizationPopup from './components/UI/AuthorizationPopup/AuthorizationPopup';
 import ErrorPage from './pages/ErrorPage';
 
@@ -120,7 +123,9 @@ function App() {
     const searchProductsFromLocalStorage =
       localStorage.getItem('searchProducts');
     const productsFromLocalStorage = localStorage.getItem('products');
-    const categoryForBreadcrumbsFromLocalStorage = localStorage.getItem('categoryForBreadcrumbs');
+    const categoryForBreadcrumbsFromLocalStorage = localStorage.getItem(
+      'categoryForBreadcrumbs'
+    );
     if (cartFromLocalStorage) {
       dispatch(cartFromLocalStorageAction(cartFromLocalStorage));
     }
@@ -146,7 +151,11 @@ function App() {
       dispatch(getProductsFromLocalStorageAction(productsFromLocalStorage));
     }
     if (categoryForBreadcrumbsFromLocalStorage) {
-      dispatch(getCategoryFromLocalStorageAction(categoryForBreadcrumbsFromLocalStorage));
+      dispatch(
+        getCategoryFromLocalStorageAction(
+          categoryForBreadcrumbsFromLocalStorage
+        )
+      );
     }
   }, [dispatch]);
 
@@ -215,7 +224,9 @@ function App() {
         <Route exact path="/search-products">
           <SearchProducts />
         </Route>
-        <Route><ErrorPage /></Route>
+        <Route>
+          <ErrorPage />
+        </Route>
       </Switch>
       <Footer />
       <ButtonTop />
