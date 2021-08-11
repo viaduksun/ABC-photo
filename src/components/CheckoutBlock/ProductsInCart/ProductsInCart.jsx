@@ -13,6 +13,8 @@ import Button from '../../UI/Button/Button';
 import FinalModal from '../../FinalModal/FinalModal';
 import ProductInCart from './ProductInCart/ProductInCart';
 import createOrder from '../../../api/createOrder';
+import getWarehouses from '../../../api/novaPoshta/getWarehouses';
+import getAreas from '../../../api/novaPoshta/getAreas';
 
 const ProductsInCart = () => {
   // const [modalActive, setModalActive] = useState(false);
@@ -32,6 +34,7 @@ const ProductsInCart = () => {
   } else {
     cartArr = cart;
   }
+
   return (
     <div className={styles.ProductsInCart}>
       <div className={styles.Header}>
@@ -75,7 +78,6 @@ const ProductsInCart = () => {
           Подтвердить
         </button>
       </div>
-      {/* <FinalModal active={modalActive} setActive={setModalActive} /> */}
     </div>
   );
 };

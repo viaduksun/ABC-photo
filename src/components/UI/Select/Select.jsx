@@ -9,8 +9,10 @@ import React from 'react';
 import styles from './Select.module.scss';
 
 const Select = (props) => {
-  const { name, label, options, ...rest } = props;
+  // console.log(props);
+  const { name, label, options, handleChange, ...rest } = props;
   const [field, meta] = useField(props);
+  // console.log(field);
   const selectStyles = classNames({
     [styles.selectArea]: true,
     [styles.isInvalid]: meta.touched && meta.error,
@@ -27,13 +29,14 @@ const Select = (props) => {
         </label>
       )}
       <Field
+        id={name}
         name={name}
-        placeholder="Select..."
         as="select"
         className={selectStyles}
-        // onChange={(e) => {
-        //   handleOnChange(e);
-        // }}
+        onChange={handleChange}
+        {...rest}
+        // {...field}
+        // value={field.value}
       >
         {options}
       </Field>
