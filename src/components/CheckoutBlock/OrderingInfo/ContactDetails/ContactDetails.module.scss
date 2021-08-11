@@ -12,16 +12,15 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 .formGroup {
   // border: 1px solid #000;
-  margin-bottom: 10px;
   position: relative;
 }
 .formLabel {
   display: block;
-  margin-bottom: 5px;
+  margin: 5px 0;
   font-size: 12px;
   color: rgb(139, 139, 139);
 }
@@ -60,7 +59,6 @@
 }
 .radioWrapp {
   display: flex;
-  margin-bottom: 10px;
 }
 .formRadio {
   margin-right: 10px;
