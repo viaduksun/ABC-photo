@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -38,7 +39,9 @@ const PhoneDropdown = () => {
         id="phoneDropdown"
       />
       <p className={styles.phoneMainText}>044 500 50 50</p>
-      <p className={styles.phoneMainTextMobile}><IoIosPhonePortrait style={{color: 'grey', fontSize: '18px'}} /></p>
+      <p className={styles.phoneMainTextMobile}>
+        <IoIosPhonePortrait style={{ color: 'grey', fontSize: '18px' }} />
+      </p>
       <BsChevronDown className={iconClass} />
       <div className={phonePopap}>
         <div className={styles.phonePopapItem}>
@@ -62,7 +65,7 @@ const PhoneDropdown = () => {
           </div>
         </div>
 
-        <form
+        {/* <form
           className={styles.phonePopapForm}
           onSubmit={(event) => handleCallMe(event)}
         >
@@ -83,7 +86,7 @@ const PhoneDropdown = () => {
           >
             Перезвонить
           </button>
-        </form>
+        </form> */}
       </div>
 
       {/* <ul className={styles.phDropUl}>
