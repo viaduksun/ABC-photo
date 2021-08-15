@@ -30,6 +30,9 @@
   &:hover {
     .HeaderIconWrapper {
       background-color: #51ad33;
+      &_fixed {
+        background: #268606;
+      }
     }
     .HeaderIconAvatarWrapper {
       box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.513);
@@ -46,6 +49,9 @@
   line-height: 16px;
   padding: 4px 6px 2px;
   font-family: 'Roboto', sans-serif;
+  &_fixed {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.383);
+  }
 }
 .HeaderFavoritesCounter {
   background-color: #51ad33;
@@ -140,10 +146,16 @@
     .HeaderIconWrapper {
       background-color: #51ad33;
     }
+    .HeaderIconWrapper_fixed {
+      background-color: #868686;
+    }
   }
 }
 .HeaderIconText {
   color: $middleGray;
+  &_fixed {
+    color: #fff;
+  }
   @media (max-width: 1024px) {
     display: none;
   }

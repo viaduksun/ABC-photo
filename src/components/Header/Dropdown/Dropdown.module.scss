@@ -2,11 +2,14 @@
   position: absolute;
   left: 0;
   top: 50px;
-  z-index: 2;
+  // z-index: 2;
   overflow: hidden;
   background: #368e1a;
+  max-height: 0;
+  transition: all 0.3s ease 0s;
   &_active {
     display: block;
+    max-height: 300px;
   }
 }
 .DropMenu {
@@ -14,7 +17,7 @@
   position: relative;
   // left: 0;
   // top: 0px;
-  z-index: 2;
+  // z-index: 2;
   display: flex;
   // transform: translateY(-100%);
   // transform: scale(0);

@@ -1,35 +1,55 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
+import React, { useEffect, useState } from 'react';
+import { MdShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-    '& > *': {
-      margin: theme.spacing(1),
-      color: theme.palette.grey[600],
-    },
-  },
-  grey: {
-    width: 36,
-    height: 36,
-    color: '#fff',
-    backgroundColor: theme.palette.grey[300],
-  },
-}));
+import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import styles from './MiddleMenu.module.scss';
 
 export default function CartIcon() {
-  const classes = useStyles();
+  const cartCounter = useSelector((state) => state.cart.totalCountCart);
+  const [headerFixed, setHeaderFixed] = useState(false);
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setHeaderFixed(true);
+    } else if (window.scrollY < 300) {
+      setHeaderFixed(false);
+    }
+  };
+  const headerCartCounterStyles = classNames({
+    [styles.HeaderCartCounter]: true,
+    [styles.HeaderCartCounter_fixed]: headerFixed,
+  });
+  const HeaderIconTextStyles = classNames({
+    [styles.HeaderIconText]: true,
+    [styles.HeaderIconText_fixed]: headerFixed,
+  });
+  const HeaderIconWrappertStyles = classNames({
+    [styles.HeaderIconWrapper]: true,
+    [styles.HeaderIconWrapper_fixed]: headerFixed,
+  });
   return (
-    <Link to="/cart" className={classes.root}>
-      <Avatar className={classes.grey}>
-        <ShoppingCartOutlinedIcon />
-      </Avatar>
-      <p>Корзина</p>
-    </Link>
+    <div>
+      <Link to="/cart" className={styles.HeaderLink}>
+        <div className={HeaderIconWrappertStyles}>
+          <MdShoppingCart
+            className={classNames(styles.HeaderIcon, styles.HeaderIcon_cart)}
+          />
+        </div>
+        <p className={HeaderIconTextStyles}>Корзина</p>
+        {cartCounter !== 0 && (
+          <p className={headerCartCounterStyles}>{cartCounter}</p>
+        )}
+      </Link>
+    </div>
   );
 }

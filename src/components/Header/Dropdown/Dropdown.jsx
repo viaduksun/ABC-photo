@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styles from './Dropdown.module.scss';
 
-const DropdownMenu = ({ handleClick, parentId }) => {
+const DropdownMenu = ({ handleClick, parentId, dropActive }) => {
   console.log(parentId);
   const catalog = useSelector((state) => state.admin.catalog);
   const currentQuery = useSelector((state) => state.productsPage.currentQuery);
@@ -21,7 +21,7 @@ const DropdownMenu = ({ handleClick, parentId }) => {
   // console.log(currentDropdownArr);
   const dropWrapperClass = classNames({
     [styles.DropMenuWrapper]: true,
-    // [styles.DropMenuWrapper_active]: dropActive,
+    [styles.DropMenuWrapper_active]: dropActive,
   });
   const dropClass = classNames({
     [styles.DropMenu]: true,

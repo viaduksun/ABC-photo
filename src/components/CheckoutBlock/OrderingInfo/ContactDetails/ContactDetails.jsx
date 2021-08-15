@@ -61,6 +61,7 @@ const ContactDetails = () => {
     setName('');
     setPhone('');
     setEmail('');
+    setComment('');
     setSelfDeliveryValue(null);
     setNpAreaValue(null);
     setNpCityValue(null);
@@ -452,19 +453,6 @@ const ContactDetails = () => {
                 <div className={styles.formGroup}>
                   {radioDeliveryValue === 'a' && (
                     <>
-                      {/* <label className={styles.formLabel} htmlFor="country">
-                        Пункт выдачи
-                      </label>
-                      <select
-                        name="selfDelivery"
-                        className={styles.formSelect}
-                        id="country"
-                        value={formik.values.selfDelivery}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                      >
-                        {selfDeliveryOptions}
-                      </select> */}
                       <Autocomplete
                         {...selfDeliveryProps}
                         id="controlled-demo"
@@ -568,34 +556,6 @@ const ContactDetails = () => {
                         </div>
                       ) : null}
                     </div>
-
-                    {/* <div className={styles.formGroup}>
-                      <label className={styles.formLabel} htmlFor="npCity">
-                        Выберите город
-                      </label>
-                      <select
-                        name="npCity"
-                        className={styles.formSelect}
-                        id="npCity"
-                        value={formik.values.npCity}
-                        onChange={(e) => {
-                          formik.handleChange(e);
-                          handleSelectCity(e);
-                        }}
-                        onBlur={formik.handleBlur}
-                        disabled={filteredCitiesNP.length === 0}
-                      >
-                        {cityOptionsNP()}
-                      </select>
-                      {formik.errors.npCity &&
-                      formik.touched.npCity &&
-                      radioDeliveryValue === 'b' ? (
-                        <div className={styles.formError}>
-                          {formik.errors.npCity}
-                        </div>
-                      ) : null}
-                    </div> */}
-
                     <div className={styles.formGroup}>
                       <Autocomplete
                         {...officeNPProps}

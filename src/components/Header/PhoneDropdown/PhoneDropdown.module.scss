@@ -54,11 +54,13 @@
   background: rgb(255, 255, 255);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.411);
   padding: 10px;
-  z-index: 200;
+  z-index: 300;
   opacity: 0;
   transform: translateY(-0px) scaleY(0);
   transform-origin: top;
   transition: all 0.3s ease 0s;
+  min-width: 160px;
+  border-radius: 4px;
   &_active {
     // display: block;
     visibility: visible;

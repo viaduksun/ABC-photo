@@ -24,12 +24,19 @@ const BottomMenuLink = ({ parentId, path, title, key, page }) => {
   const [dropActive, setdropActive] = useState(false);
   const dispatch = useDispatch();
 
-  const handleDropdown = () => {
-    setdropActive(!dropActive);
+  // const handleDropdown = () => {
+  //   setdropActive(!dropActive);
+  // };
+  const handleDropdownON = () => {
+    setdropActive(true);
+  };
+  const handleDropdownOFF = () => {
+    setdropActive(false);
   };
   const handleDropdownClick = (id) => {
     console.log('DROP');
     setdropActive(false);
+    // handleDropdownOFF();
     // console.log('MENU clicked', id);
     // &characteristics.type[1]=Зеркальный,Суперзум
     // getFilteredProducts(id, page, '&type=Зеркальный,Суперзум').then(
@@ -44,18 +51,18 @@ const BottomMenuLink = ({ parentId, path, title, key, page }) => {
     <li
       key={key}
       className={styles.BottomLink}
-      onMouseEnter={handleDropdown}
-      onMouseLeave={handleDropdown}
+      onMouseEnter={handleDropdownON}
+      onMouseLeave={handleDropdownOFF}
       // onClick={handleDropdownClick}
     >
       <div className={styles.bottomLinks}>{title}</div>
-      {dropActive && (
-        <DropdownMenu
-          parentId={parentId}
-          handleClick={handleDropdownClick}
-          dropActive={dropActive}
-        />
-      )}
+      {/* {dropActive && ( */}
+      <DropdownMenu
+        parentId={parentId}
+        handleClick={handleDropdownClick}
+        dropActive={dropActive}
+      />
+      {/* )} */}
     </li>
   );
 };

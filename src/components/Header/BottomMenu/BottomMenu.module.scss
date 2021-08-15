@@ -1,5 +1,23 @@
 .BottomMenu {
+  z-index: 200;
   background: #51ad33;
+  transform: translateY(0px);
+  transition: all 1s ease 0s;
+  &_fixed {
+    z-index: 200;
+    position: fixed;
+    left: 0;
+    top: -70px;
+    width: 100%;
+    transform: translateY(70px);
+    transition: all 0.5s ease 0s;
+    background: #51ad33;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    p.HeaderCartCounter {
+      background: rgb(255, 49, 49);
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.493);
+    }
+  }
 }
 .BottomMenuWrapp {
   height: 100%;
@@ -25,6 +43,7 @@
   align-items: center;
   flex: 1 1 auto;
   transition: all 0.1s ease 0s;
+  cursor: pointer;
   &:hover {
     background: #368e1a;
   }
