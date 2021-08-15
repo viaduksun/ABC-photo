@@ -11,8 +11,8 @@ import { AiFillStar } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import MenuItems from '../../../Data/buttomMenuItems';
-import getCatalog from '../../../api/getCatalog';
+// import MenuItems from '../../../Data/buttomMenuItems';
+// import getCatalog from '../../../api/getCatalog';
 import SearchForm from '../SearchForm/SearchForm';
 import BottomMenuLink from './BottomMenuLink';
 import styles from './BottomMenu.module.scss';
@@ -43,9 +43,9 @@ const BottomMenu = ({ toggleMenu }) => {
   const [headerFixed, setHeaderFixed] = useState(false);
 
   const handleScroll = () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 200) {
       setHeaderFixed(true);
-    } else if (window.scrollY < 300) {
+    } else if (window.scrollY < 200) {
       setHeaderFixed(false);
     }
   };

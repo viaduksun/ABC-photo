@@ -7,10 +7,7 @@ const createOrder = (newOrder) => {
   console.log('NEW ORDER: ', newOrder);
   return axios.post('https://intense-hamlet-33316.herokuapp.com/api/orders', newOrder)
     // return axios.post('http://localhost:5000/api/orders', newOrder)
-    .then((newOrderRes) => {
-      /* Do something with newOrder */
-      console.log('NEW ORDER: ', newOrderRes);
-    })
+
     .catch((err) => {
       /* Do something with error, e.g. show error to user */
       console.log(err);

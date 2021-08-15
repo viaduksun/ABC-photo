@@ -126,16 +126,25 @@ export const deleteFromCartMongoDB = (singleProduct) => (dispatch) => {
         (a, b) => a + b.cartQuantity,
         0
       );
-      updateCart(newArrayFromDB).then(
-        // createCart(singleProduct).then(
-        (resultCart) => {
-          console.log('UPDATED CART: ', resultCart);
+      if (newArrayFromDB.length > 0) {
+        updateCart(newArrayFromDB).then(
+          // createCart(singleProduct).then(
+          (resultCart) => {
+            console.log('UPDATED CART: ', resultCart);
+            dispatch({
+              type: DELETE_CART_DB,
+              payload: { resultCart, cartCounter },
+            });
+          }
+        );
+      } else {
+        deleteCart().then((delresult) => {
+          console.log('DELETE LAST PRODUCT: ', delresult);
           dispatch({
-            type: DELETE_CART_DB,
-            payload: { resultCart, cartCounter },
+            type: DELETE_CART_DB_REDUX,
           });
-        }
-      );
+        });
+      }
     }
   });
 };
