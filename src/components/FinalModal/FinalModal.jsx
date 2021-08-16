@@ -16,8 +16,13 @@ const FinalModal = ({ active, setActive, orderNo }) => {
     <div
       className={active ? styles.Modal_active : styles.Modal}
       onClick={handleClose}
+      onMouseDown={(e) => e.stopPropagation()}
     >
-      <div className={styles.ModalContent} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={styles.ModalContent}
+        onClick={(e) => e.stopPropagation()}
+        onMouseDown={(e) => e.stopPropagation()}
+      >
         <button
           type="button"
           className={styles.ModalClose}

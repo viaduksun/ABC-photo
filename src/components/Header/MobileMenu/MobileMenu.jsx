@@ -18,7 +18,11 @@ import styles from './MobileMenu.module.scss';
 import menuItems from '../../../Data/menuItems';
 import categoryItems from '../../../Data/buttomMenuItems';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
-import { setCurrentCategoryAction, setCurrentQueryAction } from '../../../store/products/actions';
+import {
+  setCurrentCategoryAction,
+  setCurrentQueryAction,
+} from '../../../store/products/actions';
+import { loginModalOpenAction } from '../../../store/madals/actions';
 
 const MobileMenu = ({ isOpen, toggleMenu }) => {
   const dispatch = useDispatch();
@@ -37,6 +41,9 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
     dispatch(setCurrentQueryAction(id));
     toggleMenu();
   };
+  const handleLogin = () => {
+    dispatch(loginModalOpenAction());
+  };
 
   return (
     <>
@@ -53,7 +60,9 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
         <div className={styles.header}>
           <div className={styles.loginWrapper}>
             <FaUserAlt className={styles.loginIcon} />
-            <p className={styles.loginText}>Войти</p>
+            <p onClick={handleLogin} className={styles.loginText}>
+              Войти
+            </p>
             <p className={styles.loginText}>Зарегистрироваться</p>
           </div>
           {/* <LanguageSelector /> */}
@@ -71,7 +80,6 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
               <BsBoxArrowInRight className={styles.linkIcon} />
               {menuItem.menuTitle}
             </NavLink>
-         
           ))}
           {categoryItems.map((menuItem) => (
             <NavLink

@@ -9,7 +9,9 @@
   z-index: 500;
 }
 .LoginModal {
-  width: 470px;
+  width: 510px;
+  margin-left: 50px;
+  margin-right: 50px;
   max-height: 90vh;
   background: #dddddd;
   padding: 40px;
@@ -182,4 +184,15 @@
 
 .Body::-webkit-scrollbar-thumb {
   background-color: #999999;
+}
+@media screen and (max-width: 480px) {
+  .headerMenuItem {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .LoginModal {
+    width: 300px;
+    padding: 20px;
+  }
 }
