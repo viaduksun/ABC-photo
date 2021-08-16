@@ -6,6 +6,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 import { paginateAction } from '../../store/searchProducts/actions';
 import styles from './PaginationSearchProducts.module.scss';
 
@@ -59,6 +60,19 @@ productsPerPage, totalProducts, currentPage, scrollToTop
         />
       </div>
     );
+};
+
+PaginationSearchProducts.propTypes = {
+  scrollToTop: PropTypes.func.isRequired,
+  productsPerPage: PropTypes.number,
+  totalProducts: PropTypes.number,
+  currentPage: PropTypes.number,
+};
+
+PaginationSearchProducts.defaultProps = {
+  productsPerPage: 1,
+  totalProducts: 1,
+  currentPage: 1
 };
 
 export default PaginationSearchProducts;

@@ -10,6 +10,7 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { MdRemoveShoppingCart } from 'react-icons/md';
 import { GiCheckMark } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   addSingleProductToCartAction,
   addToCartMongoDB,
@@ -34,7 +35,7 @@ const SingleProductContent = ({ singleProduct }) => {
         } else {
           dispatch(addSingleProductToCartAction(singleProduct));
         }
-      }, 2000);
+      }, 1600);
       setMoveToCart(true);
     }
     setTimeout(() => {
@@ -99,6 +100,13 @@ const SingleProductContent = ({ singleProduct }) => {
       </div>
     </>
   );
+};
+
+SingleProductContent.propTypes = {
+  singleProduct: PropTypes.objectOf,
+};
+SingleProductContent.defaultProps = {
+  singleProduct: {}
 };
 
 export default SingleProductContent;

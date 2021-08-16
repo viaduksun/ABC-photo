@@ -14,7 +14,7 @@ import { GiCheckMark } from 'react-icons/gi';
 import { MdRemoveShoppingCart } from 'react-icons/md';
 
 // import PropTypes from 'prop-types';
-
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ProductCardFavorite.module.scss';
 // import { addProductToCartAction } from '../../store/cart/actions';
@@ -24,7 +24,7 @@ import { addProdductToFavoritesAction, deleteProdductFromFavoritesAction } from 
 import { addViewedProductAction } from '../../store/viewedProducts/actions';
 import { addSingleProductToCartAction, addToCartMongoDB } from '../../store/cart/actions';
 
-const ProductCard = ({
+const ProductCardFavorite = ({
   product,
   dragStart,
   dragEnd,
@@ -138,8 +138,16 @@ const ProductCard = ({
   );
 };
 
-// ProductCard.propTypes = {
-//   product: PropTypes.objectOf.isRequired
-// };
+ProductCardFavorite.propTypes = {
+  product: PropTypes.objectOf,
+  dragStart: PropTypes.func.isRequired,
+  dragEnd: PropTypes.func.isRequired,
+  dragOver: PropTypes.func.isRequired,
+  drop: PropTypes.func.isRequired,
+};
 
-export default ProductCard;
+ProductCardFavorite.defaultProps = {
+  product: {},
+};
+
+export default ProductCardFavorite;

@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Desctiption from './Desctiption';
 import Characteristics from './Characteristics';
-import Accessories from './Accessories';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,20 +49,6 @@ export default function SimpleAccordion() {
         <AccordionDetails>
           <Typography component="span">
             <Characteristics />
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography className={classes.heading}>Аксессуары</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography component="span">
-            <Accessories />
           </Typography>
         </AccordionDetails>
       </Accordion>

@@ -12,7 +12,7 @@ import { showGridSearchProductsAction } from '../../store/searchProducts/actions
 const SearchProductsField = ({ searchProducts }) => {
   const currentPage = useSelector((state) => state.productsPage.currentPage);
   const allProducts = useSelector(
-    (state) => state.productsPage.AllProductsForPagination.length
+    (state) => state.productsPage.allProductsForPagination.length
   );
   const showGrid = useSelector((state) => state.searchProducts.showGrid);
   const dispatch = useDispatch();

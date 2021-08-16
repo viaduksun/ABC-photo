@@ -5,6 +5,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from './ProductsField.module.scss';
 import { showGridAction } from '../../store/products/actions';
 import ProductsSorting from '../ProductsSorting/ProductsSorting';
@@ -13,10 +14,9 @@ import ProductCardLine from '../ProductCardLine/ProductCardLine';
 import Pagination from '../Pagination/Pagination';
 
 const ProductsField = ({ products }) => {
-  console.log('RENDER_ProductsField ');
   // const currentPage = useSelector((state) => state.productsPage.currentPage);
   // const allProducts = useSelector(
-  //   (state) => state.productsPage.AllProductsForPagination.length
+  //   (state) => state.productsPage.allProductsForPagination.length
   // );
   const showGrid = useSelector((state) => state.productsPage.showGrid);
   const dispatch = useDispatch();
@@ -30,7 +30,6 @@ const ProductsField = ({ products }) => {
       top: 0,
     });
   };
-  console.log('PRODUCTS', products);
   return (
     <div className={styles.ProductsField}>
       {/* <ProductsSorting
@@ -62,6 +61,14 @@ const ProductsField = ({ products }) => {
       <Pagination scrollTo={scrollToTopHandler} />
     </div>
   );
+};
+
+ProductsField.propTypes = {
+  products: PropTypes.arrayOf,
+
+};
+ProductsField.defaultProps = {
+  products: [],
 };
 
 export default ProductsField;

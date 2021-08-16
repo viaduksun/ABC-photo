@@ -1,5 +1,6 @@
 .Wrapper {
   display: flex;
+  align-items: center;
   flex-direction: column;
   @media (max-width: 1024px) {
     flex-direction: row; 
@@ -8,6 +9,9 @@
 .BlockLeft {
   @media (max-width: 1024px) {
     margin-right: 30px;
+  }
+  @media (max-width: 480px) {
+    margin-right: 10px;
   }
 }
 .InStock {
@@ -21,6 +25,9 @@
   line-height: 49px;
   font-weight: 700;
   font-family: 'Roboto', sans-serif;
+  @media(max-width: 480px) {
+    font-size: 24px;
+  }
   span {
     font-size: 26px;
     line-height: 49px;

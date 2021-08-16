@@ -11,6 +11,7 @@ import './SingleProductSlider.scss';
 import SwiperCore, {
   Navigation, Thumbs
 } from 'swiper/core';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import styles from './SingleProductSlider.module.scss';
 
@@ -55,6 +56,13 @@ const SingleProductSlider = ({singleProduct}) => {
       </div>
     </div>
   );
+};
+
+SingleProductSlider.propTypes = {
+  singleProduct: PropTypes.objectOf,
+};
+SingleProductSlider.defaultProps = {
+  singleProduct: {}
 };
 
 export default SingleProductSlider;

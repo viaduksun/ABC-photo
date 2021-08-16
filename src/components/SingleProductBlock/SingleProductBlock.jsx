@@ -5,6 +5,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 // import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import SingleProductSlider from './SingleProductSlider/SingleProductSlider';
 import SingleProductContent from './SingleProductContent/SingleProductContent';
 import styles from './SingleProductBlock.module.scss';
@@ -23,5 +24,12 @@ const SingleProductBlock = ({ singleProduct }) => (
     </div>
   </div>
 );
+
+SingleProductBlock.propTypes = {
+  singleProduct: PropTypes.objectOf,
+};
+SingleProductBlock.defaultProps = {
+  singleProduct: {}
+};
 
 export default SingleProductBlock;

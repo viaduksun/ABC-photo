@@ -53,9 +53,6 @@ const SingleProductInfoTabs = ({ singleProduct }) => {
         {currentTab === 'characteristics' && (
           <Characteristics singleProduct={singleProduct} />
         )}
-        {currentTab === 'accessories' && (
-          <Accessories singleProduct={singleProduct} />
-        )}
       </div>
     </div>
   );

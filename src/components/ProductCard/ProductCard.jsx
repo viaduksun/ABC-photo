@@ -12,12 +12,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BiCart } from 'react-icons/bi';
 import { BsFillStarFill, BsStar } from 'react-icons/bs';
-// import { FaShoppingCart } from 'react-icons/fa';
 import { GiCheckMark } from 'react-icons/gi';
 import { MdRemoveShoppingCart } from 'react-icons/md';
-
-// import PropTypes from 'prop-types';
-
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ProductCard.module.scss';
 import {
@@ -176,8 +173,12 @@ const ProductCard = ({ product }) => {
   );
 };
 
-// ProductCard.propTypes = {
-//   product: PropTypes.objectOf.isRequired
-// };
+ProductCard.propTypes = {
+  product: PropTypes.objectOf,
+
+};
+ProductCard.defaultProps = {
+  product: {},
+};
 
 export default ProductCard;

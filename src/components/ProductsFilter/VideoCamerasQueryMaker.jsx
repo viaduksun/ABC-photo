@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useMemo, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilteredProductsAction } from '../../store/products/actions';
+import { clearProductsAction, getFilteredProductsAction } from '../../store/products/actions';
 
 const VideoCamerasQueryMaker = ({lenseType, priceState, fileFormat, connectors }) => {
   const rangeQuery = `&minPrice=${priceState[0]}&maxPrice=${priceState[1]}`;
@@ -76,11 +76,13 @@ const VideoCamerasQueryMaker = ({lenseType, priceState, fileFormat, connectors }
     addQueryConnectors + addQueryFileFormat + addQueryLensType + rangeQuery;
     if (finalQuery) {
       console.log('FINAL QUERY: ', finalQuery);
+      dispatch(clearProductsAction());
       dispatch(
         getFilteredProductsAction(currentCategory, page, perPage, finalQuery)
       );
     } else {
       console.log('SHOW ALL!!!');
+      dispatch(clearProductsAction());
       dispatch(getFilteredProductsAction(currentCategory, page, perPage, ''));
     }
   }, [connectors, currentCategory, dispatch, fileFormat, lenseType, page, perPage, rangeQuery]);

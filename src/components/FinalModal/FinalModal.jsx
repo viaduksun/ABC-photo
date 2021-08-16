@@ -5,6 +5,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsX } from 'react-icons/bs';
+import PropTypes from 'prop-types';
 import styles from './FinalModal.module.scss';
 
 // eslint-disable-next-line react/prop-types
@@ -71,6 +72,15 @@ const FinalModal = ({ active, setActive, orderNo }) => {
       </div>
     </div>
   );
+};
+
+FinalModal.propTypes = {
+  active: PropTypes.bool,
+  setActive: PropTypes.func.isRequired
+};
+
+FinalModal.defaultProps = {
+  active: false
 };
 
 export default FinalModal;

@@ -1,0 +1,36 @@
+.CreditWrapper {
+  margin: 20px 0;
+}
+.CreditBank {
+  a {
+    font-size: 20px;
+    line-height: 22px;
+    color: #323433;
+    font-weight: bold;
+  }
+}
+.CreditTitle {
+  font-size: 30px;
+  margin: 20px 0;
+}
+.CreditBankName {
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 20px 0;
+  color: #51ad33;
+  height: auto;
+}
+.CreditInstallment {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 10px;
+}
+.CreditInstallmentList {
+  margin-top: 10px;
+  li {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}

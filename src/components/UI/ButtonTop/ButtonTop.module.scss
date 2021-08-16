@@ -1,13 +1,14 @@
 .ButtonTop {
    position: fixed; 
-   width: 20px;
-   right: 70px;
+   width: 0px;
+   right: 90px;
    bottom: 50px;
    height: 20px;
    font-size: 3rem;
    z-index: 1000;
    cursor: pointer;
    color: #51ad33;
+   outline: none;
    &:hover {
     color: #368E1A; 
    }
