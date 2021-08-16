@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
+import setAuthToken from '../setAuthToken';
 
 const getCities = () => {
   const data = {
@@ -8,6 +9,7 @@ const getCities = () => {
     calledMethod: 'getCities',
     methodProperties: {},
   };
+  setAuthToken(false);
   const headers = {
     'Content-Type': 'application/json',
   };

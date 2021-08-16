@@ -20,15 +20,22 @@ import {
   IS_LOGGED_IN,
   CURRENT_USER_SET_UP,
   EXIT,
-  UPDATE_CUSTOMER
+  UPDATE_CUSTOMER,
+  SET_CURRENT_PAGE_ADMIN
 } from './types';
 import updateCustomer from '../../api/updateCustomer';
 import getAllProductsAdmin from '../../api/getAllProductsAdmin';
 
-export const adminProducts = () => (dispatch) => {
-  getAllProductsAdmin().then((data) => {
+export const adminProducts = (page) => (dispatch) => {
+  getAllProductsAdmin(page).then((data) => {
     console.log('DATA', data);
-    dispatch({ type: SET_ADMIN_PRODUCTS, payload: data.data.products });
+    dispatch({
+      type: SET_ADMIN_PRODUCTS,
+      payload: {
+        products: data.data.products,
+        productsQuantity: data.data.productsQuantity,
+      }
+    });
   });
 };
 export const setCatalog = () => (dispatch) => {
@@ -102,3 +109,10 @@ export const userFromLocalStorageAction = (userFromLocalData) => ({
 export const exitAction = () => ({
   type: EXIT,
 });
+export const setCurrentPageAdminAction = (page) => {
+  localStorage.setItem('currentPageAdmin', page);
+  return ({
+    type: SET_CURRENT_PAGE_ADMIN,
+    payload: page,
+  });
+};

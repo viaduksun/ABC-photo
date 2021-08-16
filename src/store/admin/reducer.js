@@ -5,11 +5,12 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable array-callback-return */
 import {
-  SET_ADMIN_PRODUCTS, REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT_CLOSE, EDIT_PRODUCT, SET_CATALOG, MODAL_EDIT_CATEGORY_OPEN, MODAL_EDIT_CATEGORY_CLOSE, EDIT_CATEGORY, MODAL_DELETE_CATEGORY_OPEN, MODAL_DELETE_CATEGORY_CLOSE, IS_ADMIN, DELETE_CATEGORY, IS_LOGGED_IN, CURRENT_USER_SET_UP, EXIT, UPDATE_CUSTOMER
+  SET_ADMIN_PRODUCTS, REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT, MODAL_REMOVE_PRODUCT_CLOSE, EDIT_PRODUCT, SET_CATALOG, MODAL_EDIT_CATEGORY_OPEN, MODAL_EDIT_CATEGORY_CLOSE, EDIT_CATEGORY, MODAL_DELETE_CATEGORY_OPEN, MODAL_DELETE_CATEGORY_CLOSE, IS_ADMIN, DELETE_CATEGORY, IS_LOGGED_IN, CURRENT_USER_SET_UP, EXIT, UPDATE_CUSTOMER, SET_CURRENT_PAGE_ADMIN
 } from './types';
 
 const initialState = {
   adminProducts: [],
+  productsQuantity: '',
   catalog: [],
   isLoadingProducts: true,
   isLoadingCategories: true,
@@ -19,6 +20,7 @@ const initialState = {
   isAdmin: false,
   isLoggedIn: false,
   currentUser: {},
+  currentPageAdmin: 1,
 };
 
 export const admin = (state = initialState, action) => {
@@ -73,8 +75,15 @@ export const admin = (state = initialState, action) => {
       console.log('SET_PRODUCTS', action.payload);
       return {
         ...state,
-        adminProducts: action.payload,
+        adminProducts: action.payload.products,
+        productsQuantity: action.payload.productsQuantity,
         isLoadingProducts: false
+      };
+    case SET_CURRENT_PAGE_ADMIN:
+      console.log('SET_CURRENT_PAGE_ADMIN', action.payload);
+      return {
+        ...state,
+        currentPageAdmin: action.payload
       };
     case SET_CATALOG:
       return {
@@ -114,17 +123,9 @@ export const admin = (state = initialState, action) => {
         catalog: newCatalog,
         isModalRemoveCategoryOpen: false,
       };
-    // case CREATE_CATEGORY:
-    //   console.log('CREATE_CATEGORY', action.payload);
-    //   const newCatalog = state.catalog.push(action.payload.categoryId);
-    //   return {
-    //     ...state,
-    //     catalog: newCatalog,
-    //     isModalRemoveCategoryOpen: false,
-    //   };
     case EDIT_PRODUCT:
       // console.log('STATE', state);
-      // console.log('PAYLOAD_', action.payload);
+      console.log('PAYLOAD_', action.payload);
       const productFromEditForm = action.payload;
       // const targetProduct = state.adminProducts.find((product) => product._id === productFromEditForm._id);
       // const productsEditedArr = state.adminProducts.filter((product) => product._id !== productFromEditForm._id);

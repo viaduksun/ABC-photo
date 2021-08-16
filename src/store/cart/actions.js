@@ -29,6 +29,7 @@ import {
   INCREMENT_CART_DB,
   LOG_OUT,
   SET_CART_DB,
+  SET_CART_ISLOADING,
   SET_POPUP_FALSE,
   SET_TOTAL_COUNT_CART,
   SET_TOTAL_SUM_CART,
@@ -56,6 +57,7 @@ export const setCartActionTemp = (singleProduct) => (dispatch) => {
 // ==== TEMP ===
 export const addToCartMongoDB = (singleProduct) => (dispatch) => {
   let cartFromDB = [];
+  dispatch({ type: SET_CART_ISLOADING, payload: true });
   getCartFromDB().then((result) => {
     if (result.data) {
       console.log('CART FROM DB: ', result.data.products);
@@ -111,6 +113,7 @@ export const addToCartMongoDB = (singleProduct) => (dispatch) => {
         }
       );
     }
+    dispatch({ type: SET_CART_ISLOADING, payload: false });
   });
 };
 export const deleteFromCartMongoDB = (singleProduct) => (dispatch) => {

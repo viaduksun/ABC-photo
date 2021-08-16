@@ -46,12 +46,11 @@ const CreateCategoryForm = () => {
   // ========= CREATE FUNC =================
   const handleCreateCategory = (values, { setSubmitting, resetForm }) => {
     console.log('FORM', values);
-    const { id, name, path, parentId, imgUrl, description } = values;
+    const { id, name, parentId, imgUrl, description } = values;
     setSubmitting(true);
     const newCategory = {
       id,
       name,
-      path,
       parentId,
       imgUrl,
       description,
@@ -74,7 +73,6 @@ const CreateCategoryForm = () => {
   const productSchema = Yup.object().shape({
     id: Yup.string().required('Is required'),
     name: Yup.string().required('Is required'),
-    path: Yup.string().required('Is required'),
     parentId: Yup.string().required('Is required'),
     imgUrl: Yup.string().required('Is required'),
     description: Yup.string(),
@@ -87,7 +85,6 @@ const CreateCategoryForm = () => {
         initialValues={{
           id: '',
           name: '',
-          path: '',
           parentId: '',
           imgUrl: '',
           description: '',
@@ -100,17 +97,6 @@ const CreateCategoryForm = () => {
             <div className={styles.inputsWrapper}>
               <TextInput label="Идентификатор" name="id" type="text" />
               <TextInput label="Название" name="name" type="text" />
-              <TextInput
-                label="Путь"
-                name="path"
-                type="text"
-                placeholder="/products"
-              />
-              {/* <TextInput
-                label="Родительская категория"
-                name="parentId"
-                type="text"
-              /> */}
               <FormikControl
                 control="select"
                 label="Родительская категория"
@@ -125,11 +111,6 @@ const CreateCategoryForm = () => {
                 name="description"
                 type="text"
               />
-              {/* <TextInput
-                label="Уровень вложенности"
-                name="level"
-                type="number"
-              /> */}
             </div>
             <div className="form-btn-group">
               <Button type="submit" addClass="admin-primary">

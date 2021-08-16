@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Products.module.scss';
 
 const Characteristics = ({ charObj }) => {
-  console.log(charObj);
+  // console.log(charObj);
   const characteristics = Object.keys(charObj).map((key) => (
     <div className={styles.dataItem}>
       <div className={styles.dataTitle}>{charObj[key][0]}</div>

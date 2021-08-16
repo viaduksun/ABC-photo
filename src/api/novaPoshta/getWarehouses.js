@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
+import setAuthToken from '../setAuthToken';
 
 const getWarehouses = (cityRef) => {
   const data = {
@@ -10,6 +11,7 @@ const getWarehouses = (cityRef) => {
     },
     apiKey: 'ba89082940dc2fa03afd1e2d47cd5cdc'
   };
+  setAuthToken(false);
   const headers = {
     'Content-Type': 'application/json',
   };

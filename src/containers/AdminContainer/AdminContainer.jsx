@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Categories from '../../components/Admin/Categories/Categories';
 // import Login from '../../components/Admin/Login';
 // import Register from '../../components/Admin/Register';
@@ -13,10 +13,11 @@ import CreateCategory from '../../components/Admin/CreateCategory/CreateCategory
 import { adminProducts } from '../../store/admin/actions';
 
 const AdminContainer = () => {
+  const page = useSelector((state) => state.admin.currentPageAdmin);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(adminProducts());
-  }, [dispatch]);
+    dispatch(adminProducts(page));
+  }, [dispatch, page]);
   const [isActive, setIsActive] = useState('catalog');
   const handleActive = (activeBtn) => {
     setIsActive(activeBtn);

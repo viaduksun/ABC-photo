@@ -27,6 +27,7 @@ import {
 } from '../../../store/admin/actions';
 import EditProduct from '../EditProduct';
 import Characteristics from './Characteristics';
+import AdminPagination from '../AdminPagination/AdminPagination';
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const Products = () => {
     (state) => state.modals.isEditProductModalOpen
   );
   const productsArr = useSelector((state) => state.admin.adminProducts);
+  const page = useSelector((state) => state.admin.currentPageAdmin);
   const isModalRemoveProductOpen = useSelector(
     (state) => state.admin.isModalRemoveProductOpen
   );
@@ -152,7 +154,7 @@ const Products = () => {
   const handleProductData = (e) => {
     console.log(e.target.closest('.ProductWrapper'));
   };
-
+  const pageQ = page * 10 - 9;
   return (
     <>
       <div className={styles.ProductsWrapper}>
@@ -175,7 +177,7 @@ const Products = () => {
                   [styles.productCard_active]: active === product.itemNo,
                 })}
               >
-                <span className={styles.number}>{index + 1}</span>
+                <span className={styles.number}>{index + pageQ}</span>
                 <div className={styles.preview}>
                   <img src={product.imageUrls[0]} alt={product.model} />
                 </div>
@@ -245,9 +247,10 @@ const Products = () => {
             </div>
           ))}
       </div>
+      <AdminPagination />
       {isModalEditProductOpen && (
         <Modal
-          title="Edit"
+          title="Редактирование продукта"
           body={<EditProduct product={currentProduct} />}
           btnBlock={editBtnBlock}
           onCloseClick={handleModalEditClose}
@@ -255,7 +258,7 @@ const Products = () => {
       )}
       {isModalRemoveProductOpen && (
         <Modal
-          title="Delete"
+          title="Удаление продукта"
           body={modalContent()}
           btnBlock={btnRemoveProductModal}
           onCloseClick={handleModalDeleteClose}
