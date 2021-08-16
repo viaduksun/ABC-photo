@@ -1,7 +1,7 @@
 import React from 'react';
 import { BiMap } from 'react-icons/bi';
-import Breadcrumbs from '../containers/Breadcrumbs/Breadcrumbs';
-import styles from './Pages.module.scss';
+import Breadcrumbs from '../../containers/Breadcrumbs/Breadcrumbs';
+import styles from './Shops.module.scss';
 
 const Shops = () => {
   const array = [['/', 'Главная'], ['shops', 'Магазины']];

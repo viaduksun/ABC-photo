@@ -15,12 +15,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
+  @media(max-width: 480px) {
+    display: block;
+  }
   h2 {
     font-size: 26px;
     line-height: 26px;
     font-weight: 700;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
+    @media(max-width: 768px) {
+      font-size: 20px;
+      line-height: 22px;
+    }
   }
   p {
     font-size: 14px;
@@ -29,5 +37,12 @@
     padding: 7px 13px;
     margin-left: 50px;
     font-family: 'Roboto', sans-serif;
+    @media(max-width: 768px) {
+      line-height: 16px;
+      padding: 5px;
+      margin-left: 0px;
+      max-width: 150px;
+      margin-top: 10px;
+    }
   }
 }

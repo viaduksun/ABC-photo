@@ -9,6 +9,7 @@ import 'swiper/swiper.min.css';
 import 'swiper/components/pagination/pagination.min.css';
 import 'swiper/components/navigation/navigation.min.css';
 import SwiperCore, { Pagination, Navigation, Autoplay } from 'swiper/core';
+import PropTypes from 'prop-types';
 import './ViewedProductsSlider.scss';
 import styles from './ViewedProductsSlider.module.scss';
 import ProductCard from '../ProductCard/ProductCard';
@@ -41,7 +42,7 @@ const ViewedProductsSlider = ({ viewedProducts }) => {
               slidesPerView: 4,
               spaceBetween: 10,
             },
-            850: {
+            1000: {
               slidesPerView: 3,
               touchRatio: 1,
             },
@@ -59,6 +60,13 @@ const ViewedProductsSlider = ({ viewedProducts }) => {
       </div>
     </>
   );
+};
+
+ViewedProductsSlider.propTypes = {
+  viewedProducts: PropTypes.arrayOf
+};
+ViewedProductsSlider.defaultProps = {
+  viewedProducts: []
 };
 
 export default ViewedProductsSlider;

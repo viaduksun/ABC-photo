@@ -12,6 +12,9 @@ body {
   &.no-scroll {
     overflow: hidden;
   }
+  &.no-scroll-burger {
+    overflow: hidden;
+  }
 }
 
 code {

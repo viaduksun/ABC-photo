@@ -54,7 +54,7 @@ const Products = () => {
     if (currentPerPage) {
       dispatch(setCurrentPerPageAction(currentPerPage));
     } else {
-      dispatch(setCurrentPerPageAction(6));
+      dispatch(setCurrentPerPageAction(3));
     }
   }, [dispatch]);
 

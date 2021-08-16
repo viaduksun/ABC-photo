@@ -2,13 +2,17 @@
 /* eslint-disable no-unused-vars */
 import getAllFilteredProducts from '../../api/getAllFilteredProducts';
 import getFilteredProducts from '../../api/getFilteredProducts';
+import filteredProductsForPagination from '../../api/getFilteredProductsForPagination';
 import getSearchProducts from '../../api/getSearchProducts';
 // import getProducts from '../../api/getProducts';
 import {
   CLEAR_PRODUCTS,
+  FILTERED_PRODUCTS_FOR_PAGINATION,
   GET_CATEGORY_FROM_LOCAL_STORAGE,
+  GET_PER_PAGE_FOR_FILTER,
   GET_PRODUCTS_FROM_LOCAL_STORAGE,
   SET_CATEGORY_FOR_BREADCRUMBS,
+  SET_CURRENT_BRANDQUERY,
   SET_CURRENT_CATEGORY,
   SET_CURRENT_PAGE,
   SET_CURRENT_PRODUCTS_ARR,
@@ -49,31 +53,41 @@ export const getAllProductsCurrentCategoryAction =
     });
   };
 
+export const filteredProductsForPaginationAction = (currentCategory, addQuery) => (dispatch) => {
+  filteredProductsForPagination(currentCategory, addQuery).then((allProducts) => {
+      console.log('allProducts', allProducts);
+      dispatch({
+        type: FILTERED_PRODUCTS_FOR_PAGINATION,
+        payload: allProducts.data.products,
+      });
+    });
+  };
+
 export const setFlagInCartAction = (product) => ({
   type: SET_FLAG_IN_CART,
   payload: { product },
 });
 export const setCurrentPageAction = (page) => {
-  console.log('setCurrentPageAction');
+  console.log('setCurrentPageAction', page);
   localStorage.setItem('currentPage', page);
-  return ({
+  return {
     type: SET_CURRENT_PAGE,
     payload: page,
-  });
+  };
 };
 export const setCurrentPerPageAction = (page) => {
   localStorage.setItem('currentPerPage', page);
-  return ({
+  return {
     type: SET_PER_PAGE,
     payload: page,
-  });
+  };
 };
 export const setCurrentCategoryAction = (id) => {
   localStorage.setItem('currentCategory', id);
-  return ({
+  return {
     type: SET_CURRENT_CATEGORY,
     payload: id,
-  });
+  };
 };
 export const setCurrentQueryAction = (id, page) => ({
   type: SET_CURRENT_QUERY,
@@ -90,15 +104,24 @@ export const showGridAction = () => ({
 export const clearProductsAction = () => ({
   type: CLEAR_PRODUCTS,
 });
-export const getProductsFromLocalStorageAction = (productsFromLocalStorage) => ({
+export const getProductsFromLocalStorageAction = (
+  productsFromLocalStorage
+) => ({
   type: GET_PRODUCTS_FROM_LOCAL_STORAGE,
-  payload: JSON.parse(productsFromLocalStorage)
+  payload: JSON.parse(productsFromLocalStorage),
 });
 export const setCategoryForBreadcrumbsAction = (product) => ({
   type: SET_CATEGORY_FOR_BREADCRUMBS,
-  payload: {product}
+  payload: { product },
 });
-export const getCategoryFromLocalStorageAction = (categoryFromLocalStorage) => ({
+export const getCategoryFromLocalStorageAction = (
+  categoryFromLocalStorage
+) => ({
   type: GET_CATEGORY_FROM_LOCAL_STORAGE,
-  payload: JSON.parse(categoryFromLocalStorage)
+  payload: JSON.parse(categoryFromLocalStorage),
+});
+
+export const setCurrentBrandQueryAction = (addQueryBrand) => ({
+  type: SET_CURRENT_BRANDQUERY,
+  payload: addQueryBrand
 });

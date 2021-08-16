@@ -11,6 +11,7 @@ import { BsFillStarFill, BsStar } from 'react-icons/bs';
 import { MdRemoveShoppingCart } from 'react-icons/md';
 import { BiCart } from 'react-icons/bi';
 import { GiCheckMark } from 'react-icons/gi';
+import PropTypes from 'prop-types';
 import styles from './ProductCardFavoriteLine.module.scss';
 import { addProdductToFavoritesAction, deleteProdductFromFavoritesAction } from '../../store/favorites/actions';
 import { addSingleProductToCartAction, addToCartMongoDB } from '../../store/cart/actions';
@@ -18,7 +19,7 @@ import { setCategoryForBreadcrumbsAction, setFlagInCartAction } from '../../stor
 import { setSingleProductAction } from '../../store/singleProduct/actions';
 import { addViewedProductAction } from '../../store/viewedProducts/actions';
 
-const ProductCardLine = ({
+const ProductCardFavoriteLine = ({
     product,
     dragStart,
     dragEnd,
@@ -135,4 +136,16 @@ const ProductCardLine = ({
     );
 };
 
-export default ProductCardLine;
+ProductCardFavoriteLine.propTypes = {
+  product: PropTypes.objectOf,
+  dragStart: PropTypes.func.isRequired,
+  dragEnd: PropTypes.func.isRequired,
+  dragOver: PropTypes.func.isRequired,
+  drop: PropTypes.func.isRequired,
+};
+
+ProductCardFavoriteLine.defaultProps = {
+  product: {},
+};
+
+export default ProductCardFavoriteLine;

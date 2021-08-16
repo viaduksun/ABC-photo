@@ -11,6 +11,7 @@ import { BsFillStarFill, BsStar } from 'react-icons/bs';
 import { MdRemoveShoppingCart } from 'react-icons/md';
 import { BiCart } from 'react-icons/bi';
 import { GiCheckMark } from 'react-icons/gi';
+import PropTypes from 'prop-types';
 import styles from './ProductCardLine.module.scss';
 import { addProdductToFavoritesAction, deleteProdductFromFavoritesAction } from '../../store/favorites/actions';
 import { addProductToCartAction } from '../../store/cart/actions';
@@ -114,6 +115,14 @@ const ProductCardLine = ({product}) => {
       
       </div>
     );
+};
+
+ProductCardLine.propTypes = {
+  product: PropTypes.objectOf,
+
+};
+ProductCardLine.defaultProps = {
+  product: {},
 };
 
 export default ProductCardLine;

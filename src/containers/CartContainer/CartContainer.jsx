@@ -74,7 +74,9 @@ const CartContainer = () => {
             <div className={styles.CartFooter}>
               <div>
                 <Link to="/products">
-                  <Button addClass="cart_grey">Продолжить покупки</Button>
+                  <Button className={styles.button} addClass="cart_grey">
+                    Продолжить покупки
+                  </Button>
                 </Link>
               </div>
               <div className={styles.CartFooterRight}>
@@ -87,7 +89,9 @@ const CartContainer = () => {
                   <span> грн</span>
                 </div>
                 <Link to="/checkout">
-                  <Button addClass="cart_green">Оформить</Button>
+                  <Button className={styles.button} addClass="cart_green">
+                    Оформить
+                  </Button>
                 </Link>
               </div>
             </div>

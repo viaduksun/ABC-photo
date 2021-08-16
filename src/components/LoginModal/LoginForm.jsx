@@ -63,7 +63,6 @@ const LoginForm = () => {
       loginOrEmail,
       password,
     };
-    console.log(loginData);
     LoginApi(loginData)
       .then((res) => {
         console.log(res);

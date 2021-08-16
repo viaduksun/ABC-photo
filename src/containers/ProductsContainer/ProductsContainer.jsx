@@ -35,7 +35,7 @@ const ProductsContainer = () => {
   useEffect(() => {
     dispatch(clearProductsAction());
     dispatch(getFilteredProductsAction(currentCategory, page, perPage, ''));
-    dispatch(getAllProductsCurrentCategoryAction(currentCategory));
+    // dispatch(getAllProductsCurrentCategoryAction(currentCategory));
   }, [currentCategory, dispatch, page, perPage]);
   const products = useSelector((state) => state.productsPage.products);
   const isLoadingProducts = useSelector(
@@ -43,7 +43,7 @@ const ProductsContainer = () => {
   );
   const currentPage = useSelector((state) => state.productsPage.currentPage);
   const allProducts = useSelector(
-    (state) => state.productsPage.AllProductsForPagination.length
+    (state) => state.productsPage.allProductsForPagination.length
   );
 
   const handlerSwitch = () => {
@@ -102,7 +102,10 @@ const ProductsContainer = () => {
         <div className={styles.filtersCloseBtn} onClick={handleClick}>
           <VscChromeClose />
         </div>
-        <PhotoCamerasFilter />
+        {currentCategory === 'photocameras' && <PhotoCamerasFilter />}
+        {currentCategory === 'videocameras' && <VideoCamerasFilter />}
+        {currentCategory === 'actioncameras' && <ActionCamerasFilter />}
+        {currentCategory === 'lenses' && <LensesFilter />}
       </div>
     </div>
   );

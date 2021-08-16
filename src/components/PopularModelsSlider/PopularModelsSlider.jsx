@@ -9,6 +9,7 @@ import 'swiper/swiper.min.css';
 import 'swiper/components/pagination/pagination.min.css';
 import 'swiper/components/navigation/navigation.min.css';
 import SwiperCore, { Pagination, Navigation, Autoplay } from 'swiper/core';
+import PropTypes from 'prop-types';
 import ProductCard from '../ProductCard/ProductCard';
 import './PopularModelsSlider.scss';
 import styles from './PopularModelsSlider.module.scss';
@@ -61,6 +62,14 @@ const PopularModelsSlider = ({popularModels}) => {
                 
     </>
   );
+};
+
+PopularModelsSlider.propTypes = {
+  popularModels: PropTypes.arrayOf,
+
+};
+PopularModelsSlider.defaultProps = {
+  popularModels: [],
 };
 
 export default PopularModelsSlider;

@@ -6,4 +6,7 @@
         max-height: 300px;
         margin-left: 130px;
     }
+    @media (max-width: 480px) {
+        margin-left: 30px;
+    }
 }

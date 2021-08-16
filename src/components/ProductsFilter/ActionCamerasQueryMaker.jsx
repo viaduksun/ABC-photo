@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useMemo, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilteredProductsAction } from '../../store/products/actions';
+import { clearProductsAction, getFilteredProductsAction } from '../../store/products/actions';
 
 const ActionCamerasQueryMaker = ({priceState, matrixType, features, wireless}) => {
   const rangeQuery = `&minPrice=${priceState[0]}&maxPrice=${priceState[1]}`;
@@ -82,11 +82,13 @@ const ActionCamerasQueryMaker = ({priceState, matrixType, features, wireless}) =
     addQueryMatrixType + addQueryFeatures + addQueryWireless + rangeQuery;
     if (finalQuery) {
       console.log('FINAL QUERY: ', finalQuery);
+      dispatch(clearProductsAction());
       dispatch(
         getFilteredProductsAction(currentCategory, page, perPage, finalQuery)
       );
     } else {
       console.log('SHOW ALL!!!');
+      dispatch(clearProductsAction());
       dispatch(getFilteredProductsAction(currentCategory, page, perPage, ''));
     }
   }, [currentCategory, dispatch, features, matrixType, page, perPage, rangeQuery, wireless]);

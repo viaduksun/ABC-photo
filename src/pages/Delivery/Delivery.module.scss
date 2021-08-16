@@ -1,0 +1,42 @@
+.CreditWrapper {
+    margin: 20px 0 50px 0;
+}
+.CreditTitle {
+    font-size: 30px;
+    margin: 20px 0;
+}
+.Line {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: solid 1px #dedede;
+    border-bottom: solid 1px #f5f6f6;
+    border-left: 0;
+    border-right: 0;
+  }
+.CreditDeliveryAndPayment {
+    display: flex;
+    justify-content: space-between;
+    h3 {
+        font-size: 25px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 20px 0;
+        color: #51ad33;
+        height: auto;
+    }
+    h4 {
+        text-align: left;
+        text-transform: none;
+        font-weight: bold;
+        font-size: 18px;
+        margin: 40px 0 10px 0;
+        height: auto;
+    }
+    strong {
+        font-weight: bold;
+    }
+}
+.CreditDelivery,
+.CreditPayment {
+    max-width: 600px;
+}

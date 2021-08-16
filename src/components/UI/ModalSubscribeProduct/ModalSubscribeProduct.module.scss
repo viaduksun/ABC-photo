@@ -3,7 +3,7 @@
   width: 0px;
   height: 0px;
   &_active {
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.4);
@@ -24,6 +24,8 @@
   background-color: white;
   min-height: 400px;
   width: 400px;
+  margin-left: 50px;
+  margin-right: 50px;
   .Button {
     height: 40px;
     width: 240px;
@@ -54,36 +56,36 @@
   font-family: 'Open Sans', sans-serif;
 }
 .ContactDetailsFormBlock {
- margin: 30px 0;
+  margin: 30px 0;
 }
 .ContactDetailsField {
   margin-top: 17px;
   label {
-      display: block;
-      font-size: 14px;
-      line-height: 14px;
-      font-family: 'Open Sans', sans-serif;
+    display: block;
+    font-size: 14px;
+    line-height: 14px;
+    font-family: 'Open Sans', sans-serif;
   }
   input {
-      margin-top: 5px;
-      border: 1px solid #d3d7da;
-      width: 100%;
-      padding: 15px;
-      border-radius: 5px;
-      &:focus {
-          box-shadow: 0px 0px 5px 1px #d3d7da;
-      }
+    margin-top: 5px;
+    border: 1px solid #d3d7da;
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    &:focus {
+      box-shadow: 0px 0px 5px 1px #d3d7da;
+    }
   }
 }
 .SubmitButton {
   margin-top: 25px;
   width: 100%;
-  background-color: #51ad33;;
+  background-color: #51ad33;
   color: #fff;
   padding: 15px 0;
   font-size: 20px;
   line-height: 22px;
-  transition: all .3s;
+  transition: all 0.3s;
   &:hover {
     background-color: #368e1a;
   }
@@ -94,4 +96,3 @@
   color: red;
   margin-top: 2px;
 }
-

@@ -23,7 +23,7 @@ Button.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 Button.defaultProps = {
-  disabled: false,
+  disabled: '',
   type: '',
   addClass: '',
   children: 'Button',

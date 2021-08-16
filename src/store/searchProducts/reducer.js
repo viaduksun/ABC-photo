@@ -27,6 +27,20 @@ const initialState = {
   searchValue: '',
   searchValueForUser: '',
   priceState: [],
+  autocompleteData: [
+    'canon',
+    'nikon',
+    'sony',
+    'fuji',
+    'photocameras',
+    'videocameras',
+    'lenses',
+    'actioncameras',
+    'фотоаппараты',
+    'видеокамеры',
+    'экшнкамеры',
+    'объективы',
+  ],
 };
 
 export const searchProducts = (state = initialState, action) => {
