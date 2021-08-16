@@ -74,6 +74,8 @@ export const cart = (state = initialState, action) => {
       } else {
         newCartArr2 = [cartSingleProduct, ...state.cart];
       }
+      // === NEW =================================
+      // const newCartArr2 = [cartSingleProduct, ...state.cart];
       return {
         ...state,
         cart: newCartArr2,

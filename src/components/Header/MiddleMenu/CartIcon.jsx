@@ -19,9 +19,9 @@ export default function CartIcon() {
   }, []);
 
   const handleScroll = () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 200) {
       setHeaderFixed(true);
-    } else if (window.scrollY < 300) {
+    } else if (window.scrollY < 200) {
       setHeaderFixed(false);
     }
   };

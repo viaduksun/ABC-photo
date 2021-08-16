@@ -36,7 +36,7 @@ const CartContainer = () => {
   } else {
     cartArr = cart;
   }
-  console.log(cartArr);
+  // console.log(cartArr);
   return (
     <div className={styles.CartBlock}>
       <div className="container">
@@ -51,16 +51,14 @@ const CartContainer = () => {
             </ul>
             <ul className={styles.CartMain}>
               {isLoggedIn &&
-                cartArr.map((cartItem) => {
-                  console.log(cartItem.product);
-                  return (
-                    <CartProduct
-                      key={cartItem._id}
-                      cartProduct={cartItem.product}
-                      cartQuantity={cartItem.cartQuantity}
-                    />
-                  );
-                })}
+                cartArr.map((cartItem) => (
+                  // console.log(cartItem.product);
+                  <CartProduct
+                    key={cartItem._id}
+                    cartProduct={cartItem.product}
+                    cartQuantity={cartItem.cartQuantity}
+                  />
+                ))}
               {!isLoggedIn &&
                 cartArr.map((cartItem) => {
                   console.log(cartItem);

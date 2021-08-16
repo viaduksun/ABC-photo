@@ -97,6 +97,7 @@ const ContactDetails = () => {
         getOneProduct(product.itemNo).then((res) => {
           console.log('GETTED', res);
           const productObj = {
+            _id: res.data._id,
             product: res.data,
             cartQuantity: product.count,
           };
@@ -274,18 +275,30 @@ const ContactDetails = () => {
     // console.log('NEWORDER Products', orderProducts);
     console.log('NEWORDER', newOrder);
     if (isLoggedIn) {
-      createOrder(newOrder);
+      createOrder(newOrder).then((newOrderRes) => {
+        /* Do something with newOrder */
+        console.log('NEW ORDER: ', newOrderRes);
+        console.log('NEW ORDER No: ', newOrderRes.data.order.orderNo);
+      });
       dispatch(cartDeleteAction());
     } else {
-      createOrder(newOrder);
-      dispatch(deleteLocalCartAction());
+      createOrder(newOrder).then((newOrderRes) => {
+        /* Do something with newOrder */
+        console.log('NEW ORDER: ', newOrderRes);
+        if (!newOrderRes.data.order) {
+          alert(newOrderRes.data.message);
+        } else {
+          console.log('NEW ORDER No: ', newOrderRes.data.order.orderNo);
+          dispatch(deleteLocalCartAction());
+          sendMessageToTelegram(
+            `Номер заказа: №${newOrderRes.data.order.orderNo}, Имя: ${values.name}, Телефон: ${values.phone}, Email: ${values.email}`
+          );
+          resetFormState();
+          actions.resetForm();
+          setModalActive(true);
+        }
+      });
     }
-    sendMessageToTelegram(
-      `Номер заказа: №${orderNumber}, Имя: ${values.name}, Телефон: ${values.phone}, Email: ${values.email}`
-    );
-    resetFormState();
-    actions.resetForm();
-    setModalActive(true);
   };
 
   const validate = (values) => {
