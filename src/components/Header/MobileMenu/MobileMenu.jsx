@@ -24,7 +24,7 @@ import {
 } from '../../../store/products/actions';
 import { loginModalOpenAction } from '../../../store/madals/actions';
 
-const MobileMenu = ({ isOpen, toggleMenu }) => {
+const MobileMenu = ({ isOpen, closeMenu }) => {
   const dispatch = useDispatch();
   const menuStyles = classNames({
     [styles.MobileMenu]: true,
@@ -39,7 +39,7 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
     console.log(id);
     dispatch(setCurrentCategoryAction(id));
     dispatch(setCurrentQueryAction(id));
-    toggleMenu();
+    closeMenu();
   };
   const handleLogin = () => {
     dispatch(loginModalOpenAction());
@@ -47,12 +47,12 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
 
   return (
     <>
-      <div className={MenuCover} onClick={toggleMenu} />
+      <div className={MenuCover} onClick={closeMenu} />
       <div className={menuStyles}>
-        <div className={styles.CloseBtn} onClick={toggleMenu}>
+        <div className={styles.CloseBtn} onClick={closeMenu}>
           <VscChromeClose />
         </div>
-        <div className={styles.menuHeader} onClick={toggleMenu}>
+        <div className={styles.menuHeader} onClick={closeMenu}>
           <Link to="/" className={styles.logo}>
             <img src="./img/logo.png" alt="logo" />
           </Link>
@@ -61,9 +61,8 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
           <div className={styles.loginWrapper}>
             <FaUserAlt className={styles.loginIcon} />
             <p onClick={handleLogin} className={styles.loginText}>
-              Войти
+              Войти/Зарегистрироваться
             </p>
-            <p className={styles.loginText}>Зарегистрироваться</p>
           </div>
           {/* <LanguageSelector /> */}
         </div>
@@ -75,7 +74,7 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
               className={styles.link}
               activeClassName="selected"
               key={menuItem.id}
-              onClick={toggleMenu}
+              onClick={closeMenu}
             >
               <BsBoxArrowInRight className={styles.linkIcon} />
               {menuItem.menuTitle}
