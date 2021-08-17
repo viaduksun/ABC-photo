@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
+import setAuthToken from '../setAuthToken';
 
 const getAreas = () => {
   const data = {
@@ -8,6 +9,7 @@ const getAreas = () => {
     calledMethod: 'getAreas',
     methodProperties: {},
   };
+  setAuthToken(false);
   const headers = {
     'Content-Type': 'application/json',
   };

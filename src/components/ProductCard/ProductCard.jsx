@@ -8,7 +8,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-debugger */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiCart } from 'react-icons/bi';
 import { BsFillStarFill, BsStar } from 'react-icons/bs';
@@ -32,16 +32,19 @@ import {
   deleteProdductFromFavoritesAction,
 } from '../../store/favorites/actions';
 import { addViewedProductAction } from '../../store/viewedProducts/actions';
+import Loader from '../UI/Loader/Loader';
 
 const ProductCard = ({ product }) => {
   const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
   const cart = useSelector((state) => state.cart.cart);
+  const cartIsLoading = useSelector((state) => state.cart.cartIsLoading);
   const cartDB = useSelector((state) => state.cart.cartDB);
   const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
   const favorites = useSelector((state) => state.favorites.favorites);
   const viewedProducts = useSelector(
     (state) => state.viewedProducts.viewedProducts
   );
+
   const isInCart = cart.some((item) => item._id === product._id);
   const isInCartDB = cartDB.some((item) => item.product._id === product._id);
   const isInFavorites = favorites.some((item) => item._id === product._id);
@@ -80,6 +83,11 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className={styles.ProductCard}>
+      {cartIsLoading && (
+        <div className={styles.LoaderWrapper}>
+          <Loader />
+        </div>
+      )}
       <Link
         to="/single-product"
         onClick={dispatchSingleProductHandler}
@@ -91,9 +99,7 @@ const ProductCard = ({ product }) => {
             <div className={styles.ProductCardImgHitSale}>Хит продаж</div>
           )}
         </div>
-        <h2 className={styles.ProductCardName}>
-          {product.characteristics.model[1]}
-        </h2>
+        <h2 className={styles.ProductCardName}>{product.model}</h2>
       </Link>
       <div className={styles.ProductCardPriceAndIconCartAndFavorite}>
         <p className={styles.ProductCardPriceBlock}>

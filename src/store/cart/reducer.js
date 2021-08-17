@@ -19,6 +19,7 @@ import {
   INCREMENT_CART_DB,
   LOG_OUT,
   SET_CART_DB,
+  SET_CART_ISLOADING,
   SET_POPUP_FALSE,
   SET_TOTAL_COUNT_CART,
   SET_TOTAL_SUM_CART,
@@ -30,6 +31,7 @@ const initialState = {
   totalSumCart: 0,
   totalCountCart: 0,
   popupIsOpen: false,
+  cartIsLoading: false
 };
 
 export const cart = (state = initialState, action) => {
@@ -206,6 +208,12 @@ export const cart = (state = initialState, action) => {
         cartDB: [],
         totalSumCart: 0,
         totalCountCart: 0,
+      };
+    case SET_CART_ISLOADING:
+      console.log('SET_CART_ISLOADING', action.payload);
+      return {
+        ...state,
+        cartIsLoading: action.paiload,
       };
     default:
       return state;

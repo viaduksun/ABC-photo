@@ -2,11 +2,11 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
 
-const getAllProductsAdmin = () =>
+const getAllProductsAdmin = (page) =>
   // eslint-disable-next-line implicit-arrow-linebreak
   axios
     // .get('https://intense-hamlet-33316.herokuapp.com/api/products/filter?color=red&perPage=14&startPage=1')
-    .get('https://intense-hamlet-33316.herokuapp.com/api/products/filter?perPage=9&startPage=1')
+    .get(`https://intense-hamlet-33316.herokuapp.com/api/products/filter?perPage=10&startPage=${page}`)
     // .get('https://intense-hamlet-33316.herokuapp.com/api/products')
     // /products/filter?param1=value1&param2=value2-1,value2-2,value2-3&param3=value3&perPage=2&startPage=1
 

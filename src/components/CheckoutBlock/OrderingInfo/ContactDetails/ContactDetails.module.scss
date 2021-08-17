@@ -98,3 +98,15 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
+.loaderWrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.555);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

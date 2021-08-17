@@ -32,12 +32,14 @@ export const modals = (state = initialState, action) => {
         isLoginModalOpen: true,
       };
     case EDIT_PRODUCT_MODAL_OPEN:
+      document.body.classList.add('no-scroll');
       return {
         ...state,
         isEditProductModalOpen: true,
         // clickedProduct: action.payload.product,
       };
     case EDIT_PRODUCT_MODAL_CLOSE:
+      document.body.classList.remove('no-scroll');
       return {
         ...state,
         isEditProductModalOpen: false,

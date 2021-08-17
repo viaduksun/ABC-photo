@@ -41,13 +41,12 @@ const EditCategoryForm = ({ currentCategory }) => {
   // =============================================
   const handleEditCategory = (values, { setSubmitting }) => {
     console.log(values);
-    const { _id, id, name, path, parentId, imgUrl, description } = values;
+    const { _id, id, name, parentId, imgUrl, description } = values;
     setSubmitting(true);
     const editedCategory = {
       _id,
       id,
       name,
-      path,
       parentId,
       imgUrl,
       description,
@@ -63,7 +62,6 @@ const EditCategoryForm = ({ currentCategory }) => {
     _id: Yup.string().required('Is required'),
     id: Yup.string().required('Is required'),
     name: Yup.string().required('Is required'),
-    path: Yup.string().required('Is required'),
     parentId: Yup.string().required('Is required'),
     imgUrl: Yup.string().required('Is required'),
     description: Yup.string().required('Is required'),
@@ -76,7 +74,6 @@ const EditCategoryForm = ({ currentCategory }) => {
           _id: currentCategory._id,
           id: currentCategory.id,
           name: currentCategory.name,
-          path: currentCategory.path,
           parentId: parentCategory,
           imgUrl: currentCategory.imgUrl,
           description: currentCategory.description,
@@ -90,17 +87,6 @@ const EditCategoryForm = ({ currentCategory }) => {
               <TextInput name="_id" type="hidden" />
               <TextInput label="Идентификатор" name="id" type="text" />
               <TextInput label="Название" name="name" type="text" />
-              <TextInput
-                label="Путь"
-                name="path"
-                type="text"
-                placeholder="/products"
-              />
-              {/* <TextInput
-                label="Родительская категория"
-                name="parentId"
-                type="text"
-              /> */}
               <FormikControl
                 control="select"
                 label="Родительская категория"
@@ -115,11 +101,6 @@ const EditCategoryForm = ({ currentCategory }) => {
                 name="description"
                 type="text"
               />
-              {/* <TextInput
-                label="Уровень вложенности"
-                name="level"
-                type="number"
-              /> */}
             </div>
           </Form>
         )}

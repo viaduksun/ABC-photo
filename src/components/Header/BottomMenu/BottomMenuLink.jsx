@@ -20,7 +20,7 @@ import {
 import DropdownMenu from '../Dropdown/Dropdown';
 import styles from './BottomMenu.module.scss';
 
-const BottomMenuLink = ({ parentId, path, title, key, page }) => {
+const BottomMenuLink = ({ parentId, title, key, page }) => {
   const [dropActive, setdropActive] = useState(false);
   const dispatch = useDispatch();
 

@@ -1,4 +1,17 @@
+.LoaderWrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.527);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
 .ProductCard {
+  position: relative;
   width: 100%;
   padding: 10px 10px 15px 10px;
   background-color: #fff;
@@ -40,7 +53,6 @@
       max-width: 100px;
     }
   }
-  
 }
 .ProductCardImgHitSale {
   position: absolute;
@@ -80,6 +92,7 @@
   line-height: 20px;
   min-height: 40px;
   color: #000000;
+  text-transform: uppercase;
   @media (max-width: 480px) {
     font-size: 12px;
     line-height: 16px;
@@ -203,7 +216,6 @@
     margin-left: 0;
     margin-top: 15px;
   }
- 
 }
 .ProductFavoriteTransparent {
   position: relative;
@@ -241,5 +253,3 @@
     }
   }
 }
-
-

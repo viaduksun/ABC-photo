@@ -65,7 +65,6 @@ const BottomMenu = ({ toggleMenu }) => {
                 return (
                   <BottomMenuLink
                     parentId={item._id}
-                    path="/products"
                     title={item.name}
                     key={item.id}
                     page={currentPage}

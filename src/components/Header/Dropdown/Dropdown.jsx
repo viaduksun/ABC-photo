@@ -41,7 +41,7 @@ const DropdownMenu = ({ handleClick, parentId, dropActive }) => {
               <Link
                 // to={item.path + currentQuery}
                 // to={item.path}
-                to={`/products/filter?category=${item.id}&perPage=6&startPage=1`}
+                to={`/products/filter?${currentQuery}`}
                 className={styles.DropLinkText}
               >
                 {item.name}
