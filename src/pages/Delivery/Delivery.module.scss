@@ -16,6 +16,9 @@
 .CreditDeliveryAndPayment {
     display: flex;
     justify-content: space-between;
+    @media (max-width: 480px) {
+        display: block;
+    }
     h3 {
         font-size: 25px;
         font-weight: bold;

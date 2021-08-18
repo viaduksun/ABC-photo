@@ -32,7 +32,6 @@ const PopularModelsSlider = ({popularModels}) => {
           }}
           slidesPerGroup={1}
           loop
-          // loopFillGroupWithBlank
           navigation
           allowTouchMove
           mousewheel={{
@@ -59,7 +58,6 @@ const PopularModelsSlider = ({popularModels}) => {
                       ))}
         </Swiper>
       </div>
-                
     </>
   );
 };

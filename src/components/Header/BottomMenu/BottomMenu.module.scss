@@ -64,10 +64,11 @@
     color: rgb(48, 107, 0);
   }
 }
-.cartIcon {
+.cartIconFixed {
   position: relative;
   color: rgb(255, 255, 255);
   margin-right: 15px;
+  margin-top: 5px;
   &:hover {
     color: rgb(48, 107, 0);
   }
@@ -79,11 +80,19 @@
     color: rgb(48, 107, 0);
   }
 }
+.cartIcon {
+  position: relative;
+  color: rgb(255, 255, 255);
+  margin-left: 15px;
+  &:hover {
+    color: rgb(48, 107, 0);
+  }
+}
 .cartIconCounter,
 .favoriteIconCounter {
   position: absolute;
   top: 1px;
-  left: 24px;
+  left: 20px;
   padding: 2px 4px;
   border-radius: 50%;
   color: #fff;
@@ -103,7 +112,7 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .cartIcon {
+  .cartIconFixed {
     display: none;
   }
   .BottomMenuWrapp {
@@ -126,3 +135,4 @@
     min-height: 40px;
   }
 }
+

@@ -3,7 +3,6 @@
 }
 
 .ErrorPage {
-  // height: 60vh;
   padding: 70px 0;
   text-align: center;
   h2 {
@@ -14,8 +13,17 @@
   p {
     margin-top: 30px;
   }
+  img {
+    @media (max-width: 480px) {
+      max-width: 250px;
+    }
+  }
 }
 .ErrorPageButton {
   max-width: 210px;
   margin: 0 auto;
+  @media (max-width: 480px) {
+    margin-left: 56%;
+    transform: translateX(-50%);
+  }
 }

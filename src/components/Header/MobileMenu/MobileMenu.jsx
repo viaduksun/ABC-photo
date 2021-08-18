@@ -27,13 +27,13 @@ import { loginModalOpenAction } from '../../../store/madals/actions';
 
 const MobileMenu = ({ isOpen, closeMenu }) => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
+  const isAdmin = useSelector((state) => state.admin.isAdmin);
   const menuStyles = classNames({
     [styles.MobileMenu]: true,
     [styles.MobileMenu_active]: isOpen,
   });
   const currentUser = useSelector((state) => state.admin.currentUser);
-  const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
-  const isAdmin = useSelector((state) => state.admin.isAdmin);
   const MenuCover = classNames({
     [styles.MenuCover]: true,
     [styles.MenuCover_active]: isOpen,
@@ -47,6 +47,7 @@ const MobileMenu = ({ isOpen, closeMenu }) => {
   };
   const handleLogin = () => {
     dispatch(loginModalOpenAction());
+    closeMenu();
   };
   useEffect(() => {
     console.log(currentUser);
@@ -66,27 +67,19 @@ const MobileMenu = ({ isOpen, closeMenu }) => {
         </div>
         <div className={styles.header}>
           <div className={styles.loginWrapper}>
-            <FaUserAlt className={styles.loginIcon} />
-            {!isLoggedIn && (
-              <p onClick={handleLogin} className={styles.loginText}>
-                Войти/Зарегистрироваться
-              </p>
-            )}
             {isLoggedIn && !isAdmin && (
-              <div className={styles.loggedInCustomer}>
-                <p>Добрый день, {currentUser.firstName}!</p>
-                <Link to="/profile">
-                  <p
-                    onClick={() => {
-                      closeMenu();
-                    }}
-                    className={styles.goToProfile}
-                  >
-                    Войти в личный кабинет
-                  </p>
-                </Link>
-              </div>
+            <Link to="/profile" onClick={closeMenu}>
+              <FaUserAlt className={styles.loginIcon} />
+            </Link>
             )}
+            {isLoggedIn && isAdmin && (
+            <Link to="/profile" onClick={closeMenu}>
+              <FaUserAlt className={styles.loginIcon} />
+            </Link>
+            )}
+            <p onClick={handleLogin} className={styles.loginText}>
+              Войти/Зарегистрироваться
+            </p>
           </div>
           {/* <LanguageSelector /> */}
         </div>

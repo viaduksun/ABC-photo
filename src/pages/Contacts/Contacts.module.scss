@@ -1,0 +1,22 @@
+.ContactsWrapper {
+    margin: 20px 0 100px;
+    h2 {
+        font-size: 30px;
+        margin: 20px 0;
+    }
+    .ContactsList {
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            a {
+                padding-left: 5px;
+                color: #000;
+                font-weight: 500;
+            }
+        }
+    }
+    .ContactsText {
+        margin-top: 25px;
+    }
+}

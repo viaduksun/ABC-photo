@@ -42,7 +42,7 @@
       grid-template-columns: 120px 1fr 1fr 1fr 30px;
     }
     @media (max-width: 400px) {
-      grid-template-columns: 90px 1fr 1fr 1fr 20px;
+      grid-template-columns: 70px 1fr 1fr 1fr 20px;
     }
     li {
       font-size: 14px;
@@ -111,7 +111,6 @@
       font-weight: 400;
     }
   }
-
   .EmptyCart {
     text-align: center;
     h3 {
@@ -127,5 +126,16 @@
       font-family: 'Roboto', sans-serif;
       color: #7D7D7D;
     }
+    img {
+      @media (max-width: 480px) {
+        max-width: 400px;
+      }
+    }
   }
+.ButtonCheckout {
+  margin-left: 130px;
+  @media (max-width: 480px) {
+    margin-left: 100px;
+  }
+}
   

@@ -12,6 +12,9 @@
     margin-left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
+    @media (max-width: 480px) {
+        text-align: center;
+    }
 }
 .Popup_popupIsOpen {
     visibility: visible;

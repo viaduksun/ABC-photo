@@ -18,12 +18,10 @@ productsPerPage, totalProducts, currentPage, scrollToTop
     for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
         pageNumbers.push(i);
     }
-
     const handlePaginate = (pageNumber) => {
       dispatch(paginateAction(pageNumber));
       scrollToTop();
     };
-
     const handlePaginateRight = () => {
       if (currentPage <= pageNumbers.length - 1) {
         dispatch(paginateAction(currentPage + 1));
