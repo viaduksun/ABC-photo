@@ -110,7 +110,7 @@ const SearchProductsContainer = () => {
         <div className={styles.filtersCloseBtn} onClick={handleClick}>
           <VscChromeClose />
         </div>
-        <PhotoCamerasFilter />
+        <SearchProductsFilter />
       </div>
     </div>
   );

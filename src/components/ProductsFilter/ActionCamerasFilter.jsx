@@ -101,13 +101,6 @@ const ActionCamerasFilter = () => {
   };
   return (
     <div className={styles.ProductsFilter}>
-      {/* <FilterQueryMaker
-        typeState={typeState}
-        brandState={brandState}
-        setFilter={setState}
-        matrixState={matrixState}
-        priceState={priceData}
-      /> */}
       <ActionCamerasQueryMaker
         matrixType={matrixType}
         features={features}

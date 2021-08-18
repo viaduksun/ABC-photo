@@ -1,6 +1,9 @@
 .ProductsBlock {
   min-height: 430px;
   background: rgb(255, 255, 255);
+  @media (max-width: 480px) {
+    min-height: 300px;
+  }
 }
 .ProductsContainer {
   position: relative;
@@ -81,8 +84,12 @@
 }
 .PrductsFieldLoader {
   position: absolute;
-  left: 60%;
+  left: 50%;
+  transform: translateX(50%);
   top: 25%;
+  @media (max-width: 768px) {
+    transform: translateX(-30%);
+  }
 }
 .ProductsNotFound {
   margin-top: 50px;
@@ -99,6 +106,12 @@
   }
   img {
     max-width: 700px;
+    @media (max-width: 768px) {
+      max-width: 500px; 
+    }
+    @media (max-width: 480px) {
+      max-width: 400px; 
+    }
   }
 }
 // =================================================================
@@ -106,7 +119,7 @@
 }
 @media (max-width: 768px) {
   .filtersContainerMobile {
-    margin-top: 50px;
+    margin-top: 0px;
   }
   .filterContainer {
     display: none;
@@ -122,6 +135,6 @@
 @media (max-width: 480px) {
   .filtersContainerMobile {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 0px;
   }
 }

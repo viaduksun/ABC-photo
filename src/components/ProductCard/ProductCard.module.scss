@@ -197,8 +197,8 @@
   top: 305px;
   left: 0px;
   background-color: #fff;
-  @media (max-width: 480px) {
-    top: 210px;
+  @media (max-width: 1024px) {
+    display: none;
   }
 }
 .ProductCardOldPriceSpace {

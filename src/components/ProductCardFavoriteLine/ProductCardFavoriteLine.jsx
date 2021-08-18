@@ -42,28 +42,24 @@ const ProductCardFavoriteLine = ({
           dispatch(addToCartMongoDB(product));
         } else {
           dispatch(addSingleProductToCartAction(product));
-          // dispatch(addProductToCartAction(product));
           dispatch(setFlagInCartAction(product));
         }
       }
     };
-
     const addProductToFavoritesHandler = () => {
-        if (isInFavorites) {
-          dispatch(deleteProdductFromFavoritesAction(product));
-        } else {
-          dispatch(addProdductToFavoritesAction(product));
-        }
-      };
-    
-      const dispatchSingleProductHandler = () => {
-        dispatch(setCategoryForBreadcrumbsAction(product));
-        dispatch(setSingleProductAction(product));
-        if (!isInViewedProducts) {
-          dispatch(addViewedProductAction(product));
-        }
-      };
-
+      if (isInFavorites) {
+        dispatch(deleteProdductFromFavoritesAction(product));
+      } else {
+        dispatch(addProdductToFavoritesAction(product));
+      }
+    };
+    const dispatchSingleProductHandler = () => {
+      dispatch(setCategoryForBreadcrumbsAction(product));
+      dispatch(setSingleProductAction(product));
+      if (!isInViewedProducts) {
+        dispatch(addViewedProductAction(product));
+      }
+    };
     return (
       <div
         className={styles.ProductCardLine}
@@ -131,7 +127,6 @@ const ProductCardFavoriteLine = ({
             </button>
           </div>
         </div>
-      
       </div>
     );
 };

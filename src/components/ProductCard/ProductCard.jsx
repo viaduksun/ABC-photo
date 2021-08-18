@@ -59,12 +59,10 @@ const ProductCard = ({ product }) => {
         dispatch(addToCartMongoDB(product));
       } else {
         dispatch(addSingleProductToCartAction(product));
-        // dispatch(addProductToCartAction(product));
         dispatch(setFlagInCartAction(product));
       }
     }
   };
-
   const addProductToFavoritesHandler = () => {
     if (isInFavorites) {
       dispatch(deleteProdductFromFavoritesAction(product));
@@ -72,7 +70,6 @@ const ProductCard = ({ product }) => {
       dispatch(addProdductToFavoritesAction(product));
     }
   };
-
   const dispatchSingleProductHandler = () => {
     dispatch(setCategoryForBreadcrumbsAction(product));
     dispatch(setSingleProductAction(product));
@@ -80,7 +77,6 @@ const ProductCard = ({ product }) => {
       dispatch(addViewedProductAction(product));
     }
   };
-
   return (
     <div className={styles.ProductCard}>
       {cartIsLoading && (
@@ -133,7 +129,6 @@ const ProductCard = ({ product }) => {
           className={styles.ProductFavorite}
           onClick={addProductToFavoritesHandler}
         >
-          {/* {isInFavorites ? <BsStar /> : <BsStar style={{color: '#e91e49'}} />} */}
           {isInFavorites ? (
             <span className={styles.ProductFavoriteColor}>
               <BsFillStarFill />
@@ -150,7 +145,6 @@ const ProductCard = ({ product }) => {
           className={styles.ProductCardIconCart}
           onClick={addProductToCartHandler}
         >
-          {/* {isInCart ? <FaShoppingCart /> : <BiCart />} */}
           {product.quantity !== 0 ? (
             <BiCart />
           ) : (

@@ -9,7 +9,7 @@ import { FaSmileWink } from 'react-icons/fa';
 import Header from './containers/Header/Header';
 import Footer from './containers/Footer/Footer';
 import Home from './pages/Home';
-import Contacts from './pages/Contacts';
+import Contacts from './pages/Contacts/Contacts';
 import Products from './pages/Products';
 import SearchProducts from './pages/SearchProducts';
 import SingleProduct from './pages/SingleProduct';

@@ -77,7 +77,7 @@ const BottomMenu = ({ toggleMenu }) => {
           <div className={styles.mobiileMenuWrapper}>
             <Link to="/favorites">
               <div className={styles.favoriteIcon}>
-                <AiFillStar style={{ fontSize: '30px' }} />
+                <AiFillStar style={{ fontSize: '25px' }} />
                 {favoriteCounter !== 0 && (
                   <span className={styles.favoriteIconCounter}>
                     {favoriteCounter}
@@ -85,16 +85,23 @@ const BottomMenu = ({ toggleMenu }) => {
                 )}
               </div>
             </Link>
+            <Link to="/cart">
+              <div className={styles.cartIcon}>
+                <MdShoppingCart style={{ fontSize: '25px' }} />
+                {cartCounter !== 0 && (
+                <span className={styles.cartIconCounter}>
+                  {cartCounter}
+                </span>
+                )}
+              </div>
+            </Link>
             <SearchForm />
             <div className={styles.BurgerIcon}>
               <MdViewHeadline onClick={toggleMenu} />
             </div>
-            <Link to="/cart">
-              <CartIcon />
-            </Link>
           </div>
           {headerFixed && (
-            <div className={styles.cartIcon}>
+            <div className={styles.cartIconFixed}>
               <CartIcon />
             </div>
           )}

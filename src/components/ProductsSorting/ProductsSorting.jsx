@@ -7,6 +7,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import PropTypes from 'prop-types';
 import { CgMenuGridR } from 'react-icons/cg';
 import {
   filteredProductsForPaginationAction,
@@ -19,24 +20,15 @@ import {
 } from '../../store/searchProducts/actions';
 import styles from './ProductsSorting.module.scss';
 
-const ProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
-  const [currentInterval, setCurrentInterval] = useState([1, 3]);
+const ProductsSorting = ({handlerSwitch }) => {
   const dispatch = useDispatch();
-  console.log(currentPage);
   const showGrid = useSelector((state) => state.productsPage.showGrid);
   const currentPerPage = useSelector((state) => state.productsPage.currentPerPage);
   console.log(currentPerPage);
   const sortBy = useSelector((state) => state.productsPage.sortBy);
-  const searchProductsPerPage = useSelector(
-    (state) => state.searchProducts.searchProductsPerPage
-  );
-  const searchProductsShowBy = useSelector(
-    (state) => state.searchProducts.showBy
-  );
 
   const handlePerPage = (e) => {
     const showBy = +e.target.value;
-    // filteredProductsForPaginationAction();
     dispatch(setCurrentPerPageAction(showBy));
   };
 
@@ -44,8 +36,6 @@ const ProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
     dispatch(sortSearchProductsAction(e.target.value));
     dispatch(setSortQueryAction(e.target.value));
   };
-  const optArr = [];
-
   return (
     <div className={styles.ProductsSorting}>
       <div className={styles.ProductsSortingLeft}>
@@ -90,6 +80,10 @@ const ProductsSorting = ({ currentPage, allProducts, handlerSwitch }) => {
       </div>
     </div>
   );
+};
+
+ProductsSorting.propTypes = {
+  handlerSwitch: PropTypes.func.isRequired,
 };
 
 export default ProductsSorting;

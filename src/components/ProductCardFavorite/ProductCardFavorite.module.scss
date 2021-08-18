@@ -137,6 +137,9 @@
   top: 305px;
   left: 0px;
   background-color: #fff;
+  @media (max-width: 1024px) {
+    display: none;
+  }
 }
 .ProductCardOldPriceSpace {
   font-size: 14px;

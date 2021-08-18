@@ -52,7 +52,6 @@ const CartContainer = () => {
             <ul className={styles.CartMain}>
               {isLoggedIn &&
                 cartArr.map((cartItem) => (
-                  // console.log(cartItem.product);
                   <CartProduct
                     key={cartItem._id}
                     cartProduct={cartItem.product}
@@ -88,11 +87,13 @@ const CartContainer = () => {
                   {totalSumCart}
                   <span> грн</span>
                 </div>
-                <Link to="/checkout">
-                  <Button className={styles.button} addClass="cart_green">
-                    Оформить
-                  </Button>
-                </Link>
+                <div className={styles.ButtonCheckout}>
+                  <Link to="/checkout">
+                    <Button className={styles.button} addClass="cart_green">
+                      Оформить
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

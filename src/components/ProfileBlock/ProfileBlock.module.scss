@@ -11,9 +11,16 @@
 }
 .content {
   display: flex;
+  @media (max-width: 480px) {
+    display: block;
+  }
 }
 .edit_Prpfile_Wrapper {
   margin-left: 160px;
+  @media (max-width: 768px) {
+    margin-top: 20px;
+    margin-left: 40px;
+  }
   h2 {
     font-weight: bold;
     font-size: 20px;
@@ -58,6 +65,10 @@
   grid-column-gap: 80px;
   grid-auto-flow: column;
   margin-bottom: 40px;
+  @media (max-width: 768px) {
+   display: block;
+   padding-right: 15px;
+  }
 }
 .Password {
   position: relative;

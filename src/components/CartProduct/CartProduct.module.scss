@@ -18,7 +18,7 @@
     grid-template-columns: 120px 1fr 1fr 1fr 30px;
   }
   @media (max-width: 400px) {
-    grid-template-columns: 90px 1fr 1fr 1fr 30px;
+    grid-template-columns: 70px 1fr 1fr 1fr 30px;
   }
 }
 .CartMainItemProduct {
@@ -35,7 +35,7 @@
   img {
     max-width: 100px;
     @media (max-width: 480px) {
-      max-width: 80px;
+      max-width: 60px;
     }
   }
 }
