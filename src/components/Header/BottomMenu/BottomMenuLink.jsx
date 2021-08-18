@@ -7,7 +7,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import getFilteredProducts from '../../../api/getFilteredProducts';
 // import { NavLink } from 'react-router-dom';
@@ -15,12 +15,13 @@ import getFilteredProducts from '../../../api/getFilteredProducts';
 import {
   setCurrentCategoryAction,
   setCurrentQueryAction,
-  getFilteredProductsAction,
 } from '../../../store/products/actions';
 import DropdownMenu from '../Dropdown/Dropdown';
 import styles from './BottomMenu.module.scss';
 
 const BottomMenuLink = ({ parentId, title, key, page }) => {
+  const currentQuery = useSelector((state) => state.productsPage.currentQuery);
+  const perPage = useSelector((state) => state.productsPage.currentPerPage);
   const [dropActive, setdropActive] = useState(false);
   const dispatch = useDispatch();
 
@@ -34,18 +35,9 @@ const BottomMenuLink = ({ parentId, title, key, page }) => {
     setdropActive(false);
   };
   const handleDropdownClick = (id) => {
-    console.log('DROP');
     setdropActive(false);
-    // handleDropdownOFF();
-    // console.log('MENU clicked', id);
-    // &characteristics.type[1]=Зеркальный,Суперзум
-    // getFilteredProducts(id, page, '&type=Зеркальный,Суперзум').then(
-    //   (products) => console.log(products)
-    // );
-    // dispatch(getFilteredProductsAction(id, page, ''));
-    console.log(id);
     dispatch(setCurrentCategoryAction(id));
-    dispatch(setCurrentQueryAction(id, page));
+    dispatch(setCurrentQueryAction(id, perPage, page));
   };
   return (
     <li
@@ -61,6 +53,7 @@ const BottomMenuLink = ({ parentId, title, key, page }) => {
         parentId={parentId}
         handleClick={handleDropdownClick}
         dropActive={dropActive}
+        currentQuery={currentQuery}
       />
       {/* )} */}
     </li>

@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -10,9 +11,9 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styles from './Dropdown.module.scss';
 
-const DropdownMenu = ({ handleClick, parentId, dropActive }) => {
+const DropdownMenu = ({ handleClick, parentId, dropActive, currentQuery }) => {
   const catalog = useSelector((state) => state.admin.catalog);
-  const currentQuery = useSelector((state) => state.productsPage.currentQuery);
+  // const currentQuery = useSelector((state) => state.productsPage.currentQuery);
 
   const currentDropdownArr = catalog.filter(
     (item) => item.parentId === parentId
@@ -41,7 +42,8 @@ const DropdownMenu = ({ handleClick, parentId, dropActive }) => {
               <Link
                 // to={item.path + currentQuery}
                 // to={item.path}
-                to={`/products/filter?${currentQuery}`}
+                to={`/products/${item.id}`}
+                // to="/products/"
                 className={styles.DropLinkText}
               >
                 {item.name}

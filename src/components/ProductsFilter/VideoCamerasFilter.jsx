@@ -133,4 +133,4 @@ const VideoCamerasFilter = () => {
   );
 };
 
-export default VideoCamerasFilter;
+export default React.memo(VideoCamerasFilter);

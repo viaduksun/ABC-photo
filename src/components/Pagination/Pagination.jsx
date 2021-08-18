@@ -5,25 +5,37 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-plusplus */
 import classNames from 'classnames';
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { filteredProductsForPaginationAction, setCurrentPageAction } from '../../store/products/actions';
+import {
+  filteredProductsForPaginationAction,
+  getFilteredProductsAction,
+  setCurrentPageAction,
+} from '../../store/products/actions';
 import styles from './Pagination.module.scss';
 
-const Pagination = ({scrollTo}) => {
+const Pagination = ({ scrollTo }) => {
   const allProductsArr = useSelector(
     (state) => state.productsPage.allProductsForPagination
   );
-  const currentCategory = useSelector((state) => state.productsPage.currentCategory);
+  const productsQuantity = useSelector(
+    (state) => state.productsPage.productsQuantity
+  );
+  const currentCategory = useSelector(
+    (state) => state.productsPage.currentCategory
+  );
   const productPerPage = useSelector(
     (state) => state.productsPage.currentPerPage
   );
-  const currentQueryForPagination = useSelector((state) => state.productsPage.currentQueryForPagination);
-  console.log(currentQueryForPagination);
+
+  // console.log(currentQueryForPagination);
   const currentPage = useSelector((state) => state.productsPage.currentPage);
-  const pagesCount = Math.ceil(allProductsArr.length / productPerPage);
+  const currentFilterQuery = useSelector(
+    (state) => state.productsPage.currentFilterQuery
+  );
+  const pagesCount = Math.ceil(productsQuantity / productPerPage);
   const dispatch = useDispatch();
   const pages = [];
   for (let i = 1; i <= pagesCount; i++) {
@@ -32,7 +44,28 @@ const Pagination = ({scrollTo}) => {
 
   const handleExactPage = (item) => {
     dispatch(setCurrentPageAction(item));
-    dispatch(filteredProductsForPaginationAction(currentCategory, currentQueryForPagination));
+    // dispatch(
+    //   getFilteredProductsAction(
+    //     currentCategory,
+    //     item,
+    //     productPerPage,
+    //     currentFilterQuery
+    //   )
+    // );
+    // dispatch(
+    //   getFilteredProductsAction(
+    //     currentCategory,
+    //     item,
+    //     productPerPage,
+    //     currentQuery
+    //   )
+    // );
+    // dispatch(
+    //   filteredProductsForPaginationAction(
+    //     currentCategory,
+    //     currentQueryForPagination
+    //   )
+    // );
     scrollTo();
   };
 
@@ -55,10 +88,7 @@ const Pagination = ({scrollTo}) => {
 
   return (
     <div className={styles.Pagination}>
-      <FaChevronLeft
-        className={styles.ButtonPrev}
-        onClick={handleLeftPage}
-      />
+      <FaChevronLeft className={styles.ButtonPrev} onClick={handleLeftPage} />
       {pages.map((item) => (
         <div
           className={classNames({
@@ -73,16 +103,13 @@ const Pagination = ({scrollTo}) => {
           {item}
         </div>
       ))}
-      <FaChevronRight
-        className={styles.ButtonNext}
-        onClick={handleRightPage}
-      />
+      <FaChevronRight className={styles.ButtonNext} onClick={handleRightPage} />
     </div>
   );
 };
 
 Pagination.propTypes = {
-  scrollTo: PropTypes.func.isRequired
+  scrollTo: PropTypes.func.isRequired,
 };
 
-export default Pagination;
+export default React.memo(Pagination);

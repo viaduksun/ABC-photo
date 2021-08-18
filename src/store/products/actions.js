@@ -14,9 +14,11 @@ import {
   SET_CATEGORY_FOR_BREADCRUMBS,
   SET_CURRENT_BRANDQUERY,
   SET_CURRENT_CATEGORY,
+  SET_CURRENT_FILTER_QUERY,
   SET_CURRENT_PAGE,
   SET_CURRENT_PRODUCTS_ARR,
   SET_CURRENT_QUERY,
+  SET_FILTER_QUERY,
   SET_FLAG_IN_CART,
   SET_PER_PAGE,
   SET_PRODUCTS,
@@ -32,8 +34,14 @@ export const getFilteredProductsAction =
     // console.log('QUERY', addQuery);
     getFilteredProducts(currentCategory, page, perPage, addQuery).then(
       (result) => {
-        console.log('getFilteredProducts', result);
-        dispatch({ type: SET_PRODUCTS, payload: result.data.products });
+        // console.log('getFilteredProducts', result);
+        dispatch({
+          type: SET_PRODUCTS,
+          payload: {
+            products: result.data.products,
+            productsQuantity: result.data.productsQuantity,
+          }
+        });
       }
     );
 
@@ -55,20 +63,28 @@ export const getAllProductsCurrentCategoryAction =
 
 export const filteredProductsForPaginationAction = (currentCategory, addQuery) => (dispatch) => {
   filteredProductsForPagination(currentCategory, addQuery).then((allProducts) => {
-      console.log('allProducts', allProducts);
-      dispatch({
-        type: FILTERED_PRODUCTS_FOR_PAGINATION,
-        payload: allProducts.data.products,
-      });
+    // console.log('allProducts', allProducts);
+    dispatch({
+      type: FILTERED_PRODUCTS_FOR_PAGINATION,
+      payload: allProducts.data.products,
     });
-  };
+  });
+};
 
 export const setFlagInCartAction = (product) => ({
   type: SET_FLAG_IN_CART,
   payload: { product },
 });
+export const setCurrentFilterAction = (filterQuery) => {
+  // console.log('setCurrentPageAction', page);
+  localStorage.setItem('filterQuery', filterQuery);
+  return {
+    type: SET_CURRENT_FILTER_QUERY,
+    payload: filterQuery,
+  };
+};
 export const setCurrentPageAction = (page) => {
-  console.log('setCurrentPageAction', page);
+  // console.log('setCurrentPageAction', page);
   localStorage.setItem('currentPage', page);
   return {
     type: SET_CURRENT_PAGE,
@@ -89,9 +105,13 @@ export const setCurrentCategoryAction = (id) => {
     payload: id,
   };
 };
-export const setCurrentQueryAction = (id, page) => ({
+export const setCurrentQueryAction = (id, perPage, page) => ({
   type: SET_CURRENT_QUERY,
-  payload: `category=${id}&perPage=6&startPage=${page}`,
+  payload: `category=${id}&perPage=${perPage}&startPage=${page}`,
+});
+export const setFilterQueryAction = (querySort) => ({
+  type: SET_FILTER_QUERY,
+  payload: querySort,
 });
 export const setSortQueryAction = (querySort) => ({
   type: SET_SORT_BY,

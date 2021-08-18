@@ -19,13 +19,9 @@ const editProductApi = (id, updatedProduct) => {
     .put(`https://intense-hamlet-33316.herokuapp.com/api/products/${id}`, updatedProduct, {
       headers,
     })
-    .then(() => {
-      console.log('Update success!');
-      alert('Update success!');
-      /* Do something with updatedProduct */
-    })
     .catch((err) => {
       /* Do something with error, e.g. show error to user */
+      console.log(err);
     });
 };
 export default editProductApi;

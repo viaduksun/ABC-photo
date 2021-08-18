@@ -8,14 +8,18 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
 import createProduct from '../../../api/createProduct';
 // import createProductLocalHost5000 from '../../../api/createProductLocalHost5000';
 import TextInput from '../Input/TextInput';
 import FormikControl from '../FormikControl';
 import styles from './CreateProductsForms.module.scss';
 import Button from '../../UI/Button/Button';
+import Loader from '../../UI/Loader/Loader';
+import { authorizationPopupAction } from '../../../store/madals/actions';
 
 const CreateVideoCameraProductForm = ({ currentCategory }) => {
+  const dispatch = useDispatch();
   // const handleCreateProduct2 = () => {
   //   console.log('CREATE2');
   //   createProductLocalHost5000();
@@ -101,10 +105,11 @@ const CreateVideoCameraProductForm = ({ currentCategory }) => {
         waranty: [warantyName, warantyValue],
       },
     };
-    createProduct(newProduct);
-    // console.log(newProduct);
-    setSubmitting(false);
-    resetForm();
+    createProduct(newProduct).then((res) => {
+      dispatch(authorizationPopupAction('Продукт создан успешно'));
+      setSubmitting(false);
+      resetForm();
+    });
   };
   const productSchema = Yup.object().shape({
     brandValue: Yup.string().required('Is required'),
@@ -262,6 +267,11 @@ const CreateVideoCameraProductForm = ({ currentCategory }) => {
       >
         {(formik) => (
           <Form className="product-form">
+            {formik.isSubmitting && (
+              <div className="loaderWrapp">
+                <Loader />
+              </div>
+            )}
             <div className={styles.productInputsWrapper}>
               <div className={styles.productInputsGroup}>
                 <TextInput name="categoryName" type="text" disabled />

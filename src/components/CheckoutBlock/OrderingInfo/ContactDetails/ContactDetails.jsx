@@ -301,23 +301,11 @@ const ContactDetails = () => {
     } else {
       newOrder.products = JSON.stringify(orderProducts);
     }
-    // console.log('NEWORDER Products', orderProducts);
-    // console.log('NEWORDER', newOrder);
-
-    // createOrder(newOrder).then((newOrderRes) => {
-    //   /* Do something with newOrder */
-    //   console.log('NEW ORDER: ', newOrderRes);
-    //   console.log('NEW ORDER No: ', newOrderRes.data.order.orderNo);
-    // });
 
     createOrder(newOrder).then((newOrderRes) => {
-      /* Do something with newOrder */
-      console.log('NEW ORDER: ', newOrderRes);
       if (!newOrderRes.data.order) {
         alert(newOrderRes.data.message);
       } else {
-        console.log('NEW ORDER No: ', newOrderRes.data.order.orderNo);
-
         sendMessageToTelegram(
           `Номер заказа: №${newOrderRes.data.order.orderNo}, Имя: ${name}, Телефон: ${phone}, Email: ${email}`
         );
@@ -533,7 +521,7 @@ const ContactDetails = () => {
                     formik.errors.selfDelivery &&
                     formik.touched.selfDelivery ? (
                       <div className={styles.formError}>
-                        {formik.errors.name}
+                        {formik.errors.selfDelivery}
                       </div>
                     ) : null}
                   </div>

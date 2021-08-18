@@ -16,6 +16,7 @@ import Button from '../../UI/Button/Button';
 import Loader from '../../UI/Loader/Loader';
 import Modal from '../../Modal/Modal';
 import {
+  authorizationPopupAction,
   editProductModalClose,
   editProductModalOpen,
 } from '../../../store/madals/actions';
@@ -30,6 +31,7 @@ import Characteristics from './Characteristics';
 import AdminPagination from '../AdminPagination/AdminPagination';
 
 const Products = () => {
+  console.log('Products');
   const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(adminProducts());
@@ -96,7 +98,11 @@ const Products = () => {
   const handleDelete = () => {
     console.log('DEL-FUNCTION');
     console.log(currentProduct.itemNo);
-    deleteOneProduct(currentProduct.itemNo);
+    deleteOneProduct(currentProduct.itemNo).then((res) => {
+      dispatch(authorizationPopupAction('Продукт удален'));
+
+      /* Do something with product */
+    });
     dispatch(removeProduct(currentProduct));
   };
   // ======= MODAL DELETE =================
@@ -117,15 +123,6 @@ const Products = () => {
     setCurrentProduct({});
     dispatch(editProductModalClose());
   };
-  // let submitMyForm = null;
-  // const bindSubmitForm = (submitForm) => {
-  //   submitMyForm = submitForm;
-  // };
-  // const handleSubmitMyForm = (e) => {
-  //   if (submitMyForm) {
-  //     submitMyForm(e);
-  //   }
-  // };
   const editBtnBlock = (
     <>
       <button

@@ -13,12 +13,9 @@ const editCategory = (id, updatedCategory) => {
     .put(`https://intense-hamlet-33316.herokuapp.com/api/catalog/${id}`, updatedCategory, {
       headers,
     })
-    .then(() => {
-      alert('Update success!');
-      /* Do something with updatedProduct */
-    })
     .catch((err) => {
       /* Do something with error, e.g. show error to user */
+      console.log(err);
     });
 };
 export default editCategory;

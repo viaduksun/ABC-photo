@@ -16,6 +16,8 @@ import FormikControl from '../FormikControl';
 import Button from '../../UI/Button/Button';
 import { setCatalog } from '../../../store/admin/actions';
 import styles from './CreateCategory.module.scss';
+import { authorizationPopupAction } from '../../../store/madals/actions';
+import Loader from '../../UI/Loader/Loader';
 
 const CreateCategoryForm = () => {
   // const handleCreateCategory2 = () => {
@@ -59,16 +61,13 @@ const CreateCategoryForm = () => {
       .then((newCategory) => {
         dispatch(setCatalog());
         /* Do something with newProduct */
-        console.log('Category was created successfully!', newCategory);
-        alert('Category was created successfully!');
+        dispatch(authorizationPopupAction('Новая категория создана успешно'));
+        setSubmitting(false);
+        resetForm();
       })
       .catch((err) => {
-        /* Do something with error, e.g. show error to user */
         console.log(err);
       });
-    // console.log(newCategory);
-    setSubmitting(false);
-    resetForm();
   };
   const productSchema = Yup.object().shape({
     id: Yup.string().required('Is required'),
@@ -94,6 +93,11 @@ const CreateCategoryForm = () => {
       >
         {(formik) => (
           <Form className={styles.formBody}>
+            {formik.isSubmitting && (
+              <div className="loaderWrapp">
+                <Loader />
+              </div>
+            )}
             <div className={styles.inputsWrapper}>
               <TextInput label="Идентификатор" name="id" type="text" />
               <TextInput label="Название" name="name" type="text" />

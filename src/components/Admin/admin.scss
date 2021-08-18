@@ -1,9 +1,7 @@
 .formBlock {
   background: rgb(230, 230, 230);
-  // width: 600px;
-  width: 100%;
+  min-width: 600px;
   padding: 30px;
-  // margin: 20px; мешает в модалке!!!
   &.create {
     min-width: 100%;
   }
@@ -24,4 +22,16 @@
   @media (max-width: 768px) {
     margin-top: 300px;
   }
+}
+.loaderWrapp {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.541);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 }

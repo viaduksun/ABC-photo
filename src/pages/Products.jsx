@@ -1,12 +1,18 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router';
 import Breadcrumbs from '../containers/Breadcrumbs/Breadcrumbs';
 import ProductsContainer from '../containers/ProductsContainer/ProductsContainer';
 import Stories from '../containers/Stories/Stories';
 import {
-historyActioncameras, historyPhotocameras, historyVideocameras, historyLenses
+  historyActioncameras,
+  historyPhotocameras,
+  historyVideocameras,
+  historyLenses,
 } from '../Data/historyData';
 import {
   setCurrentCategoryAction,
@@ -14,7 +20,13 @@ import {
   setCurrentPerPageAction,
 } from '../store/products/actions';
 
-const Products = () => {
+const Products = (props) => {
+  const currentQuery = useSelector((state) => state.productsPage.currentQuery);
+  useEffect(() => {
+    // console.log('PRODUCTS', props.history);
+    props.history.push(`/products/${currentQuery}`);
+  }, [currentQuery, props.history]);
+
   const currentCategoryForBreadcrumbs = useSelector(
     (state) => state.productsPage.currentCategoryForBreadcrumbs
   );
@@ -67,4 +79,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default withRouter(Products);

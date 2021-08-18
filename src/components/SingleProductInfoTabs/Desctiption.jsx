@@ -3,27 +3,21 @@
 // import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { BsChevronDown } from 'react-icons/bs';
 import styles from './SingleProductInfoTabs.module.scss';
 
-const Desctiption = ({singleProduct}) => {
-  console.log(singleProduct);
-  return (
-    <div className={styles.descriptionWrapper}>
-      <div className={styles.textBlock}>
-        <div className={styles.descriptionBody}>
-          {singleProduct.description}
-        </div>
-      </div>
+const Desctiption = ({ singleProduct }) => (
+  <div className={styles.descriptionWrapper}>
+    <div className={styles.textBlock}>
+      <div className={styles.descriptionBody}>{singleProduct.description}</div>
     </div>
-  );
-};
- 
+  </div>
+);
+
 Desctiption.propTypes = {
-  singleProduct: PropTypes.objectOf
+  singleProduct: PropTypes.objectOf,
 };
 Desctiption.defaultProps = {
-  singleProduct: {}
+  singleProduct: {},
 };
 
 export default Desctiption;
