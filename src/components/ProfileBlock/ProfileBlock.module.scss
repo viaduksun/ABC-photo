@@ -23,6 +23,10 @@
 .btnBlock {
   flex: 1 1 15%;
   display: block;
+  max-width: 275px;
+  &_active {
+    max-width: 275px;
+  }
 }
 .btnProfile {
   width: 100%;
