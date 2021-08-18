@@ -1,5 +1,6 @@
 .OrdersWrapper {
   padding-left: 30px;
+  font-size: 17px;
   position: relative;
 }
 .loaderWrapper {
@@ -35,5 +36,11 @@
     margin-top: 20px;
     font-size: 70px;
     color: #51ad33;
+  }
+}
+@media screen and (max-width: 768px) {
+  .OrdersWrapper {
+    padding-left: 0px;
+    font-size: 12px;
   }
 }

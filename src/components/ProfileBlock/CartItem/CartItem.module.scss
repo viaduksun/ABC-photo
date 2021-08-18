@@ -96,3 +96,13 @@
     transform: rotate(180deg);
   }
 }
+@media screen and (max-width: 768px) {
+  .arrowWrapper {
+    &:hover {
+      &:before {
+        content: '';
+        display: none;
+      }
+    }
+  }
+}
