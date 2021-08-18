@@ -45,7 +45,9 @@ const ChangePassword = () => {
           console.log('editedCustomer', response);
           setSubmitting(false);
           if (response.data.password) {
-            dispatch(authorizationPopupAction('Вы ввели неверный текущий пароль'));
+            dispatch(
+              authorizationPopupAction('Вы ввели неверный текущий пароль')
+            );
             // alert('Вы ввели неправильный текущий пароль');
           }
           if (response.data.message) {
@@ -90,26 +92,25 @@ const ChangePassword = () => {
         {(formik) => (
           <Form className={styles.formWrapper}>
             <div className={styles.inputsWrapper}>
-              <div>
-                <div className={styles.Password}>
-                  <TextInput
-                    label="Текущий пароль"
-                    name="existPassword"
-                    type={visibleFirst ? 'text' : 'password'}
-                    position="relative"
-                  />
-                  <BsEye
-                    display={visibleFirst ? 'block' : 'none'}
-                    onClick={() => setVisibleFirst((visibility) => !visibility)}
-                    className={styles.PasswordIcon}
-                  />
-                  <BsEyeSlash
-                    display={visibleFirst ? 'none' : 'block'}
-                    onClick={() => setVisibleFirst((visibility) => !visibility)}
-                    className={styles.PasswordIcon}
-                  />
-                </div>
+              <div className={styles.Password}>
+                <TextInput
+                  label="Текущий пароль"
+                  name="existPassword"
+                  type={visibleFirst ? 'text' : 'password'}
+                  position="relative"
+                />
+                <BsEye
+                  display={visibleFirst ? 'block' : 'none'}
+                  onClick={() => setVisibleFirst((visibility) => !visibility)}
+                  className={styles.PasswordIcon}
+                />
+                <BsEyeSlash
+                  display={visibleFirst ? 'none' : 'block'}
+                  onClick={() => setVisibleFirst((visibility) => !visibility)}
+                  className={styles.PasswordIcon}
+                />
               </div>
+
               <div className={styles.Password}>
                 <TextInput
                   label="Новый пароль"

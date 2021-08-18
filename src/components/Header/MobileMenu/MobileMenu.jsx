@@ -1,10 +1,11 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import classNames from 'classnames';
-import React from 'react';
+import { React, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-unresolved
 import { VscChromeClose } from 'react-icons/vsc';
@@ -13,7 +14,7 @@ import { FaUserAlt } from 'react-icons/fa';
 // eslint-disable-next-line import/no-unresolved
 import { BsBoxArrowInRight } from 'react-icons/bs';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './MobileMenu.module.scss';
 import menuItems from '../../../Data/menuItems';
 import categoryItems from '../../../Data/buttomMenuItems';
@@ -30,6 +31,9 @@ const MobileMenu = ({ isOpen, closeMenu }) => {
     [styles.MobileMenu]: true,
     [styles.MobileMenu_active]: isOpen,
   });
+  const currentUser = useSelector((state) => state.admin.currentUser);
+  const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
+  const isAdmin = useSelector((state) => state.admin.isAdmin);
   const MenuCover = classNames({
     [styles.MenuCover]: true,
     [styles.MenuCover_active]: isOpen,
@@ -44,6 +48,9 @@ const MobileMenu = ({ isOpen, closeMenu }) => {
   const handleLogin = () => {
     dispatch(loginModalOpenAction());
   };
+  useEffect(() => {
+    console.log(currentUser);
+  }, [currentUser]);
 
   return (
     <>
@@ -60,10 +67,28 @@ const MobileMenu = ({ isOpen, closeMenu }) => {
         <div className={styles.header}>
           <div className={styles.loginWrapper}>
             <FaUserAlt className={styles.loginIcon} />
-            <p onClick={handleLogin} className={styles.loginText}>
-              Войти/Зарегистрироваться
-            </p>
+            {!isLoggedIn && (
+              <p onClick={handleLogin} className={styles.loginText}>
+                Войти/Зарегистрироваться
+              </p>
+            )}
+            {isLoggedIn && !isAdmin && (
+              <div className={styles.loggedInCustomer}>
+                <p>Добрый день, {currentUser.firstName}!</p>
+                <Link to="/profile">
+                  <p
+                    onClick={() => {
+                      closeMenu();
+                    }}
+                    className={styles.goToProfile}
+                  >
+                    Войти в личный кабинет
+                  </p>
+                </Link>
+              </div>
+            )}
           </div>
+          {/* <LanguageSelector /> */}
         </div>
         <div className={styles.menuWrapper}>
           {menuItems.map((menuItem) => (

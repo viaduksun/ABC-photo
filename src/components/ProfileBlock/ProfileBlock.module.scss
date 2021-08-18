@@ -22,6 +22,7 @@
 }
 .btnBlock {
   flex: 1 1 15%;
+  display: block;
 }
 .btnProfile {
   width: 100%;
@@ -45,7 +46,6 @@
 // .formWrapper {
 // }
 .inputsWrapper {
-  height: 220px;
   // border: 3px solid rgb(0, 160, 35);
   // background: rgb(0, 135, 189);
   display: grid;
@@ -58,6 +58,7 @@
 .Password {
   position: relative;
   margin-bottom: 30px;
+  max-width: 400px;
 }
 .PasswordIcon {
   position: absolute;
@@ -194,4 +195,46 @@
   align-items: center;
   background: rgba(255, 255, 255, 0.459);
   z-index: 10;
+}
+.openMobileMenu {
+  display: none;
+}
+.openIconMenu {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .edit_Prpfile_Wrapper {
+    width: auto;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .inputsWrapper {
+    display: block;
+  }
+  .content {
+    display: block;
+  }
+  .openIconMenu {
+    &_active {
+      display: block;
+      color: rgb(8, 160, 8);
+      font-size: 30px;
+    }
+  }
+  .openMobileMenu {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+  .btnBlock {
+    display: none;
+    &_active {
+      display: block;
+      position: absolute;
+      right: 0;
+      width: 120px;
+      z-index: 100;
+    }
+  }
 }
