@@ -24,7 +24,6 @@ const ActionCamerasQueryMaker = ({
   const page = useSelector((state) => state.productsPage.currentPage);
   const perPage = useSelector((state) => state.productsPage.currentPerPage);
   const sortBy = useSelector((state) => state.productsPage.sortBy);
-  const addQuerySortBy = `&sort=${sortBy}`;
   const dispatch = useDispatch();
 
   const result = useMemo(() => {
@@ -77,6 +76,7 @@ const ActionCamerasQueryMaker = ({
     let addQueryMatrixType = '';
     let addQueryFeatures = '';
     let addQueryWireless = '';
+    let addQuerySortBy = '';
 
     if (filteredMatrixTypeArr.length > 0) {
       addQueryMatrixType = `&matrix=${filteredMatrixTypeArr.join(',')}`;
@@ -87,12 +87,15 @@ const ActionCamerasQueryMaker = ({
     if (filteredWirelessArr.length > 0) {
       addQueryWireless = `&wireless=${filteredWirelessArr.join(',')}`;
     }
+    if (sortBy) {
+      addQuerySortBy = `&sort=${sortBy}`;
+    }
 
     const finalQuery =
-      addQueryMatrixType + addQueryFeatures + addQueryWireless + rangeQuery;
+      addQueryMatrixType + addQueryFeatures + addQuerySortBy + addQueryWireless + rangeQuery;
     dispatch(setCurrentFilterAction(finalQuery));
     return finalQuery;
-  }, [dispatch, features, matrixType, rangeQuery, wireless]);
+  }, [dispatch, features, matrixType, rangeQuery, sortBy, wireless]);
 
   return null;
 };

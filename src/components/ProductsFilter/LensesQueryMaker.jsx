@@ -20,7 +20,6 @@ const LensesQueryMaker = ({ brandType, lenseType, bionet, priceState }) => {
   const page = useSelector((state) => state.productsPage.currentPage);
   const perPage = useSelector((state) => state.productsPage.currentPerPage);
   const sortBy = useSelector((state) => state.productsPage.sortBy);
-  const addQuerySortBy = `&sort=${sortBy}`;
   const dispatch = useDispatch();
 
   const result = useMemo(() => {
@@ -81,6 +80,7 @@ const LensesQueryMaker = ({ brandType, lenseType, bionet, priceState }) => {
     let addQueryBrand = '';
     let addQueryType = '';
     let addQueryBionet = '';
+    let addQuerySortBy = '';
 
     if (filteredBrandArr.length > 0) {
       addQueryBrand = `&brand=${filteredBrandArr.join(',')}`;
@@ -91,12 +91,15 @@ const LensesQueryMaker = ({ brandType, lenseType, bionet, priceState }) => {
     if (filteredbionetArr.length > 0) {
       addQueryBionet = `&bionet=${filteredbionetArr.join(',')}`;
     }
+    if (sortBy) {
+      addQuerySortBy = `&sort=${sortBy}`;
+    }
 
     const finalQuery =
-      addQueryType + addQueryBrand + addQueryBionet + rangeQuery;
+      addQueryType + addQueryBrand + addQuerySortBy + addQueryBionet + rangeQuery;
     dispatch(setCurrentFilterAction(finalQuery));
     return finalQuery;
-  }, [bionet, brandType, dispatch, lenseType, rangeQuery]);
+  }, [bionet, brandType, dispatch, lenseType, rangeQuery, sortBy]);
 
   return null;
 };

@@ -22,7 +22,6 @@ const AdminPagination = ({ scrollTo }) => {
     pages.push(i);
   }
   const handleExactPage = (item) => {
-    console.log(item);
     dispatch(setCurrentPageAdminAction(item));
     // scrollTo();
   };

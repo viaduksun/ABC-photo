@@ -31,7 +31,6 @@ import Characteristics from './Characteristics';
 import AdminPagination from '../AdminPagination/AdminPagination';
 
 const Products = () => {
-  console.log('Products');
   const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(adminProducts());
@@ -55,7 +54,6 @@ const Products = () => {
 
   // ========= FUNC =================
   const modalContent = () => {
-    console.log(currentProduct);
     if (currentProduct) {
       return (
         <div className={styles.modalContentBlock}>
@@ -96,8 +94,6 @@ const Products = () => {
     setActive(id);
   };
   const handleDelete = () => {
-    console.log('DEL-FUNCTION');
-    console.log(currentProduct.itemNo);
     deleteOneProduct(currentProduct.itemNo).then((res) => {
       dispatch(authorizationPopupAction('Продукт удален'));
 
@@ -107,7 +103,6 @@ const Products = () => {
   };
   // ======= MODAL DELETE =================
   const handleModalDeleteOpen = (product) => {
-    console.log(product);
     dispatch(modalDeleteOpen());
     setCurrentProduct(product);
   };
@@ -148,9 +143,6 @@ const Products = () => {
       </Button>
     </>
   );
-  const handleProductData = (e) => {
-    console.log(e.target.closest('.ProductWrapper'));
-  };
   const pageQ = page * 10 - 9;
   return (
     <>

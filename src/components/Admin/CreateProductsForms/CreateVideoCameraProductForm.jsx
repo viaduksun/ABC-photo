@@ -20,13 +20,7 @@ import { authorizationPopupAction } from '../../../store/madals/actions';
 
 const CreateVideoCameraProductForm = ({ currentCategory }) => {
   const dispatch = useDispatch();
-  // const handleCreateProduct2 = () => {
-  //   console.log('CREATE2');
-  //   createProductLocalHost5000();
-  // };
-  // console.log(currentCategory);
   const handleCreateProduct = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
     const {
       category,
 

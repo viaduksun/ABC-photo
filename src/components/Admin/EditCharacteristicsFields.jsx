@@ -20,13 +20,8 @@ import Button from '../UI/Button/Button';
 import { editProduct } from '../../store/admin/actions';
 
 const EditProduct = ({ product }) => {
-  console.log(product);
-  console.log(product.characteristics);
-
   const characteristicsObj = {};
   Object.keys(product.characteristics).forEach((key) => {
-    console.log(key);
-    console.log(product.characteristics[key][1]);
     characteristicsObj[key] = product.characteristics[key][1];
   });
 
@@ -36,7 +31,6 @@ const EditProduct = ({ product }) => {
   const productId = product._id;
 
   const handleEditProduct = (values, { setSubmitting }) => {
-    console.log(values);
     const {
       _id,
       brand,

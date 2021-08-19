@@ -24,7 +24,7 @@ const VideoCamerasQueryMaker = ({
   const page = useSelector((state) => state.productsPage.currentPage);
   const perPage = useSelector((state) => state.productsPage.currentPerPage);
   const sortBy = useSelector((state) => state.productsPage.sortBy);
-  const addQuerySortBy = `&sort=${sortBy}`;
+  // const addQuerySortBy = `&sort=${sortBy}`;
   const dispatch = useDispatch();
 
   const result = useMemo(() => {
@@ -71,6 +71,7 @@ const VideoCamerasQueryMaker = ({
     let addQueryConnectors = '';
     let addQueryLensType = '';
     let addQueryFileFormat = '';
+    let addQuerySortBy = '';
 
     if (filteredConnectorsArr.length > 0) {
       addQueryConnectors = `&connectors=${filteredConnectorsArr.join(',')}`;
@@ -81,11 +82,14 @@ const VideoCamerasQueryMaker = ({
     if (filteredFileFormatArr.length > 0) {
       addQueryFileFormat = `&format=${filteredFileFormatArr.join(',')}`;
     }
+    if (sortBy) {
+      addQuerySortBy = `&sort=${sortBy}`;
+    }
     const finalQuery =
-      addQueryConnectors + addQueryFileFormat + addQueryLensType + rangeQuery;
+      addQueryConnectors + addQueryFileFormat + addQuerySortBy + addQueryLensType + rangeQuery;
     dispatch(setCurrentFilterAction(finalQuery));
     return finalQuery;
-  }, [connectors, dispatch, fileFormat, lenseType, rangeQuery]);
+  }, [connectors, dispatch, fileFormat, lenseType, rangeQuery, sortBy]);
 
   return null;
 };

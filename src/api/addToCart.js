@@ -12,7 +12,6 @@ const addToCart = (singleProduct) => {
   return axios
     .put(`https://intense-hamlet-33316.herokuapp.com/api/cart/${singleProduct._id}`, headers)
     .then((newCartResponse) => {
-      console.log('UPDATED CART', newCartResponse);
       /* Do something with newCart */
     })
     .catch((err) => {

@@ -24,23 +24,16 @@ import { editProduct } from '../../store/admin/actions';
 import Loader from '../UI/Loader/Loader';
 
 const EditProduct = ({ product }) => {
-  console.log(product);
-  console.log(product.characteristics);
-
   const characteristicsObj = {};
   Object.keys(product.characteristics).forEach((key) => {
-    console.log(key);
-    console.log(product.characteristics[key][1]);
     characteristicsObj[key] = product.characteristics[key][1];
   });
 
-  console.log(characteristicsObj);
   const formik = useFormikContext();
   const dispatch = useDispatch();
   const productId = product._id;
 
   const handleEditProduct = (values, { setSubmitting }) => {
-    console.log(values);
     const {
       _id,
       brand,
@@ -80,7 +73,6 @@ const EditProduct = ({ product }) => {
       dispatch(editProduct(newProduct));
       /* Do something with updatedProduct */
     });
-    console.log(newProduct);
   };
   const productSchema = Yup.object().shape({
     brand: Yup.string().required('Is required'),

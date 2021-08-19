@@ -31,10 +31,6 @@ const BottomMenu = ({ toggleMenu }) => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     dispatch(setCatalog());
-    // getCatalog().then((res) => {
-    //   console.log(res);
-    //   setCatalog(res.data);
-    // });
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };

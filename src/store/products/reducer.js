@@ -28,7 +28,7 @@ const initialState = {
   currentPage: 1,
   currentPerPage: 3,
   isLoadingProducts: true,
-  currentQuery: '',
+  // currentQuery: '',
   currentFilterQuery: '',
   sortBy: '',
   showGrid: true,

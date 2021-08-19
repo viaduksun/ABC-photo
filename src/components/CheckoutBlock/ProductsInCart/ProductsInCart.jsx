@@ -27,7 +27,6 @@ const ProductsInCart = () => {
   const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
   const totalSumCart = useSelector((state) => state.cart.totalSumCart);
 
-  console.log(cartDB);
   let cartArr = null;
   if (isLoggedIn) {
     cartArr = cartDB;

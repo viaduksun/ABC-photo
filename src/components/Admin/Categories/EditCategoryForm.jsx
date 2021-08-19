@@ -18,7 +18,6 @@ import { authorizationPopupAction } from '../../../store/madals/actions';
 import Loader from '../../UI/Loader/Loader';
 
 const EditCategoryForm = ({ currentCategory }) => {
-  console.log('CURRENT', currentCategory);
   const dispatch = useDispatch();
   const catalog = useSelector((state) => state.admin.catalog);
 

@@ -21,11 +21,11 @@ import {
 } from '../store/products/actions';
 
 const Products = (props) => {
-  const currentQuery = useSelector((state) => state.productsPage.currentQuery);
+  const currentCategory = useSelector((state) => state.productsPage.currentCategory);
   useEffect(() => {
     // console.log('PRODUCTS', props.history);
-    props.history.push(`/products/${currentQuery}`);
-  }, [currentQuery, props.history]);
+    props.history.push(`/products/${currentCategory}`);
+  }, [currentCategory, props.history]);
 
   const currentCategoryForBreadcrumbs = useSelector(
     (state) => state.productsPage.currentCategoryForBreadcrumbs

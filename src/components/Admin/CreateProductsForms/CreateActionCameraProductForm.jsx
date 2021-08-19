@@ -20,7 +20,6 @@ import { authorizationPopupAction } from '../../../store/madals/actions';
 const CreateActionCameraProductForm = ({ currentCategory }) => {
   const dispatch = useDispatch();
   const handleCreateProduct = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
     const {
       category,
 
