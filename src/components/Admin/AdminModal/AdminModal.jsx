@@ -6,13 +6,14 @@ import React from 'react';
 import { BsX } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
-import styles from './Modal.module.scss';
+import styles from './AdminModal.module.scss';
 import { editProductModalClose } from '../../store/madals/actions';
 
 const Modal = ({ title, body, btnBlock, onCloseClick, addClass }) => {
   const dispatch = useDispatch();
   const handleCloseCover = (e) => {
     if (e.target.classList.contains(styles.ModalCover)) {
+      dispatch(editProductModalClose());
       onCloseClick();
     }
   };
@@ -22,7 +23,7 @@ const Modal = ({ title, body, btnBlock, onCloseClick, addClass }) => {
   };
   const modalClass = classNames({
     [styles.Modal]: true,
-    [`${styles.Modal}_${addClass}`]: addClass,
+    [addClass]: addClass,
   });
   return (
     <div className={styles.ModalCover} onClick={handleCloseCover}>

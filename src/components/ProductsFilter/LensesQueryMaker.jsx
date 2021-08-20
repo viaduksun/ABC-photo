@@ -5,18 +5,21 @@
 /* eslint-disable no-unused-vars */
 import React, { useMemo, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearProductsAction, filteredProductsForPaginationAction, getFilteredProductsAction } from '../../store/products/actions';
+import {
+  clearProductsAction,
+  getFilteredProductsAction,
+  setCurrentFilterAction,
+} from '../../store/products/actions';
 
 const LensesQueryMaker = ({ brandType, lenseType, bionet, priceState }) => {
   const rangeQuery = `&minPrice=${priceState[0]}&maxPrice=${priceState[1]}`;
- 
+
   const currentCategory = useSelector(
     (state) => state.productsPage.currentCategory
   );
   const page = useSelector((state) => state.productsPage.currentPage);
   const perPage = useSelector((state) => state.productsPage.currentPerPage);
   const sortBy = useSelector((state) => state.productsPage.sortBy);
-  const addQuerySortBy = `&sort=${sortBy}`;
   const dispatch = useDispatch();
 
   const result = useMemo(() => {
@@ -77,6 +80,7 @@ const LensesQueryMaker = ({ brandType, lenseType, bionet, priceState }) => {
     let addQueryBrand = '';
     let addQueryType = '';
     let addQueryBionet = '';
+    let addQuerySortBy = '';
 
     if (filteredBrandArr.length > 0) {
       addQueryBrand = `&brand=${filteredBrandArr.join(',')}`;
@@ -87,22 +91,15 @@ const LensesQueryMaker = ({ brandType, lenseType, bionet, priceState }) => {
     if (filteredbionetArr.length > 0) {
       addQueryBionet = `&bionet=${filteredbionetArr.join(',')}`;
     }
+    if (sortBy) {
+      addQuerySortBy = `&sort=${sortBy}`;
+    }
 
     const finalQuery =
       addQueryType + addQueryBrand + addQuerySortBy + addQueryBionet + rangeQuery;
-    if (finalQuery) {
-      console.log('FINAL QUERY: ', finalQuery);
-      dispatch(clearProductsAction());
-      dispatch(
-        getFilteredProductsAction(currentCategory, page, perPage, finalQuery)
-      );
-      dispatch(filteredProductsForPaginationAction(currentCategory, finalQuery));
-    } else {
-      console.log('SHOW ALL!!!');
-      dispatch(clearProductsAction());
-      dispatch(getFilteredProductsAction(currentCategory, page, perPage, ''));
-    }
-  }, [addQuerySortBy, bionet, brandType, currentCategory, dispatch, lenseType, page, perPage, rangeQuery]);
+    dispatch(setCurrentFilterAction(finalQuery));
+    return finalQuery;
+  }, [bionet, brandType, dispatch, lenseType, rangeQuery, sortBy]);
 
   return null;
 };

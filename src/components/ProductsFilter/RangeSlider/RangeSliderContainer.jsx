@@ -15,7 +15,7 @@ const RangeSliderContainer = ({
   const currentCategory = useSelector(
     (state) => state.productsPage.currentCategory
   );
-  const page = useSelector((state) => state.productsPage.currentPage);
+  // const page = useSelector((state) => state.productsPage.currentPage);
   // const allProducts = useSelector((state) => state.productsPage.products);
 
   // const maxPrice = allProducts.reduce((acc, curr) => {
@@ -32,19 +32,16 @@ const RangeSliderContainer = ({
   // }, 0);
 
   return (
-    <>
-      <RangeSlider
-        currentCategory={currentCategory}
-        page={page}
-        maxPrice={100000}
-        minPrice={0}
-        rangeSelector={rangeSelector}
-        handleChangeMinRange={handleChangeMinRange}
-        handleChangeMaxRange={handleChangeMaxRange}
-        sentPriceDataHandler={sentPriceDataHandler}
-        priceState={priceState}
-      />
-    </>
+    <RangeSlider
+      currentCategory={currentCategory}
+      maxPrice={100000}
+      minPrice={0}
+      rangeSelector={rangeSelector}
+      handleChangeMinRange={handleChangeMinRange}
+      handleChangeMaxRange={handleChangeMaxRange}
+      sentPriceDataHandler={sentPriceDataHandler}
+      priceState={priceState}
+    />
   );
 };
 

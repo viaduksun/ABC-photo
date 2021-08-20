@@ -14,17 +14,16 @@ import editCategory from '../../../api/editCategory';
 import TextInput from '../Input/TextInput';
 import FormikControl from '../FormikControl';
 import { editCategoryAction } from '../../../store/admin/actions';
+import { authorizationPopupAction } from '../../../store/madals/actions';
+import Loader from '../../UI/Loader/Loader';
 
 const EditCategoryForm = ({ currentCategory }) => {
-  console.log('CURRENT', currentCategory);
   const dispatch = useDispatch();
   const catalog = useSelector((state) => state.admin.catalog);
+
   // ===== getting parent category name
-  // const parentCategory = catalog.find(
-  //   (item) => item._id === currentCategory.parentId
-  // ).name;
-  // temp-->
   const parentCategory = currentCategory.parentId;
+
   // ==== Gettig main categories for select menu ===
   const optionCategoryNull = <option value="null">---</option>;
   const optionsMainCategory = catalog.map((category) => {
@@ -40,9 +39,9 @@ const EditCategoryForm = ({ currentCategory }) => {
   optionsMainCategory.push(optionCategoryNull);
   // =============================================
   const handleEditCategory = (values, { setSubmitting }) => {
+    setSubmitting(true);
     console.log(values);
     const { _id, id, name, parentId, imgUrl, description } = values;
-    setSubmitting(true);
     const editedCategory = {
       _id,
       id,
@@ -53,10 +52,12 @@ const EditCategoryForm = ({ currentCategory }) => {
     };
     console.log(editedCategory);
     // === 1 sending changes on DB ===
-    editCategory(currentCategory.id, editedCategory);
-    // === 2 changeing category in REDUX ===
-    dispatch(editCategoryAction(editedCategory));
-    setSubmitting(false);
+    editCategory(currentCategory.id, editedCategory).then(() => {
+      dispatch(authorizationPopupAction('Категория обновлена успешно'));
+      // === 2 changeing category in REDUX ===
+      dispatch(editCategoryAction(editedCategory));
+      setSubmitting(false);
+    });
   };
   const productSchema = Yup.object().shape({
     _id: Yup.string().required('Is required'),
@@ -68,7 +69,7 @@ const EditCategoryForm = ({ currentCategory }) => {
   });
 
   return (
-    <div className="formBlock create">
+    <div className="formBlock">
       <Formik
         initialValues={{
           _id: currentCategory._id,
@@ -83,6 +84,11 @@ const EditCategoryForm = ({ currentCategory }) => {
       >
         {(formik) => (
           <Form className="product-form" id="edit-category">
+            {formik.isSubmitting && (
+              <div className="loaderWrapp">
+                <Loader />
+              </div>
+            )}
             <div className="product-inputs-area">
               <TextInput name="_id" type="hidden" />
               <TextInput label="Идентификатор" name="id" type="text" />

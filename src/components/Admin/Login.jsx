@@ -27,14 +27,12 @@ const Login = () => {
   });
 
   const handleLogin = (values, { setSubmitting, resetForm }) => {
-    console.log('handleLogin');
     const { loginOrEmail, password } = values;
     setSubmitting(true);
     const loginData = {
       loginOrEmail,
       password,
     };
-    console.log(loginData);
     LoginApi(loginData)
       .then((res) => {
         console.log(res);

@@ -14,9 +14,7 @@ import Button from '../../UI/Button/Button';
 import styles from './CreateProductsForms.module.scss';
 
 const SelectCategoryForm = ({ handleSelect }) => {
-  console.log('CreateProductsFormContainer');
   const catalog = useSelector((state) => state.admin.catalog);
-  console.log(catalog);
   const optionPlaceholder = (
     <option value="" disabled hidden>
       Выберите категорию для получения шаблона формы создания продукта

@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import styles from './ProductsFilter.module.scss';
-import FilterQueryMaker from './FilterQueryMaker';
+import FilterQueryMaker from './PhotoCamerasQueryMaker';
 import RangeSliderContainer from './RangeSlider/RangeSliderContainer';
 import FilterBlock from './FilterBlock/FilterBlock';
 
@@ -175,12 +175,6 @@ const PhotoCamerasFilter = () => {
         handleChange={handleMatrixSizeChange}
         checkState={matrixState}
       />
-      {/* <Producer handleChange={handleBrandChange} brandFilter={brandFilter} /> */}
-      {/* <Equipment handleChange={handleSetChange} setFilter={setFilter} /> */}
-      {/* <Matrix
-        handleChange={handleMatrixSizeChange}
-        matrixSizeFilter={matrixSizeFilter}
-      /> */}
     </div>
   );
 };

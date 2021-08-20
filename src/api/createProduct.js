@@ -13,11 +13,6 @@ const createProduct = (product) => {
     .post('https://intense-hamlet-33316.herokuapp.com/api/products', product, {
       headers,
     })
-    .then((newProduct) => {
-      /* Do something with newProduct */
-      console.log('Product has been added');
-      alert('Product has been added!');
-    })
     .catch((err) => {
       /* Do something with error, e.g. show error to user */
       console.log(err);

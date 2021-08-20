@@ -49,10 +49,9 @@ const ProductsField = ({ products }) => {
 
 ProductsField.propTypes = {
   products: PropTypes.arrayOf,
-
 };
 ProductsField.defaultProps = {
   products: [],
 };
 
-export default ProductsField;
+export default React.memo(ProductsField);

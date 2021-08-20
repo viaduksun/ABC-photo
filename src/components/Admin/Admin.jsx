@@ -27,7 +27,6 @@ const ApiTest = () => {
     'test03@gmail.com',
   ];
   const handleRegister = (values, { setSubmitting }) => {
-    console.log('Register');
     const { firstName, lastName, email, login, phone, password, isAdmin } =
       values;
     const isFormValid =
@@ -53,23 +52,19 @@ const ApiTest = () => {
   };
 
   const handleLogin2 = (values, { setSubmitting }) => {
-    console.log('handleLogin2');
     const { loginOrEmail, password } = values;
     setSubmitting(true);
     const loginData = {
       loginOrEmail,
       password,
     };
-    console.log(loginData);
     Login(loginData)
       .then((res) => {
-        console.log(res);
         localStorage.setItem('token', res.data.token);
       })
       .then(() => setSubmitting(false));
   };
   const handleCreateProduct2 = () => {
-    console.log('CREATE');
     createProduct(sony02);
   };
   const handleCreateProduct = (values, { setSubmitting }) => {

@@ -1,17 +1,13 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable max-len */
 /* eslint-disable operator-linebreak */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
-import React, { useMemo, memo } from 'react';
+import { useMemo, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
- clearProductsAction,
- filteredProductsForPaginationAction,
-  getFilteredProductsAction,
-  setCurrentBrandQueryAction
-} from '../../store/products/actions';
+import { setCurrentFilterAction } from '../../store/products/actions';
 
-const FilterQueryMaker = ({
+const PhotoCamerasQueryMaker = ({
   setFilter,
   matrixState,
   typeState,
@@ -24,13 +20,12 @@ const FilterQueryMaker = ({
   const page = useSelector((state) => state.productsPage.currentPage);
   const perPage = useSelector((state) => state.productsPage.currentPerPage);
   const sortBy = useSelector((state) => state.productsPage.sortBy);
-  const currentQueryForPagination = useSelector((state) => state.productsPage.currentQueryForPagination);
+  const currentFilterQuery = useSelector(
+    (state) => state.productsPage.currentFilterQuery
+  );
   const dispatch = useDispatch();
 
-  const rangeQuery = `&minPrice=${priceState[0]}&maxPrice=${priceState[1]}`;
-  const addQuerySortBy = `&sort=${sortBy}`;
-
-  const result = useMemo(() => {
+  const resultQuery = useMemo(() => {
     const typeStatusArr = Object.keys(typeState).map((item) => {
       if (item === 'checkboxA' && typeState[item].status) {
         return 'Зеркальный';
@@ -106,7 +101,15 @@ const FilterQueryMaker = ({
     let addQueryBrand = '';
     let addQuerySet = '';
     let addQueryMatrixSize = '';
-    
+    let rangeQuery = '';
+    let addQuerySortBy = '';
+
+    if (priceState[0] !== 0 || priceState[1] !== 100000) {
+      rangeQuery = `&minPrice=${priceState[0]}&maxPrice=${priceState[1]}`;
+    }
+    if (sortBy) {
+      addQuerySortBy = `&sort=${sortBy}`;
+    }
     if (filteredTypeArr.length > 0) {
       addQueryType = `&type=${filteredTypeArr.join(',')}`;
     }
@@ -126,23 +129,20 @@ const FilterQueryMaker = ({
       addQueryMatrixSize +
       addQuerySortBy +
       rangeQuery;
-      console.log(finalQuery);
-  
-    if (finalQuery) {
-      dispatch(clearProductsAction());
-      
-      dispatch(
-        getFilteredProductsAction(currentCategory, page, perPage, finalQuery)
-      );
-      dispatch(filteredProductsForPaginationAction(currentCategory, finalQuery));
-      dispatch(setCurrentBrandQueryAction(addQueryBrand));
-    } else {
-      dispatch(clearProductsAction());
-      dispatch(getFilteredProductsAction(currentCategory, page, perPage, ''));
-    }
-  }, [typeState, brandState, setFilter, matrixState, addQuerySortBy, rangeQuery, dispatch, currentCategory, page, perPage]);
+
+    dispatch(setCurrentFilterAction(finalQuery));
+    return finalQuery;
+  }, [
+    typeState,
+    brandState,
+    setFilter,
+    matrixState,
+    priceState,
+    sortBy,
+    dispatch,
+  ]);
 
   return null;
 };
 
-export default memo(FilterQueryMaker);
+export default memo(PhotoCamerasQueryMaker);

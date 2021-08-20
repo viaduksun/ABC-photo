@@ -54,4 +54,4 @@ const FilterBlock = ({ title, handleChange, checkState }) => {
     </div>
   );
 };
-export default FilterBlock;
+export default React.memo(FilterBlock);

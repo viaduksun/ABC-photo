@@ -85,7 +85,7 @@ const ProductCard = ({ product }) => {
         </div>
       )}
       <Link
-        to="/single-product"
+        to={`/single-product/${product.itemNo}`}
         onClick={dispatchSingleProductHandler}
         className={styles.ProductCardImgLink}
       >
@@ -175,10 +175,9 @@ const ProductCard = ({ product }) => {
 
 ProductCard.propTypes = {
   product: PropTypes.objectOf,
-
 };
 ProductCard.defaultProps = {
   product: {},
 };
 
-export default ProductCard;
+export default React.memo(ProductCard);

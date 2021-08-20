@@ -37,15 +37,12 @@ const Categories = () => {
     dispatch(modalEditCategoryCloseAction());
   };
   const handleDeleteCategory = () => {
-    console.log('Delete category');
     // === DELETE from DB ===
     deleteCategory(currentCategory.id);
     dispatch(deleteCategoryAction(currentCategory.id));
   };
   const toggleActive = (id) => {
-    console.log(id, '===', active);
     if (id === active) {
-      console.log('Mach');
       return setActive(null);
     }
     setActive(id);

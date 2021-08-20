@@ -195,4 +195,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default React.memo(EditProfile);

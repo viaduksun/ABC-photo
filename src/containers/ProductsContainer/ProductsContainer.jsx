@@ -16,6 +16,7 @@ import {
   clearProductsAction,
   getAllProductsCurrentCategoryAction,
   getFilteredProductsAction,
+  setCurrentPageAction,
   showGridAction,
 } from '../../store/products/actions';
 import Loader from '../../components/UI/Loader/Loader';
@@ -30,13 +31,45 @@ const ProductsContainer = () => {
     (state) => state.productsPage.currentCategory
   );
   const page = useSelector((state) => state.productsPage.currentPage);
-  const perPage = useSelector((state) => state.productsPage.currentPerPage);
-  console.log(currentCategory, page, perPage);
+  const currentPerPage = useSelector(
+    (state) => state.productsPage.currentPerPage
+  );
+  const productsQuantity = useSelector(
+    (state) => state.productsPage.productsQuantity
+  );
+  const currentFilterQuery = useSelector(
+    (state) => state.productsPage.currentFilterQuery
+  );
+
   useEffect(() => {
+    const pagesCount = Math.ceil(productsQuantity / currentPerPage);
+    let queryPage = page;
+    if (pagesCount < page) {
+      queryPage = pagesCount;
+      if (queryPage === 0) {
+        queryPage = 1;
+      }
+    }
     dispatch(clearProductsAction());
-    dispatch(getFilteredProductsAction(currentCategory, page, perPage, ''));
+    dispatch(
+      getFilteredProductsAction(
+        currentCategory,
+        queryPage,
+        currentPerPage,
+        currentFilterQuery
+      )
+    );
+    dispatch(setCurrentPageAction(queryPage));
+
     // dispatch(getAllProductsCurrentCategoryAction(currentCategory));
-  }, [currentCategory, dispatch, page, perPage]);
+  }, [
+    currentCategory,
+    currentFilterQuery,
+    currentPerPage,
+    dispatch,
+    page,
+    productsQuantity,
+  ]);
   const products = useSelector((state) => state.productsPage.products);
   const isLoadingProducts = useSelector(
     (state) => state.productsPage.isLoadingProducts
@@ -91,9 +124,9 @@ const ProductsContainer = () => {
               <div className={styles.PrductsFieldLoader}>
                 <Loader />
               </div>
-          ) : (
-            !isLoadingProducts && <ProductsField products={products} />
-          )}
+            ) : (
+              !isLoadingProducts && <ProductsField products={products} />
+            )}
           </div>
         </div>
       </div>
@@ -111,4 +144,4 @@ const ProductsContainer = () => {
   );
 };
 
-export default ProductsContainer;
+export default React.memo(ProductsContainer);

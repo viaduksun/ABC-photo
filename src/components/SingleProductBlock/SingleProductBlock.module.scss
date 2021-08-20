@@ -10,6 +10,9 @@
     grid-row-gap: 100px; 
     grid-template-columns: 1fr;
   }
+  @media (max-width: 768px) {
+    padding-left: 10px;
+  }
 }
 .SliderBlockText {
   display: flex;

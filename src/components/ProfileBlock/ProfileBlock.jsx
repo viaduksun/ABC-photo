@@ -124,4 +124,4 @@ const ProfileBlock = () => {
   );
 };
 
-export default ProfileBlock;
+export default React.memo(ProfileBlock);

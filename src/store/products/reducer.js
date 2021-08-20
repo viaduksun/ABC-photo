@@ -9,9 +9,11 @@ import {
   SET_CATEGORY_FOR_BREADCRUMBS,
   SET_CURRENT_BRANDQUERY,
   SET_CURRENT_CATEGORY,
+  SET_CURRENT_FILTER_QUERY,
   SET_CURRENT_PAGE,
   SET_CURRENT_PRODUCTS_ARR,
   SET_CURRENT_QUERY,
+  SET_FILTER_QUERY,
   SET_PER_PAGE,
   SET_PRODUCTS,
   SET_SORT_BY,
@@ -26,20 +28,23 @@ const initialState = {
   currentPage: 1,
   currentPerPage: 3,
   isLoadingProducts: true,
-  currentQuery: '',
+  // currentQuery: '',
+  currentFilterQuery: '',
   sortBy: '',
   showGrid: true,
-  currentQueryForPagination: ''
+  currentQueryForPagination: '',
+  productsQuantity: ''
 };
 
 export const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_PRODUCTS:
       // ==== REFACTORING ====
-      console.log('SET_PRODUCTS: ', action.payload);
+      // console.log('SET_PRODUCTS: ', action.payload);
       return {
         ...state,
-        products: action.payload,
+        products: action.payload.products,
+        productsQuantity: action.payload.productsQuantity,
         isLoadingProducts: false,
       };
     case SET_CURRENT_CATEGORY:
@@ -55,6 +60,16 @@ export const productsReducer = (state = initialState, action) => {
         currentQuery: action.payload,
         isLoadingProducts: false,
       };
+    case SET_FILTER_QUERY:
+      return {
+        ...state,
+        currentQuery: action.payload,
+      };
+    case SET_CURRENT_FILTER_QUERY:
+      return {
+        ...state,
+        currentFilterQuery: action.payload,
+      };
     case SET_CURRENT_PRODUCTS_ARR:
       // === for pagination calculation ======
       // console.log('SET_CURRENT_PRODUCTS_ARR', action.payload);
@@ -64,7 +79,7 @@ export const productsReducer = (state = initialState, action) => {
         // isLoadingProducts: false,
       };
     case SET_CURRENT_PAGE:
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         currentPage: action.payload,
@@ -108,13 +123,13 @@ export const productsReducer = (state = initialState, action) => {
         currentCategoryForBreadcrumbs: action.payload,
       };
     case FILTERED_PRODUCTS_FOR_PAGINATION:
-      console.log('Action payloadddddddddddddd', action.payload);
+      console.log('FILTERED_PRODUCTS_FOR_PAGINATION', action.payload);
       return {
         ...state,
         allProductsForPagination: action.payload,
       };
     case SET_CURRENT_BRANDQUERY:
-      console.log('SET_CURRENT_BRANDQUERY', action.payload);
+      // console.log('SET_CURRENT_BRANDQUERY', action.payload);
       return {
         ...state,
         currentQueryForPagination: action.payload,

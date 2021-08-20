@@ -1,9 +1,13 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable operator-linebreak */
 /* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
 import './App.scss';
 import React, { useEffect, useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter, Switch, Route, withRouter
+} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaSmileWink } from 'react-icons/fa';
 import Header from './containers/Header/Header';
@@ -48,7 +52,7 @@ import {
 import AuthorizationPopup from './components/UI/AuthorizationPopup/AuthorizationPopup';
 import ErrorPage from './pages/ErrorPage';
 
-function App() {
+function App(props) {
   const cart = useSelector((state) => state.cart.cart);
   const cartDB = useSelector((state) => state.cart.cartDB);
   const popupIsOpen = useSelector((state) => state.cart.popupIsOpen);
@@ -166,72 +170,75 @@ function App() {
   }, [dispatch, popupIsOpen]);
 
   return (
-    <div className="wrapper">
-      <CartPopup />
-      <AuthorizationPopup>{textAuthorizationPopup}</AuthorizationPopup>
-      <Header />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        {/* <Route exact path={`/products${currentQuery}`}> */}
-        {/* <Route exact path="/products"> */}
-        <Route path="/products">
-          <Products />
-        </Route>
-        <Route path="/favorites">
-          <Favorites />
-        </Route>
-        <Route exact path="/single-product">
-          <SingleProduct />
-        </Route>
-        <Route exact path="/contacts">
-          <Contacts />
-        </Route>
-        <Route exact path="/shops">
-          <Shops />
-        </Route>
-        <Route exact path="/guaranty">
-          <Guaranty />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route exact path="/credit">
-          <Credit />
-        </Route>
-        <Route exact path="/delivery">
-          <Delivery />
-        </Route>
-        {/* <Route exact path="/maps">
+    <BrowserRouter>
+      <div className="wrapper">
+        <CartPopup />
+        <AuthorizationPopup>{textAuthorizationPopup}</AuthorizationPopup>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          {/* <Route exact path={`/products${currentQuery}`}> */}
+          {/* <Route exact path="/products"> */}
+          {/* <Route path="/products/:query"> */}
+          <Route path="/products">
+            <Products />
+          </Route>
+          <Route path="/favorites">
+            <Favorites />
+          </Route>
+          <Route path="/single-product">
+            <SingleProduct />
+          </Route>
+          <Route exact path="/contacts">
+            <Contacts />
+          </Route>
+          <Route exact path="/shops">
+            <Shops />
+          </Route>
+          <Route exact path="/guaranty">
+            <Guaranty />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/credit">
+            <Credit />
+          </Route>
+          <Route exact path="/delivery">
+            <Delivery />
+          </Route>
+          {/* <Route exact path="/maps">
           <Maps />
         </Route>
         <Route exact path="/public">
           <Public />
         </Route> */}
-        <Route exact path="/cart">
-          <Cart />
-        </Route>
-        <Route exact path="/checkout">
-          <Checkout />
-        </Route>
-        <Route exact path="/profile">
-          <Profile />
-        </Route>
-        <Route exact path="/admin">
-          <Admin />
-        </Route>
-        <Route exact path="/search-products">
-          <SearchProducts />
-        </Route>
-        <Route>
-          <ErrorPage />
-        </Route>
-      </Switch>
-      <Footer />
-      <ButtonTop />
-    </div>
+          <Route exact path="/cart">
+            <Cart />
+          </Route>
+          <Route exact path="/checkout">
+            <Checkout />
+          </Route>
+          <Route exact path="/profile">
+            <Profile />
+          </Route>
+          <Route exact path="/admin">
+            <Admin />
+          </Route>
+          <Route exact path="/search-products">
+            <SearchProducts />
+          </Route>
+          <Route>
+            <ErrorPage />
+          </Route>
+        </Switch>
+        <Footer />
+        <ButtonTop />
+      </div>
+    </BrowserRouter>
   );
 }
 
-export default App;
+export default withRouter(App);

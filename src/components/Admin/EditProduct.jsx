@@ -15,28 +15,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import editProductApi from '../../api/editProduct';
 import TextInput from './Input/TextInput';
 import FormikControl from './FormikControl';
-import { editProductModalClose } from '../../store/madals/actions';
+import {
+  authorizationPopupAction,
+  editProductModalClose,
+} from '../../store/madals/actions';
 import Button from '../UI/Button/Button';
 import { editProduct } from '../../store/admin/actions';
+import Loader from '../UI/Loader/Loader';
 
 const EditProduct = ({ product }) => {
-  console.log(product);
-  console.log(product.characteristics);
-
   const characteristicsObj = {};
   Object.keys(product.characteristics).forEach((key) => {
-    console.log(key);
-    console.log(product.characteristics[key][1]);
     characteristicsObj[key] = product.characteristics[key][1];
   });
 
-  console.log(characteristicsObj);
   const formik = useFormikContext();
   const dispatch = useDispatch();
   const productId = product._id;
 
   const handleEditProduct = (values, { setSubmitting }) => {
-    console.log(values);
     const {
       _id,
       brand,
@@ -68,12 +65,14 @@ const EditProduct = ({ product }) => {
       description,
       imageUrls: [imageUrl01, imageUrl02, imageUrl03, imageUrl04],
     };
-    editProductApi(productId, newProduct);
-    // dispatch(authorizationPopupAction('Авторизация прошла успешно'));
-    console.log(newProduct);
-    setSubmitting(false);
-    dispatch(editProductModalClose());
-    dispatch(editProduct(newProduct));
+    editProductApi(productId, newProduct).then(() => {
+      console.log('Update success!');
+      dispatch(authorizationPopupAction('Продукт обновлен успешно'));
+      setSubmitting(false);
+      dispatch(editProductModalClose());
+      dispatch(editProduct(newProduct));
+      /* Do something with updatedProduct */
+    });
   };
   const productSchema = Yup.object().shape({
     brand: Yup.string().required('Is required'),
@@ -90,20 +89,6 @@ const EditProduct = ({ product }) => {
     imageUrl03: Yup.string().required('Is required'),
     imageUrl04: Yup.string().required('Is required'),
   });
-  // const temp = {
-  //   waranty: product.waranty,
-  //   set: product.set,
-  //   type: product.type,
-  //   megapixels: product.megapixels,
-  //   matrixType: product.matrixType,
-  //   matrixSize: product.matrixSize,
-  //   screenDiagonal: product.screenDiagonal,
-  //   sensorScreen: product.sensorScreen,
-  //   digitalMagnification: product.digitalMagnification,
-  //   stabilization: product.stabilization,
-  //   opticalMagnification: product.opticalMagnification,
-  //   focusDistance: product.focusDistance,
-  // }
   const initialValuesGeneral = {
     _id: product._id,
     brand: product.brand,
@@ -123,69 +108,80 @@ const EditProduct = ({ product }) => {
   };
   // const initialValues = Object.assign(initialValuesGeneral, characteristicsObj);
   return (
-    <div className="formBlock create">
-      <Formik
-        initialValues={initialValuesGeneral}
-        onSubmit={handleEditProduct}
-        validationSchema={productSchema}
-      >
-        {(formik) => (
-          <Form className="product-form" id="edit-product">
-            <div className="product-inputs-area">
-              <TextInput label="" name="_id" type="hidden" />
+    <>
+      <div className="formBlock">
+        <Formik
+          initialValues={initialValuesGeneral}
+          onSubmit={handleEditProduct}
+          validationSchema={productSchema}
+        >
+          {(formik) => (
+            <Form className="product-form" id="edit-product">
+              {formik.isSubmitting && (
+                <div className="loaderWrapp">
+                  <Loader />
+                </div>
+              )}
+              <div className="product-inputs-area">
+                <TextInput label="" name="_id" type="hidden" />
 
-              <TextInput label="Производитель" name="brand" type="text" />
-              <TextInput label="Модель" name="name" type="text" />
-              <TextInput label="Текущая цена" name="currentPrice" type="text" />
-              <TextInput
-                label="Предыдущая цена"
-                name="previousPrice"
-                type="text"
-              />
-              <TextInput
-                label="Количество на складе"
-                name="quantity"
-                type="number"
-              />
-              <TextInput label="Артикул" name="artical" type="number" />
-              <TextInput
-                label="Хит продаж (да/нет)"
-                name="hitSale"
-                type="text"
-              />
-              <TextInput label="Категория" name="categories" type="text" />
-              <FormikControl
-                control="textarea"
-                label="Описание"
-                name="description"
-                type="text"
-              />
-              <TextInput
-                label="Ссылка на изобажение 1"
-                name="imageUrl01"
-                type="text"
-              />
-              <TextInput
-                label="Ссылка на изобажение 2"
-                name="imageUrl02"
-                type="text"
-              />
-              <TextInput
-                label="Ссылка на изобажение 3"
-                name="imageUrl03"
-                type="text"
-              />
-              <TextInput
-                label="Ссылка на изобажение 4"
-                name="imageUrl04"
-                type="text"
-              />
-            </div>
-            <div className="form-btn-group" />
-          </Form>
-        )}
-      </Formik>
-    </div>
+                <TextInput label="Производитель" name="brand" type="text" />
+                <TextInput label="Модель" name="name" type="text" />
+                <TextInput
+                  label="Текущая цена"
+                  name="currentPrice"
+                  type="text"
+                />
+                <TextInput
+                  label="Предыдущая цена"
+                  name="previousPrice"
+                  type="text"
+                />
+                <TextInput
+                  label="Количество на складе"
+                  name="quantity"
+                  type="number"
+                />
+                <TextInput label="Артикул" name="artical" type="number" />
+                <TextInput
+                  label="Хит продаж (да/нет)"
+                  name="hitSale"
+                  type="text"
+                />
+                <TextInput label="Категория" name="categories" type="text" />
+                <FormikControl
+                  control="textarea"
+                  label="Описание"
+                  name="description"
+                  type="text"
+                />
+                <TextInput
+                  label="Ссылка на изобажение 1"
+                  name="imageUrl01"
+                  type="text"
+                />
+                <TextInput
+                  label="Ссылка на изобажение 2"
+                  name="imageUrl02"
+                  type="text"
+                />
+                <TextInput
+                  label="Ссылка на изобажение 3"
+                  name="imageUrl03"
+                  type="text"
+                />
+                <TextInput
+                  label="Ссылка на изобажение 4"
+                  name="imageUrl04"
+                  type="text"
+                />
+              </div>
+              <div className="form-btn-group" />
+            </Form>
+          )}
+        </Formik>
+      </div>
+    </>
   );
 };
 

@@ -43,4 +43,4 @@ const CheckBoxBlock = ({ handleChange, checkState }) => (
     </FormGroup>
   </>
 );
-export default CheckBoxBlock;
+export default React.memo(CheckBoxBlock);

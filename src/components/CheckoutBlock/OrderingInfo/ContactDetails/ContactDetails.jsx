@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-unresolved */
@@ -128,16 +129,13 @@ const ContactDetails = () => {
   useEffect(() => {
     if (!isLoggedIn) {
       cart.forEach((product) => {
-        // console.log(product);
         getOneProduct(product.itemNo).then((res) => {
-          console.log('GETTED', res);
           const productObj = {
             _id: res.data._id,
             product: res.data,
             cartQuantity: product.count,
           };
           orderProducts.push(productObj);
-          console.log(orderProducts);
         });
       });
     }
@@ -160,7 +158,6 @@ const ContactDetails = () => {
   };
   // === NP handle API ===
   const handleSelectArea = (area) => {
-    // console.log(area);
     setIsLoading(true);
     getCities().then((response) => {
       const citiArr = response.data.data;
@@ -168,9 +165,7 @@ const ContactDetails = () => {
       if (area) {
         areaRef = area.Ref;
       }
-      // console.log(citiArr);
       const filteredCityArr = citiArr.filter((c) => c.Area === areaRef);
-      // console.log(filteredCityArr);
       setFilteredCitiesNP(filteredCityArr);
       setIsLoading(false);
     });
@@ -301,23 +296,11 @@ const ContactDetails = () => {
     } else {
       newOrder.products = JSON.stringify(orderProducts);
     }
-    // console.log('NEWORDER Products', orderProducts);
-    // console.log('NEWORDER', newOrder);
-
-    // createOrder(newOrder).then((newOrderRes) => {
-    //   /* Do something with newOrder */
-    //   console.log('NEW ORDER: ', newOrderRes);
-    //   console.log('NEW ORDER No: ', newOrderRes.data.order.orderNo);
-    // });
 
     createOrder(newOrder).then((newOrderRes) => {
-      /* Do something with newOrder */
-      console.log('NEW ORDER: ', newOrderRes);
       if (!newOrderRes.data.order) {
         alert(newOrderRes.data.message);
       } else {
-        console.log('NEW ORDER No: ', newOrderRes.data.order.orderNo);
-
         sendMessageToTelegram(
           `Номер заказа: №${newOrderRes.data.order.orderNo}, Имя: ${name}, Телефон: ${phone}, Email: ${email}`
         );
@@ -375,9 +358,6 @@ const ContactDetails = () => {
     onSubmit,
     validate,
   });
-  // console.log('Form values:', formik.values);
-  // console.log('Form errors:', formik.errors);
-  // console.log('Visited fields:', formik.touched);
   const theme = createMuiTheme({
     palette: {
       primary: { main: purple[500] }, // Purple - just for example.
@@ -533,7 +513,7 @@ const ContactDetails = () => {
                     formik.errors.selfDelivery &&
                     formik.touched.selfDelivery ? (
                       <div className={styles.formError}>
-                        {formik.errors.name}
+                        {formik.errors.selfDelivery}
                       </div>
                     ) : null}
                   </div>

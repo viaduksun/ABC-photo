@@ -16,9 +16,6 @@ const Select = (props) => {
     [styles.isInvalid]: meta.touched && meta.error,
     [styles.Valid]: meta.touched && !meta.error,
   });
-  // const handleOnChange = () => {
-  //   console.log('Change');
-  // };
   return (
     <div className={styles.selectAreaWrapper}>
       {label && (

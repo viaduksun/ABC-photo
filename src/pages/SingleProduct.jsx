@@ -25,7 +25,7 @@ const SingleProduct = () => {
   }
   const data = [
     ['/', 'Главная'],
-    ['products', activeBreadcrumbs],
+    ['/products', activeBreadcrumbs],
     [
       'single-product',
       Object.keys(singleProduct).length !== 0 &&

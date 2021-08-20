@@ -121,7 +121,6 @@ export const searchProducts = (state = initialState, action) => {
         searchProducts: filteredPriceArr,
       };
     case SORT_SEARCH_PRODUCTS:
-      console.log(action.payload.value);
       let newArr = [];
       if (action.payload.value === '-currentPrice') {
         newArr = state.searchProducts
